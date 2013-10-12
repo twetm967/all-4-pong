@@ -1,21 +1,42 @@
 80 Version:
 
-1 player pong.
+1 human player pong. with 3 AIs
 Run on cs linux
 gui with qt
-way for user to achieve a score and maintain a list
+way for user to achieve a score 
+	Hitting a ball past another player
+	Receive bonus for being the last player standing
+	
+and maintain a list
+	Sorted list of hight scores displayed in main menu
+	
+	
 levels of difficulty
+	Changes of AI brain and ball speed
 work from any directory
+	
 test on screen resolutions esp on 1024x 768
+	
 cheat mode (mostly for us) 
+	Host can pause the game
+	Infinite health
 help screen
+	On main menu
 good object oriented design pattern
 
-100 Version:
+90 Version:
 
 game save load
+	Save current points and health of players
+
+100 Version:
 network capability
+	Players on different computers can each control a paddle
+	Support for 2 to 4 human players
 animation/ sound
+	Sounds for collitions and points
+	Moving balls, moving paddles (80v) Barrier shapes (90v) Barrier shapes with power ups that effect the ball or balls (100v)
+	Balls can change colors based on who touched them last
 cross platform build (play on windows)
 
 
