@@ -1,0 +1,21 @@
+80 Version:
+
+1 player pong.
+Run on cs linux
+gui with qt
+way for user to achieve a score and maintain a list
+levels of difficulty
+work from any directory
+test on screen resolutions esp on 1024x 768
+cheat mode (mostly for us) 
+help screen
+good object oriented design pattern
+
+100 Version:
+
+game save load
+network capability
+animation/ sound
+cross platform build (play on windows)
+
+
