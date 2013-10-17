@@ -1,4 +1,6 @@
+
 HAHAHAHAHAHK GOD IS AWESOME
+
 1. first "git pull"
 2. make changes
 	2.a) if you make a new file "git add file.cpp"
@@ -8,3 +10,4 @@ HAHAHAHAHAHK GOD IS AWESOME
 6. git commit again.
 7. repeat untill no issues
 8. git push.
+9. hahahaha
