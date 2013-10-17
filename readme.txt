@@ -1,6 +1,4 @@
-
-Yabadabadooooo
-
+HAHAHAHAHAHK GOD IS AWESOME
 1. first "git pull"
 2. make changes
 	2.a) if you make a new file "git add file.cpp"
