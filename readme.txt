@@ -1,5 +1,5 @@
 
-Instructions yadayadayada:
+yadayadayada:
 
 1. first "git pull"
 2. make changes
