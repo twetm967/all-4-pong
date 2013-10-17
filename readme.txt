@@ -1,4 +1,4 @@
-this is some fun messing up the commits
+
 Instructions:
 
 1. first "git pull"
@@ -10,3 +10,4 @@ Instructions:
 6. git commit again.
 7. repeat untill no issues
 8. git push.
+9. hahahaha
