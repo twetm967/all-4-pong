@@ -4,6 +4,10 @@ class Ball
         int x;
         int y;
         int speed;
+	double direction;
+	int speedX;
+	int speedY;
+
     public:
         Ball(int initspeed):speed(initspeed);                       //takes (speed)
         ~Ball();
@@ -11,12 +15,14 @@ class Ball
     //getters
         int getX(){return x};
         int getY(){return y};
-        int getSpeed(){speed};
+        int getSpeed(){return speed};
+	double getDirection(){return direction};	
     
     //setters
-        setX(int newX){x = newX;}
-        setY(int newY){y = newY;}
-        setSpeed(int newSpeed){speed = newSpeed;}
+        void setX(int newX){x = newX;}
+	void setY(int newY){y = newY;}
+        void setSpeed(int newSpeed){speed = newSpeed;}
+	void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
 //--------------------------------------------------------------------------------------------//
         //Mathy Functions for PJ to make!!  
 //This is Daniel Brainstorming do what you want. But maybe a direction class? 
