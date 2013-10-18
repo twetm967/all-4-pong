@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-10-18T18:58:29
+# Project created by QtCreator 2013-10-18T19:05:49
 #
 #-------------------------------------------------
 
@@ -16,10 +16,10 @@ SOURCES += main.cpp\
         game.cpp
 
 HEADERS  += game.h \
-    ../Shapes.h \
-    ../Player.h \
-    ../Map.h \
-    ../Game.h \
-    ../Ball.h
+    Shapes.h \
+    Player.h \
+    Map.h \
+    Game.h \
+    Ball.h
 
 FORMS    += game.ui
