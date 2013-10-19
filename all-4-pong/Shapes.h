@@ -1,3 +1,7 @@
+#ifndef SHAPES_H
+#define SHAPES_H
+
+#include <vector>
 class Shapes
 {
     private:
@@ -7,4 +11,8 @@ class Shapes
     public:
         Shapes();
         ~Shapes();
-}
+
+
+};
+
+#endif

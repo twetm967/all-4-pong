@@ -1,7 +1,14 @@
+#ifndef Player_H
+#define Player_H
+
+
+#include <vector>
+#include "paddle.h"
+
 class Player
 {
     private:
-        Paddle();
+        Paddle pad;
         int Score;
         int Health;
     public:
@@ -15,7 +22,7 @@ class Player
         
 };//player class
 
-class Player::AI
+class AI : Player
 {
     private:
         
@@ -24,11 +31,13 @@ class Player::AI
             ~AI();
 };
 
-class Player::User
+class User : Player
 {
     private:
         
     public:
             User();
             ~User();
-}
+};
+
+#endif

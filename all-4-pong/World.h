@@ -3,15 +3,19 @@
 
 #include <string>
 #include <vector>
+#include "Player.h"
+
+using namespace std;
 
 class World
 {
     private:
         vector<Player*> players;
-        Map* world = new Map();
+        //Map* world = new Map();
         int difficulty;
         int gameMode;
-        World(int, int, int);              //takes  (#of users, game mode, difficulty)
+
+        World();              //takes  (#of users, game mode, difficulty)
         static World instance;
 
 

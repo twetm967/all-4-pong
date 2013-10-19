@@ -1,7 +1,9 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAMEWINDOW_H
+#define GAMEWINDOW_H
 
 #include <QMainWindow>
+#include <vector>
+
 
 namespace Ui {
 class Game;
