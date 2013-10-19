@@ -12,14 +12,17 @@ TARGET = all-4-pong
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        game.cpp
+SOURCES +=\
+    GameWindow.cpp \
+    Main.cpp \
+    ball.cpp
 
-HEADERS  += game.h \
+HEADERS  += \
     Shapes.h \
     Player.h \
     Map.h \
     Game.h \
-    Ball.h
+    GameWindow.h \
+    ball.h
 
 FORMS    += game.ui

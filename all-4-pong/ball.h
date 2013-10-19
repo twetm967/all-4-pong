@@ -1,12 +1,13 @@
-class Ball                               
+#include
+class Ball
 {
     private:
         int x;
         int y;
         int speed;
-	double direction;
-	int speedX;
-	int speedY;
+        double direction;
+        vector<Qpoint> destinations;
+        int last player to hit;
 
     public:
         Ball(int initspeed):speed(initspeed);                       //takes (speed)
@@ -16,7 +17,7 @@ class Ball
         int getX(){return x};
         int getY(){return y};
         int getSpeed(){return speed};
-	double getDirection(){return direction};	
+        double getDirection(){return direction};
     
     //setters
         void setX(int newX){x = newX;}
