@@ -1,4 +1,4 @@
-#include "GameWindow.h"
+/*#include "GameWindow.h"
 #include <vector>
 #include "ui_game.h"
 
@@ -13,3 +13,4 @@ Game::~Game()
 {
     delete ui;
 }
+*/

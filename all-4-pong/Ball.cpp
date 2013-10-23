@@ -4,3 +4,11 @@
 #include <QRect>
 #include <QPoint>
 #include <vector>
+
+
+
+void Ball::Direction(){}
+void Ball::Bounce(){}
+
+
+

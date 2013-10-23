@@ -20,16 +20,20 @@ SOURCES +=\
     Ball.cpp \
     Paddle.cpp \
     Shapes.cpp \
-    Map.cpp
+    ingame.cpp \
+    start.cpp
 
 HEADERS  += \
     Shapes.h \
     Player.h \
-    Map.h \
     GameWindow.h \
     World.h \
     Objects.h \
     paddle.h \
-    Ball.h
+    Ball.h \
+    ingame.h \
+    start.h
 
-FORMS    += game.ui
+FORMS    += \
+    ingame.ui \
+    start.ui

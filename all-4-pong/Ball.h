@@ -6,7 +6,6 @@
 #include <vector>
 #include <QRect>
 
-#include "Map.h"
 #include "paddle.h"
 #include "Player.h"
 //#include "Shapes.h" //when I add this, things break.
@@ -40,6 +39,7 @@ class Ball: public Objects
         ~Ball();
 
         //getters
+       vector<QPoint> getDirections(){return destinations;}
         int getX(){return x;}
         int getY(){return y;}
         int getSpeed(){return speed;}
