@@ -12,6 +12,9 @@
     this->setRect(point.x(), point.y(),WandH.x(), WandH.y());
 }*/
 
+
+
+/****This method has to bo moved another class for the proj to compile****
 /*bool Objects::getHit(Ball* ball){
     //Checks the balls space to the objects space.
     if(this->bottomRight().x >= ball->getX() &&

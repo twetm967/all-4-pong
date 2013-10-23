@@ -6,8 +6,6 @@
 #include <vector>
 #include <QRect>
 
-
-
 #include "Map.h"
 #include "paddle.h"
 #include "Player.h"
@@ -29,6 +27,7 @@ class Ball: public Objects
     private:
         int x;
         int y;
+        int oldX, oldY; //if we know the new and old coordinates, we can determin speed, direction, and point of contact
         int speed;
         double direction;
         vector<QPoint> destinations;

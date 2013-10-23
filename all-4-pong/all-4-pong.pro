@@ -19,7 +19,8 @@ SOURCES +=\
     Objects.cpp \
     Ball.cpp \
     Paddle.cpp \
-    Shapes.cpp
+    Shapes.cpp \
+    Map.cpp
 
 HEADERS  += \
     Shapes.h \
