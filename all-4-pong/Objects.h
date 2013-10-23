@@ -5,7 +5,8 @@
 #include <QRect>
 
 #include <vector>
-#include "Ball.h"
+
+
 
 
 //This class will be the parent of all classes dealing with objects that can be hit
@@ -27,7 +28,7 @@ public:
     void setQPoint(QPoint inPoint){point = inPoint;}
     void setmovable(bool inmovable){movable = inmovable;}
 
-    bool getHit(Ball*);
+    //bool getHit(Ball*); we need to move this to another class
     //double getArea(){return area;}
     QPoint getQPoint(){return point;}
     bool getmovable(){return movable;}

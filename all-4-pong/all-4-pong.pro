@@ -17,8 +17,9 @@ SOURCES +=\
     Main.cpp \
     World.cpp \
     Objects.cpp \
-    paddle.cpp \
-    Ball.cpp
+    Ball.cpp \
+    Paddle.cpp \
+    Shapes.cpp
 
 HEADERS  += \
     Shapes.h \

@@ -4,6 +4,9 @@
 #include "Objects.h"
 #include <QObject>
 #include <vector>
+
+
+
 class Paddle : public Objects
 {
 

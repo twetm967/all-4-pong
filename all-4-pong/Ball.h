@@ -1,15 +1,29 @@
 #ifndef BALL_H
 #define BALL_H
 
-
 #include <QRect>
 #include <QPoint>
 #include <vector>
+#include <QRect>
 
+
+
+#include "Map.h"
+#include "paddle.h"
+#include "Player.h"
+//#include "Shapes.h" //when I add this, things break.
+#include "World.h"
 #include "Objects.h"
+
+
+
+
+
+
 
 using namespace std;
 
+//class Ball: public Objects
 class Ball: public Objects
 {
     private:
@@ -25,8 +39,8 @@ class Ball: public Objects
             speed = initspeed;
         }
         ~Ball();
-    
-    //getters
+
+        //getters
         int getX(){return x;}
         int getY(){return y;}
         int getSpeed(){return speed;}

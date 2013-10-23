@@ -3,16 +3,16 @@
 #include <vector>
 
 
-Objects::Objects(bool isHit, bool isMovable, QPoint isWandH, QPoint isPoint){
+/*Objects::Objects(bool isHit, bool isMovable, QPoint isWandH, QPoint isPoint){
     hit = isHit;
     movable = isMovable;
     WandH = isWandH;
     point = isPoint;
 
     this->setRect(point.x(), point.y(),WandH.x(), WandH.y());
-}
+}*/
 
-bool Objects::getHit(Ball* ball){
+/*bool Objects::getHit(Ball* ball){
     //Checks the balls space to the objects space.
     if(this->bottomRight().x >= ball->getX() &&
             this->topLeft().x     <= ball->getX() &&
@@ -22,5 +22,5 @@ bool Objects::getHit(Ball* ball){
         return true;
     }// it did not hit do nothing
         return false;
-}
+}*/
 
