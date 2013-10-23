@@ -59,6 +59,15 @@ class Ball: public Objects
 // then you could have a function that returns a direction? Or would a direction
 // just be a fraction? because y = mx+b? would that even work?
 
+        // prints the current ball state out to offshore text file,
+        // returning a boolean value indicating print success
+        bool printBallInfo();
+
+        // reads the current ball state from offshore text file,
+        // returning a boolean value indicaing read success;
+        // if read succeeds, stores ball state in instance variables
+        bool readBallInfo();
+
         void Direction();
         void Bounce();
         void onCollision(int objId); //this method will determine logic upon collision
