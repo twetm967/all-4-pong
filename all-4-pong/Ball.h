@@ -47,9 +47,10 @@ class Ball: public Objects
     
     //setters
         void setX(int newX){x = newX;}
-	void setY(int newY){y = newY;}
+        void setY(int newY){y = newY;}
         void setSpeed(int newSpeed){speed = newSpeed;}
-//	void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
+//      void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
+//      void setSpeedX(int newSpeedY) {speedY = newSpeedY;}
 //--------------------------------------------------------------------------------------------//
 
 
@@ -60,6 +61,7 @@ class Ball: public Objects
 
         void Direction();
         void Bounce();
+        void onCollision(int objId); //this method will determine logic upon collision
         
 };
 
