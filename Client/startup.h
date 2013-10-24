@@ -24,6 +24,7 @@ private slots:
     
 private:
     Ui::Startup *ui;
+    QTcpSocket* socket;
 };
 
 #endif // STARTUP_H

@@ -1,6 +1,9 @@
 #include "startup.h"
 #include "ui_startup.h"
 #include "QMessageBox"
+#include <QTcpSocket>
+#include <QTcpServer>
+
 
 Startup::Startup(QWidget *parent) :
     QMainWindow(parent),
@@ -47,7 +50,7 @@ void Startup::dataReceived() {
 void Startup::serverDisconnected()
 {
      ui->statusBar->showMessage("Disconnected.");
-     ui->btnConnect->setEnabled(true);
+   //  ui->btnConnect->setEnabled(true);
 }
 
 //this is called every clock tick and sends the paddle x, y, and ID

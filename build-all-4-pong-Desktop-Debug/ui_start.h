@@ -35,6 +35,7 @@ public:
     QComboBox *dif_comboBox_;
     QLabel *label_2;
     QCheckBox *power_checkBox;
+    QLabel *lblConnected;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -65,6 +66,9 @@ public:
         power_checkBox = new QCheckBox(centralwidget);
         power_checkBox->setObjectName(QStringLiteral("power_checkBox"));
         power_checkBox->setGeometry(QRect(30, 170, 101, 22));
+        lblConnected = new QLabel(centralwidget);
+        lblConnected->setObjectName(QStringLiteral("lblConnected"));
+        lblConnected->setGeometry(QRect(310, 40, 121, 31));
         Start->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Start);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -99,6 +103,7 @@ public:
         );
         label_2->setText(QApplication::translate("Start", "Difficulty", 0));
         power_checkBox->setText(QApplication::translate("Start", "Power-Ups", 0));
+        lblConnected->setText(QApplication::translate("Start", "Users: ", 0));
     } // retranslateUi
 
 };

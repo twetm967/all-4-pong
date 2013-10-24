@@ -30,7 +30,7 @@ void Start::clientConnected()
     connect(sock, &QTcpSocket::disconnected, this, &Start::clientDisconnected);
     connect(sock, &QTcpSocket::readyRead, this, &Start::dataReceived);
     ++connectCount;
-    //ui->lblConnected->setText(QString::number(connectCount));
+    ui->lblConnected->setText(QString::number(connectCount));
 }
 
 //recieves x,y,and paddle id from user
