@@ -49,7 +49,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         start_Btn = new QPushButton(centralwidget);
         start_Btn->setObjectName(QStringLiteral("start_Btn"));
-        start_Btn->setEnabled(true);
+        start_Btn->setEnabled(false);
         start_Btn->setGeometry(QRect(400, 280, 98, 27));
         players_comboBox = new QComboBox(centralwidget);
         players_comboBox->setObjectName(QStringLiteral("players_comboBox"));
@@ -68,7 +68,7 @@ public:
         power_checkBox->setGeometry(QRect(30, 170, 101, 22));
         lblConnected = new QLabel(centralwidget);
         lblConnected->setObjectName(QStringLiteral("lblConnected"));
-        lblConnected->setGeometry(QRect(310, 40, 121, 31));
+        lblConnected->setGeometry(QRect(310, 40, 201, 31));
         Start->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Start);
         menubar->setObjectName(QStringLiteral("menubar"));

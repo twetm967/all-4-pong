@@ -30,12 +30,21 @@ void Start::clientConnected()
     connect(sock, &QTcpSocket::disconnected, this, &Start::clientDisconnected);
     connect(sock, &QTcpSocket::readyRead, this, &Start::dataReceived);
     ++connectCount;
+
+    if (connectCount == ui->players_comboBox->currentIndex()+1){
+        ui->start_Btn->setEnabled(true);
+    }else{
+        ui->start_Btn->setEnabled(false);
+    }
     ui->lblConnected->setText(QString::number(connectCount));
 }
 
 //recieves x,y,and paddle id from user
 void Start::dataReceived()
+
+
 {
+    //**********This is Schaub code that we can use as an example****************
     /*QTcpSocket *sock = dynamic_cast<QTcpSocket*>(sender());
 
     addToLog("Received data from socket ");
