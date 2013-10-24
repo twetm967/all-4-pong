@@ -8,7 +8,7 @@
 
         // establish connection with text file
 
-        if (/*connection succeeds*/) {
+        if (/*connection succeeds*/true) {
             // gather object state and concatenate into string
             // print string of state to text file
             didPrint = true;
@@ -25,7 +25,7 @@
 
         // establish connection with text file
 
-        if (/*connection succeeds*/) {
+        if (/*connection succeeds*/true) {
             // read string of state from text file
             // parse string and store object state in instance variables
             didRead = true;
