@@ -3,7 +3,7 @@
 #include "QMessageBox"
 
 Startup::Startup(QWidget *parent) :
-    QWindow(parent),
+    QMainWindow(parent),
     ui(new Ui::Startup)
 {
     ui->setupUi(this);
@@ -39,7 +39,8 @@ void Startup::dataReceived() {
 
     while (socket->canReadLine()) {
         QString str = socket->readLine();
-        //do things with the information we just got
+        //this will recieve a string of the a list of objects with their x and y coordinates
+        //For example, ball,
     }
 }
 
