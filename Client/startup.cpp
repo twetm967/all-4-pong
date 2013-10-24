@@ -21,14 +21,14 @@ Startup::~Startup()
     delete ui;
 }
 
-void Startup::on_btnConnect_clicked()
+void Startup::on_connect_Btn_clicked()
 {
     QString hostname = ui->IP_line->text();
     if (hostname.size() == 0) {
         QMessageBox::critical(this, "Uh oh", "Please specify name of chat server.");
         return;
     }
-    socket->connectToHost(hostname, 5001);
+    socket->connectToHost(hostname, 5000);
     if (!socket->waitForConnected())  {
         QMessageBox::critical(this, "Uh oh", "Unable to connect to server.");
         return;
@@ -37,6 +37,7 @@ void Startup::on_btnConnect_clicked()
     //ui->statusBar->showMessage("Connected.");
     //ui->connect_Btn->setEnabled(false);
 }
+
 
 void Startup::dataReceived() {
 
@@ -72,4 +73,6 @@ void Startup::onTick()
 
     ui->txtMessage->setFocus();*/
 }
+
+
 

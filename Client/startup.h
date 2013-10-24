@@ -16,12 +16,14 @@ public:
     explicit Startup(QWidget *parent = 0);
     ~Startup();
 private slots:
-    void on_btnConnect_clicked();
+
     void dataReceived();
     void serverDisconnected();
     void onTick();
 
     
+    void on_connect_Btn_clicked();
+
 private:
     Ui::Startup *ui;
     QTcpSocket* socket;

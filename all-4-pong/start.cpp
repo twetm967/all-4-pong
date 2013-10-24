@@ -16,7 +16,7 @@ Start::Start(QWidget *parent) :
     server = new QTcpServer(this);
 
     connect(server, &QTcpServer::newConnection, this, &Start::clientConnected);
-    if (!server->listen(QHostAddress::Any, 5001)) {
+    if (!server->listen(QHostAddress::Any, 5000)) {
         QMessageBox::critical(this, "Uh oh", "Cannot start socket.");
         exit(1);
 
