@@ -37,6 +37,16 @@ class World
 
 
     //methods 
+
+
+        // prints the current world state out to offshore text file,
+        // returning a boolean value indicating print success
+        bool printWorldInfo();
+
+        // reads the current world state from offshore text file,
+        // returning a boolean value indicaing read success;
+        // if read succeeds, stores world state in instance variables
+        bool readWorldInfo();
     
 };//Game Class
 
