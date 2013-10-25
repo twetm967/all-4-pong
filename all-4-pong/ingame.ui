@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
+    <width>1125</width>
     <height>633</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>All-4-Pong - Game Court</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(61, 61, 61);</string>
@@ -348,17 +348,16 @@ text-align: center;</string>
   <widget class="QPushButton" name="btnPause">
    <property name="geometry">
     <rect>
-     <x>805</x>
-     <y>5</y>
+     <x>810</x>
+     <y>560</y>
      <width>61</width>
-     <height>41</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
-border: 1px solid rgb(0, 0, 0);
 color: rgb(0, 200, 0);
-border-radius: 4px;</string>
+border-radius: 30px;</string>
    </property>
    <property name="text">
     <string>Pause</string>
@@ -385,17 +384,16 @@ text-align: center;</string>
   <widget class="QPushButton" name="btnCheat">
    <property name="geometry">
     <rect>
-     <x>875</x>
-     <y>5</y>
+     <x>880</x>
+     <y>560</y>
      <width>61</width>
-     <height>41</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
-border: 1px solid rgb(0, 0, 0);
 color: rgb(0, 200, 0);
-border-radius: 4px;</string>
+border-radius: 30px;</string>
    </property>
    <property name="text">
     <string>Cheat</string>
