@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,12 +22,17 @@ QT_BEGIN_NAMESPACE
 class Ui_InGame
 {
 public:
+    QLabel *label;
 
     void setupUi(QWidget *InGame)
     {
         if (InGame->objectName().isEmpty())
             InGame->setObjectName(QStringLiteral("InGame"));
         InGame->resize(720, 720);
+        label = new QLabel(InGame);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(200, 310, 291, 31));
+        label->setTextFormat(Qt::RichText);
 
         retranslateUi(InGame);
 
@@ -36,6 +42,7 @@ public:
     void retranslateUi(QWidget *InGame)
     {
         InGame->setWindowTitle(QApplication::translate("InGame", "Form", 0));
+        label->setText(QApplication::translate("InGame", "This Window will actually play the game!!!!!!", 0));
     } // retranslateUi
 
 };

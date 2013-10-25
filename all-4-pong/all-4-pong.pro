@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES +=\
-    GameWindow.cpp \
     Main.cpp \
     World.cpp \
     Objects.cpp \
