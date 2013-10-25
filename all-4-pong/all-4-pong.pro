@@ -20,7 +20,8 @@ SOURCES +=\
     Paddle.cpp \
     Shapes.cpp \
     ingame.cpp \
-    start.cpp
+    start.cpp \
+    highscores.cpp
 
 HEADERS  += \
     Shapes.h \
@@ -31,7 +32,8 @@ HEADERS  += \
     paddle.h \
     Ball.h \
     ingame.h \
-    start.h
+    start.h \
+    highscores.h
 
 FORMS    += \
     ingame.ui \
