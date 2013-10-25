@@ -30,7 +30,7 @@ public:
 
 
     Paddle(int newPosition, int newLength, int newSideID, int newPlayerID): position(newPosition), paddleLength(newLength),
-        playerID(newPlayerID), sideId(newSideID)  { }
+        playerId(newPlayerID), sideId(newSideID)  { }
     
     // prints the current paddle state out to offshore text file,
     // returning a boolean value indicating print success

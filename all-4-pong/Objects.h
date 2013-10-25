@@ -18,6 +18,7 @@ private:
     QPoint WandH;
   //  QRect Rectangle;
     QPoint point;
+    double area;
 
 public:
 
@@ -36,7 +37,7 @@ public:
 
     //virtual methods
    void virtual Move();
-   bool virtual Hit();
+   bool virtual Hit(){
    bool virtual getBound();
 
 
