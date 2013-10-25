@@ -22,7 +22,8 @@ SOURCES +=\
     ingame.cpp \
     start.cpp \
     score.cpp \
-    highscores.cpp
+    highscores.cpp \
+    powerup.cpp
 
 HEADERS  += \
     Shapes.h \
@@ -35,7 +36,8 @@ HEADERS  += \
     ingame.h \
     start.h \
     score.h \
-    highscores.h
+    highscores.h \
+    powerup.h
 
 FORMS    += \
     ingame.ui \
