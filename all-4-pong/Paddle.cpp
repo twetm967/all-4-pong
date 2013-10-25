@@ -1,6 +1,14 @@
 #include "paddle.h"
 #include <vector>
-//Paddle::Paddle() {
+
+#include <QRect>
+
+
+
+        Paddle::Paddle() {
+
+
+        }
 
 
 

@@ -13,15 +13,18 @@
 class Objects: public QRect {
 private:
     //instance variables that are shared by all children of objects
-    bool hit;
-    bool movable;
-    QPoint WandH;
-  //  QRect Rectangle;
+
+
+  //QRect Rectangle;
     QPoint point;
+
 
 public:
 
-    Objects();
+     Objects(bool,bool,QPoint,QPoint);
+
+     Objects(int,int,int,int);
+
     virtual ~Objects() = 0;
     //Getters and setters------------------------------
     void setHit(bool inHit){hit = inHit;}

@@ -1,4 +1,3 @@
-#include "GameWindow.h"
 #include <vector>
 #include <QApplication>
 #include "start.h"
