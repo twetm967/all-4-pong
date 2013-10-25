@@ -21,6 +21,7 @@ SOURCES +=\
     Shapes.cpp \
     ingame.cpp \
     start.cpp \
+    saveload.cpp \
     score.cpp \
     highscores.cpp \
     powerup.cpp
@@ -28,15 +29,15 @@ SOURCES +=\
 HEADERS  += \
     Shapes.h \
     Player.h \
-    GameWindow.h \
     World.h \
     Objects.h \
     paddle.h \
     Ball.h \
     ingame.h \
     start.h \
-    score.h \
     highscores.h \
+    saveload.h
+    score.h \
     powerup.h
 
 FORMS    += \
