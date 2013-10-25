@@ -1,6 +1,6 @@
 #include "Objects.h"
 #include "Ball.h"
-#include "ui_game.h"
+//#include "ui_game.h"
 #include <QRect>
 #include <QPoint>
 #include <vector>
@@ -24,12 +24,16 @@ bool printBallInfo() {
 // reads the current ball state from offshore text file,
 // returning a boolean value indicaing read success;
 // if read succeeds, stores ball state in instance variables
+
+
 bool readBallInfo() {
+
     bool didRead = false;
 
     // establish connection with text file
 
     if (/*connection succeeds*/true) {
+
         // read string of state from text file
         // parse string and store object state in instance variables
         didRead = true;
@@ -38,7 +42,12 @@ bool readBallInfo() {
     return didRead;
 }
 
+
+//uses old x,y compares them to new x,y
+// creates directions (a slope)
 void Ball::Direction(){}
+
+
 void Ball::Bounce(){}
 
 

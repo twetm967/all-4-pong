@@ -21,8 +21,13 @@ SOURCES +=\
     Shapes.cpp \
     ingame.cpp \
     start.cpp \
+<<<<<<< HEAD
     highscores.cpp \
     saveload.cpp
+=======
+    score.cpp \
+    highscores.cpp
+>>>>>>> fc959412cf496a36cbb78e6186d7b7d9bddfc9d2
 
 HEADERS  += \
     Shapes.h \
@@ -34,8 +39,13 @@ HEADERS  += \
     Ball.h \
     ingame.h \
     start.h \
+<<<<<<< HEAD
     highscores.h \
     saveload.h
+=======
+    score.h \
+    highscores.h
+>>>>>>> fc959412cf496a36cbb78e6186d7b7d9bddfc9d2
 
 FORMS    += \
     ingame.ui \
