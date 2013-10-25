@@ -59,6 +59,7 @@ class Ball: public Objects
         int getSpeedY(){return speedY;}
         int getSpeed(){return speed;}
         double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
+        int getPlayerId(){return playerId;}
     
         //setters -- need additional logic to fully implement
         void setX(int newX){x = newX;}
@@ -67,6 +68,7 @@ class Ball: public Objects
         void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
         void setSpeedY(int newSpeedY) {speedY = newSpeedY;}
         void setPlayerId(int newId) {playerId = newId;}
+        void setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
 //--------------------------------------------------------------------------------------------//
 
 

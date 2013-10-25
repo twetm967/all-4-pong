@@ -54,11 +54,13 @@ void Ball::Bounce(){}
 
 void Ball::onCollision(int objId){
     //determine where the object collision line is, if the object is moving, how fast and in what direction it is moving
-    //determine new direction and speed
+    //determine new direction and speed and set ball position appropriately
 }
 void Ball::Move(){
     this->setX(this->getX()+this->getSpeedX);
     this->setY(this->getY()+this->getSpeedY);
+    //if there is a Collision call this->onCollision(objId)
+    this->setPoint();
 }
 
 
