@@ -3,7 +3,6 @@
 
 #include <QPoint>
 #include <QRect>
-
 #include <vector>
 
 
@@ -18,6 +17,8 @@ private:
     QPoint WandH;
   //  QRect Rectangle;
     QPoint point;
+    static int nextObjId;
+    int objId;
 
 public:
 

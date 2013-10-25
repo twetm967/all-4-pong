@@ -5,14 +5,22 @@
 #include <QPoint>
 #include <vector>
 #include <QRect>
-
+/*
 #include "paddle.h"
 #include "Player.h"
 //#include "Shapes.h" //when I add this, things break.
 #include "World.h"
 #include "Objects.h"
-
+*/
 using namespace std;
+
+class World;
+
+class paddle;
+
+class Player;
+class Shapes;
+class Objects;
 
 //class Ball: public Objects
 class Ball: public Objects
@@ -45,7 +53,7 @@ class Ball: public Objects
             x = initX;
             y = initY;
             playerId = initPlayerId;
-            radius = 1; //need to determine default radius;
+            radius = 5; //need to determine default radius;
             point = QPoint(x - radius, y - radius); //need to make this a method;
             movable = true;
         }
