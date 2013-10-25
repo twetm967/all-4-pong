@@ -15,7 +15,7 @@
 
 
 /****This method has to bo moved another class for the proj to compile****
-/*bool Objects::getHit(Ball* ball){
+/*bool Objects::getHit(){
     //Checks the balls space to the objects space.
     if(this->bottomRight().x >= ball->getX() &&
             this->topLeft().x     <= ball->getX() &&
