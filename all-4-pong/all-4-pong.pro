@@ -36,7 +36,8 @@ HEADERS  += \
     ingame.h \
     start.h \
     highscores.h \
-    saveload.h
+    saveload.h \
+    PowerUp.h
     score.h \
     powerup.h
 

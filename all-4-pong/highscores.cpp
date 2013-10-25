@@ -1,12 +1,13 @@
 
 #include "highscores.h"
 
+HighScores HighScores::getInstance();
 
 //initiates the HighScores thingy. New ever time a new server is made?
 HighScores::HighScores(){
-    QFileDevice File = new QFileDevice();
 
-    File.open()
+   File.open("scoreFile.txt");
+
 }
 
 //returns the scores in decrementing order
