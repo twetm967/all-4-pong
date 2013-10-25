@@ -4,7 +4,10 @@
 #include <QLabel>
 #include <vector>
 #include <QString>
-#include <QFileDevice>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 
 class HighScores
@@ -12,7 +15,7 @@ class HighScores
 private:
     vector<int> highScores;
 
-    QFileDevice File;
+    ofstream file; // File;
 
     vector<int> gameScores;
 
@@ -34,7 +37,7 @@ public:
     void makeLeaderBoard();
 
     //shows the leader board as a QWidget object
-    QFileDevice getLeaderBoard();
+    ofstream getLeaderBoard();
 
     //increments the score of the player takes the index
     //of the paddle number and associates it with the index inside of

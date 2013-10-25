@@ -6,6 +6,7 @@
 HighScores::HighScores(){
     QFileDevice File = new QFileDevice();
 
+    File.open()
 }
 
 //returns the scores in decrementing order
@@ -27,7 +28,7 @@ void HighScores::makeLeaderBoard(){
 
 //And by later i mean here!!!
 // displays the QWidget of the Leaderboards.
-QFileDevice HighScores::getLeaderBoard(){
+ofstream HighScores::getLeaderBoard(){
 
 }
 
