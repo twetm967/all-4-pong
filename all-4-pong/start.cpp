@@ -47,7 +47,7 @@ void Start::dataReceived()
 
 {
 
-    }
+    //}
     //**********This is Schaub code that we can use as an example****************
     /*QTcpSocket *sock = dynamic_cast<QTcpSocket*>(sender());
 
