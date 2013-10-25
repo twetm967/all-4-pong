@@ -16,6 +16,7 @@ Objects::Objects(bool isHit, bool isMovable, QPoint isWandH, QPoint isPoint){
 
 
 bool Objects::getHit(){
+
     //Checks the balls space to the objects space.
     if(this->bottomRight().x >= ball->getX() &&
             this->topLeft().x     <= ball->getX() &&

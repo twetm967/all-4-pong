@@ -1,5 +1,5 @@
 #include "highscores.h"
 
-highscores::highscores()
+HighScores::HighScores()
 {
 }
