@@ -21,31 +21,24 @@ SOURCES +=\
     Shapes.cpp \
     ingame.cpp \
     start.cpp \
-<<<<<<< HEAD
-    highscores.cpp \
-    saveload.cpp
-=======
+    saveload.cpp \
     score.cpp \
-    highscores.cpp
->>>>>>> fc959412cf496a36cbb78e6186d7b7d9bddfc9d2
+    highscores.cpp \
+    powerup.cpp
 
 HEADERS  += \
     Shapes.h \
     Player.h \
-    GameWindow.h \
     World.h \
     Objects.h \
     paddle.h \
     Ball.h \
     ingame.h \
     start.h \
-<<<<<<< HEAD
     highscores.h \
     saveload.h
-=======
     score.h \
-    highscores.h
->>>>>>> fc959412cf496a36cbb78e6186d7b7d9bddfc9d2
+    powerup.h
 
 FORMS    += \
     ingame.ui \

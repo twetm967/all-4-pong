@@ -3,6 +3,8 @@
 
 #include <QLabel>
 #include <vector>
+#include <QString>
+
 class HighScores
 {
 private:
@@ -30,8 +32,16 @@ public:
     //shows the leader board as a QWidget object
     QWidget getLeaderBoard();
 
+    //increments the score of the player takes the index
+    //of the paddle number and associates it with the index inside of
+    // <gameScores>
+    void incScore(int);
 
-    void incScore();
+    //displays the score of the player takes the index of the
+    //paddle number and associates it with the index inside of
+    // <gameScores>
+    QString getScore(int);
+
 
 };
 

@@ -13,6 +13,17 @@ class Shapes
         Shapes();
         ~Shapes();
 
+        //*********Getters and setters****************
+        int getX(){return x;}
+        int getY(){return y;}
+        PowerUp* getPowerUp(){return boost;}
+
+        void setX(int inX){x = inX;}
+        void setY(int inY){y = inY;}
+        void setPowerUp(PowerUp *inBoost){boost = inBoost;}
+        //********************************************
+
+
 
         // prints the current shape state out to offshore text file,
         // returning a boolean value indicating print success
