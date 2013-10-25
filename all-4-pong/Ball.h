@@ -18,33 +18,51 @@ using namespace std;
 class Ball: public Objects
 {
     private:
-        int x;
-        int y;
-        int oldX, oldY; //if we know the new and old coordinates, we can determin speed, direction, and point of contact
+        //needs to inherit
+        int x, y; //where the ball is centered
+        int speedX, speedY; //if we know the new and old coordinates, we can determin speed, direction, and point of contact
         int speed;
-        double direction;
-        vector<QPoint> destinations;
-      //  int last player to hit;
+        vector<QPoint> destinations;  //vector of next point on each side the ball will hit
+        int playerId;  // Id of last player to hit the ball
+        int radius; //radius of the ball
 
     public:
-        Ball(int initspeed){            //takes (speed)
-            speed = initspeed;
+        //need to move to .cpp file
+        Ball(int initSpeed) {            //takes (speed)
+            speed = initSpeed;
+            x = 0;
+            y = 0;
+            radius = 1; //need to determine default radius
+            playerId = -1; //need to determine a playerId to use for NULL
+            point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
+            movable = true;
+            //set rest of uninitialized variables (determine direction)
         }
         ~Ball();
 
+        Ball(int initSpeed, int initX, int initY, int initPlayerId) {
+            speed = initSpeed;
+            x = initX;
+            y = initY;
+            playerId = initPlayerId;
+            radius = 1; //need to determine default radius;
+            point = QPoint(x - radius, y - radius); //need to make this a method;
+            movable = true;
+        }
+
         //getters
-       vector<QPoint> getDirections(){return destinations;}
+        vector<QPoint> getDirections(){return destinations;}
         int getX(){return x;}
         int getY(){return y;}
         int getSpeed(){return speed;}
-        double getDirection(){return direction;}
+        double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
     
-    //setters
+        //setters -- need additional logic to fully implement
         void setX(int newX){x = newX;}
         void setY(int newY){y = newY;}
         void setSpeed(int newSpeed){speed = newSpeed;}
-//      void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
-//      void setSpeedX(int newSpeedY) {speedY = newSpeedY;}
+        void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
+        void setSpeedY(int newSpeedY) {speedY = newSpeedY;}
 //--------------------------------------------------------------------------------------------//
 
 
@@ -52,6 +70,7 @@ class Ball: public Objects
 //This is Daniel Brainstorming do what you want. But maybe a direction class? 
 // then you could have a function that returns a direction? Or would a direction
 // just be a fraction? because y = mx+b? would that even work?
+
 
         // prints the current ball state out to offshore text file,
         // returning a boolean value indicating print success

@@ -12,7 +12,7 @@ bool printBallInfo() {
 
     // establish connection with text file
 
-    if (/*connection succeeds*/true) {
+    if (/*connection succeeds*/ true  /*could we just return this?*/) {
         // gather object state and concatenate into string
         // print string of state to text file
         didPrint = true;
@@ -29,7 +29,7 @@ bool readBallInfo() {
 
     // establish connection with text file
 
-    if (/*connection succeeds*/true) {
+    if (/*connection succeeds*/ true /*could we just return this?*/) {
         // read string of state from text file
         // parse string and store object state in instance variables
         didRead = true;
