@@ -23,6 +23,8 @@ public:
     // returning a boolean value indicaing read success;
     // if read succeeds, stores paddle state in instance variables
     bool readPaddleInfo();
+
+    //
     
 };
 
