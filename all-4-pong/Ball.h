@@ -36,7 +36,7 @@ class Ball: public Objects
             playerId = -1; //need to determine a playerId to use for NULL
             point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
             movable = true;
-            //set rest of uninitialized variables (determine direction)
+            //set rest of uninitialized variables (determine direction and therby speedX and speedY)
         }
         ~Ball();
 
@@ -52,8 +52,11 @@ class Ball: public Objects
 
         //getters
         vector<QPoint> getDirections(){return destinations;}
-        int getX(){return x;}
-        int getY(){return y;}
+        int getX(){return x;} //returns x from center of ball
+        int getY(){return y;} //returns y from center of ball
+        int getRadius(){return radius;}
+        int getSpeedX(){return speedX;}
+        int getSpeedY(){return speedY;}
         int getSpeed(){return speed;}
         double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
     
@@ -63,6 +66,7 @@ class Ball: public Objects
         void setSpeed(int newSpeed){speed = newSpeed;}
         void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
         void setSpeedY(int newSpeedY) {speedY = newSpeedY;}
+        void setPlayerId(int newId) {playerId = newId;}
 //--------------------------------------------------------------------------------------------//
 
 
@@ -81,8 +85,8 @@ class Ball: public Objects
         // if read succeeds, stores ball state in instance variables
         bool readBallInfo();
 
-        void Direction();
-        void Bounce();
+        double Direction();  //provides direction (angle) the ball is traveling
+        void Bounce(); //I don't know who created this, but I think it may be the same as the onCollision method I have already created
         void onCollision(int objId); //this method will determine logic upon collision
         
 };

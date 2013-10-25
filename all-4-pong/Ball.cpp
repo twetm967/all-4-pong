@@ -4,9 +4,11 @@
 #include <QRect>
 #include <QPoint>
 #include <vector>
+#include <cmath>
 
 // prints the current ball state out to offshore text file,
 // returning a boolean value indicating print success
+    //should this be a virtual method for objects?
 bool printBallInfo() {
     bool didPrint = false;
 
@@ -44,11 +46,19 @@ bool readBallInfo() {
 
 
 //uses old x,y compares them to new x,y
-// creates directions (a slope)
-void Ball::Direction(){}
+// creates direction
+double Ball::Direction(){return 0; /*return atan(this->getSpeedX()/- this->getspeedY()) % 360;*/} //need to test this function
 
 
 void Ball::Bounce(){}
 
+void Ball::onCollision(int objId){
+    //determine where the object collision line is, if the object is moving, how fast and in what direction it is moving
+    //determine new direction and speed
+}
+void Ball::Move(){
+    this->setX(this->getX()+this->getSpeedX);
+    this->setY(this->getY()+this->getSpeedY);
+}
 
 
