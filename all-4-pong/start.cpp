@@ -24,18 +24,20 @@ Start::Start(QWidget *parent) :
 }
 
 
+//this method detects when a new client is connected and increments the connected count
 void Start::clientConnected()
 {
     QTcpSocket *sock = server->nextPendingConnection();
     connect(sock, &QTcpSocket::disconnected, this, &Start::clientDisconnected);
     connect(sock, &QTcpSocket::readyRead, this, &Start::dataReceived);
     ++connectCount;
-
+    QString str;
     if (connectCount == ui->players_comboBox->currentIndex()+1){
         ui->start_Btn->setEnabled(true);
     }else{
         ui->start_Btn->setEnabled(false);
     }
+
     ui->lblConnected->setText(QString::number(connectCount));
 }
 
@@ -44,6 +46,8 @@ void Start::dataReceived()
 
 
 {
+
+    }
     //**********This is Schaub code that we can use as an example****************
     /*QTcpSocket *sock = dynamic_cast<QTcpSocket*>(sender());
 
@@ -62,6 +66,8 @@ void Start::dataReceived()
     }*/
 }
 
+
+//detects when a user disconnects and decrements the connectCount
 void Start::clientDisconnected()
 {
     QTcpSocket *sock = dynamic_cast<QTcpSocket*>(sender());
@@ -72,7 +78,8 @@ void Start::clientDisconnected()
 }
 
 
-
+//this method will launch the actual game. this button is only activated when there are the
+//correct number of players connected. That number is determined by the players combobox.
 void Start::on_start_Btn_clicked()
 {
     //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.

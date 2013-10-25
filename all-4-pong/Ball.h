@@ -12,12 +12,6 @@
 #include "World.h"
 #include "Objects.h"
 
-
-
-
-
-
-
 using namespace std;
 
 //class Ball: public Objects

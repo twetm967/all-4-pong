@@ -33,7 +33,8 @@ void Startup::on_connect_Btn_clicked()
         QMessageBox::critical(this, "Uh oh", "Unable to connect to server.");
         return;
     }
-
+    QString str = ui->username_line->text();
+    socket->write(str.toLocal8Bit());
     //ui->statusBar->showMessage("Connected.");
     //ui->connect_Btn->setEnabled(false);
 }
