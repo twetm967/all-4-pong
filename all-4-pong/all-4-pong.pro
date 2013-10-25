@@ -43,3 +43,6 @@ HEADERS  += \
 FORMS    += \
     ingame.ui \
     start.ui
+
+RESOURCES += \
+    resources.qrc
