@@ -9,7 +9,7 @@
 // prints the current ball state out to offshore text file,
 // returning a boolean value indicating print success
     //should this be a virtual method for objects?
-bool printBallInfo() {
+bool Ball:printBallInfo() {
     bool didPrint = false;
 
     // establish connection with text file
