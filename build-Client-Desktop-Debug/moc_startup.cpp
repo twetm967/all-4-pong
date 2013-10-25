@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'start.h'
+** Meta object code from reading C++ file 'startup.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.1.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../all-4-pong/start.h"
+#include "../Client/startup.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'start.h' doesn't include <QObject>."
+#error "The header file 'startup.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.1.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -18,30 +18,30 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_Start_t {
+struct qt_meta_stringdata_Startup_t {
     QByteArrayData data[6];
-    char stringdata[77];
+    char stringdata[72];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_Start_t, stringdata) + ofs \
+    offsetof(qt_meta_stringdata_Startup_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData) \
     )
-static const qt_meta_stringdata_Start_t qt_meta_stringdata_Start = {
+static const qt_meta_stringdata_Startup_t qt_meta_stringdata_Startup = {
     {
-QT_MOC_LITERAL(0, 0, 5),
-QT_MOC_LITERAL(1, 6, 20),
-QT_MOC_LITERAL(2, 27, 0),
-QT_MOC_LITERAL(3, 28, 15),
-QT_MOC_LITERAL(4, 44, 12),
-QT_MOC_LITERAL(5, 57, 18)
+QT_MOC_LITERAL(0, 0, 7),
+QT_MOC_LITERAL(1, 8, 12),
+QT_MOC_LITERAL(2, 21, 0),
+QT_MOC_LITERAL(3, 22, 18),
+QT_MOC_LITERAL(4, 41, 6),
+QT_MOC_LITERAL(5, 48, 22)
     },
-    "Start\0on_start_Btn_clicked\0\0clientConnected\0"
-    "dataReceived\0clientDisconnected\0"
+    "Startup\0dataReceived\0\0serverDisconnected\0"
+    "onTick\0on_connect_Btn_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Start[] = {
+static const uint qt_meta_data_Startup[] = {
 
  // content:
        7,       // revision
@@ -69,41 +69,41 @@ static const uint qt_meta_data_Start[] = {
        0        // eod
 };
 
-void Start::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Startup::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        Start *_t = static_cast<Start *>(_o);
+        Startup *_t = static_cast<Startup *>(_o);
         switch (_id) {
-        case 0: _t->on_start_Btn_clicked(); break;
-        case 1: _t->clientConnected(); break;
-        case 2: _t->dataReceived(); break;
-        case 3: _t->clientDisconnected(); break;
+        case 0: _t->dataReceived(); break;
+        case 1: _t->serverDisconnected(); break;
+        case 2: _t->onTick(); break;
+        case 3: _t->on_connect_Btn_clicked(); break;
         default: ;
         }
     }
     Q_UNUSED(_a);
 }
 
-const QMetaObject Start::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_Start.data,
-      qt_meta_data_Start,  qt_static_metacall, 0, 0}
+const QMetaObject Startup::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_Startup.data,
+      qt_meta_data_Startup,  qt_static_metacall, 0, 0}
 };
 
 
-const QMetaObject *Start::metaObject() const
+const QMetaObject *Startup::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Start::qt_metacast(const char *_clname)
+void *Startup::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Start.stringdata))
-        return static_cast<void*>(const_cast< Start*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_Startup.stringdata))
+        return static_cast<void*>(const_cast< Startup*>(this));
     return QMainWindow::qt_metacast(_clname);
 }
 
-int Start::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Startup::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
