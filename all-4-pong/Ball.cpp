@@ -28,7 +28,7 @@ bool Ball:printBallInfo() {
 // if read succeeds, stores ball state in instance variables
 
 
-bool readBallInfo() {
+bool Ball::readBallInfo() {
 
     bool didRead = false;
 
@@ -49,6 +49,16 @@ bool readBallInfo() {
 // creates direction
 double Ball::Direction(){return 0; /*return atan(this->getSpeedX()/- this->getspeedY()) % 360;*/} //need to test this function
 
+Ball(int initSpeed) {            //takes (speed)
+    speed = initSpeed;
+    x = 0;
+    y = 0;
+    radius = 1; //need to determine default radius
+    playerId = -1; //need to determine a playerId to use for NULL
+    point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
+    movable = true;
+    //set rest of uninitialized variables (determine direction and therby speedX and speedY)
+}
 
 void Ball::Bounce(){}
 
