@@ -34,22 +34,13 @@ class Ball: public Objects
         int radius; //radius of the ball
 
     public:
-        //need to move to .cpp file
         Ball(int initSpeed);
+
         ~Ball();
 
-        Ball(int initSpeed, int initX, int initY, int initPlayerId) {
-            speed = initSpeed;
-            x = initX;
-            y = initY;
-            playerId = initPlayerId;
-            radius = 5; //need to determine default radius;
-            point = QPoint(x - radius, y - radius); //need to make this a method;
-            movable = true;
-        }
+        Ball(int initSpeed, int initX, int initY, int initPlayerId);
 
         //getters
-        vector<QPoint> getDirections(){return destinations;}
         int getX(){return x;} //returns x from center of ball
         int getY(){return y;} //returns y from center of ball
         int getRadius(){return radius;}
