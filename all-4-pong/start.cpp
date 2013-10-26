@@ -3,6 +3,9 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include <ingame.h>
+#include "ui_ingame.h"
+
 
 #include "start.h"
 #include "ui_start.h"
@@ -83,6 +86,7 @@ void Start::clientDisconnected()
 void Start::on_start_Btn_clicked()
 {
     //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
-
+    InGame gameScreen;
+    gameScreen.show();
 
 }

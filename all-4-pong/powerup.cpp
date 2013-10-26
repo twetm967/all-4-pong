@@ -1,15 +1,5 @@
 #include "powerup.h"
 
-PowerUp::PowerUp()
+powerup::powerup()
 {
-}
-
-//adds speed to the ball
-Speed::addBoost(){
-
-}
-
-//adds length to the paddle
-Length::addBoost(){
-
 }

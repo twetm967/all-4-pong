@@ -23,6 +23,8 @@ class Player
         
 };//player class
 
+
+
 class AI : Player
 {
     private:

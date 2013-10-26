@@ -13,16 +13,30 @@ using namespace std;
 class HighScores
 {
 private:
+
+
+
     vector<int> highScores;
 
-    ofstream file; // File;
+    ofstream File; // File;
 
     vector<int> gameScores;
 
     QWidget LeaderBoard;
 
-public:
     HighScores();
+
+  static HighScores* instance;
+
+public:
+
+   static HighScores& getInstance(){
+        {
+           if(instance == null){
+            return instance;
+           }
+        }
+    }
 
     //returns the scores from a game in decrimenting order
     //largest -> smallest

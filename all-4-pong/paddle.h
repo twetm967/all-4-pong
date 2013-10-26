@@ -4,16 +4,19 @@
 #include "Objects.h"
 #include <QObject>
 #include <vector>
+#include <Ball.h>
 
 
 
-class Paddle : public Objects
+class Paddle : public QRect , public Objects
 {
     int position;
     int sideId;
     int playerId;
     int paddleLength;
-
+    //Width and Height!! of the paddle in other words
+    //10 and 1!
+    QPoint WandH;
 public:
     //****Getters and setters****/
     int getPosition(){return position;}
@@ -21,15 +24,22 @@ public:
     int getLength(){return paddleLength;}
     int getPlayerId(){return playerId;}
 
-    int setPlayerId(int inID){playerId = inID;}
-    int setPosition(int inPos){position = inPos;}
-    int setLength(int inLength){ paddleLength = inLength;}
+
+    void setPlayerId(int inID){playerId = inID;}
+    void  setPosition(int inPos){position = inPos;}
+    void  setLength(int inLength){ paddleLength = inLength;}
     //*******************************
 
 
+    bool getHit(Ball);
 
 
+<<<<<<< HEAD
     Paddle(int newPosition, int newLength, int newSideID, int newPlayerID): position(newPosition), paddleLength(newLength),
+=======
+    Paddle(int newPosition, int newLength, int newSideID, int newPlayerID):
+        position(newPosition), paddleLength(newLength),
+>>>>>>> a42c4fa3be0a97d4e83079b6fd3c589be9013e04
         playerId(newPlayerID), sideId(newSideID)  { }
     
     // prints the current paddle state out to offshore text file,

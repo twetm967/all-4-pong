@@ -5,14 +5,22 @@
 #include <QPoint>
 #include <vector>
 #include <QRect>
-
+/*
 #include "paddle.h"
 #include "Player.h"
 //#include "Shapes.h" //when I add this, things break.
 #include "World.h"
 #include "Objects.h"
-
+*/
 using namespace std;
+
+class World;
+
+class paddle;
+
+class Player;
+class Shapes;
+class Objects;
 
 //class Ball: public Objects
 class Ball: public Objects
@@ -22,22 +30,12 @@ class Ball: public Objects
         int x, y; //where the ball is centered
         int speedX, speedY; //if we know the new and old coordinates, we can determin speed, direction, and point of contact
         int speed;
-        vector<QPoint> destinations;  //vector of next point on each side the ball will hit
         int playerId;  // Id of last player to hit the ball
         int radius; //radius of the ball
 
     public:
         //need to move to .cpp file
-        Ball(int initSpeed) {            //takes (speed)
-            speed = initSpeed;
-            x = 0;
-            y = 0;
-            radius = 1; //need to determine default radius
-            playerId = -1; //need to determine a playerId to use for NULL
-            point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
-            movable = true;
-            //set rest of uninitialized variables (determine direction and therby speedX and speedY)
-        }
+        Ball(int initSpeed);
         ~Ball();
 
         Ball(int initSpeed, int initX, int initY, int initPlayerId) {
@@ -45,7 +43,7 @@ class Ball: public Objects
             x = initX;
             y = initY;
             playerId = initPlayerId;
-            radius = 1; //need to determine default radius;
+            radius = 5; //need to determine default radius;
             point = QPoint(x - radius, y - radius); //need to make this a method;
             movable = true;
         }
