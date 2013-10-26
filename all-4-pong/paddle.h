@@ -4,6 +4,7 @@
 #include "Objects.h"
 #include <QObject>
 #include <vector>
+#include <Ball.h>
 
 
 
@@ -16,7 +17,6 @@ class Paddle : public QRect , public Objects
     //Width and Height!! of the paddle in other words
     //10 and 1!
     QPoint WandH;
-
 public:
     //****Getters and setters****/
     int getPosition(){return position;}
@@ -24,24 +24,14 @@ public:
     int getLength(){return paddleLength;}
     int getPlayerId(){return playerId;}
 
-    int setPlayerId(int inID){playerId = inID;}
-    int setPosition(int inPos){position = inPos;}
-    int setLength(int inLength){ paddleLength = inLength;}
+
+    void setPlayerId(int inID){playerId = inID;}
+    void  setPosition(int inPos){position = inPos;}
+    void  setLength(int inLength){ paddleLength = inLength;}
     //*******************************
 
-   bool paddle::getHit(Ball ball){
 
-        //Checks the balls space to the objects space.
-        if(this->bottomRight().x >= ball->getX() &&
-                this->topLeft().x     <= ball->getX() &&
-                this->bottomRight().y >= ball->getY() &&
-                this->topLeft().y     <= ball->getY()){
-            //the ball hit do stuff
-            return true;
-        }// it did not hit do nothing
-            return false;
-    }
-
+    bool getHit(Ball);
 
 
     Paddle(int newPosition, int newLength, int newSideID, int newPlayerID):

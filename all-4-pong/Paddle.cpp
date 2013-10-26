@@ -11,7 +11,19 @@
         }
 
 
+        bool paddle::getHit(Ball ball){
 
+             //Checks the balls space to the objects space.
+             if(this->bottomRight().x >= ball->getX() &&
+                     this->topLeft().x     <= ball->getX() &&
+                     this->bottomRight().y >= ball->getY() &&
+                     this->topLeft().y     <= ball->getY()){
+                 //the ball hit do stuf
+
+                 return true;
+             }// it did not hit do nothing
+                 return false;
+         }
 
 
     // prints the current paddle state out to offshore text file,

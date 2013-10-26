@@ -3,9 +3,8 @@
 #include <vector>
 
 
-Objects::Objects(bool isHit, bool isMovable, QPoint isWandH, QPoint isPoint){
+Objects::Objects(bool isHit, QPoint isWandH, QPoint isPoint){
     hit = isHit;
-    movable = isMovable;
     WandH = isWandH;
     point = isPoint;
 
