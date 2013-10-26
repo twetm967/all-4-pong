@@ -5,6 +5,7 @@
 #include <QPoint>
 #include <vector>
 #include <cmath>
+#include <QString>
 
 // prints the current ball state out to offshore text file,
 // returning a boolean value indicating print success
@@ -66,8 +67,8 @@ void Ball::onCollision(int objId){
     //determine new direction and speed and set ball position appropriately
 }
 void Ball::Move(){
-    this->setX(this->getX()+this->getSpeedX);
-    this->setY(this->getY()+this->getSpeedY);
+    this->setX(this->getX()+this->getSpeedX());
+    this->setY(this->getY()+this->getSpeedY());
     //if there is a Collision call this->onCollision(objId)
     this->setPoint();
 }
@@ -81,4 +82,4 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId) {
     point = QPoint(x - radius, y - radius); //need to make this a method;
 }
 
-        void Ball:setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
+        void Ball::setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
