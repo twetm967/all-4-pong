@@ -3,9 +3,9 @@
 
 
 #include <vector>
-#include "paddle.h"
+//#include "paddle.h"
 
-
+class paddle;
 class Player
 {
     private:
