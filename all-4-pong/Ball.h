@@ -30,22 +30,12 @@ class Ball: public Objects
         int x, y; //where the ball is centered
         int speedX, speedY; //if we know the new and old coordinates, we can determin speed, direction, and point of contact
         int speed;
-        vector<QPoint> destinations;  //vector of next point on each side the ball will hit
         int playerId;  // Id of last player to hit the ball
         int radius; //radius of the ball
 
     public:
         //need to move to .cpp file
-        Ball(int initSpeed) {            //takes (speed)
-            speed = initSpeed;
-            x = 0;
-            y = 0;
-            radius = 1; //need to determine default radius
-            playerId = -1; //need to determine a playerId to use for NULL
-            point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
-            movable = true;
-            //set rest of uninitialized variables (determine direction and therby speedX and speedY)
-        }
+        Ball(int initSpeed);
         ~Ball();
 
         Ball(int initSpeed, int initX, int initY, int initPlayerId) {
