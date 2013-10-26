@@ -1,11 +1,14 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 
-#include "Objects.h"
+
 #include <QObject>
 #include <vector>
-#include <Ball.h>
+//#include <Ball.h>
+//#include "Objects.h"
 
+class Objects;
+class Ball;
 
 
 class Paddle : public QRect , public Objects
