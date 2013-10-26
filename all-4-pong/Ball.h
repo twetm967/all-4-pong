@@ -10,8 +10,9 @@
 #include "Player.h"
 //#include "Shapes.h" //when I add this, things break.
 #include "World.h"
-#include "Objects.h"
 */
+#include "Objects.h"
+
 using namespace std;
 
 class World;
@@ -20,7 +21,6 @@ class paddle;
 
 class Player;
 class Shapes;
-class Objects;
 
 //class Ball: public Objects
 class Ball: public Objects
@@ -57,7 +57,7 @@ class Ball: public Objects
         void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
         void setSpeedY(int newSpeedY) {speedY = newSpeedY;}
         void setPlayerId(int newId) {playerId = newId;}
-        void setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
+        void setPoint();
 //--------------------------------------------------------------------------------------------//
 
 

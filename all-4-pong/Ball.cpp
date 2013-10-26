@@ -81,4 +81,4 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId) {
     point = QPoint(x - radius, y - radius); //need to make this a method;
 }
 
-
+        void Ball:setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
