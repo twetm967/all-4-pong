@@ -18,15 +18,12 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="start_Btn">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>100</y>
-      <width>98</width>
-      <height>101</height>
+      <x>600</x>
+      <y>90</y>
+      <width>131</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -239,8 +236,31 @@ background-color: rgba(0, 200, 255, 0);</string>
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAll_4_Pong">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <widget class="QMenu" name="menuAbout">
+     <property name="title">
+      <string>About</string>
+     </property>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="menuAbout"/>
+   </widget>
+   <addaction name="menuAll_4_Pong"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionH">
+   <property name="text">
+    <string>H</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="resources.qrc"/>

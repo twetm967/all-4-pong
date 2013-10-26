@@ -7,7 +7,7 @@
 using namespace std;
 //class Ball;
 //#include "Ball.h"
-
+/*
 Objects::Objects(QPoint isPoint){
    // hit = isHit;
    // WandH = isWandH;
@@ -15,6 +15,7 @@ Objects::Objects(QPoint isPoint){
 
     this->setRect(point.x(), point.y(),point.x() + 10, point.y() + 10);
 }
+*/
 
 
 

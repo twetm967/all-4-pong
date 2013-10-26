@@ -7,6 +7,20 @@
 #include <cmath>
 #include <QString>
 
+
+
+
+
+Ball::Ball(int initSpeed) {            //takes (speed)
+    speed = initSpeed;
+    x = 0;
+    y = 0;
+    radius = 1; //need to determine default radius
+    playerId = -1; //need to determine a playerId to use for NULL
+    point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
+    //set rest of uninitialized variables (determine direction and therby speedX and speedY)
+}
+
 // prints the current ball state out to offshore text file,
 // returning a boolean value indicating print success
     //should this be a virtual method for objects?
@@ -50,15 +64,7 @@ bool Ball::readBallInfo() {
 // creates direction
 double Ball::Direction(){return 0; /*return atan(this->getSpeedX()/- this->getspeedY()) % 360;*/} //need to test this function
 
-Ball::Ball(int initSpeed) {            //takes (speed)
-    speed = initSpeed;
-    x = 0;
-    y = 0;
-    radius = 1; //need to determine default radius
-    playerId = -1; //need to determine a playerId to use for NULL
-    point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
-    //set rest of uninitialized variables (determine direction and therby speedX and speedY)
-}
+
 
 void Ball::Bounce(){}
 

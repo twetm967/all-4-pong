@@ -3,6 +3,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include <QApplication>
 #include <ingame.h>
 #include "ui_ingame.h"
 
@@ -83,10 +84,19 @@ void Start::clientDisconnected()
 
 //this method will launch the actual game. this button is only activated when there are the
 //correct number of players connected. That number is determined by the players combobox.
-void Start::on_start_Btn_clicked()
-{
-    //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
+int Start::on_start_Btn_clicked()
+{//"/home/user/csunix/dreck410/team/build-all-4-pong-Desktop-Debug/all-4-pong"
+
+  // int argc = 1;
+ //  char* argv["/home/user/csunix/dreck410/team/build-all-4-pong-Desktop-Debug/all-4-pong"];
+
+
+   //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
     InGame gameScreen;
+    this->hide();
+ // QApplication a(argc, argv);
     gameScreen.show();
+
+ //return a.exec();
 
 }

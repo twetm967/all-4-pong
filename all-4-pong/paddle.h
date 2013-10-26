@@ -12,7 +12,7 @@
 //class Ball;
 
 
-class Paddle : public Objects, public QRect
+class Paddle : public QRect
 {
     int position;
     int sideId;
