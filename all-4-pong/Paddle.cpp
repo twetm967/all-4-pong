@@ -5,8 +5,11 @@
 
 
 
-        Paddle::Paddle() {
-
+        Paddle::Paddle(int newPosition, int newLength, int newSideID, int newPlayerID) {
+            paddleLength = newLength;
+            position = newPosition;
+            playerId = newPlayerID;
+            sideId = newSideID;
 
         }
 

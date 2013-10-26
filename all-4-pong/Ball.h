@@ -10,8 +10,9 @@
 #include "Player.h"
 //#include "Shapes.h" //when I add this, things break.
 #include "World.h"
-#include "Objects.h"
 */
+#include "Objects.h"
+
 using namespace std;
 
 class World;
@@ -20,7 +21,6 @@ class paddle;
 
 class Player;
 class Shapes;
-class Objects;
 
 //class Ball: public Objects
 class Ball: public Objects
@@ -34,22 +34,13 @@ class Ball: public Objects
         int radius; //radius of the ball
 
     public:
-        //need to move to .cpp file
         Ball(int initSpeed);
+
         ~Ball();
 
-        Ball(int initSpeed, int initX, int initY, int initPlayerId) {
-            speed = initSpeed;
-            x = initX;
-            y = initY;
-            playerId = initPlayerId;
-            radius = 5; //need to determine default radius;
-            point = QPoint(x - radius, y - radius); //need to make this a method;
-            movable = true;
-        }
+        Ball(int initSpeed, int initX, int initY, int initPlayerId);
 
         //getters
-        vector<QPoint> getDirections(){return destinations;}
         int getX(){return x;} //returns x from center of ball
         int getY(){return y;} //returns y from center of ball
         int getRadius(){return radius;}
@@ -66,7 +57,7 @@ class Ball: public Objects
         void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
         void setSpeedY(int newSpeedY) {speedY = newSpeedY;}
         void setPlayerId(int newId) {playerId = newId;}
-        void setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
+        void setPoint();
 //--------------------------------------------------------------------------------------------//
 
 

@@ -18,6 +18,8 @@ class Paddle : public QRect , public Objects
     //10 and 1!
     QPoint WandH;
 public:
+
+
     //****Getters and setters****/
     int getPosition(){return position;}
     int getSideId(){return sideId;}
@@ -34,13 +36,7 @@ public:
     bool getHit(Ball);
 
 
-<<<<<<< HEAD
-    Paddle(int newPosition, int newLength, int newSideID, int newPlayerID): position(newPosition), paddleLength(newLength),
-=======
-    Paddle(int newPosition, int newLength, int newSideID, int newPlayerID):
-        position(newPosition), paddleLength(newLength),
->>>>>>> a42c4fa3be0a97d4e83079b6fd3c589be9013e04
-        playerId(newPlayerID), sideId(newSideID)  { }
+
     
     // prints the current paddle state out to offshore text file,
     // returning a boolean value indicating print success
