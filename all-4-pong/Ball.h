@@ -5,6 +5,7 @@
 #include <QPoint>
 #include <vector>
 #include <QRect>
+#include <QString>
 /*
 #include "paddle.h"
 #include "Player.h"
@@ -59,7 +60,7 @@ class Ball: public Objects
         void setPlayerId(int newId) {playerId = newId;}
         void setPoint();
 //--------------------------------------------------------------------------------------------//
-
+        void Move();
 
         //Mathy Functions for PJ to make!!  
 //This is Daniel Brainstorming do what you want. But maybe a direction class? 
@@ -69,7 +70,7 @@ class Ball: public Objects
 
         // prints the current ball state out to offshore text file,
         // returning a boolean value indicating print success
-        bool printBallInfo();
+        bool printBallInfo(QString data);
 
         // reads the current ball state from offshore text file,
         // returning a boolean value indicaing read success;

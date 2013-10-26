@@ -26,6 +26,10 @@ public:
 
      Objects(int,int,int,int);
 
+     Objects(int);
+
+     Objects();
+
     virtual ~Objects() = 0;
     //Getters and setters------------------------------
 
