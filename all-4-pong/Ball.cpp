@@ -9,7 +9,7 @@
 // prints the current ball state out to offshore text file,
 // returning a boolean value indicating print success
     //should this be a virtual method for objects?
-bool Ball::printBallInfo(QString &data) {
+bool Ball::printBallInfo(QString data) {
     bool didPrint = false;
 
     // establish connection with text file
@@ -72,4 +72,13 @@ void Ball::Move(){
     this->setPoint();
 }
 
+Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId) {
+    speed = initSpeed;
+    x = initX;
+    y = initY;
+    playerId = initPlayerId;
+    radius = 5; //need to determine default radius;
+    point = QPoint(x - radius, y - radius); //need to make this a method;
+}
 
+        void Ball:setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
