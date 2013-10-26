@@ -30,13 +30,10 @@ private:
 
 public:
 
-   static HighScores& getInstance(){
-        {
-           if(instance == null){
-            return instance;
-           }
-        }
-    }
+
+  HighScores* getInstance();
+
+
 
     //returns the scores from a game in decrimenting order
     //largest -> smallest

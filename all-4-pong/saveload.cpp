@@ -1,5 +1,5 @@
 #include "saveload.h"
-
+/*
 SaveLoad::SaveLoad()
 {
 }
@@ -29,4 +29,4 @@ SaveLoad::SaveLoad()
 
     }
 
-
+*/

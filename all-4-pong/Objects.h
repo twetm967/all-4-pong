@@ -22,7 +22,7 @@ protected:
 
 public:
 
-     Objects(bool,QPoint,QPoint);
+     Objects(QPoint);
 
      Objects(int,int,int,int);
 

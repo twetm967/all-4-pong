@@ -1,10 +1,14 @@
 
-#include "Objects.h"
-#include <vector>
 
+#include <vector>
+#include <QPoint>
+
+#include "Objects.h"
+using namespace std;
 //class Ball;
 //#include "Ball.h"
-Objects::Objects(bool isHit, QPoint isWandH, QPoint isPoint){
+
+Objects::Objects(QPoint isPoint){
    // hit = isHit;
    // WandH = isWandH;
     point = isPoint;

@@ -4,14 +4,15 @@
 
 #include <QObject>
 #include <vector>
-//#include <Ball.h>
-//#include "Objects.h"
+#include <QRect>
+#include <Ball.h>
+#include "Objects.h"
 
-class Objects;
-class Ball;
+//class Objects;
+//class Ball;
 
 
-class Paddle : public QRect , public Objects
+class Paddle : public Objects, public QRect
 {
     int position;
     int sideId;
@@ -22,7 +23,7 @@ class Paddle : public QRect , public Objects
     QPoint WandH;
 public:
 
-
+    Paddle(int,int,int,int);
     //****Getters and setters****/
     int getPosition(){return position;}
     int getSideId(){return sideId;}

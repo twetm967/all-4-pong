@@ -1,7 +1,13 @@
 
 #include "highscores.h"
 
-HighScores HighScores::getInstance();
+ HighScores* HighScores::getInstance(){
+
+         if(instance ==   NULL){
+          return instance;
+         }
+
+  }
 
 //initiates the HighScores thingy. New ever time a new server is made?
 HighScores::HighScores(){
