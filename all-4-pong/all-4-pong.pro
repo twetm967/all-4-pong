@@ -36,11 +36,7 @@ HEADERS  += \
     ingame.h \
     start.h \
     highscores.h \
-<<<<<<< HEAD
-    saveload.h\
-=======
     saveload.h \
->>>>>>> a42c4fa3be0a97d4e83079b6fd3c589be9013e04
     score.h \
     powerup.h
 
