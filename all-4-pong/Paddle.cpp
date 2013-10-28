@@ -28,19 +28,16 @@ Paddle::Paddle(int index) {
                   return false;
          }
 
-        /*********Paddlle Movement Example*******************
+
          //.cpp file
-        void MainWindow::mouseMoveEvent(QMouseEvent* event){
+        void Paddle::mouseMoveEvent(QMouseEvent* event){
             if(event->y() > 0 && event->y() < 300){
                 int i = event->y();
-                ui->MLabel->move(20, i);
+                //ui->MLabel->move(20, i);
                 }
         }
 
         //.h file
-
-
-        *******************************************************/
 
 
     // prints the current paddle state out to offshore text file,

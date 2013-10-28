@@ -6,6 +6,7 @@
 #include <vector>
 #include <QRect>
 #include <Ball.h>
+#include <QMouseEvent>
 #include "Objects.h"
 
 //class Objects;
@@ -14,8 +15,7 @@
 
 class Paddle : public QRect
 {
-    int position;
-    int sideId;
+
     int paddleLength;
     int playerId;
     //Width and Height!! of the paddle in other words
@@ -26,21 +26,21 @@ public:
     //takes player index;
     Paddle(int);
     //****Getters and setters****/
-    int getPosition(){return position;}
+  /*  int getPosition(){return position;}
     int getSideId(){return sideId;}
     int getLength(){return paddleLength;}
-   // int getPlayerId(){return playerId;}
+   */// int getPlayerId(){return playerId;}
 
 
     void setPlayerId(int inID){playerId = inID;}
-    void  setPosition(int inPos){position = inPos;}
+    //void  setPosition(int inPos){position = inPos;}
     void  setLength(int inLength){ paddleLength = inLength;}
     //*******************************
 
 
 
     bool getHit(Ball*);
-
+    void mouseMoveEvent(QMouseEvent*);
 
 
 
