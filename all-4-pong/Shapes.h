@@ -5,7 +5,9 @@
 
 #include "Objects.h"
 
-class Shapes: public
+class PowerUp;
+
+class Shapes: public Objects
 {
     private:
         int x;
@@ -13,7 +15,7 @@ class Shapes: public
         PowerUp* boost;                                     //would need a powerup class and associated inheritors
     public:
         Shapes();
-        ~Shapes();
+//        ~Shapes();
 
         //*********Getters and setters****************
         int getX(){return x;}

@@ -24,7 +24,7 @@ class Player;
 class Shapes;
 
 //class Ball: public Objects
-class Ball //: public Objects
+class Ball : public Objects
 {
     private:
         //needs to inherit
@@ -36,8 +36,6 @@ class Ball //: public Objects
         QPoint point;
     public:
         Ball(int initSpeed);
-
-        ~Ball();
 
         Ball(int initSpeed, int initX, int initY, int initPlayerId);
 

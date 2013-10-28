@@ -32,14 +32,14 @@ HEADERS  += \
     Player.h \
     World.h \
     Objects.h \
-    paddle.h \
     Ball.h \
     ingame.h \
     start.h \
     highscores.h \
     saveload.h \
     score.h \
-    powerup.h
+    powerup.h \
+    Paddle.h
 
 FORMS    += \
     ingame.ui \

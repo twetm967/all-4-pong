@@ -1,5 +1,7 @@
-#include "paddle.h"
+#include "Paddle.h"
 #include "Ball.h"
+#include "Objects.h"
+#include <QRect>
 #include <vector>
 
 
@@ -7,7 +9,7 @@
 
 
 
-Paddle::Paddle(int index) {
+Paddle::Paddle(int index)/*:Objects()*/ {
     paddleLength = 101;
     playerId = index;
 

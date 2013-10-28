@@ -1,5 +1,6 @@
 //Shapes.cpp
-
+#include "Shapes.h"
+#include "Objects.h"
 
     // prints the current shape state out to offshore text file,
     // returning a boolean value indicating print success
@@ -33,3 +34,6 @@
 
         return didRead;
     }
+
+
+    Shapes::Shapes():Objects() { }

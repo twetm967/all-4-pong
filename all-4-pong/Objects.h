@@ -10,6 +10,9 @@
 
 //This class will be the parent of all classes dealing with objects that can be hit
 class Objects: public QRect {
+
+
+
 protected:
     //instance variables that are shared by all children of objects
 
@@ -32,7 +35,7 @@ public:
 
     Objects();
 
-    virtual ~Objects() = 0;
+    ~Objects();
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}

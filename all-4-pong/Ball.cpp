@@ -12,16 +12,15 @@
 
 
 
-Ball::Ball(int initSpeed) {            //takes (speed)
+Ball::Ball(int initSpeed):Objects() {            //takes (speed)
     speed = initSpeed;
     x = 0;
     y = 0;
     radius = 1; //need to determine default radius
     playerId = -1; //need to determine a playerId to use for NULL
-    speedX = rand() % initSpeed*1/4;
+    speedX = rand() % (int)(initSpeed*3/4);
     speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
     this->setPoint(); //point used to track the QLabel in the game
-//    World::getInstance()
 }
 
 // prints the current ball state out to offshore text file,
@@ -101,13 +100,15 @@ void Ball::Move(){
     this->setPoint();
 }
 
-Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId) {
+Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Objects() {
     speed = initSpeed;
     x = initX;
     y = initY;
     playerId = initPlayerId;
-    radius = 5; //need to determine default radius;
-    this->setPoint(); //need to make this a method;
+    radius = 5; //need to determine default radius; maybe include init radius in Constructor
+    speedX = rand() % (int)(initSpeed*3/4);
+    speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
+    this->setPoint();
 }
 
         void Ball::setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}

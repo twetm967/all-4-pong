@@ -13,7 +13,7 @@
 //class Ball;
 
 
-class Paddle : public QRect
+class Paddle : public QRect/*, public Objects*/
 {
 
     int paddleLength;
