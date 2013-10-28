@@ -24,7 +24,8 @@ SOURCES +=\
     saveload.cpp \
     score.cpp \
     highscores.cpp \
-    powerup.cpp
+    powerup.cpp \
+    Player.cpp
 
 HEADERS  += \
     Shapes.h \

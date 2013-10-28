@@ -24,7 +24,10 @@ private slots:
     void clientConnected();
     void dataReceived();
     void clientDisconnected();
+    void enoughPlayers();
 
+
+    void on_players_comboBox_activated(int index);
 
 private:
     Ui::Start *ui;

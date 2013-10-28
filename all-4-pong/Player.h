@@ -3,15 +3,20 @@
 
 
 #include <vector>
-//#include "paddle.h"
+#include "paddle.h"
 
-class paddle;
+//class Paddle;
+
+
 class Player
 {
     private:
-        Paddle pad;
+        Paddle* pad;
         int Score;
         int Health;
+        int ID;
+
+        static int nextID;
     public:
         Player();
         ~Player();

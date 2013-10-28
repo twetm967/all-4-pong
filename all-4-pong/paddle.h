@@ -16,19 +16,20 @@ class Paddle : public QRect
 {
     int position;
     int sideId;
-    int playerId;
     int paddleLength;
+    int playerId;
     //Width and Height!! of the paddle in other words
     //10 and 1!
     QPoint WandH;
 public:
 
-    Paddle(int,int,int,int);
+    //takes player index;
+    Paddle(int);
     //****Getters and setters****/
     int getPosition(){return position;}
     int getSideId(){return sideId;}
     int getLength(){return paddleLength;}
-    int getPlayerId(){return playerId;}
+   // int getPlayerId(){return playerId;}
 
 
     void setPlayerId(int inID){playerId = inID;}
@@ -37,7 +38,7 @@ public:
     //*******************************
 
 
-    bool getHit(Ball);
+    bool getHit(Ball*);
 
 
 
