@@ -9,6 +9,21 @@
 
 using namespace std;
 
+/*
+ class HighScores
+ {
+ private:
+ int score;
+ string name;
+ vector<
+
+ public:
+ Highscore(string initName, int, init Score){
+ }
+
+ };
+ */
+
 
 class HighScores
 {

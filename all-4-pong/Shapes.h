@@ -3,7 +3,9 @@
 
 #include <vector>
 
-class Shapes
+#include "Objects.h"
+
+class Shapes: public
 {
     private:
         int x;

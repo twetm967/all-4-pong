@@ -16,8 +16,10 @@ protected:
 
   //QRect Rectangle;
     QPoint point;
+
     static int nextObjId;
     int objId;
+
 
 
 public:
@@ -42,7 +44,7 @@ public:
 
     //virtual methods
    void virtual Move();
-   bool virtual Hit();
+   bool virtual Hit(){
    bool virtual getBound();
 
 
