@@ -1,12 +1,19 @@
 #include "World.h"
 #include "start.h"
 #include <vector>
-World World::instance;
 
+World* World::instance=NULL;
 
 World::World(/*int numPlayers, int inGameMode, int inDif*/){
     //init variables
 
+}
+
+World* World::getInstance(){
+    if (instance == NULL) {
+        instance = new World();
+    }
+    return instance;
 }
 
 //sets up the world including wehre the users/AI are

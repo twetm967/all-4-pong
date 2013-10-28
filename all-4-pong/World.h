@@ -6,25 +6,31 @@
 //#include "Player.h"
 
 class Player;
+class Objects;
 using namespace std;
 
 class World
 {
     private:
         vector<Player*> players;
+        vector<Objects*> objects;
         //Map* world = new Map();
         int difficulty;
         int gameMode;
+        static World *instance;
 
         World();              //takes  (#of users, game mode, difficulty)
-        static World instance;
+
 
 
     public:
-        static World& getInstance(){
-                return instance;
-            }
+       static World* getInstance();
+
        void setUp();
+
+       // adds <obj> to objects in world
+       void add(Objects *obj) {objects.push_back(obj);}
+
     
         //----------------------------------------
         //Getters and setters
@@ -32,6 +38,7 @@ class World
         int getDifficulty() {return difficulty;}
         int getGameMode() {return gameMode;}
         vector<Player*> getPlayers() {return players;}
+        vector<Objects*> getObjects() {return objects;}
 
 
 

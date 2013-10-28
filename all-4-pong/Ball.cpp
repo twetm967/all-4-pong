@@ -1,5 +1,6 @@
 #include "Objects.h"
 #include "Ball.h"
+#include "World.h"
 //#include "ui_game.h"
 #include <QRect>
 #include <QPoint>
@@ -20,6 +21,7 @@ Ball::Ball(int initSpeed) {            //takes (speed)
     speedX = rand() % initSpeed*1/4;
     speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
     this->setPoint(); //point used to track the QLabel in the game
+//    World::getInstance()
 }
 
 // prints the current ball state out to offshore text file,
