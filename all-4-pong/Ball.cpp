@@ -17,8 +17,9 @@ Ball::Ball(int initSpeed) {            //takes (speed)
     y = 0;
     radius = 1; //need to determine default radius
     playerId = -1; //need to determine a playerId to use for NULL
-    point = QPoint(x - radius, y - radius); //point used to track the QLabel in the game
-    //set rest of uninitialized variables (determine direction and therby speedX and speedY)
+    speedX = rand() % initSpeed*1/4;
+    speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
+    this->setPoint(); //point used to track the QLabel in the game
 }
 
 // prints the current ball state out to offshore text file,
@@ -28,6 +29,8 @@ bool Ball::printBallInfo(QString data) {
     bool didPrint = false;
 
     // establish connection with text file
+
+    data = "ball," + QString(this->getX()) + "," + QString(this->getY()) + "," + QString(this->getRadius());
 
     if (/*connection succeeds*/ true  /*could we just return this?*/) {
         // gather object state and concatenate into string
@@ -49,7 +52,6 @@ bool Ball::readBallInfo() {
 
     // establish connection with text file
 
-
     if (/*connection succeeds*/true) {
         // read string of state from text file
         // parse string and store object state in instance variables
@@ -61,7 +63,7 @@ bool Ball::readBallInfo() {
 
 
 //uses old x,y compares them to new x,y
-// creates direction
+// creates direction; may not need
 double Ball::Direction(){return 0; /*return atan(this->getSpeedX()/- this->getspeedY()) % 360;*/} //need to test this function
 
 
@@ -73,9 +75,27 @@ void Ball::onCollision(int objId){
     //determine new direction and speed and set ball position appropriately
 }
 void Ball::Move(){
-    this->setX(this->getX()+this->getSpeedX());
-    this->setY(this->getY()+this->getSpeedY());
+    this->setX(this->getX() + this->getSpeedX());
+    this->setY(this->getY() + this->getSpeedY());
     //if there is a Collision call this->onCollision(objId)
+    /*Right now just hard coding this in to get the ball moving and staying within bounds*/
+    if (this->getX() - this->getRadius() < 0) {
+        this->setX(0);
+        this->setSpeedX(this->getSpeedX()*-1);
+    }
+    if (this->getX() + this->getRadius() > 400) {
+        this->setX(400);
+        this->setSpeedX(this->getSpeedX()*-1);
+    }
+    if (this->getY() - this->getRadius() < 0) {
+        this->setY(0);
+        this->setSpeedY(this->getSpeedY()*-1);
+    }
+    if (this->getY() + this->getRadius() > 400) {
+        this->setY(400);
+        this->setSpeedY(this->getSpeedY()*-1);
+    }
+    /*End hard coding*/
     this->setPoint();
 }
 
@@ -85,7 +105,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId) {
     y = initY;
     playerId = initPlayerId;
     radius = 5; //need to determine default radius;
-    point = QPoint(x - radius, y - radius); //need to make this a method;
+    this->setPoint(); //need to make this a method;
 }
 
         void Ball::setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
