@@ -24,13 +24,13 @@ protected:
 
 public:
 
-     Objects(bool,QPoint,QPoint);
+    Objects(QPoint);
 
-     Objects(int,int,int,int);
+   Objects(int,int,int,int);
 
-     Objects(int);
+   Objects(int);
 
-     Objects();
+    Objects();
 
     virtual ~Objects() = 0;
     //Getters and setters------------------------------

@@ -2,11 +2,18 @@
 #include <vector>
 World World::instance;
 
+
 World::World(/*int numPlayers, int inGameMode, int inDif*/){
     //init variables
 
 }
 
+//sets up the world including wehre the users/AI are
+//how much health everyone has. sets scores to zero.
+//initiates all of everything.
+void World::setUp(){
+
+}
 
     // prints the current world state out to offshore text file,
     // returning a boolean value indicating print success

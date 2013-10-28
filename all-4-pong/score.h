@@ -14,7 +14,7 @@ private:
 
 public:
     Score();
-    incScore();
+    int incScore();
 };
 
 #endif // SCORE_H

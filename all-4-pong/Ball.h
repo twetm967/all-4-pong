@@ -24,7 +24,7 @@ class Player;
 class Shapes;
 
 //class Ball: public Objects
-class Ball: public Objects
+class Ball //: public Objects
 {
     private:
         //needs to inherit
@@ -33,7 +33,7 @@ class Ball: public Objects
         int speed;
         int playerId;  // Id of last player to hit the ball
         int radius; //radius of the ball
-
+        QPoint point;
     public:
         Ball(int initSpeed);
 

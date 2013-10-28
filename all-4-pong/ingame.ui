@@ -68,38 +68,6 @@ border-radius: 10px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="lblPaddleLeft">
-   <property name="geometry">
-    <rect>
-     <x>265</x>
-     <y>230</y>
-     <width>17</width>
-     <height>200</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="baseSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 4px;</string>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="lblLife7PT">
    <property name="geometry">
     <rect>
@@ -528,6 +496,134 @@ border-radius: 15px;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="lblPaddleBottom">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>420</y>
+      <width>101</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 4px;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblPaddleLeft">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>17</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 4px;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblPaddleRight">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>120</y>
+      <width>17</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 4px;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblPaddleTop">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>10</y>
+      <width>101</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 4px;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="lblTop2Score">
    <property name="geometry">
@@ -897,38 +993,6 @@ border-radius: 10px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="lblPaddleBottom">
-   <property name="geometry">
-    <rect>
-     <x>355</x>
-     <y>530</y>
-     <width>200</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="baseSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 225);
-border-radius: 4px;</string>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="lblScorePL">
    <property name="geometry">
     <rect>
@@ -992,38 +1056,6 @@ border-radius: 10px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="lblPaddleTop">
-   <property name="geometry">
-    <rect>
-     <x>385</x>
-     <y>120</y>
-     <width>200</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="baseSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 4px;</string>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="lblLife6PL">
    <property name="geometry">
     <rect>
@@ -1053,38 +1085,6 @@ border-radius: 10px;</string>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(0, 200, 0);
 border-radius: 10px;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblPaddleRight">
-   <property name="geometry">
-    <rect>
-     <x>675</x>
-     <y>180</y>
-     <width>17</width>
-     <height>200</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="baseSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 225);
-border-radius: 4px;</string>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string/>
@@ -1133,7 +1133,6 @@ border-radius: 10px;</string>
   <zorder>lblTop2Usrnm</zorder>
   <zorder>lblLife3PT</zorder>
   <zorder>lblLife4PL</zorder>
-  <zorder>lblPaddleLeft</zorder>
   <zorder>lblLife7PT</zorder>
   <zorder>lblLife6PB</zorder>
   <zorder>lblUsernamePR</zorder>
@@ -1168,14 +1167,11 @@ border-radius: 10px;</string>
   <zorder>lblScorePR</zorder>
   <zorder>lblLife5PR</zorder>
   <zorder>lblLife7PB</zorder>
-  <zorder>lblPaddleBottom</zorder>
   <zorder>lblScorePL</zorder>
   <zorder>lblUsernamePB</zorder>
   <zorder>lblLife1PR</zorder>
-  <zorder>lblPaddleTop</zorder>
   <zorder>lblLife6PL</zorder>
   <zorder>lblLife2PL</zorder>
-  <zorder>lblPaddleRight</zorder>
   <zorder>lblLife2PB</zorder>
   <zorder>lblLife4PR</zorder>
   <zorder>lblLife2PT</zorder>

@@ -3,12 +3,19 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include <QApplication>
 #include <ingame.h>
+#include "World.h"
 #include "ui_ingame.h"
 
 
 #include "start.h"
 #include "ui_start.h"
+
+
+//-----------------------------------------------------
+//Does the host have to run a client and connect to the host game also?- Daniel
+//-----------------------------------------------------
 
 Start::Start(QWidget *parent) :
     QMainWindow(parent),
@@ -35,13 +42,20 @@ void Start::clientConnected()
     connect(sock, &QTcpSocket::readyRead, this, &Start::dataReceived);
     ++connectCount;
     QString str;
-    if (connectCount == ui->players_comboBox->currentIndex()+1){
+    enoughPlayers();
+
+    ui->lblConnected->setText(QString::number(connectCount));
+}
+//checks teh combo box to the number of people connected.
+// only allows the game to play if the correct number of players are present.
+// ?Question is do we want the host to have to connect? ?
+//ifso we have to change this.!!
+void Start::enoughPlayers(){
+    if (connectCount == ui->players_comboBox->currentIndex()){
         ui->start_Btn->setEnabled(true);
     }else{
         ui->start_Btn->setEnabled(false);
     }
-
-    ui->lblConnected->setText(QString::number(connectCount));
 }
 
 //recieves x,y,and paddle id from user
@@ -83,10 +97,23 @@ void Start::clientDisconnected()
 
 //this method will launch the actual game. this button is only activated when there are the
 //correct number of players connected. That number is determined by the players combobox.
-void Start::on_start_Btn_clicked()
-{
-    //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
-    InGame gameScreen;
-    gameScreen.show();
+int Start::on_start_Btn_clicked()
+{//"/home/user/csunix/dreck410/team/build-all-4-pong-Desktop-Debug/all-4-pong"
 
+   //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
+   InGame* gameScreen = new InGame();
+   World::getInstance().setUp();
+   gameScreen->show();
+   this->hide();
+
+   // return a.exec();
+
+}
+
+//When the number of players box is changed checks to see how many
+// people are actaully connected so it locks it up or unlocks it
+// if it's changed back to the right number.
+void Start::on_players_comboBox_activated(int index)
+{
+    enoughPlayers();
 }

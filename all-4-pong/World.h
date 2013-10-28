@@ -24,6 +24,7 @@ class World
         static World& getInstance(){
                 return instance;
             }
+       void setUp();
     
         //----------------------------------------
         //Getters and setters

@@ -1,14 +1,13 @@
 
 #include "highscores.h"
 
-HighScores HighScores::getInstance();
 
-//initiates the HighScores thingy. New ever time a new server is made?
-HighScores::HighScores(){
 
-   File.open("scoreFile.txt");
+//initiates the HighScores thingy.
+//Creates a new file on each computer
+//that plays
+HighScores HighScores::instance;
 
-}
 
 //returns the scores in decrementing order
 // largest -> smallest
