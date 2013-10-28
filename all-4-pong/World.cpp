@@ -1,4 +1,5 @@
 #include "World.h"
+#include "start.h"
 #include <vector>
 World World::instance;
 
@@ -12,6 +13,10 @@ World::World(/*int numPlayers, int inGameMode, int inDif*/){
 //how much health everyone has. sets scores to zero.
 //initiates all of everything.
 void World::setUp(){
+
+
+
+
 
 }
 
