@@ -1,7 +1,7 @@
-#include "GameWindow.h"
 #include <vector>
 #include <QApplication>
 #include "start.h"
+#include "ingame.h"
 
 int main(int argc, char *argv[])
 {

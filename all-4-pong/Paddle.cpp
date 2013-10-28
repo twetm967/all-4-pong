@@ -1,14 +1,37 @@
 #include "paddle.h"
+#include "Ball.h"
 #include <vector>
-//Paddle::Paddle() {
+
+
+#include <QRect>
 
 
 
+Paddle::Paddle(int index) {
+    paddleLength = 101;
+    playerId = index;
+
+}
+
+
+        bool Paddle::getHit(Ball* ball){
+
+             //Checks the balls space to the objects space.
+            if(this->bottomRight().x() >= ball->getX() &&
+                    this->topLeft().x()     <= ball->getX() &&
+                    this->bottomRight().y() >= ball->getY() &&
+                    this->topLeft().y()     <= ball->getY()){
+              //the ball hit do stuf
+
+                 return true;
+             }// it did not hit do nothing
+                  return false;
+         }
 
 
     // prints the current paddle state out to offshore text file,
     // returning a boolean value indicating print success
-    bool printPaddleInfo() {
+    bool Paddle::printPaddleInfo() {
         bool didPrint = false;
 
         // establish connection with text file
@@ -25,7 +48,7 @@
     // reads the current paddle state from offshore text file,
     // returning a boolean value indicaing read success;
     // if read succeeds, stores paddle state in instance variables
-    bool readPaddleInfo() {
+    bool Paddle::readPaddleInfo() {
         bool didRead = false;
 
         // establish connection with text file

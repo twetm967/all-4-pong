@@ -20,11 +20,14 @@ public:
     ~Start(){/*delete ui?*/}
     
 private slots:
-    void on_start_Btn_clicked();
+    int on_start_Btn_clicked();
     void clientConnected();
     void dataReceived();
     void clientDisconnected();
+    void enoughPlayers();
 
+
+    void on_players_comboBox_activated(int index);
 
 private:
     Ui::Start *ui;

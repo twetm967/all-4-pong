@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES +=\
-    GameWindow.cpp \
     Main.cpp \
     World.cpp \
     Objects.cpp \
@@ -21,19 +20,30 @@ SOURCES +=\
     Paddle.cpp \
     Shapes.cpp \
     ingame.cpp \
-    start.cpp
+    start.cpp \
+    saveload.cpp \
+    score.cpp \
+    highscores.cpp \
+    powerup.cpp \
+    Player.cpp
 
 HEADERS  += \
     Shapes.h \
     Player.h \
-    GameWindow.h \
     World.h \
     Objects.h \
     paddle.h \
     Ball.h \
     ingame.h \
-    start.h
+    start.h \
+    highscores.h \
+    saveload.h \
+    score.h \
+    powerup.h
 
 FORMS    += \
     ingame.ui \
     start.ui
+
+RESOURCES += \
+    resources.qrc

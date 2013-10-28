@@ -1,9 +1,12 @@
 #include "startup.h"
 #include "ui_startup.h"
 #include "QMessageBox"
+#include <QTcpSocket>
+#include <QTcpServer>
+
 
 Startup::Startup(QWidget *parent) :
-    QWindow(parent),
+    QMainWindow(parent),
     ui(new Ui::Startup)
 {
     ui->setupUi(this);
@@ -18,35 +21,38 @@ Startup::~Startup()
     delete ui;
 }
 
-void Startup::on_btnConnect_clicked()
+void Startup::on_connect_Btn_clicked()
 {
     QString hostname = ui->IP_line->text();
     if (hostname.size() == 0) {
         QMessageBox::critical(this, "Uh oh", "Please specify name of chat server.");
         return;
     }
-    socket->connectToHost(hostname, 5001);
+    socket->connectToHost(hostname, 5000);
     if (!socket->waitForConnected())  {
         QMessageBox::critical(this, "Uh oh", "Unable to connect to server.");
         return;
     }
-
+    QString str = ui->username_line->text();
+    socket->write(str.toLocal8Bit());
     //ui->statusBar->showMessage("Connected.");
     //ui->connect_Btn->setEnabled(false);
 }
+
 
 void Startup::dataReceived() {
 
     while (socket->canReadLine()) {
         QString str = socket->readLine();
-        //do things with the information we just got
+        //this will recieve a string of the a list of objects with their x and y coordinates
+        //For example, ball,
     }
 }
 
 void Startup::serverDisconnected()
 {
      ui->statusBar->showMessage("Disconnected.");
-     ui->btnConnect->setEnabled(true);
+   //  ui->btnConnect->setEnabled(true);
 }
 
 //this is called every clock tick and sends the paddle x, y, and ID
@@ -68,4 +74,6 @@ void Startup::onTick()
 
     ui->txtMessage->setFocus();*/
 }
+
+
 

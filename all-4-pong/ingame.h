@@ -3,6 +3,11 @@
 
 #include <QWidget>
 
+#include <QLabel>
+#include <vector>
+#include "Player.h"
+
+using namespace std;
 namespace Ui {
 class InGame;
 }
@@ -13,10 +18,21 @@ class InGame : public QWidget
     
 public:
     explicit InGame(QWidget *parent = 0);
+
+    //takes teh player, and the amount of health he has left.
+    void HealthDamage(int, int );
+
     ~InGame();
     
+private slots:
+    void on_btnPause_clicked();
+
+
 private:
     Ui::InGame *ui;
+  vector<Player*> Players;
+  vector<QLabel*> Health;
+
 };
 
 #endif // INGAME_H

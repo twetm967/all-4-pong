@@ -5,13 +5,18 @@
 #include <vector>
 #include "paddle.h"
 
+//class Paddle;
+
 
 class Player
 {
     private:
-        Paddle pad;
+        Paddle* pad;
         int Score;
         int Health;
+        int ID;
+
+        static int nextID;
     public:
         Player();
         ~Player();
@@ -22,6 +27,8 @@ class Player
         void Win();
         
 };//player class
+
+
 
 class AI : Player
 {
