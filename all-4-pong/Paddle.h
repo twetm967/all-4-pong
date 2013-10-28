@@ -13,7 +13,7 @@
 //class Ball;
 
 
-class Paddle : public QRect/*, public Objects*/
+class Paddle : public Objects/*, public QRect*/ //because the class inherits from Objects, it also inherits from QRect
 {
 
     int paddleLength;

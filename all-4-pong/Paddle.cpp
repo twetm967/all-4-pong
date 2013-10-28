@@ -5,11 +5,9 @@
 #include <vector>
 
 
-#include <QRect>
 
 
-
-Paddle::Paddle(int index)/*:Objects()*/ {
+Paddle::Paddle(int index):Objects() {
     paddleLength = 101;
     playerId = index;
 
@@ -23,7 +21,7 @@ Paddle::Paddle(int index)/*:Objects()*/ {
                     this->topLeft().x()     <= ball->getX() &&
                     this->bottomRight().y() >= ball->getY() &&
                     this->topLeft().y()     <= ball->getY()){
-              //the ball hit do stuf
+              //the ball hit do stuff
 
                  return true;
              }// it did not hit do nothing
