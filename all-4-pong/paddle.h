@@ -36,7 +36,7 @@ public:
     //*******************************
 
 
-    bool getHit(Ball);
+    Sbool getHit(Ball);
 
 
 
