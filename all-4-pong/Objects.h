@@ -26,9 +26,9 @@ public:
 
     Objects(QPoint);
 
-   Objects(int,int,int,int);
+   //Objects(int,int,int,int);
 
-   Objects(int);
+  // Objects(int);
 
     Objects();
 
@@ -44,12 +44,11 @@ public:
 
     //virtual methods
    void virtual Move();
-   bool virtual Hit(){
+   bool virtual Hit(){}
    bool virtual getBound();
 
 
 
 };
-
 
 #endif // OBJECTS_H
