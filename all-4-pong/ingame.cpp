@@ -76,6 +76,8 @@ void InGame::HealthDamage(int index, int health){
     int spot = 7 * index;
 
     QLabel* lbl = Health.at(spot + health);
+
+
  //then we would have to figure out how to actually change the label color.
     // but this should access the right label.
 }
@@ -83,5 +85,5 @@ void InGame::HealthDamage(int index, int health){
  //Pauses the game butt right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
-
+   HealthDamage(1,6);
 }

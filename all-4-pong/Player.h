@@ -3,7 +3,7 @@
 
 
 #include <vector>
-#include "paddle.h"
+#include "Paddle.h"
 
 //class Paddle;
 

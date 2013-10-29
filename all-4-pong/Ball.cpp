@@ -105,7 +105,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Objects() {
     x = initX;
     y = initY;
     playerId = initPlayerId;
-    radius = 5; //need to determine default radius; maybe include init radius in Constructor
+    radius = 5; //need to determine default radius; maybe include initRadius in Constructor
     speedX = rand() % (int)(initSpeed*3/4);
     speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
     this->setPoint();

@@ -1124,6 +1124,24 @@ border-radius: 10px;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnHome">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>560</y>
+     <width>61</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(71, 71, 71);
+color: rgb(0, 200, 0);
+border-radius: 30px;</string>
+   </property>
+   <property name="text">
+    <string>Home</string>
+   </property>
+  </widget>
   <zorder>gameCourt</zorder>
   <zorder>lblPlayerBoardB</zorder>
   <zorder>lblLeaderBoard</zorder>
@@ -1175,6 +1193,7 @@ border-radius: 10px;</string>
   <zorder>lblLife2PB</zorder>
   <zorder>lblLife4PR</zorder>
   <zorder>lblLife2PT</zorder>
+  <zorder>btnHome</zorder>
  </widget>
  <resources/>
  <connections/>
