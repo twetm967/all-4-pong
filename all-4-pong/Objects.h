@@ -47,7 +47,7 @@ public:
 
     //virtual methods
    void virtual Move();
-   bool virtual Hit(){}
+   bool virtual Hit(){return true;}
    bool virtual getBound();
 
 
