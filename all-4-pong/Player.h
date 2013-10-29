@@ -10,7 +10,7 @@
 
 class Player
 {
-    private:
+protected:
         Paddle* pad;
         int Score;
         int Health;
@@ -25,6 +25,8 @@ class Player
         void damage();
     
         void Win();
+
+        Paddle* getPaddle(){return pad;}
         
 };//player class
 

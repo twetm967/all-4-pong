@@ -26,7 +26,8 @@ objId = ++nextObjId;
 World::getInstance()->add(this);
 }
 
-//inline Objects::~Objects() { }
+//inline
+    Objects::~Objects() { }
 
 bool Objects::getHit(){
 

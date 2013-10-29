@@ -3,9 +3,9 @@
 
 #include <string>
 #include <vector>
-//#include "Player.h"
+#include "Player.h"
 
-class Player;
+
 class Objects;
 using namespace std;
 
@@ -31,6 +31,7 @@ class World
        // adds <obj> to objects in world
        void add(Objects *obj) {objects.push_back(obj);}
 
+       void thisIsATest();
     
         //----------------------------------------
         //Getters and setters

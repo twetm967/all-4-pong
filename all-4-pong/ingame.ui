@@ -499,7 +499,7 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="lblPaddleBottom">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>350</x>
       <y>420</y>
       <width>101</width>
       <height>17</height>

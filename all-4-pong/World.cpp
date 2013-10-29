@@ -1,6 +1,7 @@
 #include "World.h"
 #include "start.h"
 #include <vector>
+#include <QMouseEvent>
 
 World* World::instance=NULL;
 
@@ -24,6 +25,23 @@ void World::setUp(){
 
 
 
+    thisIsATest();
+}
+
+
+
+
+
+void World::thisIsATest(){
+    int i = 0;
+    // while(i < 4){
+         players.push_back(new Player());
+      //i++;
+     //}
+
+   Paddle* pad = players.at(0)->getPaddle();
+
+   pad->mouseMoveEvent();
 
 }
 

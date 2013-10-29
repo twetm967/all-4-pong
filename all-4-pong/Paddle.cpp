@@ -3,13 +3,35 @@
 #include "Objects.h"
 #include <QRect>
 #include <vector>
+#include <QDebug>
+#include <QMouseEvent>
 
 
 
 
 Paddle::Paddle(int index):Objects() {
+
+   // setMouseTracking(true);
+
     paddleLength = 101;
     playerId = index;
+
+    if(index == 0 || index == 2){
+     //person is on the bottom or top change their x
+
+        *changer = this->topLeft().x();
+
+    }
+    if(index == 1 || index == 3){
+     //person is on the left or right
+        *changer = this->topLeft().y();
+
+    }
+    else{
+    //index is something else. uh-oh
+        qDebug() << "Woops";
+
+    }
 
 }
 
@@ -30,11 +52,39 @@ Paddle::Paddle(int index):Objects() {
 
 
          //.cpp file
-        void Paddle::mouseMoveEvent(QMouseEvent* event){
-            if(event->y() > 0 && event->y() < 300){
-                int i = event->y();
-                //ui->MLabel->move(20, i);
+        void Paddle::mouseMoveEvent(){
+
+            QPoint Q = M->pos();
+
+            if(playerId == 0 || playerId == 2){
+                if(Q.x() > 0 || Q.x() < 350){
+
+              *changer = M->x();
+                 }
+             //person is on the bottom or top change their x
+            }
+
+
+            if(playerId == 1 || playerId == 3){
+                if(Q.y() > 0 && Q.y() < 350){
+             //person is on the left or right
+              *changer = M->y();
+            }
+            else{
+            //index is something else. uh-oh
+                qDebug() << "Woops";}
+
+
                 }
+
+            this->Move(changer);
+        }
+
+
+
+        void Paddle::Move(int* i){
+
+
         }
 
         //.h file

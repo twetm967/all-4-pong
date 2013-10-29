@@ -12,6 +12,7 @@ Player::Player(){
 }
 
 Player::~Player(){}
+
 void Player::damage(){
 
 Health--;

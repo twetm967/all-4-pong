@@ -15,7 +15,8 @@
 
 class Paddle : public Objects/*, public QRect*/ //because the class inherits from Objects, it also inherits from QRect
 {
-
+    int* changer;
+    QMouseEvent* M;
     int paddleLength;
     int playerId;
     //Width and Height!! of the paddle in other words
@@ -38,11 +39,11 @@ public:
     //*******************************
 
 
-
+    void Move(int*);
     bool getHit(Ball*);
-    void mouseMoveEvent(QMouseEvent*);
+    void mouseMoveEvent();
 
-
+//QMouseEvent*
 
     
     // prints the current paddle state out to offshore text file,

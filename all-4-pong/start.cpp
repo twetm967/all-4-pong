@@ -4,6 +4,9 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <QApplication>
+#include <QWindow>
+#include <QtWidgets>
+
 #include <ingame.h>
 #include "World.h"
 #include "ui_ingame.h"
@@ -104,9 +107,9 @@ int Start::on_start_Btn_clicked()
    InGame* gameScreen = new InGame();
 
    World::getInstance()->setUp();
-   gameScreen->show();
-   this->hide();
 
+   this->hide();
+ gameScreen->show();
    // return a.exec();
 
 }
