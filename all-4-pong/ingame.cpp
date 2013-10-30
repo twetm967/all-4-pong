@@ -64,7 +64,7 @@ InGame::InGame(QWidget *parent) :
 
 InGame::~InGame()
 {
-    for(int i = 0; i < Players.size(); i){
+    for(int i = 0; i < Players.size(); i++){
         delete Players.at(i);
         Players.erase(Players.begin() + i);
     }
