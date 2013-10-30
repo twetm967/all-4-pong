@@ -5,6 +5,7 @@
 #include <QPalette>
 #include <QBrush>
 #include <QColor>
+
 InGame::InGame(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::InGame)
@@ -70,19 +71,19 @@ InGame::~InGame()
 delete ui;
 }
 
-//this is called by the World class for when a player is damaged this is to change teh
+//this is called by the World class for when a player is damaged this is to change the
 // graphic!
 void InGame::HealthDamage(int index, int health){
     int spot = 7 * index;
 
     QLabel* lbl = Health.at(spot + health);
-
+    lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
 
  //then we would have to figure out how to actually change the label color.
     // but this should access the right label.
 }
 
- //Pauses the game butt right now running health bar tests.
+ //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
    HealthDamage(1,6);

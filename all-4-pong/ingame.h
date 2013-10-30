@@ -19,7 +19,7 @@ class InGame : public QWidget
 public:
     explicit InGame(QWidget *parent = 0);
 
-    //takes teh player, and the amount of health he has left.
+    //takes the player, and the amount of health he has left.
     void HealthDamage(int, int );
 
     ~InGame();
