@@ -11,7 +11,10 @@ Player::Player(){
     nextID++;
 }
 
-Player::~Player(){}
+Player::~Player(){
+
+
+}
 
 void Player::damage(){
 

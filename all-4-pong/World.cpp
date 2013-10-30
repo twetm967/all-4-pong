@@ -35,11 +35,13 @@ void World::setUp(){
 void World::thisIsATest(){
     int i = 0;
     // while(i < 4){
-         players.push_back(new Player());
+  //      players.push_back(new Player());
       //i++;
      //}
 
-   Paddle* pad = players.at(0)->getPaddle();
+   Player* play = new Player();
+
+   Paddle* pad = play->getPaddle();
 
    pad->mouseMoveEvent();
 

@@ -13,17 +13,20 @@ Paddle::Paddle(int index):Objects() {
 
    // setMouseTracking(true);
 
-    paddleLength = 101;
     playerId = index;
 
     if(index == 0 || index == 2){
      //person is on the bottom or top change their x
-
+        width() = 101;
+        height() = 17;
         *changer = this->topLeft().x();
 
     }
     if(index == 1 || index == 3){
      //person is on the left or right
+
+        width() = 17;
+        height() = 101;
         *changer = this->topLeft().y();
 
     }

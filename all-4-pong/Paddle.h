@@ -17,15 +17,14 @@ class Paddle : public Objects/*, public QRect*/ //because the class inherits fro
 {
     int* changer;
     QMouseEvent* M;
-    int paddleLength;
     int playerId;
     //Width and Height!! of the paddle in other words
-    //10 and 1!
-    QPoint WandH;
+    //101 and 17
 public:
 
     //takes player index;
     Paddle(int);
+    Paddle();
     //****Getters and setters****/
   /*  int getPosition(){return position;}
     int getSideId(){return sideId;}
