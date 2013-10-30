@@ -5,6 +5,11 @@ class GameCommand
 {
 public:
     GameCommand();
+
+    void createGame() {
+
+
+    }
 };
 
 #endif // GAMECOMMAND_H
