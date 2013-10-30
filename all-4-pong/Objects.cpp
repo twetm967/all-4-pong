@@ -17,13 +17,13 @@ Objects::Objects(QPoint isPoint){
     point = isPoint;
     this->setRect(point.x(), point.y(),point.x() + 10, point.y() + 10);
     objId = ++nextObjId;
-    World::getInstance()->add(this);
+    World::getInstance().add(this);
 }
 
 
 Objects::Objects(){
 objId = ++nextObjId;
-World::getInstance()->add(this);
+World::getInstance().add(this);
 }
 
 //inline

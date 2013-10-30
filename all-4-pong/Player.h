@@ -32,19 +32,26 @@ protected:
 
 
 
-class AI : Player
+class AI : public Player
 {
     private:
     int difficulty;
         
     public:
 
+            AI(){}                            //takes (difficulty);
+            ~AI(){}
+
 };
 
-class User : Player
+class User : public Player
 {
     private:
         
+
+    public:
+            User(){}
+            ~User(){}
 
 };
 

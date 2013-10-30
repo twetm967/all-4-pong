@@ -1,51 +1,59 @@
+
 #include "World.h"
-#include "start.h"
-#include <vector>
-#include <QMouseEvent>
 
-World* World::instance=NULL;
 
-World::World(/*int numPlayers, int inGameMode, int inDif*/){
-    //init variables
+World World::instance;//=NULL;
 
-}
+World::World(){}
 
-World* World::getInstance(){
-    if (instance == NULL) {
-        instance = new World();
-    }
+
+
+World World::getInstance(){
+   // if (instance == NULL) {
+      //  instance = new World();
+    //}
     return instance;
 }
 
 //sets up the world including wehre the users/AI are
 //how much health everyone has. sets scores to zero.
 //initiates all of everything.
-void World::setUp(){
 
 
+/*vector<Player*> players;
+        vector<Objects*> objects;
+        //Map* world = new Map();
+        int difficulty;
+        int gameMode;
+        static World *instance;*/
 
 
-    thisIsATest();
-}
-
-
-
-
-
-void World::thisIsATest(){
+void World::setUp(Start *inStart){
     int i = 0;
-    // while(i < 4){
-  //      players.push_back(new Player());
-      //i++;
-     //}
+    for (i; i < inStart->getPlayers() && i<4; ++i){
+          //Player *thisPlayer = new User();
+        GamePlayers.push_back(/*thisPlayer*/ new User());
 
-   Player* play = new Player();
-
-   Paddle* pad = play->getPaddle();
-
-   pad->mouseMoveEvent();
+    }
+    if (i<4){
+        i = 4-1;
+        for (i; i<4; ++i){
+            GamePlayers.push_back(new AI());
+        }
+    }
+    qDebug() << QString::number(GamePlayers.size());
+    difficulty = inStart->getDifficulty();
+    qDebug() << QString::number(difficulty);
+    gameScreen = inStart->getInGame();
+    int ii = 15;
+    ball = new Ball(ii);
 
 }
+
+
+
+
+
 
     // prints the current world state out to offshore text file,
     // returning a boolean value indicating print success

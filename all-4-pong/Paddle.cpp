@@ -1,13 +1,5 @@
+
 #include "Paddle.h"
-#include "Ball.h"
-#include "Objects.h"
-#include <QRect>
-#include <vector>
-#include <QDebug>
-#include <QMouseEvent>
-
-
-
 
 Paddle::Paddle(int index):Objects() {
 
@@ -15,24 +7,48 @@ Paddle::Paddle(int index):Objects() {
 
     playerId = index;
 
+    QPoint pnt;
+
     if(index == 0 || index == 2){
      //person is on the bottom or top change their x
-        width() = 101;
-        height() = 17;
+        pnt.setX(205);
+        if(index == 0){
+        pnt.setY(420);
+        }else{
+            pnt.setY(10);
+        }
+
+        this->setTopLeft(pnt);
+
+        this->setWidth(101);
+        this->setHeight(17);
         *changer = this->topLeft().x();
 
+        qDebug() << index << ", "<< *changer << ',' << this->topLeft().x();
     }
     if(index == 1 || index == 3){
      //person is on the left or right
+        pnt.setY(205);
+        if(index == 1){
+        pnt.setX(420);
+        }else{if(index == 3){
+            pnt.setX(10);
+            }else{
+                //we broke
+                qDebug() << "whoops";
+            }
+        }
 
-        width() = 17;
-        height() = 101;
+        this->setWidth(17);
+        this->setHeight(101);
+        qDebug() << index << ", "<< *changer << ',' << this->topLeft().y();
         *changer = this->topLeft().y();
+qDebug() << index << ", "<< *changer << ',' << this->topLeft().x();
 
     }
     else{
     //index is something else. uh-oh
-        qDebug() << "Woops";
+
 
     }
 
@@ -53,42 +69,49 @@ Paddle::Paddle(int index):Objects() {
                   return false;
          }
 
+    /*    void MovableLabel::mousePressEvent(QMouseEvent *ev) {
+            if(widg->CheckClick()){
+                mouseDragging = true;
+                offset = ev->pos(); // location where mouse was clicked within the label
+            }else if(widg->CheckDelete()){
+                int i = obj->getId();
+                World::getInstance().destroy(i);
+                widg->KillMe(this);
+
+            }
+        }
+*/
+
+
 
          //.cpp file
-        void Paddle::mouseMoveEvent(){
 
-            QPoint Q = M->pos();
+
+
+        void Paddle::Move(QPoint Q){
 
             if(playerId == 0 || playerId == 2){
                 if(Q.x() > 0 || Q.x() < 350){
 
-              *changer = M->x();
+              *changer = Q.x();
                  }
              //person is on the bottom or top change their x
             }
 
-
             if(playerId == 1 || playerId == 3){
                 if(Q.y() > 0 && Q.y() < 350){
              //person is on the left or right
-              *changer = M->y();
+              *changer = Q.y();
             }
             else{
             //index is something else. uh-oh
                 qDebug() << "Woops";}
 
-
                 }
 
-            this->Move(changer);
         }
 
 
-
-        void Paddle::Move(int* i){
-
-
-        }
 
         //.h file
 

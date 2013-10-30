@@ -5,15 +5,18 @@
 #include <QObject>
 #include <vector>
 #include <QRect>
-#include <Ball.h>
 #include <QMouseEvent>
+#include <QDebug>
+
+#include "Ball.h"
 #include "Objects.h"
 
 //class Objects;
 //class Ball;
 
 
-class Paddle : public Objects/*, public QRect*/ //because the class inherits from Objects, it also inherits from QRect
+class Paddle : public Objects/*, public QRect*/ //because the class inherits
+        //from Objects, it also inherits from QRect
 {
     int* changer;
     QMouseEvent* M;
@@ -34,13 +37,13 @@ public:
 
     void setPlayerId(int inID){playerId = inID;}
     //void  setPosition(int inPos){position = inPos;}
-    void  setLength(int inLength){ paddleLength = inLength;}
+    //void  setLength(int inLength){ paddleLength = inLength;}
     //*******************************
 
 
-    void Move(int*);
+    void Move(QPoint);
     bool getHit(Ball*);
-    void mouseMoveEvent();
+    void mousePressEvent(QMouseEvent*);
 
 //QMouseEvent*
 

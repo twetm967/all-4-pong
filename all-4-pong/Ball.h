@@ -36,7 +36,7 @@ class Ball : public Objects
 
     public:
         Ball(int initSpeed);
-
+        Ball(){}
         Ball(int initSpeed, int initX, int initY, int initPlayerId);
 
         //getters

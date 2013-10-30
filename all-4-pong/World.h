@@ -1,32 +1,41 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+
 #include <string>
 #include <vector>
+#include <QMouseEvent>
+#include <QMainWindow>
+#include <QDebug>
+#include <vector>
+#include <QString>
+
+#include "start.h"
 #include "Player.h"
+#include "ingame.h"
+#include "Ball.h"
 
-
-class Objects;
 using namespace std;
 
 class World
 {
     private:
-        vector<Player*> players;
+        vector<Player*> GamePlayers;
         vector<Objects*> objects;
         //Map* world = new Map();
         int difficulty;
-        int gameMode;
-        static World *instance;
+        InGame* gameScreen;
+        Ball *ball;
+        static World instance;
 
-        World();              //takes  (#of users, game mode, difficulty)
+        World();              //takes nothing. It gets instantiated later.
 
 
 
     public:
-       static World* getInstance();
+       static World getInstance();
 
-       void setUp();
+       void setUp(Start*);
 
        // adds <obj> to objects in world
        void add(Objects *obj) {objects.push_back(obj);}
@@ -37,8 +46,8 @@ class World
         //Getters and setters
         //----------------------------------------
         int getDifficulty() {return difficulty;}
-        int getGameMode() {return gameMode;}
-        vector<Player*> getPlayers() {return players;}
+
+        vector<Player*> getGamePlayers() {return GamePlayers;}
         vector<Objects*> getObjects() {return objects;}
 
 

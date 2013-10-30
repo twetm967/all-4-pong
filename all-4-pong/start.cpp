@@ -8,6 +8,8 @@
 #include <QtWidgets>
 
 #include <ingame.h>
+#include <QTimer>
+
 #include "World.h"
 #include "ui_ingame.h"
 
@@ -18,6 +20,8 @@
 
 //-----------------------------------------------------
 //Does the host have to run a client and connect to the host game also?- Daniel
+//The host will play the game but will do it through the server instead of powering
+//up another client. -Thomas
 //-----------------------------------------------------
 
 Start::Start(QWidget *parent) :
@@ -26,6 +30,11 @@ Start::Start(QWidget *parent) :
     connectCount(0)
 {
     ui->setupUi(this);
+
+    timer = new QTimer(this);
+    timer->setInterval(100);
+    connect(timer, &QTimer::timeout, this, &Start::timerHit);
+    connectCount = 1;
     server = new QTcpServer(this);
 
     connect(server, &QTcpServer::newConnection, this, &Start::clientConnected);
@@ -33,7 +42,7 @@ Start::Start(QWidget *parent) :
         QMessageBox::critical(this, "Uh oh", "Cannot start socket.");
         exit(1);
 
-}
+    }
 }
 
 
@@ -59,6 +68,12 @@ void Start::enoughPlayers(){
     }else{
         ui->start_Btn->setEnabled(false);
     }
+}
+
+void Start::timerHit(){
+    //send out the same information to all of the clients at the same time (remember server also plays game).
+    //to see the format of this information, look at the networking Wiki page.
+
 }
 
 //recieves x,y,and paddle id from user
@@ -106,10 +121,19 @@ int Start::on_start_Btn_clicked()
    //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
    InGame* gameScreen = new InGame();
 
- World::getInstance()->setUp();
 
+   players = ui->players_comboBox->currentIndex()+1;
+   difficulty = ui->dif_comboBox_->currentIndex()+1;
+   if(ui->power_checkBox->isChecked()){
+       powerUps = true;
+   }else{powerUps = false;}
+
+   World::getInstance().setUp(this);
+
+   gameScreen->show();
+   timer->start();
    this->hide();
- gameScreen->show();
+
    // return a.exec();
 
 }

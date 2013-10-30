@@ -1,10 +1,18 @@
 #include "ingame.h"
-
 #include "ui_ingame.h"
+#include "World.h"
+
 #include <vector>
 #include <QPalette>
 #include <QBrush>
 #include <QColor>
+#include <QMouseEvent>
+
+/*
+#include "Paddle.h"
+#include "World.h"
+*/
+
 
 InGame::InGame(QWidget *parent) :
     QWidget(parent),
@@ -12,7 +20,7 @@ InGame::InGame(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
+    Players;
 
     //This is kind fo ridiculous looking but it adds all of the
     //health buttons into a vector taht way they are accessible by index.
@@ -88,3 +96,47 @@ void InGame::on_btnPause_clicked()
 {
    HealthDamage(1,6);
 }
+
+
+void InGame::mouseMoveEvent(QMouseEvent *ev) {
+
+      // this->move(mapToParent(ev->pos() - this->offset));
+//get vector of players.
+
+   Players = World::getInstance().getGamePlayers();
+
+   for(int i = 0; i < Players.size(); i++){
+       Paddle* pad = Players.at(i)->getPaddle();
+
+      pad->Move(ev->pos());
+      int x = pad->getQPoint().x();
+      int y = pad->getQPoint().y();
+      ui->lblPaddleBottom->move(x,y);
+
+   }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

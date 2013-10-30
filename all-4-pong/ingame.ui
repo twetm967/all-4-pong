@@ -481,8 +481,8 @@ box-shadow: 10px 10px 30px rgb(0, 0, 0);</string>
    <widget class="QLabel" name="lblBall">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>210</y>
+      <x>210</x>
+      <y>220</y>
       <width>31</width>
       <height>30</height>
      </rect>
