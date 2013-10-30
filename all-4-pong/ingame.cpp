@@ -41,6 +41,7 @@ InGame::InGame(QWidget *parent) :
     Health.push_back(ui->lblLife6PL);
     Health.push_back(ui->lblLife7PL);
     //player 2
+    Health.push_back(ui->lblLife1PT);
     Health.push_back(ui->lblLife2PT);
     Health.push_back(ui->lblLife3PT);
     Health.push_back(ui->lblLife4PT);
@@ -86,5 +87,8 @@ void InGame::HealthDamage(int index, int health){
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
+   HealthDamage(0,6);
    HealthDamage(1,6);
+   HealthDamage(2,6);
+   HealthDamage(3,6);
 }
