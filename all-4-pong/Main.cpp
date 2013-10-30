@@ -21,7 +21,6 @@ void unitTest(Start* w) {
 
 }
 
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -32,9 +31,15 @@ int main(int argc, char *argv[])
 
 //    Start w;
   //  if (main) {
-    //    unitTest(&w);
+//        unitTest(&w);
    // }
+    vector<string> args(argv, argv+argc); // A vector of command line arguments
 
+    if () { // Checks if the user entered the -test flag
+
+    } else if () { // Checks if the user entered an incorrect flag
+
+    }
 
     return a.exec();
 }
