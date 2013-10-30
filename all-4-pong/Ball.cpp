@@ -18,8 +18,8 @@ Ball::Ball(int initSpeed):Objects() {            //takes (speed)
     y = 0;
     radius = 15; //need to determine default radius
     playerId = -1; //need to determine a playerId to use for NULL
-    speedX = (rand() % (speed * 2)) - speed;
-    speedY = ((rand() % 3) - 2) * (int)sqrt(pow(speed,2)-pow(speedX,2));
+    speedX = (pow(-1,rand()%2)) * (rand() % (speed));
+    speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
     this->setPoint(); //point used to track the QLabel in the game
 }
 
@@ -29,8 +29,8 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Objects() {
     y = initY;
     playerId = initPlayerId;
     radius = 15; //need to determine default radius; maybe include initRadius in Constructor
-    speedX = (rand() % (speed * 2)) - speed;
-    speedY = ((rand() % 3) - 2) * (int)sqrt(pow(speed,2)-pow(speedX,2));
+    speedX = (pow(-1,rand()%2)) * (rand() % (speed));
+    speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
     this->setPoint();
 }
 
