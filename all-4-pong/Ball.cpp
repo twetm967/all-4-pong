@@ -9,19 +9,37 @@
 #include <QString>
 
 
-
+///Constructors
 
 
 Ball::Ball(int initSpeed):Objects() {            //takes (speed)
     speed = initSpeed;
     x = 0;
     y = 0;
-    radius = 1; //need to determine default radius
+    radius = 5; //need to determine default radius
     playerId = -1; //need to determine a playerId to use for NULL
     speedX = rand() % (int)(initSpeed*3/4);
     speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
     this->setPoint(); //point used to track the QLabel in the game
 }
+
+Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Objects() {
+    speed = initSpeed;
+    x = initX;
+    y = initY;
+    playerId = initPlayerId;
+    radius = 5; //need to determine default radius; maybe include initRadius in Constructor
+    speedX = rand() % (int)(initSpeed*3/4);
+    speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
+    this->setPoint();
+}
+
+
+
+
+///Methods
+
+
 
 // prints the current ball state out to offshore text file,
 // returning a boolean value indicating print success
@@ -65,7 +83,7 @@ bool Ball::readBallInfo() {
 
 //uses old x,y compares them to new x,y
 // creates direction; may not need
-double Ball::Direction(){return 0; /*return atan(this->getSpeedX()/- this->getspeedY()) % 360;*/} //need to test this function
+//double Ball::Direction(){return 0; /*return atan(this->getSpeedX()/- this->getspeedY()) % 360;*/} //need to test this function
 
 
 
@@ -100,15 +118,6 @@ void Ball::Move(){
     this->setPoint();
 }
 
-Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Objects() {
-    speed = initSpeed;
-    x = initX;
-    y = initY;
-    playerId = initPlayerId;
-    radius = 5; //need to determine default radius; maybe include initRadius in Constructor
-    speedX = rand() % (int)(initSpeed*3/4);
-    speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
-    this->setPoint();
-}
 
-        void Ball::setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
+
+void Ball::setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
