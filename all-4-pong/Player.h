@@ -10,7 +10,7 @@
 
 class Player
 {
-    private:
+    protected:
         Paddle* pad;
         int Score;
         int Health;
@@ -30,22 +30,22 @@ class Player
 
 
 
-class AI : Player
+class AI : public Player
 {
     private:
         
     public:
-            AI(int);                            //takes (difficulty);
-            ~AI();
+            AI(){}                            //takes (difficulty);
+            ~AI(){}
 };
 
-class User : Player
+class User : public Player
 {
     private:
         
     public:
-            User();
-            ~User();
+            User(){}
+            ~User(){}
 };
 
 #endif
