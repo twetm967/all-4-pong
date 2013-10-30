@@ -1,20 +1,20 @@
 
 #include "World.h"
-
+#include <cassert>
 
 World World::instance;//=NULL;
 
-World::World(){}
+//World::World(){}
 
 
-
-World World::getInstance(){
+/*
+World* World::getInstance(){
    // if (instance == NULL) {
       //  instance = new World();
     //}
     return instance;
 }
-
+*/
 //sets up the world including wehre the users/AI are
 //how much health everyone has. sets scores to zero.
 //initiates all of everything.
@@ -30,18 +30,28 @@ World World::getInstance(){
 
 void World::setUp(Start *inStart){
     int i = 0;
+
+    Player* in;
     for (i; i < inStart->getPlayers() && i<4; ++i){
           //Player *thisPlayer = new User();
-        GamePlayers.push_back(/*thisPlayer*/ new User());
+
+/*thisPlayer*/
+        in = new User();
+        GamePlayers.push_back(in);
 
     }
-    if (i<4){
-        i = 4-1;
-        for (i; i<4; ++i){
-            GamePlayers.push_back(new AI());
+    int q = 4 - inStart->getPlayers();
+
+    if (q > 0){
+        i = 0;
+        for (; i<q; ++i){
+            in = new AI();
+            GamePlayers.push_back(in);
         }
     }
-    qDebug() << QString::number(GamePlayers.size());
+    qDebug() << GamePlayers.size();
+    assert(GamePlayers.size() == 4);
+
     difficulty = inStart->getDifficulty();
     qDebug() << QString::number(difficulty);
     gameScreen = inStart->getInGame();

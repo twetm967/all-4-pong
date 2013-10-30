@@ -19,6 +19,7 @@ protected:
         static int nextID;
     public:
         Player();
+        Player(QPoint);
         ~Player();
     
         void point();
@@ -40,6 +41,7 @@ class AI : public Player
     public:
 
             AI(){}                            //takes (difficulty);
+            AI(QPoint);
             ~AI(){}
 
 };
@@ -51,6 +53,7 @@ class User : public Player
 
     public:
             User(){}
+            User(QPoint);
             ~User(){}
 
 };

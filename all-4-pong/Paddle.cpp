@@ -1,61 +1,74 @@
 
 #include "Paddle.h"
+#include "Ball.h"
+#include "Objects.h"
 
-Paddle::Paddle(int index):Objects() {
+#include <QRect>
+#include <vector>
+#include <QDebug>
+#include <QString>
+
+#include "Paddle.h"
+
+Paddle::Paddle(int index, QPoint map):Objects() {
 
    // setMouseTracking(true);
+   playerId = index;
+   area = map;
 
-    playerId = index;
 
-    QPoint pnt;
-
+int i = 0;
     if(index == 0 || index == 2){
      //person is on the bottom or top change their x
-        pnt.setX(205);
+
+        //default x position.
+        spot.setX(205);
+        // if they're 0 put them on the bottom.
         if(index == 0){
-        pnt.setY(420);
-        }else{
-            pnt.setY(10);
+        spot.setY(420);
+        }else{                       //if they're 2 put them on top
+            if(index == 2){
+            spot.setY(10);
+            }
         }
 
-        this->setTopLeft(pnt);
-
-        this->setWidth(101);
-        this->setHeight(17);
-        *changer = this->topLeft().x();
-
-        qDebug() << index << ", "<< *changer << ',' << this->topLeft().x();
     }
+
     if(index == 1 || index == 3){
      //person is on the left or right
-        pnt.setY(205);
+        spot.setY(205);
+
         if(index == 1){
-        pnt.setX(420);
+        spot.setX(420);
         }else{if(index == 3){
-            pnt.setX(10);
+            spot.setX(10);
             }else{
                 //we broke
                 qDebug() << "whoops";
             }
         }
 
-        this->setWidth(17);
-        this->setHeight(101);
-        qDebug() << index << ", "<< *changer << ',' << this->topLeft().y();
-        *changer = this->topLeft().y();
-qDebug() << index << ", "<< *changer << ',' << this->topLeft().x();
+
+
+       //   i = spot.y();
+       // changer = this->topLeft().y();
 
     }
     else{
     //index is something else. uh-oh
 
-
     }
+    spot = this->topLeft();
+    this->setWidth(17);
+    this->setHeight(101);
 
+
+//changer = &i;
 }
 
 
-        bool Paddle::getHit(Ball* ball){
+        bool Paddle::getHit(Ball* ball)
+        {
 
              //Checks the balls space to the objects space.
             if(this->bottomRight().x() >= ball->getX() &&
@@ -79,7 +92,7 @@ qDebug() << index << ", "<< *changer << ',' << this->topLeft().x();
                 widg->KillMe(this);
 
             }
-        }
+        } InGame* gameScreen = new InGame();
 */
 
 
@@ -88,26 +101,38 @@ qDebug() << index << ", "<< *changer << ',' << this->topLeft().x();
 
 
 
+
+
+
         void Paddle::Move(QPoint Q){
 
-            if(playerId == 0 || playerId == 2){
-                if(Q.x() > 0 || Q.x() < 350){
+            qDebug()<< "X,Y" << Q.x()<< ","<< Q.y();
 
-              *changer = Q.x();
+//person is on the bottom or top change their x
+            if(playerId == 0 || playerId == 2){
+                if(Q.x() > 0 && Q.x() < 430){
+                    setX(Q.x());
+
                  }
-             //person is on the bottom or top change their x
+
             }
 
             if(playerId == 1 || playerId == 3){
-                if(Q.y() > 0 && Q.y() < 350){
+                if(Q.y() > 0 && Q.y() < 430){
+                    setY(Q.y());
+
              //person is on the left or right
-              *changer = Q.y();
+          //    spot.setY(Q.y());
             }
             else{
             //index is something else. uh-oh
                 qDebug() << "Woops";}
 
                 }
+
+           // qDebug() << QString::number(spot.x(), 10) << ", " << QString:number(spot.y(), 10);
+           // qDebug() << QString::number(*changer, 10);
+          //  qDebug() << QString::number(this->x, 10) << ", " << QString::number(this->y, 10);
 
         }
 

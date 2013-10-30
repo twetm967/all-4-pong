@@ -22,25 +22,28 @@ class World
     private:
         vector<Player*> GamePlayers;
         vector<Objects*> objects;
-        //Map* world = new Map();
+       // Map* field =
         int difficulty;
         InGame* gameScreen;
         Ball *ball;
+
+
+        World(){}              //takes nothing. It gets instantiated later.
         static World instance;
-
-        World();              //takes nothing. It gets instantiated later.
-
 
 
     public:
-       static World getInstance();
+       static World& getInstance(){
+
+           return instance;
+       }
 
        void setUp(Start*);
 
        // adds <obj> to objects in world
        void add(Objects *obj) {objects.push_back(obj);}
 
-       void thisIsATest();
+
     
         //----------------------------------------
         //Getters and setters

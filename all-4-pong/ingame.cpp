@@ -7,6 +7,7 @@
 #include <QBrush>
 #include <QColor>
 #include <QMouseEvent>
+#include <QtWidgets>
 
 /*
 #include "Paddle.h"
@@ -20,7 +21,15 @@ InGame::InGame(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Players;
+    //Timer============================
+    timer = new QTimer(this);
+    timer->setInterval(75);
+    connect(timer, &QTimer::timeout,this, & InGame::Animate);
+
+    setMouseTracking(true);
+ui->gameCourt->setMouseTracking(true);
+    Players = World::getInstance().getGamePlayers();
+
 
     //This is kind fo ridiculous looking but it adds all of the
     //health buttons into a vector taht way they are accessible by index.
@@ -49,6 +58,7 @@ InGame::InGame(QWidget *parent) :
     Health.push_back(ui->lblLife6PL);
     Health.push_back(ui->lblLife7PL);
     //player 2
+    Health.push_back(ui->lblLife1PT);
     Health.push_back(ui->lblLife2PT);
     Health.push_back(ui->lblLife3PT);
     Health.push_back(ui->lblLife4PT);
@@ -65,13 +75,16 @@ InGame::InGame(QWidget *parent) :
     Health.push_back(ui->lblLife7PR);
 
 
+    //for testing
+    i = 6;
+    timer->start();
 }
 
 
 
 InGame::~InGame()
 {
-    for(int i = 0; i < Players.size(); i){
+    for(int i = 0; i < Players.size(); i++){
         delete Players.at(i);
         Players.erase(Players.begin() + i);
     }
@@ -83,10 +96,12 @@ delete ui;
 // graphic!
 void InGame::HealthDamage(int index, int health){
     int spot = 7 * index;
-
+    if(health > -1){
     QLabel* lbl = Health.at(spot + health);
     lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
-
+}else {
+        qDebug() << "No more death possible";
+    }
  //then we would have to figure out how to actually change the label color.
     // but this should access the right label.
 }
@@ -94,33 +109,46 @@ void InGame::HealthDamage(int index, int health){
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
-   HealthDamage(1,6);
+   HealthDamage(0,i);
+   HealthDamage(1,i);
+   HealthDamage(2,i);
+   HealthDamage(3,i);
+   i--;
 }
 
+QPoint InGame::getGameCourt(QPoint in){
+    QPoint out = ui->gameCourt->mapFromParent(in);
+    return out;
+}
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
-
-      // this->move(mapToParent(ev->pos() - this->offset));
-//get vector of players.
-
-   Players = World::getInstance().getGamePlayers();
-
-   for(int i = 0; i < Players.size(); i++){
-       Paddle* pad = Players.at(i)->getPaddle();
-
-      pad->Move(ev->pos());
-      int x = pad->getQPoint().x();
-      int y = pad->getQPoint().y();
-      ui->lblPaddleBottom->move(x,y);
-
-   }
+  // vector<children> Childs = ui->gameCourt->children();
 
 
+    Paddle* pad = Players.at(0)->getPaddle();
 
+ // pad->Move(getGameCourt(ev->pos()));
+  pad->setX(getGameCourt(ev->pos()).x());
+  pad->setY(420);
 }
 
+//every clock tick animates the game.
+void InGame::Animate(){
+
+   // for(int i = 0; i < Players.size(); i++){
+        Paddle* pad = Players.at(0)->getPaddle();
 
 
+       int x = pad->getX();
+       int y = pad->getY();
+
+       qDebug() << x << ", " << y;
+//this will eventually iterate through an array.
+       ui->lblPaddleBottom->move(x,y);
+
+    //}
+
+}
 
 
 
