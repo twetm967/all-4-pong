@@ -106,7 +106,7 @@ int Start::on_start_Btn_clicked()
    //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
    InGame* gameScreen = new InGame();
 
-   World::getInstance()->setUp();
+ //  World::getInstance()->setUp();
 
    this->hide();
  gameScreen->show();
