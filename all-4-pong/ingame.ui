@@ -322,6 +322,9 @@ text-align: center;</string>
      <height>61</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
 color: rgb(0, 200, 0);
@@ -357,6 +360,9 @@ text-align: center;</string>
      <width>61</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
@@ -1135,6 +1141,9 @@ border-radius: 10px;</string>
      <width>61</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
