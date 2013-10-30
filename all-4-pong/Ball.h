@@ -33,7 +33,7 @@ class Ball : public Objects
         int speed;
         int playerId;  // Id of last player to hit the ball
         int radius; //radius of the ball
-        QPoint point;
+
     public:
         Ball(int initSpeed);
 
@@ -46,8 +46,9 @@ class Ball : public Objects
         int getSpeedX(){return speedX;}
         int getSpeedY(){return speedY;}
         int getSpeed(){return speed;}
-        double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
+//        double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
         int getPlayerId(){return playerId;}
+
     
         //setters -- need additional logic to fully implement
         void setX(int newX){x = newX;}
