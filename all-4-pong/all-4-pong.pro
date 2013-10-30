@@ -26,6 +26,7 @@ SOURCES +=\
     highscores.cpp \
     powerup.cpp \
     Player.cpp \
+    command.cpp \
     GameLabel.cpp \
     Timer.cpp
 
@@ -42,6 +43,7 @@ HEADERS  += \
     score.h \
     powerup.h \
     Paddle.h \
+    command.h \
     GameLabel.h \
     Timer.h
 

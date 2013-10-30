@@ -29,6 +29,9 @@
       <height>121</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(0, 200, 0);

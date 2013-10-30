@@ -5,26 +5,33 @@
 #include <QObject>
 #include <vector>
 #include <QRect>
-#include <Ball.h>
 #include <QMouseEvent>
+#include <QDebug>
+
+#include "Ball.h"
 #include "Objects.h"
 
 //class Objects;
 //class Ball;
 
 
-class Paddle : public Objects/*, public QRect*/ //because the class inherits from Objects, it also inherits from QRect
+class Paddle : public Objects/*, public QRect*/ //because the class inherits
+        //from Objects, it also inherits from QRect
 {
-
-    int paddleLength;
+    int* changer;
+    QMouseEvent* M;
     int playerId;
+    QPoint area;
+    QPoint spot;
     //Width and Height!! of the paddle in other words
-    //10 and 1!
-    QPoint WandH;
+    //101 and 17
 public:
 
     //takes player index;
-    Paddle(int);
+
+    Paddle(int, QPoint);
+
+        Paddle(int);
     Paddle() {}
     //****Getters and setters****/
   /*  int getPosition(){return position;}
@@ -35,12 +42,35 @@ public:
 
     void setPlayerId(int inID){playerId = inID;}
     //void  setPosition(int inPos){position = inPos;}
-    void  setLength(int inLength){ paddleLength = inLength;}
+    //void  setLength(int inLength){ paddleLength = inLength;}
     //*******************************
 
 
+    void Move();
 
+    void setMouse(QPoint);
     bool getHit(Ball*);
+    int getX(){
+        return spot.x();
+    }
+
+    int getY(){
+        return spot.y();
+    }
+
+    void setX(int in){
+        if(in > 0 && in < 350)
+        spot.setX(in);
+    }
+
+    void setY(int y){
+        if(y > 0 && y < 420)
+        spot.setY(y);
+    }
+
+   // void mousePressEvent(QMouseEvent*);
+
+//QMouseEvent*
     void mouseMoveEvent(QMouseEvent*);
 
     void updatePosition();

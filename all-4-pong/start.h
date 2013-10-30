@@ -7,6 +7,8 @@
 #include <QTcpServer>
 #include <QDebug>
 #include <QTimer>
+
+
 #include "ingame.h"
 
 namespace Ui {
@@ -19,13 +21,14 @@ class Start : public QMainWindow
     
 public:
     explicit Start(QWidget *parent = 0);
-    ~Start(){/*delete ui?*/}
+    ~Start(){}
 
     //*******Getters*********************
     int getPlayers(){return players;}
     int getDifficulty(){return difficulty;}
     bool getPowerUps() {return powerUps;}
     InGame* getInGame() { return gameScreen;}
+    void StartingMethod();
     
 private slots:
     int on_start_Btn_clicked();

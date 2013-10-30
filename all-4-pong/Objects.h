@@ -44,6 +44,8 @@ public:
     bool getHit();
     QPoint getQPoint(){return point;}
 
+
+
     //------------------------------------------------------
 
     //virtual methods

@@ -4,6 +4,9 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <QApplication>
+#include <QWindow>
+#include <QtWidgets>
+
 #include <ingame.h>
 #include <QTimer>
 
@@ -116,21 +119,29 @@ int Start::on_start_Btn_clicked()
 {//"/home/user/csunix/dreck410/team/build-all-4-pong-Desktop-Debug/all-4-pong"
 
    //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
-   InGame* gameScreen = new InGame();
 
-   players = ui->players_comboBox->currentIndex()+1;
-   difficulty = ui->dif_comboBox_->currentIndex()+1;
-   if(ui->power_checkBox->isChecked()){
-       powerUps = true;
-   }else{powerUps = false;}
-
-   World::getInstance()->setUp(this);
-
-   gameScreen->show();
-   timer->start();
-   this->hide();
-
+StartingMethod();
    // return a.exec();
+
+}
+
+void Start::StartingMethod(){
+
+
+    players = ui->players_comboBox->currentIndex()+1;
+
+    difficulty = ui->dif_comboBox_->currentIndex()+1;
+
+    if(ui->power_checkBox->isChecked()){
+        powerUps = true;
+    }else{powerUps = false;}
+
+    World::getInstance().setUp(this);
+    InGame* gameScreen = new InGame();
+    gameScreen->show();
+    timer->start();
+    this->hide();
+
 
 }
 

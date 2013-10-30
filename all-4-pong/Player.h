@@ -10,7 +10,7 @@
 
 class Player
 {
-    protected:
+protected:
         Paddle* pad;
         int Score;
         int Health;
@@ -19,12 +19,15 @@ class Player
         static int nextID;
     public:
         Player();
+        Player(QPoint);
         ~Player();
     
         void point();
         void damage();
     
         void Win();
+
+        Paddle* getPaddle(){return pad;}
         
 };//player class
 
@@ -33,19 +36,26 @@ class Player
 class AI : public Player
 {
     private:
+    int difficulty;
         
     public:
+
             AI(){}                            //takes (difficulty);
+            AI(QPoint);
             ~AI(){}
+
 };
 
 class User : public Player
 {
     private:
         
+
     public:
             User(){}
+            User(QPoint);
             ~User(){}
+
 };
 
 #endif

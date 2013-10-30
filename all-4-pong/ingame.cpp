@@ -1,14 +1,26 @@
 #include "ingame.h"
-
 #include "ui_ingame.h"
+#include "World.h"
+
 #include <vector>
 #include <QPalette>
 #include <QBrush>
 #include <QColor>
+
+#include <QMouseEvent>
+#include <QtWidgets>
+
+/*
+#include "Paddle.h"
+#include "World.h"
+*/
+
+
 #include "Paddle.h"
 #include "Objects.h"
 #include "GameLabel.h"
 #include "Timer.h"
+
 
 InGame::InGame(QWidget *parent) :
     QWidget(parent),
@@ -16,6 +28,14 @@ InGame::InGame(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //Timer============================
+    timer = new QTimer(this);
+    timer->setInterval(75);
+    connect(timer, &QTimer::timeout,this, & InGame::Animate);
+
+    setMouseTracking(true);
+ui->gameCourt->setMouseTracking(true);
+    Players = World::getInstance().getGamePlayers();
 
 
     //This is kind fo ridiculous looking but it adds all of the
@@ -62,7 +82,15 @@ InGame::InGame(QWidget *parent) :
     Health.push_back(ui->lblLife7PR);
 
 
+
     //Link Game Model to GUI
+
+    //for testing
+    i = 6;
+    timer->start();
+
+    //Link Game Model to GUI
+
     ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->initializeObj("Paddle");
     ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
     ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->initializeObj("Paddle");
@@ -77,6 +105,7 @@ InGame::InGame(QWidget *parent) :
     Timer::getInstance()->getTimer()->setInterval(100);
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
     Timer::getInstance()->getTimer()->start();
+
 }
 
 
@@ -95,10 +124,12 @@ delete ui;
 // graphic!
 void InGame::HealthDamage(int index, int health){
     int spot = 7 * index;
-
+    if(health > -1){
     QLabel* lbl = Health.at(spot + health);
     lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
-
+}else {
+        qDebug() << "No more death possible";
+    }
  //then we would have to figure out how to actually change the label color.
     // but this should access the right label.
 }
@@ -106,15 +137,71 @@ void InGame::HealthDamage(int index, int health){
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
-   HealthDamage(0,6);
-   HealthDamage(1,6);
-   HealthDamage(2,6);
-   HealthDamage(3,6);
+   HealthDamage(0,i);
+   HealthDamage(1,i);
+   HealthDamage(2,i);
+   HealthDamage(3,i);
+   i--;
    Timer::getInstance()->getTimer()->stop();
 }
 
-void InGame::timerHit() {
-    foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel *>()) {
-        g->updatePosition();
-    }
+QPoint InGame::getGameCourt(QPoint in){
+    QPoint out = ui->gameCourt->mapFromParent(in);
+    return out;
 }
+
+void InGame::mouseMoveEvent(QMouseEvent *ev) {
+  // vector<children> Childs = ui->gameCourt->children();
+
+
+    Paddle* pad = Players.at(0)->getPaddle();
+
+ // pad->Move(getGameCourt(ev->pos()));
+    pad->setMouse(getGameCourt(ev->pos()));
+ // pad->setX(getGameCourt(ev->pos()).x());
+  //pad->setY(420);
+}
+
+//every clock tick animates the game.
+void InGame::Animate(){
+
+   // for(int i = 0; i < Players.size(); i++){
+        Paddle* pad = Players.at(0)->getPaddle();
+
+
+       int x = pad->getX();
+       int y = pad->getY();
+
+  //     qDebug() << x << ", " << y;
+//this will eventually iterate through an array.
+       ui->lblPaddleBottom->move(x,420);
+
+    //}
+
+}
+
+void InGame::timerHit() {
+    foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
+        g->updatePosition();
+     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

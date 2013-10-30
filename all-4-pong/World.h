@@ -1,16 +1,20 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+
 #include <string>
 #include <vector>
+#include <QMouseEvent>
+#include <QMainWindow>
+#include <QDebug>
+#include <vector>
+#include <QString>
 
-#include "ingame.h"
-#include "Ball.h"
 #include "start.h"
 #include "Player.h"
+#include "ingame.h"
+#include "Ball.h"
 
-class Player;
-class Objects;
 using namespace std;
 
 class World
@@ -18,23 +22,27 @@ class World
     private:
         vector<Player*> GamePlayers;
         vector<Objects*> objects;
-        //Map* world = new Map();
+       // Map* field =
         int difficulty;
-        InGame *gameScreen;
+        InGame* gameScreen;
         Ball *ball;
-        static World *instance;
 
-        World();              //takes nothing. It gets instantiated later.
 
+        World(){}              //takes nothing. It gets instantiated later.
+        static World instance;
 
 
     public:
-       static World* getInstance();
+       static World& getInstance(){
+
+           return instance;
+       }
 
        void setUp(Start*);
 
        // adds <obj> to objects in world
        void add(Objects *obj) {objects.push_back(obj);}
+
 
     
         //----------------------------------------
