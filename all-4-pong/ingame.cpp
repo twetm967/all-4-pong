@@ -62,15 +62,15 @@ InGame::InGame(QWidget *parent) :
     Health.push_back(ui->lblLife7PR);
 
 
-    //Link Game Model to GUI - Commented out lines cause segfaults.  Yay! - PJ
+    //Link Game Model to GUI
     ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->initializeObj("Paddle");
-//    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
     ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->initializeObj("Paddle");
-//    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
     ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->initializeObj("Paddle");
-//    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
-//    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
     ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
 
     //Start the Timer
