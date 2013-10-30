@@ -34,6 +34,8 @@ int i = 0;
 
     }
 
+
+
     if(index == 1 || index == 3){
      //person is on the left or right
         spot.setY(205);
@@ -66,6 +68,12 @@ int i = 0;
 //changer = &i;
 }
 
+
+void Paddle::setMouse(QPoint in){
+
+    spot = in;
+
+}
 
         bool Paddle::getHit(Ball* ball)
         {
@@ -103,8 +111,8 @@ int i = 0;
 
 
 
-
-        void Paddle::Move(QPoint Q){
+/*
+        void Paddle::Move(){
 
             qDebug()<< "X,Y" << Q.x()<< ","<< Q.y();
 
@@ -135,7 +143,7 @@ int i = 0;
           //  qDebug() << QString::number(this->x, 10) << ", " << QString::number(this->y, 10);
 
         }
-
+*/
 
 
         //.h file
@@ -172,6 +180,38 @@ int i = 0;
         }
 
         return didRead;
+    }
+
+    void Paddle::updatePosition() {
+        //Need move logic here.  Maybe move paddle to where mouse is, could still be move up if up key is pressed, etc. ~ PJ
+        qDebug()<< "X,Y" << spot.x()<< ","<< spot.y();
+
+
+
+//person is on the bottom or top change their x
+        if(playerId == 0 || playerId == 2){
+            if(spot.x() > 0 && spot.x() < 430){
+                setX(spot.x());
+
+             }
+
+        }
+
+        if(playerId == 1 || playerId == 3){
+            if(spot.y() > 0 && spot.y() < 430){
+                setY(spot.y());
+
+         //person is on the left or right
+      //    spot.setY(spot.y());
+        }
+        else{
+        //index is something else. uh-oh
+            qDebug() << "Woops";}
+
+            }
+
+
+
     }
 
 //}

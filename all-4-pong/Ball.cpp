@@ -16,7 +16,7 @@ Ball::Ball(int initSpeed):Objects() {            //takes (speed)
     speed = initSpeed;
     x = 0;
     y = 0;
-    radius = 5; //need to determine default radius
+    radius = 15; //need to determine default radius
     playerId = -1; //need to determine a playerId to use for NULL
     speedX = rand() % (int)(initSpeed*3/4);
     speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
@@ -28,9 +28,9 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Objects() {
     x = initX;
     y = initY;
     playerId = initPlayerId;
-    radius = 5; //need to determine default radius; maybe include initRadius in Constructor
-    speedX = rand() % (int)(initSpeed*3/4);
-    speedY = (int)sqrt(pow(speed,2)-pow(speedX,2));
+    radius = 15; //need to determine default radius; maybe include initRadius in Constructor
+    speedX = (rand() % (speed * 2)) - speed;
+    speedY = ((rand() % 3) - 2) * (int)sqrt(pow(speed,2)-pow(speedX,2));
     this->setPoint();
 }
 
@@ -93,25 +93,25 @@ void Ball::onCollision(int objId){
     //determine where the object collision line is, if the object is moving, how fast and in what direction it is moving
     //determine new direction and speed and set ball position appropriately
 }
-void Ball::Move(){
+void Ball::updatePosition(){
     this->setX(this->getX() + this->getSpeedX());
     this->setY(this->getY() + this->getSpeedY());
     //if there is a Collision call this->onCollision(objId)
     /*Right now just hard coding this in to get the ball moving and staying within bounds*/
     if (this->getX() - this->getRadius() < 0) {
-        this->setX(0);
+        this->setX(0 + this->getRadius());
         this->setSpeedX(this->getSpeedX()*-1);
     }
-    if (this->getX() + this->getRadius() > 400) {
-        this->setX(400);
+    if (this->getX() + this->getRadius() > 450) {
+        this->setX(450- this->getRadius());
         this->setSpeedX(this->getSpeedX()*-1);
     }
     if (this->getY() - this->getRadius() < 0) {
-        this->setY(0);
+        this->setY(0 + this->getRadius());
         this->setSpeedY(this->getSpeedY()*-1);
     }
-    if (this->getY() + this->getRadius() > 400) {
-        this->setY(400);
+    if (this->getY() + this->getRadius() > 450) {
+        this->setY(450 - this->getRadius());
         this->setSpeedY(this->getSpeedY()*-1);
     }
     /*End hard coding*/

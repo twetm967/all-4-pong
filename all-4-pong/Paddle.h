@@ -28,9 +28,11 @@ class Paddle : public Objects/*, public QRect*/ //because the class inherits
 public:
 
     //takes player index;
+
     Paddle(int, QPoint);
 
-    Paddle();
+        Paddle(int);
+    Paddle() {}
     //****Getters and setters****/
   /*  int getPosition(){return position;}
     int getSideId(){return sideId;}
@@ -44,11 +46,14 @@ public:
     //*******************************
 
 
-    void Move(QPoint);
+    void Move();
+
+    void setMouse(QPoint);
     bool getHit(Ball*);
     int getX(){
         return spot.x();
     }
+
     int getY(){
         return spot.y();
     }
@@ -57,14 +62,20 @@ public:
         if(in > 0 && in < 350)
         spot.setX(in);
     }
+
     void setY(int y){
         if(y > 0 && y < 420)
         spot.setY(y);
     }
 
-    void mousePressEvent(QMouseEvent*);
+   // void mousePressEvent(QMouseEvent*);
 
 //QMouseEvent*
+    void mouseMoveEvent(QMouseEvent*);
+
+    void updatePosition();
+
+
 
     
     // prints the current paddle state out to offshore text file,

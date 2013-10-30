@@ -39,14 +39,17 @@ public:
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}
+    virtual void setPlayerId(int) { }
 
     bool getHit();
     QPoint getQPoint(){return point;}
 
+
+
     //------------------------------------------------------
 
     //virtual methods
-   void virtual Move();
+   void virtual updatePosition();
    bool virtual Hit(){return true;}
    bool virtual getBound();
 

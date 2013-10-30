@@ -33,6 +33,6 @@ bool Objects::getHit(){
 
 }
 
-void Objects::Move(){}
+void Objects::updatePosition(){}
 bool Objects::getBound(){}
 

@@ -481,12 +481,12 @@ border-radius: 10px;</string>
 border: 2px solid rgb(137, 255, 200);
 box-shadow: 10px 10px 30px rgb(0, 0, 0);</string>
    </property>
-   <widget class="QLabel" name="lblBall">
+   <widget class="GameLabel" name="lblBall">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>220</y>
-      <width>31</width>
+      <x>220</x>
+      <y>210</y>
+      <width>30</width>
       <height>30</height>
      </rect>
     </property>
@@ -499,7 +499,7 @@ border-radius: 15px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lblPaddleBottom">
+   <widget class="GameLabel" name="lblPaddleBottom">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -531,7 +531,7 @@ border-radius: 4px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lblPaddleLeft">
+   <widget class="GameLabel" name="lblPaddleLeft">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -563,7 +563,7 @@ border-radius: 4px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lblPaddleRight">
+   <widget class="GameLabel" name="lblPaddleRight">
     <property name="geometry">
      <rect>
       <x>420</x>
@@ -595,7 +595,7 @@ border-radius: 4px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lblPaddleTop">
+   <widget class="GameLabel" name="lblPaddleTop">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -1198,6 +1198,13 @@ border-radius: 30px;</string>
   <zorder>lblLife2PT</zorder>
   <zorder>btnHome</zorder>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GameLabel</class>
+   <extends>QLabel</extends>
+   <header>GameLabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

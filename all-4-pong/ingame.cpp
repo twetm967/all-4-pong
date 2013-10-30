@@ -6,6 +6,7 @@
 #include <QPalette>
 #include <QBrush>
 #include <QColor>
+
 #include <QMouseEvent>
 #include <QtWidgets>
 
@@ -13,6 +14,12 @@
 #include "Paddle.h"
 #include "World.h"
 */
+
+
+#include "Paddle.h"
+#include "Objects.h"
+#include "GameLabel.h"
+#include "Timer.h"
 
 
 InGame::InGame(QWidget *parent) :
@@ -75,9 +82,27 @@ ui->gameCourt->setMouseTracking(true);
     Health.push_back(ui->lblLife7PR);
 
 
+
     //for testing
     i = 6;
     timer->start();
+
+    //Link Game Model to GUI - Commented out lines cause segfaults.  Yay! - PJ
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
+    ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
+
+    //Start the Timer
+    Timer::getInstance()->getTimer()->setInterval(100);
+    connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
+    Timer::getInstance()->getTimer()->start();
+
 }
 
 
@@ -114,6 +139,7 @@ void InGame::on_btnPause_clicked()
    HealthDamage(2,i);
    HealthDamage(3,i);
    i--;
+   Timer::getInstance()->getTimer()->stop();
 }
 
 QPoint InGame::getGameCourt(QPoint in){
@@ -128,8 +154,9 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
     Paddle* pad = Players.at(0)->getPaddle();
 
  // pad->Move(getGameCourt(ev->pos()));
-  pad->setX(getGameCourt(ev->pos()).x());
-  pad->setY(420);
+    pad->setMouse(getGameCourt(ev->pos()));
+ // pad->setX(getGameCourt(ev->pos()).x());
+  //pad->setY(420);
 }
 
 //every clock tick animates the game.
@@ -142,11 +169,18 @@ void InGame::Animate(){
        int x = pad->getX();
        int y = pad->getY();
 
-       qDebug() << x << ", " << y;
+  //     qDebug() << x << ", " << y;
 //this will eventually iterate through an array.
-       ui->lblPaddleBottom->move(x,y);
+       ui->lblPaddleBottom->move(x,420);
 
     //}
+
+}
+
+void InGame::timerHit() {
+    foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
+        g->updatePosition();
+     }
 
 }
 
