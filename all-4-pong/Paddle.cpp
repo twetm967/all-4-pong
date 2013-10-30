@@ -74,4 +74,8 @@ Paddle::Paddle(int index):Objects() {
         return didRead;
     }
 
+    void Paddle::updatePosition() {
+        ///Need move logic here.  Maybe move paddle to where mouse is, could still be move up if up key is pressed, etc. ~ PJ
+    }
+
 //}

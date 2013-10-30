@@ -25,7 +25,9 @@ SOURCES +=\
     score.cpp \
     highscores.cpp \
     powerup.cpp \
-    Player.cpp
+    Player.cpp \
+    GameLabel.cpp \
+    Timer.cpp
 
 HEADERS  += \
     Shapes.h \
@@ -39,7 +41,9 @@ HEADERS  += \
     saveload.h \
     score.h \
     powerup.h \
-    Paddle.h
+    Paddle.h \
+    GameLabel.h \
+    Timer.h
 
 FORMS    += \
     ingame.ui \

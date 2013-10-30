@@ -59,7 +59,7 @@ class Ball : public Objects
         void setPlayerId(int newId) {playerId = newId;}
         void setPoint();
 //--------------------------------------------------------------------------------------------//
-        void Move();
+        void updatePosition();
 
         //Mathy Functions for PJ to make!!  
 //This is Daniel Brainstorming do what you want. But maybe a direction class? 

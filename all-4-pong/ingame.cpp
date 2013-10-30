@@ -5,6 +5,10 @@
 #include <QPalette>
 #include <QBrush>
 #include <QColor>
+#include "Paddle.h"
+#include "Objects.h"
+#include "GameLabel.h"
+#include "Timer.h"
 
 InGame::InGame(QWidget *parent) :
     QWidget(parent),
@@ -58,6 +62,21 @@ InGame::InGame(QWidget *parent) :
     Health.push_back(ui->lblLife7PR);
 
 
+    //Link Game Model to GUI - Commented out lines cause segfaults.  Yay! - PJ
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
+//    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
+    ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
+
+    //Start the Timer
+    Timer::getInstance()->getTimer()->setInterval(100);
+    connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
+    Timer::getInstance()->getTimer()->start();
 }
 
 
@@ -91,4 +110,11 @@ void InGame::on_btnPause_clicked()
    HealthDamage(1,6);
    HealthDamage(2,6);
    HealthDamage(3,6);
+   Timer::getInstance()->getTimer()->stop();
+}
+
+void InGame::timerHit() {
+    foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel *>()) {
+        g->updatePosition();
+    }
 }

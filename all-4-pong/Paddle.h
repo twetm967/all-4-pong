@@ -25,6 +25,7 @@ public:
 
     //takes player index;
     Paddle(int);
+    Paddle() {}
     //****Getters and setters****/
   /*  int getPosition(){return position;}
     int getSideId(){return sideId;}
@@ -41,6 +42,8 @@ public:
 
     bool getHit(Ball*);
     void mouseMoveEvent(QMouseEvent*);
+
+    void updatePosition();
 
 
 

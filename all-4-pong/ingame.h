@@ -27,6 +27,8 @@ public:
 private slots:
     void on_btnPause_clicked();
 
+    void timerHit();
+
 
 private:
     Ui::InGame *ui;
