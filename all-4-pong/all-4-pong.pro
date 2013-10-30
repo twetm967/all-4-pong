@@ -28,7 +28,8 @@ SOURCES +=\
     Player.cpp \
     command.cpp \
     GameLabel.cpp \
-    Timer.cpp
+    Timer.cpp \
+    gamecommand.cpp
 
 HEADERS  += \
     Shapes.h \
@@ -45,7 +46,8 @@ HEADERS  += \
     Paddle.h \
     command.h \
     GameLabel.h \
-    Timer.h
+    Timer.h \
+    gamecommand.h
 
 FORMS    += \
     ingame.ui \

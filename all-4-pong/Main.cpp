@@ -7,19 +7,18 @@
 #include "start.h"
 #include "ingame.h"
 
-class World;
+//class World;
 //void unitTest(Start* w) {
 void unitTest() {
-    //assert(World::getInstance());
     //w->StartingMethod();
     //assert(World::getInstance().getGamePlayers().size() == 4);
-    //assert(World::getInstance().getDifficulty() == 1);
+    assert(World::getInstance().getDifficulty() == 0);
+    //assert(World::getInstance().getGamePlayers() == 0);
 
 
     cout << "All unit tests pass!" << endl;
 
     //w->close();
-
 }
 
 int main(int argc, char *argv[])
@@ -34,6 +33,7 @@ int main(int argc, char *argv[])
   //  if (main) {
 //        unitTest(&w);
    // }
+
     vector<string> args(argv, argv+argc); // A vector of command line arguments
 
     if (args.size() == 2) { // Checks it the user entered a second command line argument
@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
             unitTest(); // Run unit tests
         }
     }
+
 
     return a.exec();
 }

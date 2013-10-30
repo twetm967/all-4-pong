@@ -28,11 +28,11 @@ InGame::InGame(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //Timer============================
+/*    //Timer============================
     timer = new QTimer(this);
     timer->setInterval(75);
     connect(timer, &QTimer::timeout,this, & InGame::Animate);
-
+*/
     setMouseTracking(true);
 ui->gameCourt->setMouseTracking(true);
     Players = World::getInstance().getGamePlayers();
@@ -85,7 +85,7 @@ ui->gameCourt->setMouseTracking(true);
 
     //for testing
     i = 6;
-    timer->start();
+   // timer->start();
 
     //Link Game Model to GUI - Commented out lines cause segfaults.  Yay! - PJ
     ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->initializeObj("Paddle");
@@ -101,6 +101,7 @@ ui->gameCourt->setMouseTracking(true);
     //Start the Timer
     Timer::getInstance()->getTimer()->setInterval(100);
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
+     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
     Timer::getInstance()->getTimer()->start();
 
 }
