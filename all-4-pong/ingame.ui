@@ -630,6 +630,11 @@ border-radius: 4px;</string>
      <string/>
     </property>
    </widget>
+   <zorder>lblBall</zorder>
+   <zorder>lblPaddleBottom</zorder>
+   <zorder>lblPaddleLeft</zorder>
+   <zorder>lblPaddleTop</zorder>
+   <zorder>lblPaddleRight</zorder>
   </widget>
   <widget class="QLabel" name="lblTop2Score">
    <property name="geometry">
