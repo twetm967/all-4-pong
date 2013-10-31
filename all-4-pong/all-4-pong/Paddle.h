@@ -65,7 +65,7 @@ public:
     int getY(){
         if(spot.y() >= 0 && spot.y() <=350)
         return spot.y();
-        if(spot.y() < -15)
+        if(spot.y() < 0)
             return 0;
         if(spot.y() > 350)
             return 350;
