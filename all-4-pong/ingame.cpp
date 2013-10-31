@@ -102,7 +102,7 @@ ui->gameCourt->setMouseTracking(true);
     ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
 
     //Start the Timer
-    Timer::getInstance()->getTimer()->setInterval(100);
+    Timer::getInstance()->getTimer()->setInterval(40);
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
     Timer::getInstance()->getTimer()->start();
 
@@ -183,7 +183,8 @@ void InGame::Animate(){
 void InGame::timerHit() {
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
         g->updatePosition();
-     }
+    }
+
 
 }
 
