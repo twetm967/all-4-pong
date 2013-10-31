@@ -1,0 +1,20 @@
+class Game
+{
+    private:
+        vector<Player*> players;
+        Map* world = new Map();
+        int dif;
+        
+    
+    public:
+        Game(int, int, int);              //takes  (#of users, game mode, difficulty)
+    
+    //methods 
+    
+};//Game Class
+
+
+
+
+
+
