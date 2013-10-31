@@ -10,6 +10,9 @@
     <height>633</height>
    </rect>
   </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>All-4-Pong - Game Court</string>
   </property>
@@ -175,6 +178,9 @@ text-align: center;</string>
      <height>100</height>
     </rect>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
 border: 1px solid rgb(0, 0, 0);
@@ -256,6 +262,9 @@ border-radius: 10px;</string>
      <height>50</height>
     </rect>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(104, 104, 104);
 border: 1px solid rgb(0, 0, 0);
@@ -274,6 +283,9 @@ border-radius: 4px;</string>
      <width>451</width>
      <height>50</height>
     </rect>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
@@ -633,11 +645,6 @@ border-radius: 4px;</string>
      <string/>
     </property>
    </widget>
-   <zorder>lblBall</zorder>
-   <zorder>lblPaddleBottom</zorder>
-   <zorder>lblPaddleLeft</zorder>
-   <zorder>lblPaddleTop</zorder>
-   <zorder>lblPaddleRight</zorder>
   </widget>
   <widget class="QLabel" name="lblTop2Score">
    <property name="geometry">
@@ -743,6 +750,9 @@ border-radius: 10px;</string>
      <width>200</width>
      <height>100</height>
     </rect>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
@@ -865,6 +875,9 @@ border-radius: 10px;</string>
      <width>451</width>
      <height>50</height>
     </rect>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(71, 71, 71);
