@@ -11,11 +11,9 @@
 
 #include "Paddle.h"
 
+//sets up the paddle depending on what location it is to be in.
 void Paddle::setUp() {
 
-   // setMouseTracking(true);
-
-   //spot = World::getInstance().getMouse();
 
 
     if(playerId == 0 || playerId == 2){
@@ -32,6 +30,13 @@ void Paddle::setUp() {
             }
 
         }
+    //they are on top or bottom
+    this->setTopLeft(point);
+
+   this->setWidth(100);
+   this->setHeight(17);
+
+
 }
     if(playerId == 1 || playerId == 3){
      //person is on the left or right
@@ -41,27 +46,16 @@ void Paddle::setUp() {
         point.setX(420);
         }else{if(playerId == 3){
             point.setX(10);
-            }else{
-                //we broke
-
             }
         }
+       this->setTopLeft(point);
+       this->setWidth(17);
+       this->setHeight(100);
     }
-
-    else{
-    //playerId is something else. uh-oh
-// qDebug() << " this is " << playerId;
-    }
-  //  point = this->topLeft();
-   // this->setWidth(17);
-   // this->setHeight(101);
-
-
-//changer = &i;
 }
 
 
-
+//not sure how this is going to work yet. Will work on Friday.
         bool Paddle::getHit(Ball* ball)
         {
 
@@ -76,36 +70,6 @@ void Paddle::setUp() {
              }// it did not hit do nothing
                   return false;
          }
-
-
-
-        /*
-      void MovableLabel::mousePressEvent(QMouseEvent *ev) {
-            if(widg->CheckClick()){
-                mouseDragging = true;
-                offset = ev->pos(); // location where mouse was clicked within the label
-            }else if(widg->CheckDelete()){
-                int i = obj->getId();
-                World::getInstance().destroy(i);
-                widg->KillMe(this);
-
-            }
-        } InGame* gameScreen = new InGame();
-      }
-
-
-
-         //.cpp file
-// qDebug() << QString::number(spot.x(), 10) << ", " << QString:number(spot.y(), 10);
-           // qDebug() << QString::number(*changer, 10);
-          //  qDebug() << QString::number(this->x, 10) << ", " << QString::number(this->y, 10);
-
-        }
-*/
-
-
-        //.h file
-
 
     // prints the current paddle state out to offshore text file,
     // returning a boolean value indicating print success
@@ -130,7 +94,7 @@ void Paddle::setUp() {
         bool didRead = false;
 
         // establish connection with text file
-
+//Joseph your a boss!!!
         if (/*connection succeeds*/true) {
             // read string of state from text file
             // parse string and store object state in instance variables
@@ -140,37 +104,25 @@ void Paddle::setUp() {
         return didRead;
     }
 
+
+    //runs the  update position code overridden from Object.
+    //gets the mouse position (TO be changed to player's mouse position)
+    // then moves them accordingly.
     void Paddle::updatePosition() {
 
-         spot = World::getInstance().getMouse();
-         spot.setX(spot.x() - 50);
-         spot.setY(spot.y() - 50);
-        //Need move logic here.  Maybe move paddle to where mouse is, could still be move up if up key is pressed, etc. ~ PJ
+         spot = Hand->getHand();
 
 
 //person is on the bottom or top change their x
         if(playerId == 0 || playerId == 2){
-           // if(spot.x() >= 0 && spot.x() <= 350){
-                this->setX(spot.x());
 
-     //        }
-
+                this->setX(spot->x());
         }
 
         if(playerId == 1 || playerId == 3){
-   //         if(spot.y() >= 0 && spot.y() <= 350){
-                this->setY(spot.y());
 
-   //     }
+                this->setY(spot->y());
 
-
-            }else{
-            //playerId is something else. uh-oh
-            // qDebug() << "the playerId is " << playerId;
-        }
-
-
-
+            }
     }
 
-//}

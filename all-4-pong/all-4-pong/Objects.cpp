@@ -17,21 +17,19 @@ Object::Object(QPoint isPoint){
     point = isPoint;
     this->setRect(point.x(), point.y(),point.x() + 10, point.y() + 10);
     objId = ++nextObjId;
-    World::getInstance().add(this);
+    World::getInstance()->add(this);
 }
 
 
 Object::Object(){
 objId = ++nextObjId;
-World::getInstance().add(this);
+World::getInstance()->add(this);
 }
 
 //inline
     Object::~Object() { }
 
-bool Object::getHit(){
-
-}
+bool Object::getHit(){}
 
 void Object::updatePosition(){}
 bool Object::getBound(){}

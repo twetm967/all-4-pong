@@ -11,6 +11,7 @@
 #include "Ball.h"
 #include "Objects.h"
 #include "Player.h"
+#include "World.h"
 
 //class Object;
 //class Ball;
@@ -21,7 +22,7 @@ class Paddle : public Object/*, public QRect*/ //because the class inherits
 {
     int playerId;
     Player* Hand;
-    QPoint spot;
+    QPoint* spot;
     int Length;
 public:
 
@@ -29,19 +30,12 @@ public:
   Paddle():Object(){}
   void setUp();
 
-    //****Getters and setters****/
-  /*  int getPosition(){return position;}
-    int getSideId(){return sideId;}
-    int getLength(){return paddleLength;}
-   */// int getPlayerId(){return playerId;}
-
-
-    void setPlayerId(int inID){playerId = inID;
-                               Length = 50;
-                               setUp();
+    void setPlayerId(int inID){
+        playerId = inID;
+        Hand = World::getInstance()->getGamePlayers().at(playerId);
+        Length = 50;
+        setUp();
                               }
-    //void  setPosition(int inPos){position = inPos;}
-    //void  setLength(int inLength){ paddleLength = inLength;}
     //*******************************
 
 
@@ -52,22 +46,6 @@ public:
     void setMouse(QPoint);
     bool getHit(Ball*);
 
-    /*int getX(){
-        if(spot->x()>= 0 && spot->x() <= 350)
-        return spot->x();
-        if(spot->x() < 0)
-            return 0;
-        if(spot->x() > 350)
-            return 350;
-
-    }
-
-    int getY(){
-        if(spot.y() >= 0 && spot.y() <=350)
-        return spot.y();
-
-    }
-*/
     void setX(int in){
         if(in >= 0 && in <= 350)
         point.setX(in);
@@ -92,10 +70,6 @@ public:
         // spot.setY(y);
     }
 
-   // void mousePressEvent(QMouseEvent*);
-
-//QMouseEvent*
-  //  void mouseMoveEvent(QMouseEvent*);
 
     void updatePosition();
 

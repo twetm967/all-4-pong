@@ -15,11 +15,13 @@ class Player
 protected:
         int Score;
         int Health;
+        QPoint* hand;
         int ID;
         static int nextID;
     public:
         Player();
         ~Player();
+      virtual QPoint* getHand();
     
         void point();
         void damage();
@@ -34,11 +36,25 @@ class AI : public Player
 {
     private:
     int difficulty;
+    int iterator;
+    QPoint* AIPoint;
+    bool flop;
         
     public:
 
-            AI(){}                            //takes (difficulty);
+    AI():Player(){
+        AIPoint = new QPoint(205,205);
+        flop = true;
+        iterator = 150;
+
+    }                            //takes (difficulty);
             AI(QPoint);
+          QPoint* getHand();
+
+
+            void change();
+
+
             ~AI(){}
 
 };
@@ -49,9 +65,12 @@ class User : public Player
         
 
     public:
-            User(){}
+    User():Player(){
+
+            }
             User(QPoint);
             ~User(){}
+           QPoint* getHand();
 
 };
 

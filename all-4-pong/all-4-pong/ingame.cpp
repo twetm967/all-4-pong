@@ -30,7 +30,7 @@ InGame::InGame(QWidget *parent) :
 */
     setMouseTracking(true);
 ui->gameCourt->setMouseTracking(true);
-    Players = World::getInstance().getGamePlayers();
+    Players = World::getInstance()->getGamePlayers();
 
 
 
@@ -146,18 +146,20 @@ void InGame::on_btnCheat_clicked()
 
 
 QPoint InGame::getGameCourt(QPoint in){
-    QPoint out = ui->gameCourt->mapFromParent(in);
+    QPoint out;
+    out = ui->gameCourt->mapFromParent(in);
+
     return out;
 }
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
-
-    World::getInstance().setworldMouse(getGameCourt(ev->pos()));
+    QPoint here = getGameCourt((ev->pos()));
+    World::getInstance()->setworldMouse(here);
 
 }
 //for testing purposes
 void InGame::mousePressEvent(QMouseEvent *ev){
-    qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
+   // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 }
 
 /*//every clock tick animates the game.

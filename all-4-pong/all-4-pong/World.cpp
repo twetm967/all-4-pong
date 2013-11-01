@@ -2,18 +2,18 @@
 #include "World.h"
 #include <cassert>
 
-World World::instance;//=NULL;
+World* World::instance=NULL;
 
 //World::World(){}
 
 
 
 
-void World::setUp(Start *inStart){
-    int i = 0;
+void World::setUp(int Players,int diff,bool power){
 
+    worldMouse = new QPoint();
     Player* in;
-    for (i; i < inStart->getPlayers() && i<4; ++i){
+    for (int i = 0; i < Players && i<4; ++i){
           //Player *thisPlayer = new User();
 
 /*thisPlayer*/
@@ -21,23 +21,26 @@ void World::setUp(Start *inStart){
         GamePlayers.push_back(in);
 
     }
-    int q = 4 - inStart->getPlayers();
+    int q = 4 - Players;
 
     if (q > 0){
-        i = 0;
-        for (; i<q; ++i){
+
+        for (int i = 0; i<q; ++i){
             in = new AI();
             GamePlayers.push_back(in);
         }
     }
+
     qDebug() << GamePlayers.size();
     assert(GamePlayers.size() == 4);
 
-    difficulty = inStart->getDifficulty();
+    difficulty = diff;
     qDebug() << QString::number(difficulty);
-    gameScreen = inStart->getInGame();
+ //   gameScreen = inStart->getInGame();
     int ii = 15;
     ball = new Ball(ii);
+
+    powerUps = power;
 
 }
 
