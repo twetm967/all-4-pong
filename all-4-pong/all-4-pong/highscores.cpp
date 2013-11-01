@@ -9,6 +9,24 @@
 HighScores HighScores::instance;
 
 
+// returns a copy of the username belonging to the player with <playerId>
+string HighScores::getPlayerName(int playerId) {
+    string playerName;
+
+    return playerName;
+}
+
+// returns a copy of the score belonging to the player with <playerId>
+int HighScores::getPlayerScore(int playerId) {
+    int playerScore;
+
+    return playerScore;
+}
+
+
+
+
+
 //returns the scores in decrementing order
 // largest -> smallest
 // to be used inside of positionGameScores
@@ -38,10 +56,10 @@ void HighScores::incScore(int index){
 
 }
 
-//displays the players score on his side of the board.
+/*//displays the players score on his side of the board.
 QString HighScores::getScore(int index){
 
-}
+}*/
 
 // prints the current high scores and related game state
 // out to the highscore offshore text file,
