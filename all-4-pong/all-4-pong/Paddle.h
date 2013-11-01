@@ -42,6 +42,7 @@ public:
 
     void Move();
 
+//    QRect getRectangle() {return rectangle;}
    // QPoint getSpot(){return spot;}
 
     void setMouse(QPoint);
