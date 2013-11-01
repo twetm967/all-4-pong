@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <QPoint>
+#include "World.h"
 
 //class Paddle;
 
@@ -42,18 +43,20 @@ class AI : public Player
         
     public:
 
-    AI():Player(){
+    AI(int diff):Player(){
         AIPoint = new QPoint(205,205);
         flop = true;
         iterator = 150;
+        difficulty = diff;//World::getInstance()->getDifficulty();
 
     }                            //takes (difficulty);
             AI(QPoint);
           QPoint* getHand();
 
-
+          void command();
             void change();
-
+            void follow();
+            void followRandom();
 
             ~AI(){}
 
