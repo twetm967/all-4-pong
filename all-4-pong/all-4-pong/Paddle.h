@@ -44,7 +44,7 @@ public:
    // QPoint getSpot(){return spot;}
 
     void setMouse(QPoint);
-    bool getHit(Ball*);
+    bool getHit();
 
     void setX(int in){
         if(in >= 0 && in <= 350)
