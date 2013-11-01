@@ -48,23 +48,37 @@ public:
 
     void Move();
 
+    QPoint getSpot(){return spot;}
+
     void setMouse(QPoint);
     bool getHit(Ball*);
     int getX(){
+        if(spot.x()>= 0 && spot.x() <= 350)
         return spot.x();
+        if(spot.x() < 0)
+            return 0;
+        if(spot.x() > 350)
+            return 350;
+
     }
 
     int getY(){
+        if(spot.y() >= 0 && spot.y() <=350)
         return spot.y();
+        if(spot.y() < 0)
+            return 0;
+        if(spot.y() > 350)
+            return 350;
     }
 
     void setX(int in){
         if(in > 0 && in < 350)
         spot.setX(in);
+
     }
 
     void setY(int y){
-        if(y > 0 && y < 420)
+        if(y > -15 && y < 450)
         spot.setY(y);
     }
 
@@ -77,7 +91,7 @@ public:
 
 
 
-    
+
     // prints the current paddle state out to offshore text file,
     // returning a boolean value indicating print success
     bool printPaddleInfo();
@@ -88,7 +102,7 @@ public:
     bool readPaddleInfo();
 
     //
-    
+
 };
 
 #endif // PADDLE_H

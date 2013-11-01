@@ -35,6 +35,8 @@ int i;
 public:
     explicit InGame(QWidget *parent = 0);
 
+
+
     void Animate();
 
     //takes the player, and the amount of health he has left.

@@ -18,21 +18,15 @@
 class Paddle : public Objects/*, public QRect*/ //because the class inherits
         //from Objects, it also inherits from QRect
 {
-    int* changer;
-    QMouseEvent* M;
     int playerId;
-    QPoint area;
     QPoint spot;
-    //Width and Height!! of the paddle in other words
-    //101 and 17
+
 public:
 
     //takes player index;
+  Paddle():Objects(){}
+  void setUp();
 
-    Paddle(int, QPoint);
-
-        Paddle(int);
-    Paddle() {}
     //****Getters and setters****/
   /*  int getPosition(){return position;}
     int getSideId(){return sideId;}
@@ -40,7 +34,9 @@ public:
    */// int getPlayerId(){return playerId;}
 
 
-    void setPlayerId(int inID){playerId = inID;}
+    void setPlayerId(int inID){playerId = inID;
+                               setUp();
+                              }
     //void  setPosition(int inPos){position = inPos;}
     //void  setLength(int inLength){ paddleLength = inLength;}
     //*******************************
@@ -48,16 +44,17 @@ public:
 
     void Move();
 
-    QPoint getSpot(){return spot;}
+   // QPoint getSpot(){return spot;}
 
     void setMouse(QPoint);
     bool getHit(Ball*);
-    int getX(){
-        if(spot.x()>= 0 && spot.x() <= 350)
-        return spot.x();
-        if(spot.x() < 0)
+
+    /*int getX(){
+        if(spot->x()>= 0 && spot->x() <= 350)
+        return spot->x();
+        if(spot->x() < 0)
             return 0;
-        if(spot.x() > 350)
+        if(spot->x() > 350)
             return 350;
 
     }
@@ -65,21 +62,31 @@ public:
     int getY(){
         if(spot.y() >= 0 && spot.y() <=350)
         return spot.y();
-        if(spot.y() < 0)
-            return 0;
-        if(spot.y() > 350)
-            return 350;
+
     }
-
+*/
     void setX(int in){
-        if(in > 0 && in < 350)
-        spot.setX(in);
-
+        if(in >= 0 && in <= 435)
+        point.setX(in);
+        else{
+        if(in < 0)
+            point.setX(0);
+        if(in > 435)
+           point.setX(435);
+       // spot.setX(in);
+}
     }
 
     void setY(int y){
-        if(y > -15 && y < 450)
-        spot.setY(y);
+        if(y >= 0 && y <= 350)
+        point.setY(y);
+        else{
+        if(y < 0)
+            point.setY(0);
+        if(y > 350)
+            point.setY((350));
+        }
+        // spot.setY(y);
     }
 
    // void mousePressEvent(QMouseEvent*);

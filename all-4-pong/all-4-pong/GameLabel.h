@@ -11,10 +11,12 @@ class GameLabel: public QLabel
 {
     QWidget *win;
     Objects *obj;
+    int i;
 
 public:
     explicit GameLabel(QWidget *parent, QString objType): QLabel(parent), win(parent) {
         this->initializeObj(objType);
+
     }
 
     explicit GameLabel(QWidget *parent): QLabel(parent) { }

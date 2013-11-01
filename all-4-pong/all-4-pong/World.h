@@ -26,6 +26,7 @@ class World
         int difficulty;
         InGame* gameScreen;
         Ball *ball;
+        QPoint worldMouse;
 
 
         World(){}              //takes nothing. It gets instantiated later.
@@ -36,6 +37,14 @@ class World
        static World& getInstance(){
 
            return instance;
+       }
+
+       QPoint getMouse(){
+           return worldMouse;
+       }
+
+       void setworldMouse(QPoint in){
+           worldMouse  = in;
        }
 
        void setUp(Start*);

@@ -7,25 +7,6 @@ World World::instance;//=NULL;
 //World::World(){}
 
 
-/*
-World* World::getInstance(){
-   // if (instance == NULL) {
-      //  instance = new World();
-    //}
-    return instance;
-}
-*/
-//sets up the world including wehre the users/AI are
-//how much health everyone has. sets scores to zero.
-//initiates all of everything.
-
-
-/*vector<Player*> players;
-        vector<Objects*> objects;
-        //Map* world = new Map();
-        int difficulty;
-        int gameMode;
-        static World *instance;*/
 
 
 void World::setUp(Start *inStart){

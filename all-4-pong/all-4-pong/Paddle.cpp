@@ -2,6 +2,7 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "Objects.h"
+#include "World.h"
 
 #include <QRect>
 #include <vector>
@@ -10,62 +11,55 @@
 
 #include "Paddle.h"
 
-Paddle::Paddle(int index, QPoint map):Objects() {
+void Paddle::setUp() {
 
    // setMouseTracking(true);
-   playerId = index;
-   area = map;
 
+   spot = World::getInstance().getMouse();
 
-
-int i = 0;
-    if(index == 0 || index == 2){
+    if(playerId == 0 || playerId == 2){
      //person is on the bottom or top change their x
 
         //default x position.
-        spot.setX(205);
+        point.setX(205);
         // if they're 0 put them on the bottom.
-    if(index == 0){
-        spot.setY(420);
+    if(playerId == 0){
+       point.setY(430);
         }else{                       //if they're 2 put them on top
-            if(index == 2){
-                spot.setY(10);
+    if(playerId == 2){
+        point.setY(10);
             }
+
         }
-
-    if(index == 1 || index == 3){
+}
+    if(playerId == 1 || playerId == 3){
      //person is on the left or right
-        spot.setY(205);
+      point.setY(205);
 
-        if(index == 1){
-        spot.setX(420);
-        }else{if(index == 3){
-            spot.setX(10);
+        if(playerId == 1){
+        point.setX(420);
+        }else{if(playerId == 3){
+            point.setX(10);
             }else{
                 //we broke
 
             }
         }
     }
- }
+
     else{
-    //index is something else. uh-oh
-qDebug() << "whoops this is " << playerId;
+    //playerId is something else. uh-oh
+qDebug() << " this is " << playerId;
     }
-    spot = this->topLeft();
-    this->setWidth(17);
-    this->setHeight(101);
+  //  point = this->topLeft();
+   // this->setWidth(17);
+   // this->setHeight(101);
 
 
 //changer = &i;
 }
 
 
-void Paddle::setMouse(QPoint in){
-
-    spot = in;
-
-}
 
         bool Paddle::getHit(Ball* ball)
         {
@@ -82,7 +76,10 @@ void Paddle::setMouse(QPoint in){
                   return false;
          }
 
-    /*    void MovableLabel::mousePressEvent(QMouseEvent *ev) {
+
+
+        /*
+      void MovableLabel::mousePressEvent(QMouseEvent *ev) {
             if(widg->CheckClick()){
                 mouseDragging = true;
                 offset = ev->pos(); // location where mouse was clicked within the label
@@ -93,20 +90,12 @@ void Paddle::setMouse(QPoint in){
 
             }
         } InGame* gameScreen = new InGame();
-*/
+      }
 
 
 
          //.cpp file
-
-
-
-
-
-/*
-
-
-           // qDebug() << QString::number(spot.x(), 10) << ", " << QString:number(spot.y(), 10);
+// qDebug() << QString::number(spot.x(), 10) << ", " << QString:number(spot.y(), 10);
            // qDebug() << QString::number(*changer, 10);
           //  qDebug() << QString::number(this->x, 10) << ", " << QString::number(this->y, 10);
 
@@ -151,15 +140,17 @@ void Paddle::setMouse(QPoint in){
     }
 
     void Paddle::updatePosition() {
-        //Need move logic here.  Maybe move paddle to where mouse is, could still be move up if up key is pressed, etc. ~ PJ
-        qDebug()<< "X,Y" << spot.x()<< ","<< spot.y() << ", "<< playerId;
 
+         spot = World::getInstance().getMouse();
+        //Need move logic here.  Maybe move paddle to where mouse is, could still be move up if up key is pressed, etc. ~ PJ
+        qDebug()<< "X,Y" << point.x()<< ","<< point.y() << ", "<< playerId;
+        qDebug()<< "X,Y" << spot.x()<< ","<< spot.y() << ", "<< playerId;
 
 
 //person is on the bottom or top change their x
         if(playerId == 0 || playerId == 2){
             if(spot.x() >= 0 && spot.x() <= 350){
-                setX(spot.x());
+                this->setX(spot.x());
 
              }
 
@@ -167,16 +158,14 @@ void Paddle::setMouse(QPoint in){
 
         if(playerId == 1 || playerId == 3){
             if(spot.y() >= 0 && spot.y() <= 430){
-                setY(spot.y());
+                this->setY(spot.y());
 
-         //person is on the left or right
-      //    spot.setY(spot.y());
         }
 
 
             }else{
-            //index is something else. uh-oh
-                qDebug() << "Woops the index is " << playerId;}
+            //playerId is something else. uh-oh
+            qDebug() << "the playerId is " << playerId;}
 
 
 
