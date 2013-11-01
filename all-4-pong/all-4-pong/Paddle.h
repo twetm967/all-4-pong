@@ -11,20 +11,20 @@
 #include "Ball.h"
 #include "Objects.h"
 
-//class Objects;
+//class Object;
 //class Ball;
 
 
-class Paddle : public Objects/*, public QRect*/ //because the class inherits
-        //from Objects, it also inherits from QRect
+class Paddle : public Object/*, public QRect*/ //because the class inherits
+        //from Object, it also inherits from QRect
 {
     int playerId;
     QPoint spot;
-
+    int Length;
 public:
 
     //takes player index;
-  Paddle():Objects(){}
+  Paddle():Object(){}
   void setUp();
 
     //****Getters and setters****/
@@ -35,6 +35,7 @@ public:
 
 
     void setPlayerId(int inID){playerId = inID;
+                               Length = 50;
                                setUp();
                               }
     //void  setPosition(int inPos){position = inPos;}
@@ -66,13 +67,13 @@ public:
     }
 */
     void setX(int in){
-        if(in >= 0 && in <= 435)
+        if(in >= 0 && in <= 350)
         point.setX(in);
         else{
         if(in < 0)
             point.setX(0);
-        if(in > 435)
-           point.setX(435);
+        if(in > 350)
+           point.setX(350);
        // spot.setX(in);
 }
     }
@@ -83,7 +84,7 @@ public:
         else{
         if(y < 0)
             point.setY(0);
-        if(y > 350)
+        if(y > 345)
             point.setY((350));
         }
         // spot.setY(y);
@@ -92,7 +93,7 @@ public:
    // void mousePressEvent(QMouseEvent*);
 
 //QMouseEvent*
-    void mouseMoveEvent(QMouseEvent*);
+  //  void mouseMoveEvent(QMouseEvent*);
 
     void updatePosition();
 

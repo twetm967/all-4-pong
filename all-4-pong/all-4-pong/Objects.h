@@ -9,7 +9,7 @@
 
 
 //This class will be the parent of all classes dealing with objects that can be hit
-class Objects: public QRect {
+class Object: public QRect {
 
 
 
@@ -27,15 +27,15 @@ protected:
 
 public:
 
-    Objects(QPoint);
+    Object(QPoint);
 
-   //Objects(int,int,int,int);
+   //Object(int,int,int,int);
 
-  // Objects(int);
+  // Object(int);
 
-    Objects();
+    Object();
 
-    ~Objects();
+    ~Object();
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}

@@ -3,42 +3,42 @@
 
 
 
-//initiates the HighScores thingy.
+//initiates the HighScore thingy.
 //Creates a new file on each computer
 //that plays
-HighScores HighScores::instance;
+HighScore HighScore::instance;
 
 
 //returns the scores in decrementing order
 // largest -> smallest
 // to be used inside of positionGameScores
-vector<int> HighScores::getGameScores(){
+vector<int> HighScore::getGameScores(){
 
 }
 
 //Positions the game scores inside of the highScores vector
-void HighScores::positionGameScores(){
+void HighScore::positionGameScores(){
 
 }
 
 //Creates the QWidget to be displayed later.
-void HighScores::makeLeaderBoard(){
+void HighScore::makeLeaderBoard(){
 
 }
 
 //And by later i mean here!!!
 // displays the QWidget of the Leaderboards.
-ofstream HighScores::getLeaderBoard(){
+ofstream HighScore::getLeaderBoard(){
 
 }
 
 //increases the score of the indexed paddle.
 // so the highscores class calls incScore(where it went out);
-void HighScores::incScore(int index){
+void HighScore::incScore(int index){
 
 }
 
 //displays the players score on his side of the board.
-QString HighScores::getScore(int index){
+QString HighScore::getScore(int index){
 
 }

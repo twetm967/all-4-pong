@@ -125,8 +125,11 @@ void InGame::HealthDamage(int index, int health){
 void InGame::on_btnPause_clicked()
 {
     if(Timer::getInstance()->getTimer()->isActive()){
-   Timer::getInstance()->getTimer()->stop();}else{
+   Timer::getInstance()->getTimer()->stop();
+   ui->btnPause->setText("Play");
+    }else{
         Timer::getInstance()->getTimer()->start();
+         ui->btnPause->setText("Pause");
     }
 }
 
@@ -151,6 +154,10 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
 
     World::getInstance().setworldMouse(getGameCourt(ev->pos()));
 
+}
+//for testing purposes
+void InGame::mousePressEvent(QMouseEvent *ev){
+    qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 }
 
 /*//every clock tick animates the game.

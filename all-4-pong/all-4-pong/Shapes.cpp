@@ -36,4 +36,4 @@
     }
 
 
-    Shapes::Shapes():Objects() { }
+    Shapes::Shapes():Object() { }

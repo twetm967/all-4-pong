@@ -3,21 +3,21 @@
 
 
 
-//initiates the HighScores thingy.
+//initiates the HighScore thingy.
 //Creates a new file on each computer
 //that plays
-HighScores HighScores::instance;
+HighScore HighScore::instance;
 
 
 // returns a copy of the username belonging to the player with <playerId>
-string HighScores::getPlayerName(int playerId) {
+string HighScore::getPlayerName(int playerId) {
     string playerName;
 
     return playerName;
 }
 
 // returns a copy of the score belonging to the player with <playerId>
-int HighScores::getPlayerScore(int playerId) {
+int HighScore::getPlayerScore(int playerId) {
     int playerScore;
 
     return playerScore;
@@ -30,41 +30,41 @@ int HighScores::getPlayerScore(int playerId) {
 //returns the scores in decrementing order
 // largest -> smallest
 // to be used inside of positionGameScores
-vector<int> HighScores::getGameScores(){
+vector<int> HighScore::getGameScores(){
 
 }
 
 //Positions the game scores inside of the highScores vector
-void HighScores::positionGameScores(){
+void HighScore::positionGameScores(){
 
 }
 
 //Creates the QWidget to be displayed later.
-void HighScores::makeLeaderBoard(){
+void HighScore::makeLeaderBoard(){
 
 }
 
 //And by later i mean here!!!
 // displays the QWidget of the Leaderboards.
-ofstream HighScores::getLeaderBoard(){
+ofstream HighScore::getLeaderBoard(){
 
 }
 
 //increases the score of the indexed paddle.
 // so the highscores class calls incScore(where it went out);
-void HighScores::incScore(int index){
+void HighScore::incScore(int index){
 
 }
 
 /*//displays the players score on his side of the board.
-QString HighScores::getScore(int index){
+QString HighScore::getScore(int index){
 
 }*/
 
 // prints the current high scores and related game state
 // out to the highscore offshore text file,
 // returning a boolean value indicating print success
-bool HighScores::printHSInfo(QString data) {
+bool HighScore::printHSInfo(QString data) {
     bool didPrint = false;
 
     // establish connection with text file
@@ -83,7 +83,7 @@ bool HighScores::printHSInfo(QString data) {
 // from the highscore offshore text file,
 // returning a boolean value indicating read success;
 // if read succeeds, stores high scores and related game state in instance variables
-bool HighScores::readHSInfo() {
+bool HighScore::readHSInfo() {
 
     bool didRead = false;
 

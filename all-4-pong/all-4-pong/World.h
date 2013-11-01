@@ -21,7 +21,7 @@ class World
 {
     private:
         vector<Player*> GamePlayers;
-        vector<Objects*> objects;
+        vector<Object*> Objects;
        // Map* field =
         int difficulty;
         InGame* gameScreen;
@@ -40,17 +40,19 @@ class World
        }
 
        QPoint getMouse(){
+
            return worldMouse;
        }
 
        void setworldMouse(QPoint in){
+
            worldMouse  = in;
        }
 
        void setUp(Start*);
 
-       // adds <obj> to objects in world
-       void add(Objects *obj) {objects.push_back(obj);}
+       // adds <obj> to Object in world
+       void add(Object *obj) {Objects.push_back(obj);}
 
 
     
@@ -60,7 +62,7 @@ class World
         int getDifficulty() {return difficulty;}
 
         vector<Player*> getGamePlayers() {return GamePlayers;}
-        vector<Objects*> getObjects() {return objects;}
+        vector<Object*> getObject() {return Objects;}
 
 
 

@@ -23,8 +23,8 @@ class paddle;
 class Player;
 class Shapes;
 
-//class Ball: public Objects
-class Ball : public Objects
+//class Ball: public Object
+class Ball : public Object
 {
     private:
         //needs to inherit

@@ -7,7 +7,7 @@
 
 class PowerUp;
 
-class Shapes: public Objects
+class Shapes: public Object
 {
     private:
         int x;

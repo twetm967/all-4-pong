@@ -5,12 +5,12 @@
 #include <QString>
 #include <Objects.h>
 
-class Objects;
+class Object;
 
 class GameLabel: public QLabel
 {
     QWidget *win;
-    Objects *obj;
+    Object *obj;
     int i;
 
 public:
@@ -23,7 +23,7 @@ public:
 
     void setWin(QWidget *parent) {win = parent;}
     void initializeObj(QString objType);
-    Objects* getObj() {return obj;}
+    Object* getObj() {return obj;}
 
     void updatePosition();
 

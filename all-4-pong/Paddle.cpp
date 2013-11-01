@@ -10,7 +10,7 @@
 
 #include "Paddle.h"
 
-Paddle::Paddle(int index, QPoint map):Objects() {
+Paddle::Paddle(int index, QPoint map):Object() {
 
    // setMouseTracking(true);
    playerId = index;

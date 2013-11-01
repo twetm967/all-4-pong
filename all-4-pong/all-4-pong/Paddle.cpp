@@ -15,7 +15,8 @@ void Paddle::setUp() {
 
    // setMouseTracking(true);
 
-   spot = World::getInstance().getMouse();
+   //spot = World::getInstance().getMouse();
+
 
     if(playerId == 0 || playerId == 2){
      //person is on the bottom or top change their x
@@ -24,7 +25,7 @@ void Paddle::setUp() {
         point.setX(205);
         // if they're 0 put them on the bottom.
     if(playerId == 0){
-       point.setY(430);
+       point.setY(420);
         }else{                       //if they're 2 put them on top
     if(playerId == 2){
         point.setY(10);
@@ -49,7 +50,7 @@ void Paddle::setUp() {
 
     else{
     //playerId is something else. uh-oh
-qDebug() << " this is " << playerId;
+// qDebug() << " this is " << playerId;
     }
   //  point = this->topLeft();
    // this->setWidth(17);
@@ -142,30 +143,31 @@ qDebug() << " this is " << playerId;
     void Paddle::updatePosition() {
 
          spot = World::getInstance().getMouse();
+         spot.setX(spot.x() - 50);
+         spot.setY(spot.y() - 50);
         //Need move logic here.  Maybe move paddle to where mouse is, could still be move up if up key is pressed, etc. ~ PJ
-        qDebug()<< "X,Y" << point.x()<< ","<< point.y() << ", "<< playerId;
-        qDebug()<< "X,Y" << spot.x()<< ","<< spot.y() << ", "<< playerId;
 
 
 //person is on the bottom or top change their x
         if(playerId == 0 || playerId == 2){
-            if(spot.x() >= 0 && spot.x() <= 350){
+           // if(spot.x() >= 0 && spot.x() <= 350){
                 this->setX(spot.x());
 
-             }
+     //        }
 
         }
 
         if(playerId == 1 || playerId == 3){
-            if(spot.y() >= 0 && spot.y() <= 430){
+   //         if(spot.y() >= 0 && spot.y() <= 350){
                 this->setY(spot.y());
 
-        }
+   //     }
 
 
             }else{
             //playerId is something else. uh-oh
-            qDebug() << "the playerId is " << playerId;}
+            // qDebug() << "the playerId is " << playerId;
+        }
 
 
 

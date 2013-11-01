@@ -21,7 +21,7 @@ World* World::getInstance(){
 
 
 /*vector<Player*> players;
-        vector<Objects*> objects;
+        vector<Object*> Object;
         //Map* world = new Map();
         int difficulty;
         int gameMode;

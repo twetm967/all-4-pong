@@ -139,6 +139,7 @@ void InGame::on_btnCheat_clicked()
     i--;
 }
 
+
 QPoint InGame::getGameCourt(QPoint in){
     QPoint out = ui->gameCourt->mapFromParent(in);
     return out;

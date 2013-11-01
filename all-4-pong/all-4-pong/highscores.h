@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class HighScores
+class HighScore
 {
 
 private:
@@ -24,17 +24,17 @@ private:
 
     ofstream highScoreFile; // File;
 
-    HighScores(){}
+    HighScore(){}
 
-    static HighScores instance;
+    static HighScore instance;
 
 public:
 
-    static HighScores& getInstance(){
+    static HighScore& getInstance(){
              return instance;
      }
 
-    ~HighScores(){}
+    ~HighScore(){}
 
     // returns a copy of the username belonging to the player with <playerId>
     string getPlayerName(int playerId);

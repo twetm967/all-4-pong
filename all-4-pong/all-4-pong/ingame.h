@@ -49,6 +49,7 @@ public:
 private slots:
     void on_btnPause_clicked();
     void mouseMoveEvent(QMouseEvent*);
+    void mousePressEvent(QMouseEvent *);
 
     void timerHit();
 

@@ -1,4 +1,4 @@
-#ifndef PADDLE_H
+/*#ifndef PADDLE_H
 #define PADDLE_H
 
 
@@ -11,12 +11,12 @@
 #include "Ball.h"
 #include "Objects.h"
 
-//class Objects;
+//class Object;
 //class Ball;
+yOU ARE IN THE WRONG ALL FOR PONG EDIT THE OTHER ONE!!!!!!
 
-
-class Paddle : public Objects/*, public QRect*/ //because the class inherits
-        //from Objects, it also inherits from QRect
+class Paddle : public Object/*, public QRect*/ //because the class inherits
+        //from Object, it also inherits from QRect
 {
     int* changer;
     QMouseEvent* M;
@@ -61,7 +61,7 @@ public:
             return 350;
 
     }
-
+/*
     int getY(){
         if(spot.y() >= 0 && spot.y() <=350)
         return spot.y();
@@ -104,5 +104,5 @@ public:
     //
 
 };
-
+*/
 #endif // PADDLE_H

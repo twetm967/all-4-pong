@@ -9,9 +9,9 @@ using namespace std;
 //class Ball;
 //#include "Ball.h"
 
-int Objects::nextObjId = 0;
+int Object::nextObjId = 0;
 
-Objects::Objects(QPoint isPoint){
+Object::Object(QPoint isPoint){
    // hit = isHit;
    // WandH = isWandH;
     point = isPoint;
@@ -21,18 +21,18 @@ Objects::Objects(QPoint isPoint){
 }
 
 
-Objects::Objects(){
+Object::Object(){
 objId = ++nextObjId;
 World::getInstance().add(this);
 }
 
 //inline
-    Objects::~Objects() { }
+    Object::~Object() { }
 
-bool Objects::getHit(){
+bool Object::getHit(){
 
 }
 
-void Objects::updatePosition(){}
-bool Objects::getBound(){}
+void Object::updatePosition(){}
+bool Object::getBound(){}
 
