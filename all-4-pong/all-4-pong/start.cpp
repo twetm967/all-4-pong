@@ -62,7 +62,7 @@ void Start::clientConnected()
 // ?Question is do we want the host to have to connect? ?
 //ifso we have to change this.!!
 void Start::enoughPlayers(){
-    if (connectCount == ui->players_comboBox->currentIndex()){
+    if (connectCount == ui->players_comboBox->currentIndex()+1){
         ui->start_Btn->setEnabled(true);
     }else{
         ui->start_Btn->setEnabled(false);
