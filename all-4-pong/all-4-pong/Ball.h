@@ -66,6 +66,10 @@ class Ball : public Object
 // then you could have a function that returns a direction? Or would a direction
 // just be a fraction? because y = mx+b? would that even work?
 
+        void updateSpeedX();
+        void updateSpeedY();
+        void invertSpeedX();
+        void invertSpeedY();
 
         // prints the current ball state out to offshore text file,
         // returning a boolean value indicating print success

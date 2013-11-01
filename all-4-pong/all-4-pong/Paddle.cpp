@@ -31,10 +31,10 @@ void Paddle::setUp() {
 
         }
     //they are on top or bottom
-    this->setTopLeft(point);
+    rectangle.setTopLeft(point);
 
-   this->setWidth(100);
-   this->setHeight(17);
+   rectangle.setWidth(100);
+   rectangle.setHeight(17);
 
 
 }
@@ -48,9 +48,9 @@ void Paddle::setUp() {
             point.setX(10);
             }
         }
-       this->setTopLeft(point);
-       this->setWidth(17);
-       this->setHeight(100);
+       rectangle.setTopLeft(point);
+       rectangle.setWidth(17);
+       rectangle.setHeight(100);
     }
 }
 
@@ -60,10 +60,10 @@ void Paddle::setUp() {
         {
 
              //Checks the balls space to the objects space.
-            if(this->bottomRight().x() >= ball->getX() &&
-                    this->topLeft().x()     <= ball->getX() &&
-                    this->bottomRight().y() >= ball->getY() &&
-                    this->topLeft().y()     <= ball->getY()){
+            if(rectangle.bottomRight().x() >= ball->getX() &&
+                    rectangle.topLeft().x()     <= ball->getX() &&
+                    rectangle.bottomRight().y() >= ball->getY() &&
+                    rectangle.topLeft().y()     <= ball->getY()){
               //the ball hit do stuff
 
                  return true;
