@@ -30,7 +30,7 @@ InGame::InGame(QWidget *parent) :
 */
     setMouseTracking(true);
 ui->gameCourt->setMouseTracking(true);
-    Players = World::getInstance()->getGamePlayers();
+   // Players = World::getInstance()->getGamePlayers();
 
 
 
@@ -100,10 +100,7 @@ ui->gameCourt->setMouseTracking(true);
 
 InGame::~InGame()
 {
-    for(int i = 0; i < Players.size(); i++){
-        delete Players.at(i);
-        Players.erase(Players.begin() + i);
-    }
+
 
 delete ui;
 }
@@ -162,23 +159,7 @@ void InGame::mousePressEvent(QMouseEvent *ev){
    // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 }
 
-/*//every clock tick animates the game.
-void InGame::Animate(){
 
-   // for(int i = 0; i < 4; i++){
-     Paddle* pad = Players.at(0)->getPaddle();
-       int x = pad->getX();
-       int y = pad->getY();
-
-  //     qDebug() << x << ", " << y;
-//this will eventually iterate through an array.
-       ui->lblPaddleBottom->move(x,420);
-       ui->lblPaddleLeft->move(10,y);
-       ui->lblPaddleTop->move(x,10);
-       ui->lblPaddleRight->move(420,y);
-
-
-}*/
 
 void InGame::timerHit() {
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
