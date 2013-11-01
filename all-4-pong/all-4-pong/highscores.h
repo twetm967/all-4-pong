@@ -9,33 +9,21 @@
 
 using namespace std;
 
-/*
- class HighScores
- {
- private:
- int score;
- string name;
- vector<
-
- public:
- Highscore(string initName, int, init Score){
- }
-
- };
- */
-
-
 class HighScores
 {
+
 private:
- /*    vector<int> highScores;
 
-    ofstream File; // File;
+    int firstHighestScore;
+    int secondHighestScore;
+    int thirdHighestScore;
 
-    vector<int> gameScores;
+    string firstHSPlayerName;
+    string secondHSPlayerName;
+    string thirdHSPlayerName;
 
-    QWidget* LeaderBoard;
-*/
+    ofstream highScoreFile; // File;
+
     HighScores(){}
 
     static HighScores instance;
@@ -76,14 +64,14 @@ public:
     // prints the current high scores and related game state
     // out to the highscore offshore text file,
     // returning a boolean value indicating print success
-    bool HighScores::printHSInfo(QString data);
+    bool printHSInfo(QString data);
 
 
     // reads the current high scores and related game state
     // from the highscore offshore text file,
     // returning a boolean value indicating read success;
     // if read succeeds, stores high scores and related game state in instance variables
-    bool HighScores::readHSInfo();
+    bool readHSInfo();
 
 };
 
