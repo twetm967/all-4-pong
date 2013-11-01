@@ -31,5 +31,5 @@ void GameModel::CreateWorld(){
 // updates the current game world
 void GameModel::UpdateWorld() {
     World* world = World::getInstance();
-    // Call world->UpdateWorld();
+    world->UpdateWorld();
 }
