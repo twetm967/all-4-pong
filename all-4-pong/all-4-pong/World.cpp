@@ -43,7 +43,10 @@ void World::setUp(int Players,int diff,bool power){
 
 
 
+    // update all elements in this game world
+    void World::UpdateWorld() {
 
+    }
 
     // prints the current world state out to offshore text file,
     // returning a boolean value indicating print success
