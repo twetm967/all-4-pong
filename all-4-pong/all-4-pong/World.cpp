@@ -49,7 +49,7 @@ void World::setUp(int Players,int diff,bool power){
     }
 
     // reset all elements in this game world
-    void ResetWorld() {
+    void World::ResetWorld() {
 
     }
 
