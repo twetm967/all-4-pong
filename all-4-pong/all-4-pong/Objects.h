@@ -38,7 +38,8 @@ public:
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}
-    virtual void setPlayerId(int) { }
+    virtual void setPlayerId(int) {}
+    virtual QString getType() {return "";}
 
     bool getHit();
     QPoint getQPoint(){return point;}

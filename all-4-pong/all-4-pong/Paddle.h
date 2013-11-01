@@ -21,9 +21,7 @@ class Paddle : public Object
 {
     int playerId;
     Player* Hand;
-    QPoint* spot;
     int length;
-    QRect rectangle;
 public:
 
     //takes player index;
@@ -34,7 +32,7 @@ public:
         playerId = inID;
         Hand = World::getInstance()->getGamePlayers().at(playerId);
         length = 50;
-        setUp();
+        this->setUp();
     }
     //*******************************
 
@@ -46,30 +44,9 @@ public:
     void setMouse(QPoint);
     bool getHit();
 
-    void setX(int in){
-        if(in >= 0 && in <= 350)
-        point.setX(in);
-        else{
-        if(in < 0)
-            point.setX(0);
-        if(in > 350)
-           point.setX(350);
-       // spot.setX(in);
-}
-    }
-
-    void setY(int y){
-        if(y >= 0 && y <= 350)
-        point.setY(y);
-        else{
-        if(y < 0)
-            point.setY(0);
-        if(y > 345)
-            point.setY((350));
-        }
-        // spot.setY(y);
-    }
-
+    void setX(int newX);
+    void setY(int newY);
+    QString getType() {return "paddle";}
 
     void updatePosition();
 

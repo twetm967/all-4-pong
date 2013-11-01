@@ -48,6 +48,7 @@ class Ball : public Object
         int getSpeed(){return speed;}
 //        double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
         int getPlayerId(){return playerId;}
+        QString getType() {return "ball";}
 
     
         //setters -- need additional logic to fully implement

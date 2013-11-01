@@ -34,7 +34,8 @@ void Paddle::setUp() {
 }
 
 
-//Planning on getting rid of this unless you need it.  You will get this information from the ball.
+//Planning on getting rid of this unless you need it for the AI.
+//If you do, give me a method to call in the balls logic.
         bool Paddle::getHit() {
             return false;
         }
@@ -77,20 +78,40 @@ void Paddle::setUp() {
     //gets the mouse position (TO be changed to player's mouse position)
     // then moves them accordingly.
     void Paddle::updatePosition() {
-
-         spot = Hand->getHand();
-
-
-//person is on the bottom or top change their x
-        if(playerId == 0 || playerId == 2){
-
-                this->setX(spot->x()-length);
+        switch (playerId) { //person is on the bottom or top change their x, else change their y
+            case 0:
+                this->setX(Hand->getHand()->x()-length);
+                break;
+            case 1:
+                this->setY(Hand->getHand()->y()-length);
+                break;
+            case 2:
+                this->setX(Hand->getHand()->x()-length);
+                break;
+            case 3:
+                this->setY(Hand->getHand()->y()-length);
+                break;
         }
-
-        if(playerId == 1 || playerId == 3){
-
-                this->setY(spot->y()-length);
-
-            }
     }
 
+
+    void Paddle::setY(int newY) {
+        if (playerId % 2 == 0)
+            return;
+        point.setY(newY);
+        if(point.y() < 0)
+            point.setY(0);
+        if(point.y() > 400 - length)
+            point.setY(400 - length);
+    }
+
+
+    void Paddle::setX(int newX){
+        if (playerId % 2 == 1)
+            return;
+        point.setX(newX);
+        if(point.x() < 0)
+            point.setX(0);
+        if(point.x() > 400 - length)
+           point.setX(400 - length);
+    }
