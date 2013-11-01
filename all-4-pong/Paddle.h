@@ -1,4 +1,4 @@
-#ifndef PADDLE_H
+/*#ifndef PADDLE_H
 #define PADDLE_H
 
 
@@ -11,12 +11,12 @@
 #include "Ball.h"
 #include "Objects.h"
 
-//class Objects;
+//class Object;
 //class Ball;
+yOU ARE IN THE WRONG ALL FOR PONG EDIT THE OTHER ONE!!!!!!
 
-
-class Paddle : public Objects/*, public QRect*/ //because the class inherits
-        //from Objects, it also inherits from QRect
+class Paddle : public Object/*, public QRect*/ //because the class inherits
+        //from Object, it also inherits from QRect
 {
     int* changer;
     QMouseEvent* M;
@@ -48,23 +48,37 @@ public:
 
     void Move();
 
+    QPoint getSpot(){return spot;}
+
     void setMouse(QPoint);
     bool getHit(Ball*);
     int getX(){
+        if(spot.x()>= 0 && spot.x() <= 350)
         return spot.x();
-    }
+        if(spot.x() < 0)
+            return 0;
+        if(spot.x() > 350)
+            return 350;
 
+    }
+/*
     int getY(){
+        if(spot.y() >= 0 && spot.y() <=350)
         return spot.y();
+        if(spot.y() < 0)
+            return 0;
+        if(spot.y() > 350)
+            return 350;
     }
 
     void setX(int in){
         if(in > 0 && in < 350)
         spot.setX(in);
+
     }
 
     void setY(int y){
-        if(y > 0 && y < 420)
+        if(y > -15 && y < 450)
         spot.setY(y);
     }
 
@@ -77,7 +91,7 @@ public:
 
 
 
-    
+
     // prints the current paddle state out to offshore text file,
     // returning a boolean value indicating print success
     bool printPaddleInfo();
@@ -88,7 +102,7 @@ public:
     bool readPaddleInfo();
 
     //
-    
-};
 
+};
+*/
 #endif // PADDLE_H

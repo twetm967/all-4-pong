@@ -3,31 +3,30 @@
 
 
 #include <vector>
-#include "Paddle.h"
+#include <QPoint>
 
 //class Paddle;
 
-
+//This class looks sparse right now, going to contain things like a mouse pointer
+// ai brain
+// and lots of networking.
 class Player
 {
 protected:
-        Paddle* pad;
         int Score;
         int Health;
+        QPoint* hand;
         int ID;
-
         static int nextID;
     public:
         Player();
-        Player(QPoint);
         ~Player();
+      virtual QPoint* getHand();
     
         void point();
         void damage();
     
         void Win();
-
-        Paddle* getPaddle(){return pad;}
         
 };//player class
 
@@ -37,11 +36,25 @@ class AI : public Player
 {
     private:
     int difficulty;
+    int iterator;
+    QPoint* AIPoint;
+    bool flop;
         
     public:
 
-            AI(){}                            //takes (difficulty);
+    AI():Player(){
+        AIPoint = new QPoint(205,205);
+        flop = true;
+        iterator = 150;
+
+    }                            //takes (difficulty);
             AI(QPoint);
+          QPoint* getHand();
+
+
+            void change();
+
+
             ~AI(){}
 
 };
@@ -52,9 +65,12 @@ class User : public Player
         
 
     public:
-            User(){}
+    User():Player(){
+
+            }
             User(QPoint);
             ~User(){}
+           QPoint* getHand();
 
 };
 

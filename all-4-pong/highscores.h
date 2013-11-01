@@ -10,7 +10,7 @@
 using namespace std;
 
 /*
- class HighScores
+ class HighScore
  {
  private:
  int score;
@@ -25,7 +25,7 @@ using namespace std;
  */
 
 
-class HighScores
+class HighScore
 {
 private:
  /*    vector<int> highScores;
@@ -36,17 +36,17 @@ private:
 
     QWidget* LeaderBoard;
 */
-    HighScores(){}
+    HighScore(){}
 
-    static HighScores instance;
+    static HighScore instance;
 
 public:
 
-    static HighScores& getInstance(){
+    static HighScore& getInstance(){
              return instance;
      }
 
-    ~HighScores(){}
+    ~HighScore(){}
 
     //returns the scores from a game in decrimenting order
     //largest -> smallest

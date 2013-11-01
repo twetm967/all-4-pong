@@ -24,24 +24,16 @@ InGame::InGame(QWidget *parent) :
     ui->setupUi(this);
 
     //Timer============================
-    timer = new QTimer(this);
+   /* timer = new QTimer(this);
     timer->setInterval(75);
     connect(timer, &QTimer::timeout,this, & InGame::Animate);
-
+*/
     setMouseTracking(true);
 ui->gameCourt->setMouseTracking(true);
-    Players = World::getInstance().getGamePlayers();
+    Players = World::getInstance()->getGamePlayers();
 
 
-    //This is kind fo ridiculous looking but it adds all of the
-    //health buttons into a vector taht way they are accessible by index.
-    // this is how it works
-    // 0 - 6 is player 0 ( bottom)
-    // 7 - 13 is player 1 (left)
-    // 14 - 20 is player 2 (top)
-    // 21 - 27 is player 3 (right)
-    //I'm thinking it would be Index * 7 == players spot. then you can
-    // do an iterator off of that.
+
 
     //Player 0
     Health.push_back(ui->lblLife1PB);
@@ -82,7 +74,6 @@ ui->gameCourt->setMouseTracking(true);
 
     //for testing
     i = 6;
-    timer->start();
 
     //Link Game Model to GUI
 
@@ -99,9 +90,9 @@ ui->gameCourt->setMouseTracking(true);
     //Start the Timer
     Timer::getInstance()->getTimer()->setInterval(100);
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
-    connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
+   // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
 
-    Timer::getInstance()->getTimer()->start();
+
 
 }
 
@@ -127,15 +118,19 @@ void InGame::HealthDamage(int index, int health){
 }else {
         qDebug() << "No more death possible";
     }
- //then we would have to figure out how to actually change the label color.
-    // but this should access the right label.
+
 }
 
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
-
+    if(Timer::getInstance()->getTimer()->isActive()){
    Timer::getInstance()->getTimer()->stop();
+   ui->btnPause->setText("Play");
+    }else{
+        Timer::getInstance()->getTimer()->start();
+         ui->btnPause->setText("Pause");
+    }
 }
 
 
@@ -151,23 +146,23 @@ void InGame::on_btnCheat_clicked()
 
 
 QPoint InGame::getGameCourt(QPoint in){
-    QPoint out = ui->gameCourt->mapFromParent(in);
+    QPoint out;
+    out = ui->gameCourt->mapFromParent(in);
+
     return out;
 }
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
-  // vector<children> Childs = ui->gameCourt->children();
+    QPoint here = getGameCourt((ev->pos()));
+    World::getInstance()->setworldMouse(here);
 
-
-    Paddle* pad = Players.at(0)->getPaddle();
-    pad->setMouse(getGameCourt(ev->pos()));
- // pad->Move(getGameCourt(ev->pos()));
-
- // pad->setX(getGameCourt(ev->pos()).x());
-  //pad->setY(420);
+}
+//for testing purposes
+void InGame::mousePressEvent(QMouseEvent *ev){
+   // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 }
 
-//every clock tick animates the game.
+/*//every clock tick animates the game.
 void InGame::Animate(){
 
    // for(int i = 0; i < 4; i++){
@@ -181,28 +176,9 @@ void InGame::Animate(){
        ui->lblPaddleLeft->move(10,y);
        ui->lblPaddleTop->move(x,10);
        ui->lblPaddleRight->move(420,y);
-//}
-/*
-    for(int i = 0; i < 4; i++){
-    switch(i){
-    case 0:
 
-        ui->lblPaddleBottom->move(Players.at(i)->getPaddle()->getSpot());
-        break;
-    case 1:
-        ui->lblPaddleLeft->move( Players.at(i)->getPaddle()->getSpot());
-        break;
-    case 2:
-        ui->lblPaddleTop->move( Players.at(i)->getPaddle()->getSpot());
-        break;
-    case 3:
-        ui->lblPaddleRight->move( Players.at(i)->getPaddle()->getSpot());
-        break;
-    }
+
 }*/
-    //}
-
-}
 
 void InGame::timerHit() {
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {

@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <vector>
 #include <QString>
+#include <QWidget>
 
 #include "start.h"
 #include "Player.h"
@@ -21,27 +22,42 @@ class World
 {
     private:
         vector<Player*> GamePlayers;
-        vector<Objects*> objects;
-       // Map* field =
+        vector<Object*> Objects;
+        bool powerUps;
         int difficulty;
         InGame* gameScreen;
         Ball *ball;
+        QPoint* worldMouse;
 
 
         World(){}              //takes nothing. It gets instantiated later.
-        static World instance;
+        static World* instance;
 
 
     public:
-       static World& getInstance(){
-
+       static World* getInstance(){
+           if(instance == NULL){
+               instance = new World;
+           }
            return instance;
        }
 
-       void setUp(Start*);
+       QPoint* getMouse(){
 
-       // adds <obj> to objects in world
-       void add(Objects *obj) {objects.push_back(obj);}
+          return worldMouse;
+
+
+       }
+
+       void setworldMouse(QPoint in){
+            worldMouse->setX(in.x());
+            worldMouse->setY(in.y());
+       }
+
+       void setUp(int, int, bool);
+
+       // adds <obj> to Object in world
+       void add(Object *obj) {Objects.push_back(obj);}
 
 
     
@@ -51,7 +67,7 @@ class World
         int getDifficulty() {return difficulty;}
 
         vector<Player*> getGamePlayers() {return GamePlayers;}
-        vector<Objects*> getObjects() {return objects;}
+        vector<Object*> getObject() {return Objects;}
 
 
 

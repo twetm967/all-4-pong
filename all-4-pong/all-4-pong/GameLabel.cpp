@@ -12,10 +12,11 @@ void GameLabel::initializeObj(QString objType) {
     else if(objType =="Shapes")
         obj = new Shapes();
     else
-        obj = new Objects();
+        obj = new Object();
 }
 
 void GameLabel::updatePosition() {
     obj->updatePosition();
     this->move(obj->getQPoint().x(),obj->getQPoint().y());
+
 }

@@ -21,7 +21,7 @@ class World
 {
     private:
         vector<Player*> GamePlayers;
-        vector<Objects*> objects;
+        vector<Object*> Object;
        // Map* field =
         int difficulty;
         InGame* gameScreen;
@@ -40,8 +40,8 @@ class World
 
        void setUp(Start*);
 
-       // adds <obj> to objects in world
-       void add(Objects *obj) {objects.push_back(obj);}
+       // adds <obj> to Object in world
+       void add(Object *obj) {Object.push_back(obj);}
 
 
     
@@ -51,7 +51,7 @@ class World
         int getDifficulty() {return difficulty;}
 
         vector<Player*> getGamePlayers() {return GamePlayers;}
-        vector<Objects*> getObjects() {return objects;}
+        vector<Object*> getObject() {return Object;}
 
 
 

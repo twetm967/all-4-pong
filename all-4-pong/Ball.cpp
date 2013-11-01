@@ -12,7 +12,7 @@
 ///Constructors
 
 
-Ball::Ball(int initSpeed):Objects() {            //takes (speed)
+Ball::Ball(int initSpeed):Object() {            //takes (speed)
     speed = initSpeed;
     x = 0;
     y = 0;
@@ -23,7 +23,7 @@ Ball::Ball(int initSpeed):Objects() {            //takes (speed)
     this->setPoint(); //point used to track the QLabel in the game
 }
 
-Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Objects() {
+Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     speed = initSpeed;
     x = initX;
     y = initY;

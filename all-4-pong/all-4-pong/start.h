@@ -9,6 +9,7 @@
 #include <QTimer>
 
 
+#include "gamemodel.h"
 #include "ingame.h"
 
 namespace Ui {
@@ -43,7 +44,7 @@ private slots:
 
 private:
     Ui::Start *ui;
-
+   // GameModel* Model;
     QTcpServer* server;
     int connectCount;
     int players;
@@ -51,6 +52,8 @@ private:
     bool powerUps;
     InGame *gameScreen;
     QTimer *timer;
+
+
 };
 
 #endif // START_H

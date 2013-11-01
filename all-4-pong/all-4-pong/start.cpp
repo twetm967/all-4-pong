@@ -10,10 +10,9 @@
 #include <ingame.h>
 #include <QTimer>
 
+#include "gamemodel.h"
 #include "World.h"
 #include "ui_ingame.h"
-
-
 #include "start.h"
 #include "ui_start.h"
 
@@ -128,15 +127,26 @@ StartingMethod();
 void Start::StartingMethod(){
 
 
-    players = ui->players_comboBox->currentIndex()+1;
+    //creates the GamModel class
 
-    difficulty = ui->dif_comboBox_->currentIndex()+1;
+    GameModel* Model = new GameModel();
 
+    Model->setNumOfPlayers(ui->players_comboBox->currentIndex()+1);
+
+    Model->setDifficulty(ui->dif_comboBox_->currentIndex()+1);
+  // players = ui->players_comboBox->currentIndex()+1;
+
+   // difficulty = ui->dif_comboBox_->currentIndex()+1;
+
+    Model->setPowerUps(ui->power_checkBox->isChecked());
+
+    /*
     if(ui->power_checkBox->isChecked()){
         powerUps = true;
     }else{powerUps = false;}
-
-    World::getInstance().setUp(this);
+*/
+  //  World::getInstance().setUp(this);
+    Model->CreateWorld();
     InGame* gameScreen = new InGame();
     gameScreen->show();
     timer->start();

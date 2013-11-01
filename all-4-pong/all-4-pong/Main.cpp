@@ -7,9 +7,11 @@
 #include "start.h"
 #include "ingame.h"
 
+
+//Pardon our Apearance we are undergoing some changes to better suit our users!
 void unitTest() {
 
-    assert(World::getInstance().getDifficulty() == 0);
+    assert(World::getInstance()->getDifficulty() == 0);
 
 
     cout << "All unit tests pass!" << endl;
