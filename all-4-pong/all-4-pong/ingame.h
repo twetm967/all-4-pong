@@ -35,6 +35,8 @@ int i;
 public:
     explicit InGame(QWidget *parent = 0);
 
+
+
     void Animate();
 
     //takes the player, and the amount of health he has left.
@@ -47,6 +49,7 @@ public:
 private slots:
     void on_btnPause_clicked();
     void mouseMoveEvent(QMouseEvent*);
+    void mousePressEvent(QMouseEvent *);
 
     void timerHit();
 
