@@ -17,13 +17,12 @@
 //class Ball;
 
 
-class Paddle : public Object/*, public QRect*/ //because the class inherits
-        //from Object, it also inherits from QRect
+class Paddle : public Object
 {
     int playerId;
     Player* Hand;
     QPoint* spot;
-    int Length;
+    int length;
     QRect rectangle;
 public:
 
@@ -31,16 +30,15 @@ public:
   Paddle():Object(){}
   void setUp();
 
-    void setPlayerId(int inID){
+    void setPlayerId(int inID) {
         playerId = inID;
         Hand = World::getInstance()->getGamePlayers().at(playerId);
-        Length = 50;
+        length = 50;
         setUp();
-                              }
+    }
     //*******************************
 
 
-    void Move();
 
 //    QRect getRectangle() {return rectangle;}
    // QPoint getSpot(){return spot;}

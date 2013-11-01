@@ -13,12 +13,7 @@
 
 //sets up the paddle depending on what location it is to be in.
 void Paddle::setUp() {
-
-
-
-    if(playerId == 0 || playerId == 2){
-     //person is on the bottom or top change their x
-
+    if(playerId == 0 || playerId == 2){//person is on the bottom or top change their x
         //default x position.
         point.setX(205);
         // if they're 0 put them on the bottom.
@@ -95,7 +90,7 @@ void Paddle::setUp() {
         bool didRead = false;
 
         // establish connection with text file
-//Joseph your a boss!!!
+//Joseph you're a boss!!!
         if (/*connection succeeds*/true) {
             // read string of state from text file
             // parse string and store object state in instance variables
@@ -117,12 +112,12 @@ void Paddle::setUp() {
 //person is on the bottom or top change their x
         if(playerId == 0 || playerId == 2){
 
-                this->setX(spot->x());
+                this->setX(spot->x()-length);
         }
 
         if(playerId == 1 || playerId == 3){
 
-                this->setY(spot->y());
+                this->setY(spot->y()-length);
 
             }
     }
