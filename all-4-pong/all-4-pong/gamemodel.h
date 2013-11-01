@@ -5,7 +5,7 @@
 #include "World.h"
 
 //Should this be a singleton structure? - PJ
-
+//Yes, it should. JMP
 class GameModel
 {
 private:
@@ -18,10 +18,12 @@ private:
     int numberOfPlayers;
     bool powerUps;
 
+    GameModel();
+    static GameModel instance; // the only instance of the singleton GameModel class
 
 public:
-    GameModel();
-    ~GameModel();
+
+    static GameModel& getInstance(); // returns the only instance of the singleton GameModel class
 
    void setNumOfPlayers(int);
    void setDifficulty(int);
@@ -29,7 +31,7 @@ public:
 
    void CreateWorld();
 
-
+   ~GameModel();
 };
 
 #endif // GAMEMODEL_H
