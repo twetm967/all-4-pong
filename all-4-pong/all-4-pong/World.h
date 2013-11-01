@@ -83,9 +83,13 @@ class World
 
 
 
-
     //methods 
 
+        // update all elements in this game world
+        void UpdateWorld();
+
+        // reset all elements in this game world
+        void ResetWorld();
 
         // prints the current world state out to offshore text file,
         // returning a boolean value indicating print success
