@@ -32,9 +32,11 @@ public:
 
    void CreateWorld();
 
-   // updates the current game world
+   // instructs the current game world to update itself
    void UpdateWorld();
 
+   // instructs the current game world to reset itself
+   void resetWorld();
 
    ~GameModel();
 };

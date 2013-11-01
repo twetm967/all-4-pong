@@ -48,6 +48,11 @@ void World::setUp(int Players,int diff,bool power){
 
     }
 
+    // reset all elements in this game world
+    void ResetWorld() {
+
+    }
+
     // prints the current world state out to offshore text file,
     // returning a boolean value indicating print success
     bool World::printWorldInfo() {
