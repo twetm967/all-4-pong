@@ -129,16 +129,16 @@ void Start::StartingMethod(){
 
     //creates the GamModel class
 
-    GameModel* Model = new GameModel();
+    //GameModel* Model = new GameModel();
 
-    Model->setNumOfPlayers(ui->players_comboBox->currentIndex()+1);
+    GameModel::getInstance().setNumOfPlayers(ui->players_comboBox->currentIndex()+1);
 
-    Model->setDifficulty(ui->dif_comboBox_->currentIndex()+1);
+    GameModel::getInstance().setDifficulty(ui->dif_comboBox_->currentIndex()+1);
   // players = ui->players_comboBox->currentIndex()+1;
 
    // difficulty = ui->dif_comboBox_->currentIndex()+1;
 
-    Model->setPowerUps(ui->power_checkBox->isChecked());
+    GameModel::getInstance().setPowerUps(ui->power_checkBox->isChecked());
 
     /*
     if(ui->power_checkBox->isChecked()){
@@ -146,7 +146,7 @@ void Start::StartingMethod(){
     }else{powerUps = false;}
 */
   //  World::getInstance().setUp(this);
-    Model->CreateWorld();
+    GameModel::getInstance().CreateWorld();
     InGame* gameScreen = new InGame();
     gameScreen->show();
     timer->start();

@@ -27,7 +27,7 @@ class InGame : public QWidget
 private:
 
   Ui::InGame *ui;
-  vector<Player*> Players;
+  //vector<Player*> Players;
   vector<QLabel*> Health;
   QTimer* timer;
 int i;

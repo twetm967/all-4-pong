@@ -21,6 +21,7 @@ Ball::Ball(int initSpeed):Object() {            //takes (speed)
     speedX = (pow(-1,rand()%2)) * (rand() % (speed));
     speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
     this->setPoint(); //point used to track the QLabel in the game
+     World::getInstance()->add(this);
 }
 
 Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
@@ -32,6 +33,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     speedX = (pow(-1,rand()%2)) * (rand() % (speed));
     speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
     this->setPoint();
+   World::getInstance()->add(this);
 }
 
 

@@ -25,16 +25,22 @@ class World
         vector<Object*> Objects;
         bool powerUps;
         int difficulty;
-        InGame* gameScreen; // Should be moved; World cannot access gui
+     //   InGame* gameScreen; // Should be moved; World cannot access gui
         Ball *ball;
         QPoint* worldMouse; // Should be moved; World cannot access gui
 
 
         World(){}              //takes nothing. It gets instantiated later.
         static World* instance;
-
+        vector<Ball*> balls;
 
     public:
+
+
+        void add(Ball* ballin){
+            balls.push_back(ballin);
+        }
+
        static World* getInstance(){
            if(instance == NULL){
                instance = new World;
@@ -47,6 +53,10 @@ class World
           return worldMouse;
 
 
+       }
+
+       vector<Ball*> getBalls(){
+           return balls;
        }
 
        void setworldMouse(QPoint in){
@@ -87,6 +97,7 @@ class World
         bool readWorldInfo();
     
 };//Game Class
+
 
 #endif // WORLD_H
 

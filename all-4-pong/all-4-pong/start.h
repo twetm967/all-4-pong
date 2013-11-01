@@ -28,7 +28,7 @@ public:
     int getPlayers(){return players;}
     int getDifficulty(){return difficulty;}
     bool getPowerUps() {return powerUps;}
-    InGame* getInGame() { return gameScreen;}
+  //  InGame* getInGame() { return gameScreen;}
     void StartingMethod();
     
 private slots:
@@ -50,7 +50,7 @@ private:
     int players;
     int difficulty;
     bool powerUps;
-    InGame *gameScreen;
+   // InGame *gameScreen;
     QTimer *timer;
 
 

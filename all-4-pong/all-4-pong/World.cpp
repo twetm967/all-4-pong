@@ -14,9 +14,7 @@ void World::setUp(int Players,int diff,bool power){
     worldMouse = new QPoint();
     Player* in;
     for (int i = 0; i < Players && i<4; ++i){
-          //Player *thisPlayer = new User();
 
-/*thisPlayer*/
         in = new User();
         GamePlayers.push_back(in);
 
@@ -26,7 +24,7 @@ void World::setUp(int Players,int diff,bool power){
     if (q > 0){
 
         for (int i = 0; i<q; ++i){
-            in = new AI();
+            in = new AI(diff);
             GamePlayers.push_back(in);
         }
     }
@@ -37,8 +35,6 @@ void World::setUp(int Players,int diff,bool power){
     difficulty = diff;
     qDebug() << QString::number(difficulty);
  //   gameScreen = inStart->getInGame();
-    int ii = 15;
-    ball = new Ball(ii);
 
     powerUps = power;
 
