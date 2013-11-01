@@ -2,14 +2,13 @@
 #define OBJECTS_H
 
 #include <QPoint>
-#include <QRect>
 #include <vector>
-
+#include <QLine>
 
 
 
 //This class will be the parent of all classes dealing with objects that can be hit
-class Object: public QRect {
+class Object {
 
 
 
@@ -52,6 +51,7 @@ public:
    void virtual updatePosition();
    bool virtual Hit(){return true;}
    bool virtual getBound();
+   double virtual getDistancetoPaddle(QPoint point){return -1;}
 
 
 
