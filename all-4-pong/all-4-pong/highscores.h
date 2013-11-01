@@ -73,6 +73,17 @@ public:
     // <gameScores>
     QString getScore(int);
 
+    // prints the current high scores and related game state
+    // out to the highscore offshore text file,
+    // returning a boolean value indicating print success
+    bool HighScores::printHSInfo(QString data);
+
+
+    // reads the current high scores and related game state
+    // from the highscore offshore text file,
+    // returning a boolean value indicating read success;
+    // if read succeeds, stores high scores and related game state in instance variables
+    bool HighScores::readHSInfo();
 
 };
 
