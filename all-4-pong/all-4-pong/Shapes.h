@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "Objects.h"
+#include "Object.h"
 
 class PowerUp;
 

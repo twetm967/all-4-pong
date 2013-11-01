@@ -15,7 +15,6 @@ TEMPLATE = app
 SOURCES +=\
     Main.cpp \
     World.cpp \
-    Objects.cpp \
     Ball.cpp \
     Paddle.cpp \
     Shapes.cpp \
@@ -29,13 +28,13 @@ SOURCES +=\
     command.cpp \
     GameLabel.cpp \
     Timer.cpp \
-    gamemodel.cpp
+    gamemodel.cpp \
+    Object.cpp
 
 HEADERS  += \
     Shapes.h \
     Player.h \
     World.h \
-    Objects.h \
     Ball.h \
     ingame.h \
     start.h \
@@ -47,7 +46,8 @@ HEADERS  += \
     command.h \
     GameLabel.h \
     Timer.h \
-    gamemodel.h
+    gamemodel.h \
+    Object.h
 
 FORMS    += \
     ingame.ui \

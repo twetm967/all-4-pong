@@ -1,5 +1,5 @@
 #include "GameLabel.h"
-#include "Objects.h"
+#include "Object.h"
 #include "Paddle.h"
 #include "Shapes.h"
 #include "Ball.h"

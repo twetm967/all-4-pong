@@ -9,7 +9,7 @@
 #include <QDebug>
 
 #include "Ball.h"
-#include "Objects.h"
+#include "Object.h"
 #include "Player.h"
 #include "World.h"
 

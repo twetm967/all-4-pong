@@ -4,6 +4,7 @@
 #include <QPoint>
 #include <vector>
 #include <QLine>
+#include <QString>
 
 
 

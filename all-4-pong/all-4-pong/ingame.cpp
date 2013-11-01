@@ -12,7 +12,7 @@
 
 
 #include "Paddle.h"
-#include "Objects.h"
+#include "Object.h"
 #include "GameLabel.h"
 #include "Timer.h"
 

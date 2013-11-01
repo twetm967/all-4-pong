@@ -12,7 +12,7 @@
 //#include "Shapes.h" //when I add this, things break.
 #include "World.h"
 */
-#include "Objects.h"
+#include "Object.h"
 
 using namespace std;
 

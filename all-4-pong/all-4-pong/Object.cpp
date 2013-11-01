@@ -4,7 +4,7 @@
 #include <QPoint>
 #include "World.h"
 
-#include "Objects.h"
+#include "Object.h"
 using namespace std;
 //class Ball;
 //#include "Ball.h"

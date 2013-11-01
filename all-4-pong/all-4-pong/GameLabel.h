@@ -3,7 +3,7 @@
 #include <QLabel>
 #include <QWidget>
 #include <QString>
-#include <Objects.h>
+#include <Object.h>
 
 class Object;
 
