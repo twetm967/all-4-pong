@@ -25,9 +25,9 @@ class World
         vector<Object*> Objects;
         bool powerUps;
         int difficulty;
-        InGame* gameScreen;
+        InGame* gameScreen; // Should be moved; World cannot access gui
         Ball *ball;
-        QPoint* worldMouse;
+        QPoint* worldMouse; // Should be moved; World cannot access gui
 
 
         World(){}              //takes nothing. It gets instantiated later.
