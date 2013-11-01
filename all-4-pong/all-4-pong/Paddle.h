@@ -24,6 +24,7 @@ class Paddle : public Object/*, public QRect*/ //because the class inherits
     Player* Hand;
     QPoint* spot;
     int Length;
+    QRect rectangle;
 public:
 
     //takes player index;
