@@ -4,6 +4,8 @@
 #include "start.h"
 #include "World.h"
 
+//Should this be a singleton structure? - PJ
+
 class GameModel
 {
 private:
