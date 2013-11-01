@@ -6,6 +6,7 @@
 
 //Should this be a singleton structure? - PJ
 //Yes, it should. JMP
+//Now it is! - JMP
 class GameModel
 {
 private:
@@ -30,6 +31,10 @@ public:
    void setPowerUps(bool);
 
    void CreateWorld();
+
+   // updates the current game world
+   void UpdateWorld();
+
 
    ~GameModel();
 };
