@@ -27,3 +27,9 @@ void GameModel::CreateWorld(){
     World* world = World::getInstance();
     world->setUp(numberOfPlayers,difficulty,powerUps);
 }
+
+// updates the current game world
+void GameModel::UpdateWorld() {
+    World* world = World::getInstance();
+    // Call world->UpdateWorld();
+}
