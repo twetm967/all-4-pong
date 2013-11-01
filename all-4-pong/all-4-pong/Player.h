@@ -3,31 +3,28 @@
 
 
 #include <vector>
-#include "Paddle.h"
+#include <QPoint>
 
 //class Paddle;
 
-
+//This class looks sparse right now, going to contain things like a mouse pointer
+// ai brain
+// and lots of networking.
 class Player
 {
 protected:
-        Paddle* pad;
         int Score;
         int Health;
         int ID;
-
         static int nextID;
     public:
         Player();
-        Player(QPoint);
         ~Player();
     
         void point();
         void damage();
     
         void Win();
-
-        Paddle* getPaddle(){return pad;}
         
 };//player class
 

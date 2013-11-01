@@ -10,6 +10,7 @@
 
 #include "Ball.h"
 #include "Objects.h"
+#include "Player.h"
 
 //class Object;
 //class Ball;
@@ -19,6 +20,7 @@ class Paddle : public Object/*, public QRect*/ //because the class inherits
         //from Object, it also inherits from QRect
 {
     int playerId;
+    Player* Hand;
     QPoint spot;
     int Length;
 public:
