@@ -37,6 +37,7 @@ void Paddle::setUp() {
    rectangle.setHeight(17);
 
 
+
 }
     if(playerId == 1 || playerId == 3){
      //person is on the left or right
