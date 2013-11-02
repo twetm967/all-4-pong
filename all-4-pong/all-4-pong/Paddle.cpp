@@ -15,20 +15,20 @@
 void Paddle::setUp() {
     switch(playerId){
         case 0:
-            point.setX(205);
-            point.setY(420);
+            point.setX((450 - length)/2);
+            point.setY(440);
             break;
         case 1:
             point.setX(10);
-            point.setY(205);
+            point.setY((450 - length)/2);
             break;
         case 2:
-            point.setX(205);
+            point.setX((450 - length)/2);
             point.setY(10);
             break;
         case 3:
-            point.setX(420);
-            point.setY(205);
+            point.setX(440);
+            point.setY((450 - length)/2);
             break;
     }
 }
@@ -106,7 +106,7 @@ void Paddle::setUp() {
     }
 
 
-    void Paddle::setX(int newX){
+    void Paddle::setX(int newX) {
         if (playerId % 2 == 1)
             return;
         point.setX(newX);

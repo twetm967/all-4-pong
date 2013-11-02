@@ -7,14 +7,16 @@
 #include <QRect>
 #include <QMouseEvent>
 #include <QDebug>
+#include <QLine>
 
-#include "Ball.h"
+//#include "Ball.h"
 #include "Object.h"
-#include "Player.h"
+//#include "Player.h"
 #include "World.h"
 
 //class Object;
-//class Ball;
+class Ball;
+class Player;
 
 
 class Paddle : public Object
@@ -22,6 +24,8 @@ class Paddle : public Object
     int playerId;
     Player* Hand;
     int length;
+    QLine line;
+
 public:
 
     //takes player index;

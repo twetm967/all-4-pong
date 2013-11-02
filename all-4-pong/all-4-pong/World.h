@@ -18,7 +18,7 @@
 
 using namespace std;
 
-class World
+class World /////////////////////////////////////Can we get a worldSize integer that returns the number of pixels wide the world is? - PJ
 {
     private:
         vector<Player*> GamePlayers;
