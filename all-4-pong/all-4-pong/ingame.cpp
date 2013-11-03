@@ -1,6 +1,6 @@
 #include "ingame.h"
 #include "ui_ingame.h"
-#include "World.h"
+
 
 #include <vector>
 #include <QPalette>
@@ -11,10 +11,12 @@
 #include <QtWidgets>
 
 #include "gamemodel.h"
+#include "World.h"
 #include "Paddle.h"
 #include "Object.h"
 #include "GameLabel.h"
 #include "Timer.h"
+#include "start.h"
 
 
 InGame::InGame(QWidget *parent) :
@@ -100,8 +102,6 @@ ui->gameCourt->setMouseTracking(true);
 
 InGame::~InGame()
 {
-
-
 delete ui;
 }
 
@@ -174,6 +174,8 @@ void InGame::timerHit() {
 // home screen.
 void InGame::on_btnHome_clicked()
 {
+    this->deleteLater();
+GameModel::getInstance().resetWorld();
 
 }
 

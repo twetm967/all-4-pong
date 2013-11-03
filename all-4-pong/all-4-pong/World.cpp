@@ -37,6 +37,8 @@ void World::setUp(int Players,int diff,bool power){
  //   gameScreen = inStart->getInGame();
 
     powerUps = power;
+//hardCoded right now! Just becuase we don't have different resolutions yet.
+    worldSize = 450;
 
 }
 
@@ -50,6 +52,12 @@ void World::setUp(int Players,int diff,bool power){
 
     // reset all elements in this game world
     void World::ResetWorld() {
+        for( int i = 0; i < GamePlayers.size();){
+            delete GamePlayers.at(0);
+            GamePlayers.erase(GamePlayers.begin());
+        }
+      //  for( int i = 0; i < g)
+
 
     }
 

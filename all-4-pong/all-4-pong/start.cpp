@@ -151,7 +151,8 @@ void Start::StartingMethod(){
     gameScreen->show();
     timer->start();
     this->hide();
-
+    GameModel::getInstance().giveStart(this);
+    //GameModel::getInstance().giveGame(gameScreen);
 
 }
 

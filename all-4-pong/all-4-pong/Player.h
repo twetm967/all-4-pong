@@ -39,13 +39,15 @@ class AI : public Player
     int difficulty;
     int iterator;
     QPoint* AIPoint;
+    int specialNumber;
     bool flop;
         
     public:
 
     AI(int diff):Player(){
         AIPoint = new QPoint(205,205);
-        flop = true;
+        flop = false;
+        if(1 == rand() % 2)flop = true;
         iterator = 150;
         difficulty = diff;//World::getInstance()->getDifficulty();
 
@@ -53,12 +55,14 @@ class AI : public Player
             AI(QPoint);
           QPoint* getHand();
 
-          void command();
+            void command();
             void change();
             void follow();
             void followRandom();
-
-            ~AI(){}
+            int getSpeed(){return specialNumber;}
+            ~AI(){
+                delete AIPoint;
+            }
 
 };
 

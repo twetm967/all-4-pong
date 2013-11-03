@@ -1,5 +1,5 @@
 #include "gamemodel.h"
-#include "World.h"
+
 
 GameModel GameModel::instance;
 
@@ -10,8 +10,15 @@ GameModel& GameModel::getInstance() { // returns the only instance of the single
 GameModel::GameModel() {}
 GameModel::~GameModel() {}
 
-void GameModel::setDifficulty(int dif){
+void GameModel::giveStart(Start* Star){
+  startScreen = Star;
+}
 
+//void GameModel::giveGame(inGame * game){
+  //  inGameScreen = game;
+//}
+
+void GameModel::setDifficulty(int dif){
     difficulty = dif;
 }
 
@@ -42,6 +49,8 @@ void GameModel::UpdateWorld() {
 void GameModel::resetWorld() {
     World* world = World::getInstance();
     world->ResetWorld();
+  //  inGameScreen->close();
+    startScreen->show();
 }
 
 

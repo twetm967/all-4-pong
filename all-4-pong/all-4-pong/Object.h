@@ -8,6 +8,7 @@
 
 
 
+
 //This class will be the parent of all classes dealing with objects that can be hit
 class Object {
 

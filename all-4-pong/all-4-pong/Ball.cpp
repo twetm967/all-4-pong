@@ -94,6 +94,10 @@ void Ball::Bounce(){}
 void Ball::onCollision(int objId){
     //determine where the object collision line is, if the object is moving, how fast and in what direction it is moving
     //determine new direction and speed and set ball position appropriately
+
+    //the ball collision lines are, starting at the bottom, y = 420, left x = 10, top y = 10, right x = 420
+    //right now the AI, has a speed it is going, going to work and getting that number to
+    // it's paddle. as for direction, it should be going the same direction as the ball.
 }
 void Ball::updatePosition(){
     this->setX(this->getX() + this->getSpeedX());

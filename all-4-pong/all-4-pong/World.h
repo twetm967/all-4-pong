@@ -13,12 +13,12 @@
 
 #include "start.h"
 #include "Player.h"
-#include "ingame.h"
-#include "Ball.h"
 
+#include "Ball.h"
+#include "ingame.h"
 using namespace std;
 
-class World /////////////////////////////////////Can we get a worldSize integer that returns the number of pixels wide the world is? - PJ
+class World //Can we get a worldSize integer that returns the number of pixels wide the world is? - PJ
 {
     private:
         vector<Player*> GamePlayers;
@@ -28,7 +28,7 @@ class World /////////////////////////////////////Can we get a worldSize integer 
      //   InGame* gameScreen; // Should be moved; World cannot access gui
         Ball *ball;  //We should just have a vector of balls if we are going to do this.  Check out my notes on the vector of balls. - PJ
         QPoint* worldMouse; // Should be moved; World cannot access gui
-
+        int worldSize;
 
         World(){}              //takes nothing. It gets instantiated later.
         static World* instance;
@@ -36,6 +36,9 @@ class World /////////////////////////////////////Can we get a worldSize integer 
 
     public:
 
+        int getWorldSize(){
+            return worldSize;
+        }
 
         void add(Ball* ballin){
             balls.push_back(ballin);
@@ -49,10 +52,7 @@ class World /////////////////////////////////////Can we get a worldSize integer 
        }
 
        QPoint* getMouse(){
-
           return worldMouse;
-
-
        }
 
        vector<Ball*> getBalls(){

@@ -52,7 +52,7 @@ void AI::command(){
 //the hard setting literally they are perfect!
 void AI::follow(){
     Ball* ball = World::getInstance()->getBalls().at(0);
-
+    specialNumber = ball->getSpeed();
     AIPoint->setX(ball->getX());
     AIPoint->setY(ball->getY());
    }
@@ -64,41 +64,38 @@ void AI::followRandom(){
     int x = ball->getX();
     int y = ball->getY();
 
+    specialNumber = rand() % 12;
+    if(specialNumber < 6 )specialNumber = 6;
+
     if(x < AIPoint->x()){
-        AIPoint->setX(AIPoint->x() - rand() % 8);
+        AIPoint->setX(AIPoint->x() - specialNumber);
     }
     if(x > AIPoint->x()){
-        AIPoint->setX(AIPoint->x() + rand() % 8);
+        AIPoint->setX(AIPoint->x() + specialNumber);
     }
     if(y < AIPoint->y()){
-        AIPoint->setY(AIPoint->y() - rand() % 8);
+        AIPoint->setY(AIPoint->y() - specialNumber);
     }
     if(y > AIPoint->y()){
-        AIPoint->setY(AIPoint->y() + rand() % 8);
+        AIPoint->setY(AIPoint->y() + specialNumber);
     }
 }
 //the easy setting
 void AI::change(){
+    specialNumber = rand() % 12;
+    if(specialNumber< 5)specialNumber = 6;
     if(flop){
-        AIPoint->setX(AIPoint->x()-10);
-    AIPoint->setY(AIPoint->y()+ 10);
-
-    if(AIPoint->x() < 0 || AIPoint->y() > 355){
-        flop = false;
-    }
-
-    }else {
-        if(!flop){
-            AIPoint->setX(AIPoint->x()+ 10);
-            AIPoint->setY(AIPoint->y()- 10) ;
-
-            if(AIPoint->y() < 0){
-                flop = true;
-
+        AIPoint->setX(AIPoint->x() - specialNumber);
+        AIPoint->setY(AIPoint->y()+ specialNumber);
+        if(AIPoint->x() < 60 || AIPoint->y() > 350)flop = false;
+          }else {
+             if(!flop){
+                AIPoint->setX(AIPoint->x()+ specialNumber);
+                AIPoint->setY(AIPoint->y()- specialNumber) ;
+                if(AIPoint->y() < 60 || AIPoint->x() > 350) flop = true;
             }
         }
-}
-}
+    }
 
 void Player::damage(){
 
