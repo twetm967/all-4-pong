@@ -18,6 +18,7 @@ private:
     int difficulty;
     int numberOfPlayers;
     bool powerUps;
+    QPoint Mouse;
 
     GameModel();
     static GameModel instance; // the only instance of the singleton GameModel class
@@ -29,7 +30,7 @@ public:
    void setNumOfPlayers(int);
    void setDifficulty(int);
    void setPowerUps(bool);
-
+   void giveMouse(QPoint);
    void CreateWorld();
 
    // instructs the current game world to update itself

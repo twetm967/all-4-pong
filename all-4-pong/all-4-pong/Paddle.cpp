@@ -16,7 +16,7 @@ void Paddle::setUp() {
     switch(playerId){
         case 0:
             point.setX((450 - length)/2);
-            point.setY(440);
+            point.setY(420);
             break;
         case 1:
             point.setX(10);
@@ -27,7 +27,7 @@ void Paddle::setUp() {
             point.setY(10);
             break;
         case 3:
-            point.setX(440);
+            point.setX(420);
             point.setY((450 - length)/2);
             break;
     }
@@ -75,7 +75,7 @@ void Paddle::setUp() {
 
 
     //runs the  update position code overridden from Object.
-    //gets the mouse position (TO be changed to player's mouse position)
+
     // then moves them accordingly.
     void Paddle::updatePosition() {
         switch (playerId) { //person is on the bottom or top change their x, else change their y

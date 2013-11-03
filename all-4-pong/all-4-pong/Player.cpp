@@ -53,31 +53,29 @@ void AI::command(){
 void AI::follow(){
     Ball* ball = World::getInstance()->getBalls().at(0);
 
-    AIPoint->setX(ball->getX() - 50);
-    AIPoint->setY(ball->getY() - 50);
-    /*
-   vector<Ball*> balls = World::getInstance()->getBalls();
-   vector<int> distance;
-   Ball* ball;
-   for(int i = 0; i < balls.size(); i ++){
-       ball = balls.at(i);
-
-       AIPoint->setX(ball->getX());
-       AIPoint->setY(ball->getY());
-}*/
-
+    AIPoint->setX(ball->getX());
+    AIPoint->setY(ball->getY());
    }
-
-
-
 
 //the medium setting
 //under construction!!
 void AI::followRandom(){
     Ball* ball = World::getInstance()->getBalls().at(0);
+    int x = ball->getX();
+    int y = ball->getY();
 
-    AIPoint->setX((ball->getX() - 50) +(rand()%50 - 25));
-    AIPoint->setY((ball->getY() - 50) +(rand()%50 - 25));
+    if(x < AIPoint->x()){
+        AIPoint->setX(AIPoint->x() - rand() % 8);
+    }
+    if(x > AIPoint->x()){
+        AIPoint->setX(AIPoint->x() + rand() % 8);
+    }
+    if(y < AIPoint->y()){
+        AIPoint->setY(AIPoint->y() - rand() % 8);
+    }
+    if(y > AIPoint->y()){
+        AIPoint->setY(AIPoint->y() + rand() % 8);
+    }
 }
 //the easy setting
 void AI::change(){

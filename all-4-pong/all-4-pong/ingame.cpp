@@ -10,7 +10,7 @@
 #include <QMouseEvent>
 #include <QtWidgets>
 
-
+#include "gamemodel.h"
 #include "Paddle.h"
 #include "Object.h"
 #include "GameLabel.h"
@@ -151,7 +151,8 @@ QPoint InGame::getGameCourt(QPoint in){
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
     QPoint here = getGameCourt((ev->pos()));
-    World::getInstance()->setworldMouse(here);
+    //gives teh mouse position to gameModel.
+    GameModel::getInstance().giveMouse(here);
 
 }
 //for testing purposes
@@ -169,6 +170,12 @@ void InGame::timerHit() {
 }
 
 
+//Resets all of the world items... and by that i mean, calls the gamemodel class to reset all of the world items! and redisplay the
+// home screen.
+void InGame::on_btnHome_clicked()
+{
+
+}
 
 
 

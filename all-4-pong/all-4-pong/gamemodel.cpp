@@ -1,4 +1,5 @@
 #include "gamemodel.h"
+#include "World.h"
 
 GameModel GameModel::instance;
 
@@ -22,6 +23,9 @@ void GameModel::setPowerUps(bool in){
     powerUps = in;
 }
 
+void GameModel::giveMouse(QPoint here){
+    World::getInstance()->setworldMouse(here);
+}
 
 void GameModel::CreateWorld(){
     World* world = World::getInstance();

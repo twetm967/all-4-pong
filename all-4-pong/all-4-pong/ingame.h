@@ -55,6 +55,7 @@ private slots:
 
 
     void on_btnCheat_clicked();
+    void on_btnHome_clicked();
 };
 
 #endif // INGAME_H
