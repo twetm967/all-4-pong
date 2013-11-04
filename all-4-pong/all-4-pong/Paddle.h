@@ -23,7 +23,7 @@ class Paddle : public Object
 {
     int playerId;
     Player* Hand;
-    int length;
+    int length, width;
     QLine line;
     int speed;
     int worldSize;
@@ -41,8 +41,13 @@ public:
     void setPlayerId(int inID) {
         playerId = inID;
         Hand = World::getInstance()->getGamePlayers().at(playerId);
-        length = 50;
+        worldSize = World::getInstance()->getWorldSize();
+ //these may change depending on resolution
+        length = (worldSize / 9);
+        width = (worldSize / 30);
+
         this->setUp();
+
     }
     //*******************************
 
@@ -60,7 +65,7 @@ public:
 
     void updatePosition();
 
-
+    QString getNetworkInformation();
 
     
     // prints the current paddle state out to offshore text file,
