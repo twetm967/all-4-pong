@@ -9,25 +9,24 @@ void World::setUp(int Players,int diff,bool power){
 
     worldMouse = new QPoint();
     Player* in;
-    for (int i = 0; i < Players && i<4; ++i){
 
+    for (int i = 0; i < Players && i<4; ++i){
         in = new User();
         GamePlayers.push_back(in);
-
     }
 
     int q = 4 - Players;
-    if (q > 0){
 
-        for (int i = 0; i<q; ++i){
+    if (q > 0){
+        for (int i = 0; i<q; ++i) {
             in = new AI(diff);
             GamePlayers.push_back(in);
         }
     }
+
     difficulty = diff;
     powerUps = power;
-//hardCoded right now! Just becuase we don't have different resolutions yet.
-    worldSize = 450;
+    worldSize = 450; //hardCoded right now! Just becuase we don't have different resolutions yet.
     assert(GamePlayers.size() == 4);
 }
 
@@ -42,15 +41,15 @@ void World::setUp(int Players,int diff,bool power){
 
     // reset all elements in this game world
     void World::ResetWorld() {
-        for( int i = 0; i < GamePlayers.size();){
-            delete GamePlayers.at(0);
-            GamePlayers.erase(GamePlayers.begin());
+        for( int i = 0; i < GamePlayers.size();++i){
+            delete GamePlayers.at(i);
         }
-        for( int i = 0; i < balls.size();){
-            delete balls.at(i);
-            balls.erase(balls.begin());
+        GamePlayers.clear();
+        for( int i = 0; i < objects.size();++i){
+            delete objects.at(i);
         }
-
+        objects.clear();
+        balls.clear();
 
     }
 

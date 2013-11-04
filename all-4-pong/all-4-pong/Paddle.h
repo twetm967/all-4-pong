@@ -23,14 +23,21 @@ class Paddle : public Object
 {
     int playerId;
     Player* Hand;
-    int length;
+    int length, width;
     QLine line;
     int speed;
+    int worldSize;
 
 public:
 
     //takes player index;
-  Paddle():Object(){}
+  Paddle():Object(){
+      worldSize = World::getInstance()->getWorldSize();
+//these may change depending on resolution
+      length = (worldSize / 9);
+      width = (worldSize / 30);
+//      World::getInstance()->add(this);
+  }
   void setUp();
 
   int getSpeed(){
@@ -40,7 +47,6 @@ public:
     void setPlayerId(int inID) {
         playerId = inID;
         Hand = World::getInstance()->getGamePlayers().at(playerId);
-        length = 50;
         this->setUp();
     }
     //*******************************
@@ -56,10 +62,15 @@ public:
     void setX(int newX);
     void setY(int newY);
     QString getType() {return "paddle";}
+    void setUpLine();
+    QLine getLine() {return line;}
+    void setLength(int newLength) {length = newLength;}
+    void setWidth(int newWidth) {width = newWidth;}
+    void moveLine(int distance);
 
     void updatePosition();
 
-
+    QString getNetworkInformation();
 
     
     // prints the current paddle state out to offshore text file,

@@ -24,7 +24,9 @@ World::getInstance()->add(this);
 }
 
 //inline
-    Object::~Object() { }
+    Object::~Object() {
+
+    }
 
 bool Object::getHit(){}
 
