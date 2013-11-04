@@ -45,7 +45,7 @@ public:
    void setPowerUps(bool);
    void giveMouse(QPoint);
    void CreateWorld();
-   QString Pause();
+   QString Pause(int h);
 
    // instructs the current game world to update itself
    void UpdateWorld();

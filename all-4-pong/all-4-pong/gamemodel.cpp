@@ -53,14 +53,15 @@ void GameModel::resetWorld() {
     startScreen->show();
 }
 
-QString GameModel::Pause(){
-    if(Timer::getInstance()->getTimer()->isActive()){
+QString GameModel::Pause(int h){
+    if(Timer::getInstance()->getTimer()->isActive() || h == 1){
    Timer::getInstance()->getTimer()->stop();
    return "Play";
     }else{
         Timer::getInstance()->getTimer()->start();
         return "Pause";
     }
+
 }
 
 
