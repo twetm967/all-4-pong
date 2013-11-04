@@ -46,11 +46,13 @@ void World::setUp(int Players,int diff,bool power){
             delete GamePlayers.at(0);
             GamePlayers.erase(GamePlayers.begin());
         }
-        for( int i = 0; i < balls.size();){
-            delete balls.at(i);
+        for( int i = 0; i < objects.size();){
+            delete objects.at(i);
+            objects.erase(objects.begin());
+        }
+        for(int i = 0; i < balls.size();){
             balls.erase(balls.begin());
         }
-
 
     }
 

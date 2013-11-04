@@ -26,6 +26,7 @@ class Paddle : public Object
     int length;
     QLine line;
     int speed;
+    int worldSize;
 
 public:
 
