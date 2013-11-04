@@ -14,10 +14,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         startup.cpp \
-    clientgame.cpp
+    clientingame.cpp
 
 HEADERS  += startup.h \
-    clientgame.h
+    clientingame.h
 
 FORMS    += startup.ui \
-    clientgame.ui
+    clientingame.ui

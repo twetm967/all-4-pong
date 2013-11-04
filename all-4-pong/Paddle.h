@@ -1,4 +1,4 @@
-/*#ifndef PADDLE_H
+#ifndef PADDLE_H
 #define PADDLE_H
 
 
@@ -13,7 +13,7 @@
 
 //class Object;
 //class Ball;
-yOU ARE IN THE WRONG ALL FOR PONG EDIT THE OTHER ONE!!!!!!
+//yOU ARE IN THE WRONG ALL FOR PONG EDIT THE OTHER ONE!!!!!!
 
 class Paddle : public Object/*, public QRect*/ //because the class inherits
         //from Object, it also inherits from QRect
