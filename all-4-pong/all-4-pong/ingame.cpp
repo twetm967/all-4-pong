@@ -121,7 +121,7 @@ void InGame::HealthDamage(int index, int health){
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
-    QString Status = GameModel::getInstance().Pause();
+    QString Status = GameModel::getInstance().Pause(0);
 
    ui->btnPause->setText(Status);
 

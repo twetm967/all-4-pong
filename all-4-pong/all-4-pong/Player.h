@@ -24,6 +24,7 @@ protected:
         Player();
         ~Player(){
         delete hand;
+        nextID--;
         }
          virtual QPoint* getHand();
 
