@@ -21,7 +21,6 @@ class Player;
 
 class Paddle : public Object
 {
-    int playerId;
     Player* Hand;
     int length, width;
     QLine line;
@@ -67,6 +66,7 @@ public:
     void setLength(int newLength) {length = newLength;}
     void setWidth(int newWidth) {width = newWidth;}
     void moveLine(int distance);
+    double getDistancetoPaddle(QPoint point);
 
     void updatePosition();
 

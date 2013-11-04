@@ -1,6 +1,7 @@
 #include "Object.h"
 #include "Ball.h"
 #include "World.h"
+#include "Paddle.h"
 //#include "ui_game.h"
 #include <QRect>
 #include <QPoint>
@@ -84,13 +85,7 @@ bool Ball::readBallInfo() {
 }
 
 
-//uses old x,y compares them to new x,y
-// creates direction; may not need
-//double Ball::Direction(){return 0; /*return atan(this->getSpeedX()/- this->getspeedY()) % 360;*/} //need to test this function
-
-
-
-void Ball::Bounce(){}
+//void Ball::Bounce(){}
 
 void Ball::onCollision(int objId){
     //determine where the object collision line is, if the object is moving, how fast and in what direction it is moving
@@ -143,4 +138,25 @@ void Ball::invertSpeedX() {
 
 void Ball::invertSpeedY() {
     this->setSpeedY(this->getSpeedY()*-1);
+}
+
+void Ball::collisionHandler() {
+    foreach(Object *o, World::getInstance()->getObjects()) {
+        double distance = o->getDistancetoPaddle(QPoint(this->getX(),this->getY()));
+        if (distance != -1 && distance <= this->getRadius()) {
+            onCollision(o);
+        }
+    }
+}
+
+void Ball::onCollision(Object *obj) {
+    setPlayerId(obj->getPlayerId());
+    switch (playerId % 2) {
+        case 0:
+                this->setY(obj->getQPoint);
+            break;
+        case 1:
+
+            break;
+    }
 }

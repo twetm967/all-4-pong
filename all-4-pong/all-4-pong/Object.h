@@ -23,6 +23,7 @@ protected:
 
     static int nextObjId;
     int objId;
+    int playerId;
 
 
 
@@ -40,6 +41,7 @@ public:
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}
+    int virtual getPlayerId(int) {return -1;}
     virtual void setPlayerId(int) {}
     virtual QString getType() {return "";}
 

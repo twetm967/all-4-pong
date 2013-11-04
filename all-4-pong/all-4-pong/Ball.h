@@ -31,7 +31,6 @@ class Ball : public Object
         int x, y; //where the ball is centered
         int speedX, speedY; //if we know the new and old coordinates, we can determin speed, direction, and point of contact
         int speed;
-        int playerId;  // Id of last player to hit the ball
         int radius; //radius of the ball
 
     public:
@@ -62,11 +61,6 @@ class Ball : public Object
 //--------------------------------------------------------------------------------------------//
         void updatePosition();
 
-        //Mathy Functions for PJ to make!!  
-//This is Daniel Brainstorming do what you want. But maybe a direction class? 
-// then you could have a function that returns a direction? Or would a direction
-// just be a fraction? because y = mx+b? would that even work?
-
         void updateSpeedX();
         void updateSpeedY();
         void invertSpeedX();
@@ -80,10 +74,11 @@ class Ball : public Object
         // returning a boolean value indicaing read success;
         // if read succeeds, stores ball state in instance variables
         bool readBallInfo();
+        void collisionHandler();
 
         double Direction();  //provides direction (angle) the ball is traveling
-        void Bounce(); //I don't know who created this, but I think it may be the same as the onCollision method I have already created
-        void onCollision(int objId); //this method will determine logic upon collision
+        /*void Bounce();*/ //I don't know who created this, but I think it may be the same as the onCollision method I have already created
+        void onCollision(Object *obj); //this method will determine logic upon collision
         
 };
 

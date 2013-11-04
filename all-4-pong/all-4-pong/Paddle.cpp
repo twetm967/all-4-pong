@@ -8,6 +8,7 @@
 #include <vector>
 #include <QDebug>
 #include <QString>
+#include <cmath>
 
 #include "Paddle.h"
 
@@ -127,7 +128,6 @@ void Paddle::moveLine(int distance) {
         moveLine(speed);
     }
 
-
     void Paddle::setY(int newY) {
         if (playerId % 2 == 0)
             return;
@@ -147,4 +147,20 @@ void Paddle::moveLine(int distance) {
             point.setX(0);
         if(point.x() > (worldSize - (2*length)))
            point.setX(worldSize - (2*length));
+    }
+
+    double Paddle::getDistancetoPaddle(QPoint point) {
+        switch(playerId % 2) {
+            case 0:
+                if (point.x() >= line.x1() && point.x() <= line.x2()) {
+                    return (double) abs(point.y()-line.y1());
+                }
+                break;
+            case 1:
+                if (point.y() >= line.y1() && point.y() <= line.y2()) {
+                    return (double) abs(point.y()-line.y1());
+                }
+                break;
+        }
+        return min(sqrt(pow(point.x()-line.x1(),2)+pow(point.y()-line.y1(),2)),sqrt(pow(point.x()-line.x2(),2)+pow(point.y()-line.y2(),2)));
     }
