@@ -62,6 +62,8 @@ public:
     void setX(int newX);
     void setY(int newY);
     QString getType() {return "paddle";}
+    void setLine();
+    QLine getLine() {return line;}
 
     void updatePosition();
 

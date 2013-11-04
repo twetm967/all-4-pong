@@ -15,6 +15,7 @@
 void Paddle::setUp() {
     switch(playerId){
         case 0:
+
             point.setX((worldSize - length)/2);
             point.setY(worldSize - (2 * width));
             break;
@@ -29,12 +30,35 @@ void Paddle::setUp() {
         case 3:
             point.setX(worldSize - (2 * width));
             point.setY((worldSize - length)/2);
+
             break;
     }
 }
 
+
 QString Paddle::getNetworkInformation(){
 
+}
+
+void Paddle::setLine() {
+    /*switch(playerId){
+        case 0:
+            point.setX((World::getInstance()->getWorldSize() - length)/2);
+            point.setY(420);
+            break;
+        case 1:
+            point.setX(10);
+            point.setY((World::getInstance()->getWorldSize() - length)/2);
+            break;
+        case 2:
+            point.setX((World::getInstance()->getWorldSize() - length)/2);
+            point.setY(10);
+            break;
+        case 3:
+            point.setX(420);
+            point.setY((World::getInstance()->getWorldSize() - length)/2);
+            break;
+    }*/
 }
 
 //Planning on getting rid of this unless you need it for the AI.
