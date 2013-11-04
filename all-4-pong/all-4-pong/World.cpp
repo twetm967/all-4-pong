@@ -4,50 +4,55 @@
 
 World* World::instance=NULL;
 
-//World::World(){}
-
-
-
 
 void World::setUp(int Players,int diff,bool power){
 
     worldMouse = new QPoint();
     Player* in;
     for (int i = 0; i < Players && i<4; ++i){
-          //Player *thisPlayer = new User();
 
-/*thisPlayer*/
         in = new User();
         GamePlayers.push_back(in);
 
     }
-    int q = 4 - Players;
 
+    int q = 4 - Players;
     if (q > 0){
 
         for (int i = 0; i<q; ++i){
-            in = new AI();
+            in = new AI(diff);
             GamePlayers.push_back(in);
         }
     }
-
-    qDebug() << GamePlayers.size();
-    assert(GamePlayers.size() == 4);
-
     difficulty = diff;
-    qDebug() << QString::number(difficulty);
- //   gameScreen = inStart->getInGame();
-    int ii = 15;
-    ball = new Ball(ii);
-
     powerUps = power;
-
+//hardCoded right now! Just becuase we don't have different resolutions yet.
+    worldSize = 450;
+    assert(GamePlayers.size() == 4);
 }
 
 
 
 
+    // update all elements in this game world
+    void World::UpdateWorld() {
 
+    }
+
+
+    // reset all elements in this game world
+    void World::ResetWorld() {
+        for( int i = 0; i < GamePlayers.size();){
+            delete GamePlayers.at(0);
+            GamePlayers.erase(GamePlayers.begin());
+        }
+        for( int i = 0; i < balls.size();){
+            delete balls.at(i);
+            balls.erase(balls.begin());
+        }
+
+
+    }
 
     // prints the current world state out to offshore text file,
     // returning a boolean value indicating print success

@@ -27,7 +27,7 @@ class InGame : public QWidget
 private:
 
   Ui::InGame *ui;
-  vector<Player*> Players;
+  //vector<Player*> Players;
   vector<QLabel*> Health;
   QTimer* timer;
 int i;
@@ -55,6 +55,7 @@ private slots:
 
 
     void on_btnCheat_clicked();
+    void on_btnHome_clicked();
 };
 
 #endif // INGAME_H

@@ -12,7 +12,7 @@
 //#include "Shapes.h" //when I add this, things break.
 #include "World.h"
 */
-#include "Objects.h"
+#include "Object.h"
 
 using namespace std;
 
@@ -48,6 +48,7 @@ class Ball : public Object
         int getSpeed(){return speed;}
 //        double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
         int getPlayerId(){return playerId;}
+        QString getType() {return "ball";}
 
     
         //setters -- need additional logic to fully implement
@@ -66,6 +67,10 @@ class Ball : public Object
 // then you could have a function that returns a direction? Or would a direction
 // just be a fraction? because y = mx+b? would that even work?
 
+        void updateSpeedX();
+        void updateSpeedY();
+        void invertSpeedX();
+        void invertSpeedY();
 
         // prints the current ball state out to offshore text file,
         // returning a boolean value indicating print success

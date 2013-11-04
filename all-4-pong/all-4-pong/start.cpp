@@ -62,7 +62,7 @@ void Start::clientConnected()
 // ?Question is do we want the host to have to connect? ?
 //ifso we have to change this.!!
 void Start::enoughPlayers(){
-    if (connectCount == ui->players_comboBox->currentIndex()){
+    if (connectCount == ui->players_comboBox->currentIndex()+1){
         ui->start_Btn->setEnabled(true);
     }else{
         ui->start_Btn->setEnabled(false);
@@ -129,29 +129,25 @@ void Start::StartingMethod(){
 
     //creates the GamModel class
 
-    GameModel* Model = new GameModel();
+    //GameModel* Model = new GameModel();
 
-    Model->setNumOfPlayers(ui->players_comboBox->currentIndex()+1);
+    GameModel::getInstance().setNumOfPlayers(ui->players_comboBox->currentIndex()+1);
 
-    Model->setDifficulty(ui->dif_comboBox_->currentIndex()+1);
+    GameModel::getInstance().setDifficulty(ui->dif_comboBox_->currentIndex()+1);
   // players = ui->players_comboBox->currentIndex()+1;
 
    // difficulty = ui->dif_comboBox_->currentIndex()+1;
 
-    Model->setPowerUps(ui->power_checkBox->isChecked());
+    GameModel::getInstance().setPowerUps(ui->power_checkBox->isChecked());
 
-    /*
-    if(ui->power_checkBox->isChecked()){
-        powerUps = true;
-    }else{powerUps = false;}
-*/
-  //  World::getInstance().setUp(this);
-    Model->CreateWorld();
+    GameModel::getInstance().CreateWorld();
     InGame* gameScreen = new InGame();
+
+    GameModel::getInstance().Pause(1);
     gameScreen->show();
     timer->start();
     this->hide();
-
+    GameModel::getInstance().giveStart(this);
 
 }
 

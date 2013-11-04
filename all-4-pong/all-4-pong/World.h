@@ -13,28 +13,42 @@
 
 #include "start.h"
 #include "Player.h"
-#include "ingame.h"
-#include "Ball.h"
 
+#include "Ball.h"
+#include "ingame.h"
 using namespace std;
 
-class World
+class World //Can we get a worldSize integer that returns the number of pixels wide the world is? - PJ
+        //yup :) made one check getWorldSize()
 {
     private:
         vector<Player*> GamePlayers;
         vector<Object*> Objects;
         bool powerUps;
         int difficulty;
-        InGame* gameScreen;
-        Ball *ball;
-        QPoint* worldMouse;
-
+        QPoint* worldMouse; // Should be moved; World cannot access gui
+        int worldSize;
 
         World(){}              //takes nothing. It gets instantiated later.
         static World* instance;
-
+        vector<Ball*> balls;    //Just a note, ball is in the Objects vector. Check out the "getType" method.  I think this
+                                //is how we should keep track of all objects in the world.  Alternatively, you could modify
+                                //the add method here to detect the type of object and assign it to a vector of the object's
+                                //type.  Either one will work.  Just let me know which you pick. - PJ
 
     public:
+
+        int getWorldSize(){
+            return worldSize;
+
+        }
+
+
+
+        void add(Ball* ballin){
+            balls.push_back(ballin);
+        }
+
        static World* getInstance(){
            if(instance == NULL){
                instance = new World;
@@ -43,10 +57,14 @@ class World
        }
 
        QPoint* getMouse(){
-
           return worldMouse;
+       }
 
-
+       vector<Ball*> getBalls(){
+           return balls;
+       }
+       vector<Object*> getObjects(){
+           return Objects;
        }
 
        void setworldMouse(QPoint in){
@@ -73,9 +91,13 @@ class World
 
 
 
-
     //methods 
 
+        // update all elements in this game world
+        void UpdateWorld();
+
+        // reset all elements in this game world
+        void ResetWorld();
 
         // prints the current world state out to offshore text file,
         // returning a boolean value indicating print success
@@ -87,6 +109,7 @@ class World
         bool readWorldInfo();
     
 };//Game Class
+
 
 #endif // WORLD_H
 

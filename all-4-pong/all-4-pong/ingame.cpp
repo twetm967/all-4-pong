@@ -1,6 +1,6 @@
 #include "ingame.h"
 #include "ui_ingame.h"
-#include "World.h"
+
 
 #include <vector>
 #include <QPalette>
@@ -10,11 +10,13 @@
 #include <QMouseEvent>
 #include <QtWidgets>
 
-
+#include "gamemodel.h"
+#include "World.h"
 #include "Paddle.h"
-#include "Objects.h"
+#include "Object.h"
 #include "GameLabel.h"
 #include "Timer.h"
+#include "start.h"
 
 
 InGame::InGame(QWidget *parent) :
@@ -30,7 +32,7 @@ InGame::InGame(QWidget *parent) :
 */
     setMouseTracking(true);
 ui->gameCourt->setMouseTracking(true);
-    Players = World::getInstance()->getGamePlayers();
+   // Players = World::getInstance()->getGamePlayers();
 
 
 
@@ -100,11 +102,6 @@ ui->gameCourt->setMouseTracking(true);
 
 InGame::~InGame()
 {
-    for(int i = 0; i < Players.size(); i++){
-        delete Players.at(i);
-        Players.erase(Players.begin() + i);
-    }
-
 delete ui;
 }
 
@@ -124,13 +121,10 @@ void InGame::HealthDamage(int index, int health){
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked()
 {
-    if(Timer::getInstance()->getTimer()->isActive()){
-   Timer::getInstance()->getTimer()->stop();
-   ui->btnPause->setText("Play");
-    }else{
-        Timer::getInstance()->getTimer()->start();
-         ui->btnPause->setText("Pause");
-    }
+    QString Status = GameModel::getInstance().Pause(0);
+
+   ui->btnPause->setText(Status);
+
 }
 
 
@@ -154,7 +148,8 @@ QPoint InGame::getGameCourt(QPoint in){
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
     QPoint here = getGameCourt((ev->pos()));
-    World::getInstance()->setworldMouse(here);
+    //gives teh mouse position to gameModel.
+    GameModel::getInstance().giveMouse(here);
 
 }
 //for testing purposes
@@ -162,23 +157,7 @@ void InGame::mousePressEvent(QMouseEvent *ev){
    // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 }
 
-/*//every clock tick animates the game.
-void InGame::Animate(){
 
-   // for(int i = 0; i < 4; i++){
-     Paddle* pad = Players.at(0)->getPaddle();
-       int x = pad->getX();
-       int y = pad->getY();
-
-  //     qDebug() << x << ", " << y;
-//this will eventually iterate through an array.
-       ui->lblPaddleBottom->move(x,420);
-       ui->lblPaddleLeft->move(10,y);
-       ui->lblPaddleTop->move(x,10);
-       ui->lblPaddleRight->move(420,y);
-
-
-}*/
 
 void InGame::timerHit() {
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
@@ -188,6 +167,14 @@ void InGame::timerHit() {
 }
 
 
+//Resets all of the world items... and by that i mean, calls the gamemodel class to reset all of the world items! and redisplay the
+// home screen.
+void InGame::on_btnHome_clicked()
+{
+    this->deleteLater();
+GameModel::getInstance().resetWorld();
+
+}
 
 
 

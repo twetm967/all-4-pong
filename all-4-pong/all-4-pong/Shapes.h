@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "Objects.h"
+#include "Object.h"
 
 class PowerUp;
 
@@ -21,6 +21,7 @@ class Shapes: public Object
         int getX(){return x;}
         int getY(){return y;}
         PowerUp* getPowerUp(){return boost;}
+        QString getType() {return "shape";}
 
         void setX(int inX){x = inX;}
         void setY(int inY){y = inY;}

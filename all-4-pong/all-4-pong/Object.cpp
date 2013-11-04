@@ -4,18 +4,15 @@
 #include <QPoint>
 #include "World.h"
 
-#include "Objects.h"
+#include "Object.h"
 using namespace std;
 //class Ball;
 //#include "Ball.h"
 
 int Object::nextObjId = 0;
 
-Object::Object(QPoint isPoint){
-   // hit = isHit;
-   // WandH = isWandH;
-    point = isPoint;
-    this->setRect(point.x(), point.y(),point.x() + 10, point.y() + 10);
+Object::Object(QPoint initPoint){
+    point = initPoint;
     objId = ++nextObjId;
     World::getInstance()->add(this);
 }

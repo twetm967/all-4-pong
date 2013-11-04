@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <QPoint>
+#include "World.h"
 
 //class Paddle;
 
@@ -18,15 +19,22 @@ protected:
         QPoint* hand;
         int ID;
         static int nextID;
+        int speed;
     public:
         Player();
-        ~Player();
-      virtual QPoint* getHand();
-    
+        ~Player(){
+        delete hand;
+        nextID--;
+        }
+         virtual QPoint* getHand();
+
+
+
         void point();
         void damage();
     
         void Win();
+        virtual int getSpeed();
         
 };//player class
 
@@ -37,24 +45,26 @@ class AI : public Player
     private:
     int difficulty;
     int iterator;
-    QPoint* AIPoint;
+
     bool flop;
         
     public:
 
-    AI():Player(){
-        AIPoint = new QPoint(205,205);
-        flop = true;
+    AI(int diff):Player(){
+        hand = new QPoint(205,205);
+        flop = false;
+        if(1 == rand() % 2)flop = true;
         iterator = 150;
+        difficulty = diff;
 
     }                            //takes (difficulty);
             AI(QPoint);
           QPoint* getHand();
 
-
+            void command();
             void change();
-
-
+            void follow();
+            void followRandom();
             ~AI(){}
 
 };
@@ -62,15 +72,18 @@ class AI : public Player
 class User : public Player
 {
     private:
-        
+    int oldX, oldY;
 
     public:
     User():Player(){
 
             }
+
             User(QPoint);
             ~User(){}
+            int getSpeed();
            QPoint* getHand();
+           void calculateSpeed();
 
 };
 

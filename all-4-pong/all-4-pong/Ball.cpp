@@ -1,4 +1,4 @@
-#include "Objects.h"
+#include "Object.h"
 #include "Ball.h"
 #include "World.h"
 //#include "ui_game.h"
@@ -21,6 +21,7 @@ Ball::Ball(int initSpeed):Object() {            //takes (speed)
     speedX = (pow(-1,rand()%2)) * (rand() % (speed));
     speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
     this->setPoint(); //point used to track the QLabel in the game
+    World::getInstance()->add(this);
 }
 
 Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
@@ -32,6 +33,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     speedX = (pow(-1,rand()%2)) * (rand() % (speed));
     speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
     this->setPoint();
+    World::getInstance()->add(this);
 }
 
 
@@ -92,6 +94,10 @@ void Ball::Bounce(){}
 void Ball::onCollision(int objId){
     //determine where the object collision line is, if the object is moving, how fast and in what direction it is moving
     //determine new direction and speed and set ball position appropriately
+
+    //the ball collision lines are, starting at the bottom, y = 420, left x = 10, top y = 10, right x = 420
+    // there is a get speed method call inside of paddle. as for direction if speed
+    // negative it is going down or to the right. if it's positive it's going up or left
 }
 void Ball::updatePosition(){
     this->setX(this->getX() + this->getSpeedX());
@@ -100,19 +106,19 @@ void Ball::updatePosition(){
     /*Right now just hard coding this in to get the ball moving and staying within bounds*/
     if (this->getX() - this->getRadius() < 0) {
         this->setX(0 + this->getRadius());
-        this->setSpeedX(this->getSpeedX()*-1);
+        this->invertSpeedX();
     }
     if (this->getX() + this->getRadius() > 450) {
         this->setX(450 - this->getRadius());
-        this->setSpeedX(this->getSpeedX()*-1);
+        this->invertSpeedX();
     }
     if (this->getY() - this->getRadius() < 0) {
         this->setY(0 + this->getRadius());
-        this->setSpeedY(this->getSpeedY()*-1);
+        this->invertSpeedY();
     }
     if (this->getY() + this->getRadius() > 450) {
         this->setY(450 - this->getRadius());
-        this->setSpeedY(this->getSpeedY()*-1);
+        this->invertSpeedY();
     }
     /*End hard coding*/
     this->setPoint();
@@ -121,3 +127,19 @@ void Ball::updatePosition(){
 
 
 void Ball::setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
+
+void Ball::updateSpeedX() {
+    this->setSpeedX(this->getSpeedX()/abs(this->getSpeedX())*(int)sqrt(pow(this->getSpeed(),2)-pow(this->getSpeedY(),2)));
+}
+
+void Ball::updateSpeedY() {
+    this->setSpeedY(this->getSpeedY()/abs(this->getSpeedY())*(int)sqrt(pow(this->getSpeed(),2)-pow(this->getSpeedX(),2)));
+}
+
+void Ball::invertSpeedX() {
+    this->setSpeedX(this->getSpeedX()*-1);
+}
+
+void Ball::invertSpeedY() {
+    this->setSpeedY(this->getSpeedY()*-1);
+}
