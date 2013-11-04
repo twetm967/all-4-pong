@@ -5,7 +5,10 @@
 #include <QTcpSocket>
 #include <vector>
 #include <QString>
+#include <QTimer>
+#include <QMouseEvent>
 
+using namespace std;
 namespace Ui {
 class Startup;
 }
@@ -18,12 +21,14 @@ public:
     explicit Startup(QWidget *parent = 0);
     ~Startup();
 
-     vector<QString> split(QString, char);
+    void mouseMoveEvent(QMouseEvent *ev);
+
+    vector<QString>* split(QString, char);
 private slots:
 
     void dataReceived();
     void serverDisconnected();
-    void onTick();
+    void timerHit();
 
     
     void on_connect_Btn_clicked();
@@ -31,6 +36,9 @@ private slots:
 private:
     Ui::Startup *ui;
     QTcpSocket* socket;
+    QTimer *timer;
+    int x,y;
+
 };
 
 #endif // STARTUP_H

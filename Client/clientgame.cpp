@@ -1,14 +1,14 @@
-#include "ingame.h"
+#include "clientgame.h"
 #include "ui_ingame.h"
 
-ingame::ingame(QWidget *parent) :
+clientgame::clientgame(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ingame)
+    ui(new Ui::clientgame)
 {
     ui->setupUi(this);
 }
 
-ingame::~ingame()
+clientgame::~clientgame()
 {
     delete ui;
 }

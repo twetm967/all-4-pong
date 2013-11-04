@@ -1,22 +1,22 @@
-#ifndef INGAME_H
-#define INGAME_H
+#ifndef CLIENTGAME_H
+#define CLIENTGAME_H
 
 #include <QWidget>
 
 namespace Ui {
-class ingame;
+class clientgame;
 }
 
-class ingame : public QWidget
+class clientgame : public QWidget
 {
     Q_OBJECT
     
 public:
-    explicit ingame(QWidget *parent = 0);
-    ~ingame();
+    explicit clientgame(QWidget *parent = 0);
+    ~clientgame();
     
 private:
-    Ui::ingame *ui;
+    Ui::clientgame *ui;
 };
 
-#endif // INGAME_H
+#endif // CLIENTGAME_H
