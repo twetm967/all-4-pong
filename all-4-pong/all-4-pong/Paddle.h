@@ -31,7 +31,13 @@ class Paddle : public Object
 public:
 
     //takes player index;
-  Paddle():Object(){}
+  Paddle():Object(){
+      worldSize = World::getInstance()->getWorldSize();
+//these may change depending on resolution
+      length = (worldSize / 9);
+      width = (worldSize / 30);
+      World::getInstance()->add(this);
+  }
   void setUp();
 
   int getSpeed(){
@@ -41,11 +47,6 @@ public:
     void setPlayerId(int inID) {
         playerId = inID;
         Hand = World::getInstance()->getGamePlayers().at(playerId);
-        worldSize = World::getInstance()->getWorldSize();
- //these may change depending on resolution
-        length = (worldSize / 9);
-        width = (worldSize / 30);
-
         this->setUp();
     }
     //*******************************

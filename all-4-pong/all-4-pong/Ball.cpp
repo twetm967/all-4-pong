@@ -33,7 +33,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     speedX = (pow(-1,rand()%2)) * (rand() % (speed));
     speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
     this->setPoint();
-    //World::getInstance()->add(this);
+    World::getInstance()->add(this);
     World::getInstance()->addBall(this);
 }
 

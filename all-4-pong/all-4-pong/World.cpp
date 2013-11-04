@@ -26,8 +26,7 @@ void World::setUp(int Players,int diff,bool power){
     }
     difficulty = diff;
     powerUps = power;
-//hardCoded right now! Just becuase we don't have different resolutions yet.
-    worldSize = 450;
+    worldSize = 450; //hardCoded right now! Just becuase we don't have different resolutions yet.
     assert(GamePlayers.size() == 4);
 }
 

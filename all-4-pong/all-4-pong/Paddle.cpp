@@ -29,7 +29,7 @@ void Paddle::setUp() {
         case 3:
             point.setX(worldSize - width * 2);
             point.setY((worldSize - length)/2);
-        break;
+            break;
     }
 }
 
