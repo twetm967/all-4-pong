@@ -15,22 +15,43 @@
 void Paddle::setUp() {
     switch(playerId){
         case 0:
-            point.setX((450 - length)/2);
+            point.setX((World::getInstance()->getWorldSize() - length)/2);
             point.setY(420);
             break;
         case 1:
             point.setX(10);
-            point.setY((450 - length)/2);
+            point.setY((World::getInstance()->getWorldSize() - length)/2);
             break;
         case 2:
-            point.setX((450 - length)/2);
+            point.setX((World::getInstance()->getWorldSize() - length)/2);
             point.setY(10);
             break;
         case 3:
             point.setX(420);
-            point.setY((450 - length)/2);
+            point.setY((World::getInstance()->getWorldSize() - length)/2);
             break;
     }
+}
+
+void Paddle::setLine() {
+    /*switch(playerId){
+        case 0:
+            point.setX((World::getInstance()->getWorldSize() - length)/2);
+            point.setY(420);
+            break;
+        case 1:
+            point.setX(10);
+            point.setY((World::getInstance()->getWorldSize() - length)/2);
+            break;
+        case 2:
+            point.setX((World::getInstance()->getWorldSize() - length)/2);
+            point.setY(10);
+            break;
+        case 3:
+            point.setX(420);
+            point.setY((World::getInstance()->getWorldSize() - length)/2);
+            break;
+    }*/
 }
 
 
