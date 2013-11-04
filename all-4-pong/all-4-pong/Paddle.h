@@ -27,6 +27,7 @@ class Paddle : public Object
     QLine line;
     int speed;
     int worldSize;
+    int width;
 
 public:
 
@@ -41,8 +42,9 @@ public:
     void setPlayerId(int inID) {
         playerId = inID;
         Hand = World::getInstance()->getGamePlayers().at(playerId);
-        length = 50;
+        length = 100;
         this->setUp();
+        width = 15;
     }
     //*******************************
 
@@ -59,6 +61,8 @@ public:
     QString getType() {return "paddle";}
     void setLine();
     QLine getLine() {return line;}
+    void setLength(int newLength) {length = newLength;}
+    void setWidth(int newWidth) {width = newWidth;}
 
     void updatePosition();
 
