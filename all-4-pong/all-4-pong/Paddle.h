@@ -36,7 +36,7 @@ public:
 //these may change depending on resolution
       length = (worldSize / 9);
       width = (worldSize / 30);
-      World::getInstance()->add(this);
+//      World::getInstance()->add(this);
   }
   void setUp();
 

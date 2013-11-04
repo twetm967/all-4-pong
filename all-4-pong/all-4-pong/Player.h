@@ -23,8 +23,8 @@ protected:
     public:
         Player();
         ~Player(){
-        delete hand;
-        nextID--;
+            delete hand;
+            nextID--;
         }
          virtual QPoint* getHand();
 
