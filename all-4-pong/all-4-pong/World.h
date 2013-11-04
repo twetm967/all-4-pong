@@ -63,6 +63,9 @@ class World //Can we get a worldSize integer that returns the number of pixels w
        vector<Ball*> getBalls(){
            return balls;
        }
+       vector<Object*> getObjects(){
+           return Objects;
+       }
 
        void setworldMouse(QPoint in){
             worldMouse->setX(in.x());
