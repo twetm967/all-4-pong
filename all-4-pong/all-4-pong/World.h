@@ -23,7 +23,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 {
     private:
         vector<Player*> GamePlayers;
-        vector<Object*> Objects;
+        vector<Object*> objects;
         bool powerUps;
         int difficulty;
         QPoint* worldMouse; // Should be moved; World cannot access gui
@@ -31,7 +31,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 
         World(){}              //takes nothing. It gets instantiated later.
         static World* instance;
-        vector<Ball*> balls;    //Just a note, ball is in the Objects vector. Check out the "getType" method.  I think this
+        vector<Ball*> balls;    //Just a note, ball is in the objects vector. Check out the "getType" method.  I think this
                                 //is how we should keep track of all objects in the world.  Alternatively, you could modify
                                 //the add method here to detect the type of object and assign it to a vector of the object's
                                 //type.  Either one will work.  Just let me know which you pick. - PJ
@@ -43,9 +43,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 
         }
 
-
-
-        void add(Ball* ballin){
+        void addBall(Ball* ballin){
             balls.push_back(ballin);
         }
 
@@ -60,11 +58,12 @@ class World //Can we get a worldSize integer that returns the number of pixels w
           return worldMouse;
        }
 
-       vector<Ball*> getBalls(){
+       vector<Ball*> getBalls(){      
            return balls;
        }
+
        vector<Object*> getObjects(){
-           return Objects;
+           return objects;
        }
 
        void setworldMouse(QPoint in){
@@ -75,7 +74,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
        void setUp(int, int, bool);
 
        // adds <obj> to Object in world
-       void add(Object *obj) {Objects.push_back(obj);}
+       void add(Object *obj) {objects.push_back(obj);}
 
 
     
@@ -85,7 +84,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         int getDifficulty() {return difficulty;}
 
         vector<Player*> getGamePlayers() {return GamePlayers;}
-        vector<Object*> getObject() {return Objects;}
+        vector<Object*> getObject() {return objects;}
 
 
 
