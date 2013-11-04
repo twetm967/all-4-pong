@@ -3,6 +3,8 @@
 #include "QMessageBox"
 #include <QTcpSocket>
 #include <QTcpServer>
+#include <vector>
+#include <QString>
 
 
 Startup::Startup(QWidget *parent) :
@@ -40,12 +42,33 @@ void Startup::on_connect_Btn_clicked()
 }
 
 
+vector<QString> Startup::split(QString str, char delim){
+    //vector<QString> Split(string str, char delim){
+        vector<QString> splitV;
+        QString buf = "";
+        int i = 0;
+        while (i < str.length()){
+            if (str[i] != delim){
+                buf += str[i];
+            } else if (buf.length() > 0) {
+                splitV.push_back(buf);
+                buf = "";
+            }
+            i++;
+        }
+        if (!buf.empty())
+            splitV.push_back(buf);
+        return splitV;
+    }
+}
+
 void Startup::dataReceived() {
 
     while (socket->canReadLine()) {
         QString str = socket->readLine();
         //this will recieve a string of the a list of objects with their x and y coordinates
         //For example, ball,
+        vector<QString> spaceSplit = split(str, ' ');
     }
 }
 

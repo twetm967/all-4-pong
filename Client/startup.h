@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QTcpSocket>
+#include <vector>
+#include <QString>
 
 namespace Ui {
 class Startup;
@@ -15,6 +17,8 @@ class Startup : public QMainWindow
 public:
     explicit Startup(QWidget *parent = 0);
     ~Startup();
+
+     vector<QString> split(QString, char);
 private slots:
 
     void dataReceived();
