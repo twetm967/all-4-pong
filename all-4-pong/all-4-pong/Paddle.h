@@ -62,10 +62,11 @@ public:
     void setX(int newX);
     void setY(int newY);
     QString getType() {return "paddle";}
-    void setLine();
+    void setUpLine();
     QLine getLine() {return line;}
     void setLength(int newLength) {length = newLength;}
     void setWidth(int newWidth) {width = newWidth;}
+    void moveLine(int distance);
 
     void updatePosition();
 

@@ -148,7 +148,8 @@ QPoint InGame::getGameCourt(QPoint in){
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
     QPoint here = getGameCourt((ev->pos()));
-    //gives teh mouse position to gameModel.
+
+    //gives the mouse position to gameModel.
     GameModel::getInstance().giveMouse(here);
 
 }
@@ -162,18 +163,15 @@ void InGame::mousePressEvent(QMouseEvent *ev){
 void InGame::timerHit() {
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
         g->updatePosition();
-     }
-
+    }
 }
 
 
 //Resets all of the world items... and by that i mean, calls the gamemodel class to reset all of the world items! and redisplay the
 // home screen.
-void InGame::on_btnHome_clicked()
-{
+void InGame::on_btnHome_clicked() {
     this->deleteLater();
-GameModel::getInstance().resetWorld();
-
+    GameModel::getInstance().resetWorld();
 }
 
 

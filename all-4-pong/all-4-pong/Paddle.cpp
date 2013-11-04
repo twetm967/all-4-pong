@@ -16,10 +16,10 @@ void Paddle::setUp() {
     switch(playerId){
         case 0:
             point.setX((worldSize - length)/2);
-            point.setY(worldSize - width * 2);
+            point.setY(worldSize - (width * 2));
             break;
         case 1:
-            point.setX(width);
+            point.setX(worldSize - (width * 2));
             point.setY((worldSize - length)/2);
             break;
         case 2:
@@ -27,10 +27,11 @@ void Paddle::setUp() {
             point.setY(width);
             break;
         case 3:
-            point.setX(worldSize - width * 2);
+            point.setX(width);
             point.setY((worldSize - length)/2);
             break;
     }
+    this->setUpLine();
 }
 
 
@@ -38,10 +39,10 @@ QString Paddle::getNetworkInformation(){
 
 }
 
-void Paddle::setLine() {
+void Paddle::setUpLine() {
     switch(playerId){
         case 0:
-            line.setLine(point.x(),point.y(),point.x()+width,point.y());
+            line.setLine(point.x(),point.y(),point.x()+length,point.y());
             break;
         case 1:
             line.setLine(point.x(),point.y(),point.x(),point.y()+length);
@@ -51,6 +52,17 @@ void Paddle::setLine() {
             break;
         case 3:
             line.setLine(point.x()+width,point.y(),point.x()+width,point.y()+length);
+            break;
+    }
+}
+
+void Paddle::moveLine(int distance) {
+    switch (playerId % 2) {
+        case 0:
+            line.translate(distance,0);
+            break;
+        case 1:
+            line.translate(0,distance);
             break;
     }
 }
@@ -99,21 +111,20 @@ void Paddle::setLine() {
 
     // then moves them accordingly.
     void Paddle::updatePosition() {
-        switch (playerId) { //person is on the bottom or top change their x, else change their y
+        int orig;
+        switch (playerId % 2) {
             case 0:
+                orig = this->point.x();
                 this->setX(Hand->getHand()->x()-length);
+                speed = this->point.x()-orig;
                 break;
             case 1:
+                orig = this->point.y();
                 this->setY(Hand->getHand()->y()-length);
-                break;
-            case 2:
-                this->setX(Hand->getHand()->x()-length);
-                break;
-            case 3:
-                this->setY(Hand->getHand()->y()-length);
+                speed = this->point.x()-orig;
                 break;
         }
-        speed = Hand->getSpeed();
+        moveLine(speed);
     }
 
 
