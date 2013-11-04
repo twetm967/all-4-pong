@@ -4,10 +4,6 @@
 
 World* World::instance=NULL;
 
-//World::World(){}
-
-
-
 
 void World::setUp(int Players,int diff,bool power){
 
@@ -19,8 +15,8 @@ void World::setUp(int Players,int diff,bool power){
         GamePlayers.push_back(in);
 
     }
-    int q = 4 - Players;
 
+    int q = 4 - Players;
     if (q > 0){
 
         for (int i = 0; i<q; ++i){
@@ -28,18 +24,11 @@ void World::setUp(int Players,int diff,bool power){
             GamePlayers.push_back(in);
         }
     }
-
-    qDebug() << GamePlayers.size();
-    assert(GamePlayers.size() == 4);
-
     difficulty = diff;
-    qDebug() << QString::number(difficulty);
- //   gameScreen = inStart->getInGame();
-
     powerUps = power;
 //hardCoded right now! Just becuase we don't have different resolutions yet.
     worldSize = 450;
-
+    assert(GamePlayers.size() == 4);
 }
 
 
@@ -50,13 +39,17 @@ void World::setUp(int Players,int diff,bool power){
 
     }
 
+
     // reset all elements in this game world
     void World::ResetWorld() {
         for( int i = 0; i < GamePlayers.size();){
             delete GamePlayers.at(0);
             GamePlayers.erase(GamePlayers.begin());
         }
-      //  for( int i = 0; i < g)
+        for( int i = 0; i < balls.size();){
+            delete balls.at(i);
+            balls.erase(balls.begin());
+        }
 
 
     }

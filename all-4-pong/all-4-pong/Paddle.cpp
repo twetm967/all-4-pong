@@ -92,6 +92,7 @@ void Paddle::setUp() {
                 this->setY(Hand->getHand()->y()-length);
                 break;
         }
+        speed = Hand->getSpeed();
     }
 
 

@@ -4,6 +4,7 @@
 
 //#include "World.h"
 
+#include "Timer.h"
 #include "start.h"
 
 //tried tomake it hold a gamescreen so it could close it but to no avail.
@@ -44,6 +45,7 @@ public:
    void setPowerUps(bool);
    void giveMouse(QPoint);
    void CreateWorld();
+   QString Pause();
 
    // instructs the current game world to update itself
    void UpdateWorld();

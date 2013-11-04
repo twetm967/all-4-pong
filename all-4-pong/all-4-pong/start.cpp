@@ -140,19 +140,14 @@ void Start::StartingMethod(){
 
     GameModel::getInstance().setPowerUps(ui->power_checkBox->isChecked());
 
-    /*
-    if(ui->power_checkBox->isChecked()){
-        powerUps = true;
-    }else{powerUps = false;}
-*/
-  //  World::getInstance().setUp(this);
     GameModel::getInstance().CreateWorld();
     InGame* gameScreen = new InGame();
+
+    GameModel::getInstance().Pause();
     gameScreen->show();
     timer->start();
     this->hide();
     GameModel::getInstance().giveStart(this);
-    //GameModel::getInstance().giveGame(gameScreen);
 
 }
 

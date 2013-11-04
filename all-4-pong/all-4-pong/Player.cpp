@@ -16,24 +16,20 @@ Player::Player(){
 }
 
 QPoint* Player::getHand(){
-
-
-return World::getInstance()->getMouse();
-}
-Player::~Player(){
-
-
+hand = World::getInstance()->getMouse();
+return hand;
 }
 
-QPoint* User::getHand(){
-    hand = World::getInstance()->getMouse();
-    return hand;
+
+int Player::getSpeed(){
+    return speed;
 }
 
 QPoint *AI::getHand(){
 
     command();
-    return AIPoint;
+
+    return hand;
 }
 
 void AI::command(){
@@ -52,9 +48,9 @@ void AI::command(){
 //the hard setting literally they are perfect!
 void AI::follow(){
     Ball* ball = World::getInstance()->getBalls().at(0);
-    specialNumber = ball->getSpeed();
-    AIPoint->setX(ball->getX());
-    AIPoint->setY(ball->getY());
+    speed = ball->getSpeed();
+    hand->setX(ball->getX());
+    hand->setY(ball->getY());
    }
 
 //the medium setting
@@ -64,35 +60,35 @@ void AI::followRandom(){
     int x = ball->getX();
     int y = ball->getY();
 
-    specialNumber = rand() % 12;
-    if(specialNumber < 6 )specialNumber = 6;
+    speed = rand() % 12;
+    if(speed < 6 )speed = 6;
 
-    if(x < AIPoint->x()){
-        AIPoint->setX(AIPoint->x() - specialNumber);
+    if(x < hand->x()){
+        hand->setX(hand->x() - speed);
     }
-    if(x > AIPoint->x()){
-        AIPoint->setX(AIPoint->x() + specialNumber);
+    if(x > hand->x()){
+        hand->setX(hand->x() + speed);
     }
-    if(y < AIPoint->y()){
-        AIPoint->setY(AIPoint->y() - specialNumber);
+    if(y < hand->y()){
+        hand->setY(hand->y() - speed);
     }
-    if(y > AIPoint->y()){
-        AIPoint->setY(AIPoint->y() + specialNumber);
+    if(y > hand->y()){
+        hand->setY(hand->y() + speed);
     }
 }
 //the easy setting
 void AI::change(){
-    specialNumber = rand() % 12;
-    if(specialNumber< 5)specialNumber = 6;
+    speed = rand() % 12;
+    if(speed< 5)speed = 6;
     if(flop){
-        AIPoint->setX(AIPoint->x() - specialNumber);
-        AIPoint->setY(AIPoint->y()+ specialNumber);
-        if(AIPoint->x() < 60 || AIPoint->y() > 350)flop = false;
+        hand->setX(hand->x() - speed);
+        hand->setY(hand->y()+ speed);
+        if(hand->x() < 60 || hand->y() > 350)flop = false;
           }else {
              if(!flop){
-                AIPoint->setX(AIPoint->x()+ specialNumber);
-                AIPoint->setY(AIPoint->y()- specialNumber) ;
-                if(AIPoint->y() < 60 || AIPoint->x() > 350) flop = true;
+                hand->setX(hand->x()+ speed);
+                hand->setY(hand->y()- speed) ;
+                if(hand->y() < 60 || hand->x() > 350) flop = true;
             }
         }
     }
@@ -103,5 +99,35 @@ Health--;
 
 }
 
+void User::calculateSpeed(){
+    switch(ID){
+    case 0:
+    case 2:
+        if((oldX > 50 && oldX < 400) && (hand->x() > 50 && hand->x() < 400 )){
+        speed = abs(oldX - hand->x()); }else { speed = 0;}
+        break;
+    case 1:
+    case 3:
+        if((oldY > 50 && oldY < 400) && (hand->y() > 50 && hand->y() < 400 )){
+        speed = abs(oldY - hand->y()); }else { speed = 0;}
+        break;
+    }
+
+}
+
+int User::getSpeed(){
+    return speed;
+}
+
+QPoint* User::getHand(){
+
+    Player::getHand();
+    calculateSpeed();
+qDebug() << speed;
+    oldX = hand->x();
+    oldY = hand->y();
+
+    return hand;
+}
 
 

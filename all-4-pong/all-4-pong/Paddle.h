@@ -25,12 +25,17 @@ class Paddle : public Object
     Player* Hand;
     int length;
     QLine line;
+    int speed;
 
 public:
 
     //takes player index;
   Paddle():Object(){}
   void setUp();
+
+  int getSpeed(){
+      return speed;
+  }
 
     void setPlayerId(int inID) {
         playerId = inID;

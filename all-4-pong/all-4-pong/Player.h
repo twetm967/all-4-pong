@@ -19,15 +19,21 @@ protected:
         QPoint* hand;
         int ID;
         static int nextID;
+        int speed;
     public:
         Player();
-        ~Player();
-      virtual QPoint* getHand();
-    
+        ~Player(){
+        delete hand;
+        }
+         virtual QPoint* getHand();
+
+
+
         void point();
         void damage();
     
         void Win();
+        virtual int getSpeed();
         
 };//player class
 
@@ -38,18 +44,17 @@ class AI : public Player
     private:
     int difficulty;
     int iterator;
-    QPoint* AIPoint;
-    int specialNumber;
+
     bool flop;
         
     public:
 
     AI(int diff):Player(){
-        AIPoint = new QPoint(205,205);
+        hand = new QPoint(205,205);
         flop = false;
         if(1 == rand() % 2)flop = true;
         iterator = 150;
-        difficulty = diff;//World::getInstance()->getDifficulty();
+        difficulty = diff;
 
     }                            //takes (difficulty);
             AI(QPoint);
@@ -59,25 +64,25 @@ class AI : public Player
             void change();
             void follow();
             void followRandom();
-            int getSpeed(){return specialNumber;}
-            ~AI(){
-                delete AIPoint;
-            }
+            ~AI(){}
 
 };
 
 class User : public Player
 {
     private:
-        
+    int oldX, oldY;
 
     public:
     User():Player(){
 
             }
+
             User(QPoint);
             ~User(){}
+            int getSpeed();
            QPoint* getHand();
+           void calculateSpeed();
 
 };
 
