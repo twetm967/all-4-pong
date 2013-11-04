@@ -15,22 +15,27 @@
 void Paddle::setUp() {
     switch(playerId){
         case 0:
-            point.setX((World::getInstance()->getWorldSize() - length)/2);
-            point.setY(World::getInstance()->getWorldSize() - 10 - width);
+            point.setX((worldSize - length)/2);
+            point.setY(worldSize - width * 2);
             break;
         case 1:
-            point.setX(10);
-            point.setY((World::getInstance()->getWorldSize() - length)/2);
+            point.setX(width);
+            point.setY((worldSize - length)/2);
             break;
         case 2:
-            point.setX((World::getInstance()->getWorldSize() - length)/2);
-            point.setY(10);
+            point.setX((worldSize - length)/2);
+            point.setY(width);
             break;
         case 3:
-            point.setX(World::getInstance()->getWorldSize() - 10 - width);
-            point.setY((World::getInstance()->getWorldSize() - length)/2);
-            break;
+            point.setX(worldSize - width * 2);
+            point.setY((worldSize - length)/2);
+        break;
     }
+}
+
+
+QString Paddle::getNetworkInformation(){
+
 }
 
 void Paddle::setLine() {
@@ -49,7 +54,6 @@ void Paddle::setLine() {
             break;
     }
 }
-
 
 //Planning on getting rid of this unless you need it for the AI.
 //If you do, give me a method to call in the balls logic.
@@ -119,8 +123,8 @@ void Paddle::setLine() {
         point.setY(newY);
         if(point.y() < 0)
             point.setY(0);
-        if(point.y() > 400 - length)
-            point.setY(400 - length);
+        if(point.y() > (worldSize - (2*length)))
+            point.setY(worldSize - (2*length));
     }
 
 
@@ -130,6 +134,6 @@ void Paddle::setLine() {
         point.setX(newX);
         if(point.x() < 0)
             point.setX(0);
-        if(point.x() > 400 - length)
-           point.setX(400 - length);
+        if(point.x() > (worldSize - (2*length)))
+           point.setX(worldSize - (2*length));
     }

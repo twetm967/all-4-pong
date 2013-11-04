@@ -593,7 +593,7 @@ border-radius: 15px;</string>
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>425</y>
+      <y>420</y>
       <width>100</width>
       <height>15</height>
      </rect>
@@ -627,7 +627,7 @@ border-radius: 4px;</string>
    <widget class="GameLabel" name="lblPaddleLeft">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>15</x>
       <y>170</y>
       <width>15</width>
       <height>100</height>
@@ -662,7 +662,7 @@ border-radius: 4px;</string>
    <widget class="GameLabel" name="lblPaddleRight">
     <property name="geometry">
      <rect>
-      <x>425</x>
+      <x>420</x>
       <y>170</y>
       <width>15</width>
       <height>100</height>
@@ -698,7 +698,7 @@ border-radius: 4px;</string>
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>10</y>
+      <y>15</y>
       <width>100</width>
       <height>15</height>
      </rect>
