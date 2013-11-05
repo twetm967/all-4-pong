@@ -1,10 +1,12 @@
 #include "startup.h"
 #include "ui_startup.h"
+#include "clientingame.h"
 #include "QMessageBox"
 #include <QTcpSocket>
 #include <QTcpServer>
 #include <vector>
 #include <QString>
+#include <QMouseEvent>
 
 
 Startup::Startup(QWidget *parent) :
@@ -12,7 +14,8 @@ Startup::Startup(QWidget *parent) :
     ui(new Ui::Startup)
 {
     ui->setupUi(this);
-
+    x = 0;
+    y = 0;
     timer = new QTimer(this);
     timer->setInterval(100);
     connect(timer, &QTimer::timeout, this, &Startup::timerHit);
@@ -39,8 +42,13 @@ void Startup::on_connect_Btn_clicked()
         QMessageBox::critical(this, "Uh oh", "Unable to connect to server.");
         return;
     }
-    QString str = ui->username_line->text();
-    socket->write(str.toLocal8Bit());
+
+    clientingame *clientgame = new clientingame();
+    clientgame->show();
+    this->hide();
+    timer->start();
+    //username = ui->username_line->text();
+    //socket->write(str.toLocal8Bit());
     //ui->statusBar->showMessage("Connected.");
     //ui->connect_Btn->setEnabled(false);
 }
@@ -49,6 +57,7 @@ void Startup::on_connect_Btn_clicked()
 void Startup::mouseMoveEvent(QMouseEvent *ev) {
     x = ev->x();
     y = ev->y();
+    //timer->start();
 }
 
 
@@ -91,6 +100,8 @@ void Startup::serverDisconnected()
 //this is called every clock tick and sends the paddle x, y, and ID
 void Startup::timerHit()
 {
+    QString str =  ui->username_line->text() + "/" + QString::number(x) + '/' + QString::number(y) + '/'+ "\n";
+    socket->write(str.toLocal8Bit());
 
     //This is the Schaub code for the chat client.
     /*QString username = ui->lineUsername->text();

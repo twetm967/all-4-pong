@@ -70,6 +70,9 @@ void Start::enoughPlayers(){
 }
 
 void Start::timerHit(){
+    //example ball:   0/ball1/x/y/
+    //example player:  1/0/username/x/y/points/health/
+
     //send out the same information to all of the clients at the same time (remember server also plays game).
     //to see the format of this information, look at the networking Wiki page.
 
@@ -77,9 +80,14 @@ void Start::timerHit(){
 
 //recieves x,y,and paddle id from user
 void Start::dataReceived()
-
-
 {
+    QTcpSocket *sock = dynamic_cast<QTcpSocket*>(sender());
+    while (sock->canReadLine()) {
+        QString str = sock->readLine();
+        qDebug() << str;
+        //do something with the information that is coming in
+        //   "Thomas/x/y/
+    }
 
     //}
     //**********This is Schaub code that we can use as an example****************

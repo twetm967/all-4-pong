@@ -37,7 +37,9 @@ private:
     Ui::Startup *ui;
     QTcpSocket* socket;
     QTimer *timer;
-    int x,y;
+    int x;
+    int y;
+    QString username;
 
 };
 
