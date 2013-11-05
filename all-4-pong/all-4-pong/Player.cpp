@@ -7,7 +7,10 @@ int Player::nextID = 0;
 
 
 Player::Player(){
+
     ID = nextID;
+
+    currentScore = new Score();
 
     Health = 7;
 
