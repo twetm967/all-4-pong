@@ -59,6 +59,7 @@ public:
    virtual void setPlayerId(int) {}
    virtual QString getType() {return "";}
    virtual QLine getLine() {return QLine();}
+   virtual int getSpeed() {return 0;}
 
 
 
