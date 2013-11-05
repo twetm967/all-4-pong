@@ -26,7 +26,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         vector<Object*> objects;
         bool powerUps;
         int difficulty;
-        QPoint* worldMouse; // Should be moved; World cannot access gui
+        QPoint* worldMouse;
         int worldSize;
 
         World(){}              //takes nothing. It gets instantiated later.

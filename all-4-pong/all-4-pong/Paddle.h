@@ -33,7 +33,7 @@ public:
   Paddle():Object(){
       worldSize = World::getInstance()->getWorldSize();
 //these may change depending on resolution
-      length = (worldSize / 9);
+      length = (worldSize / 4.5);
       width = (worldSize / 30);
 //      World::getInstance()->add(this);
   }
