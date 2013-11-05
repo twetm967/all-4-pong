@@ -41,9 +41,7 @@ public:
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}
-    int virtual getPlayerId(int) {return -1;}
-    virtual void setPlayerId(int) {}
-    virtual QString getType() {return "";}
+
 
     bool getHit();
     QPoint getQPoint(){return point;}
@@ -57,6 +55,10 @@ public:
    bool virtual Hit(){return true;}
    bool virtual getBound();
    double virtual getDistancetoPaddle(QPoint point){return -1;}
+   int virtual getPlayerId() {return playerId;}
+   virtual void setPlayerId(int) {}
+   virtual QString getType() {return "";}
+   virtual QLine getLine() {return QLine();}
 
 
 

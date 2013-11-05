@@ -87,19 +87,11 @@ bool Ball::readBallInfo() {
 
 //void Ball::Bounce(){}
 
-void Ball::onCollision(int objId){
-    //determine where the object collision line is, if the object is moving, how fast and in what direction it is moving
-    //determine new direction and speed and set ball position appropriately
 
-    //the ball collision lines are, starting at the bottom, y = 420, left x = 10, top y = 10, right x = 420
-    // there is a get speed method call inside of paddle. as for direction if speed
-    // negative it is going down or to the right. if it's positive it's going up or left
-}
 void Ball::updatePosition(){
     this->setX(this->getX() + this->getSpeedX());
     this->setY(this->getY() + this->getSpeedY());
-    //if there is a Collision call this->onCollision(objId)
-    /*Right now just hard coding this in to get the ball moving and staying within bounds*/
+    this->collisionHandler();
     if (this->getX() - this->getRadius() < 0) {
         this->setX(0 + this->getRadius());
         this->invertSpeedX();
@@ -150,13 +142,15 @@ void Ball::collisionHandler() {
 }
 
 void Ball::onCollision(Object *obj) {
-    setPlayerId(obj->getPlayerId());
+    this->setPlayerId(obj->getPlayerId());
     switch (playerId % 2) {
         case 0:
-                this->setY(obj->getQPoint);
+            this->setY(obj->getLine().y1());
+            this->invertSpeedY();
             break;
         case 1:
-
+            this->setX(obj->getLine().x1());
+            this->invertSpeedX();
             break;
     }
 }
