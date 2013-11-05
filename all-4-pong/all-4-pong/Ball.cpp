@@ -8,7 +8,7 @@
 #include <vector>
 #include <cmath>
 #include <QString>
-
+#include <string>
 
 ///Constructors
 
@@ -96,16 +96,16 @@ void Ball::updatePosition(){
         this->setX(0 + this->getRadius());
         this->invertSpeedX();
     }
-    if (this->getX() + this->getRadius() > 450) {
-        this->setX(450 - this->getRadius());
+    if (this->getX() + this->getRadius() > World::getInstance()->getWorldSize()) {
+        this->setX(World::getInstance()->getWorldSize() - this->getRadius());
         this->invertSpeedX();
     }
     if (this->getY() - this->getRadius() < 0) {
         this->setY(0 + this->getRadius());
         this->invertSpeedY();
     }
-    if (this->getY() + this->getRadius() > 450) {
-        this->setY(450 - this->getRadius());
+    if (this->getY() + this->getRadius() > World::getInstance()->getWorldSize()) {
+        this->setY(World::getInstance()->getWorldSize() - this->getRadius());
         this->invertSpeedY();
     }
     /*End hard coding*/
@@ -143,15 +143,16 @@ void Ball::collisionHandler() {
 
 void Ball::onCollision(Object *obj) {
     this->setPlayerId(obj->getPlayerId());
+    qDebug() << "Collision with player." << endl;
     switch (playerId % 2) {
         case 0:
         this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
-            this->setSpeedX(this->getSpeedX()+obj->getSpeed());
+            this->setSpeedX(this->getSpeedX()+obj->getSpeed()/max(obj->getSpeed(),1));
             this->invertSpeedY();
             break;
         case 1:
         this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
-            this->setSpeedY(this->getSpeedY()+obj->getSpeed());
+            this->setSpeedY(this->getSpeedY()+obj->getSpeed()/max(obj->getSpeed(),1));
             this->invertSpeedX();
             break;
     }
