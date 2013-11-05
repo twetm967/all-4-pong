@@ -5,6 +5,7 @@
 #include <vector>
 #include <QPoint>
 #include "World.h"
+#include "score.h"
 
 //class Paddle;
 
@@ -14,7 +15,7 @@
 class Player
 {
 protected:
-        int Score;
+        Score* currentScore;
         int Health;
         QPoint* hand;
         int ID;
@@ -23,6 +24,7 @@ protected:
     public:
         Player();
         ~Player(){
+            delete currentScore;
             delete hand;
             nextID--;
         }
