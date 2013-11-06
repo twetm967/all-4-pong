@@ -21,8 +21,6 @@ class GameModel
 {
 private:
 
-    QPoint Mouse;
-
     GameModel();
     static GameModel instance; // the only instance of the singleton GameModel class
 
