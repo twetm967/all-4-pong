@@ -15,9 +15,6 @@ void GameModel::setDifficulty(int dif){
     difficulty = dif;
 }
 
-void GameModel::setNumOfPlayers(int num){
-    numberOfPlayers = num;
-}
 
 void GameModel::setPowerUps(bool in){
     powerUps = in;
@@ -25,11 +22,6 @@ void GameModel::setPowerUps(bool in){
 
 void GameModel::giveMouse(QPoint here){
     World::getInstance()->setworldMouse(here);
-}
-
-void GameModel::CreateWorld(){
-    World* world = World::getInstance();
-    world->setUp(numberOfPlayers,difficulty,powerUps);
 }
 
 // instructs the current game world to update itself

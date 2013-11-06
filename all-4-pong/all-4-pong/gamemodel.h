@@ -21,12 +21,7 @@ class GameModel
 {
 private:
 
-    int* scorePlayerBottom;
-    int* scorePlayerLeft;
-    int* scorePlayerRight;
-    int* scorePlayerTop;
     int difficulty;
-    int numberOfPlayers;
     bool powerUps;
     QPoint Mouse;
 
@@ -37,12 +32,9 @@ public:
 
     static GameModel& getInstance(); // returns the only instance of the singleton GameModel class
    void giveStart(Start*);
- //  void giveGame(inGame*);
-   void setNumOfPlayers(int);
    void setDifficulty(int);
    void setPowerUps(bool);
    void giveMouse(QPoint);
-   void CreateWorld();
    QString Pause(int h);
 
    // instructs the current game world to update itself

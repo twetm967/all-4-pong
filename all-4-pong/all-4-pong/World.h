@@ -85,6 +85,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 
         vector<Player*> getGamePlayers() {return GamePlayers;}
         vector<Object*> getObject() {return objects;}
+        void setupPlayers(int num);
 
 
 
