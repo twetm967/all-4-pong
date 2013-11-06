@@ -137,14 +137,14 @@ void Start::StartingMethod(){
 
     World::getInstance()->setupPlayers(ui->players_comboBox->currentIndex()+1);
 
-    GameModel::getInstance().setDifficulty(ui->dif_comboBox_->currentIndex()+1);
+    World::getInstance()->setDifficulty(ui->dif_comboBox_->currentIndex()+1);
   // players = ui->players_comboBox->currentIndex()+1;
 
    // difficulty = ui->dif_comboBox_->currentIndex()+1;
 
     GameModel::getInstance().setPowerUps(ui->power_checkBox->isChecked());
 
-        InGame* gameScreen = new InGame(this);
+    InGame* gameScreen = new InGame(this);
 
     GameModel::getInstance().Pause(1);
     gameScreen->show();

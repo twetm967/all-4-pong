@@ -32,7 +32,6 @@ public:
 
     static GameModel& getInstance(); // returns the only instance of the singleton GameModel class
    void giveStart(Start*);
-   void setDifficulty(int);
    void setPowerUps(bool);
    void giveMouse(QPoint);
    QString Pause(int h);

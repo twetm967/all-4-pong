@@ -7,7 +7,7 @@ World* World::instance=NULL;
 
 void World::setUp(int Players,int diff,bool power){
 
-    worldMouse = new QPoint();
+
     Player* in;
 
     for (int i = 0; i < Players && i<4; ++i){

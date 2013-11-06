@@ -10,12 +10,6 @@ GameModel& GameModel::getInstance() { // returns the only instance of the single
 GameModel::GameModel() {}
 GameModel::~GameModel() {}
 
-
-void GameModel::setDifficulty(int dif){
-    difficulty = dif;
-}
-
-
 void GameModel::setPowerUps(bool in){
     powerUps = in;
 }
