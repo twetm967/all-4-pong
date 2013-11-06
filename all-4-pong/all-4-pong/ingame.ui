@@ -1356,6 +1356,58 @@ border: 2px dotted rgb(137, 255, 200);</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="lblGameDeclaration">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>240</y>
+     <width>391</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+     <pointsize>49</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: none;
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblPlayDeclaration">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>360</y>
+     <width>291</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>URW Gothic L</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: none;
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>gameCourt</zorder>
   <zorder>lblPlayerBoardB</zorder>
   <zorder>lblLeaderBoard</zorder>
@@ -1409,6 +1461,8 @@ border: 2px dotted rgb(137, 255, 200);</string>
   <zorder>lblLife2PT</zorder>
   <zorder>btnHome</zorder>
   <zorder>lblBourdary</zorder>
+  <zorder>lblGameDeclaration</zorder>
+  <zorder>lblPlayDeclaration</zorder>
  </widget>
  <customwidgets>
   <customwidget>
