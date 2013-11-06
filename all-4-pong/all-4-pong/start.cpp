@@ -10,7 +10,6 @@
 #include <ingame.h>
 #include <QTimer>
 
-#include "gamemodel.h"
 #include "World.h"
 #include "ui_ingame.h"
 #include "start.h"

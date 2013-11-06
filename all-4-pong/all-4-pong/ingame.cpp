@@ -10,7 +10,6 @@
 #include <QMouseEvent>
 #include <QtWidgets>
 
-#include "gamemodel.h"
 #include "World.h"
 #include "Paddle.h"
 #include "Object.h"
@@ -172,8 +171,8 @@ void InGame::timerHit() {
         ui->btnPause->setText("Play");
         ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
-        ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
-        ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
         for (int i = 0; i < 4; ++i) {
             HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth()+1);
         }
