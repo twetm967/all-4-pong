@@ -28,7 +28,6 @@ SOURCES +=\
     command.cpp \
     GameLabel.cpp \
     Timer.cpp \
-    gamemodel.cpp \
     Object.cpp
 
 HEADERS  += \
@@ -46,7 +45,6 @@ HEADERS  += \
     command.h \
     GameLabel.h \
     Timer.h \
-    gamemodel.h \
     Object.h
 
 FORMS    += \

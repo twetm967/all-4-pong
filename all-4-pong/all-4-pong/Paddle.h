@@ -21,20 +21,18 @@ class Player;
 
 class Paddle : public Object
 {
-    int playerId;
     Player* Hand;
     int length, width;
     QLine line;
     int speed;
-    int worldSize;
 
 public:
 
     //takes player index;
   Paddle():Object(){
-      worldSize = World::getInstance()->getWorldSize();
+      int worldSize = World::getInstance()->getWorldSize();
 //these may change depending on resolution
-      length = (worldSize / 9);
+      length = (worldSize / 4.5);
       width = (worldSize / 30);
 //      World::getInstance()->add(this);
   }
@@ -67,6 +65,8 @@ public:
     void setLength(int newLength) {length = newLength;}
     void setWidth(int newWidth) {width = newWidth;}
     void moveLine(int distance);
+    double getDistancetoPaddle(QPoint point);
+//    void extend();
 
     void updatePosition();
 

@@ -10,7 +10,6 @@
 #include <QMouseEvent>
 #include <QtWidgets>
 
-#include "gamemodel.h"
 #include "World.h"
 #include "Paddle.h"
 #include "Object.h"
@@ -19,20 +18,21 @@
 #include "start.h"
 
 
-InGame::InGame(QWidget *parent) :
+InGame::InGame(Start* window, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::InGame)
-{
-    ui->setupUi(this);
+    ui(new Ui::InGame),
+    home(window)
+    {
+        ui->setupUi(this);
 
-    //Timer============================
-   /* timer = new QTimer(this);
-    timer->setInterval(75);
-    connect(timer, &QTimer::timeout,this, & InGame::Animate);
-*/
-    setMouseTracking(true);
-ui->gameCourt->setMouseTracking(true);
-   // Players = World::getInstance()->getGamePlayers();
+        //Timer============================
+       /* timer = new QTimer(this);
+        timer->setInterval(75);
+        connect(timer, &QTimer::timeout,this, & InGame::Animate);
+    */
+        setMouseTracking(true);
+        ui->gameCourt->setMouseTracking(true);
+       // Players = World::getInstance()->getGamePlayers();
 
 
 
@@ -46,13 +46,13 @@ ui->gameCourt->setMouseTracking(true);
     Health.push_back(ui->lblLife6PB);
     Health.push_back(ui->lblLife7PB);
     // player 1
-    Health.push_back(ui->lblLife1PL);
-    Health.push_back(ui->lblLife2PL);
-    Health.push_back(ui->lblLife3PL);
-    Health.push_back(ui->lblLife4PL);
-    Health.push_back(ui->lblLife5PL);
-    Health.push_back(ui->lblLife6PL);
-    Health.push_back(ui->lblLife7PL);
+    Health.push_back(ui->lblLife1PR);
+    Health.push_back(ui->lblLife2PR);
+    Health.push_back(ui->lblLife3PR);
+    Health.push_back(ui->lblLife4PR);
+    Health.push_back(ui->lblLife5PR);
+    Health.push_back(ui->lblLife6PR);
+    Health.push_back(ui->lblLife7PR);
     //player 2
     Health.push_back(ui->lblLife1PT);
     Health.push_back(ui->lblLife2PT);
@@ -62,13 +62,13 @@ ui->gameCourt->setMouseTracking(true);
     Health.push_back(ui->lblLife6PT);
     Health.push_back(ui->lblLife7PT);
     //player 3
-    Health.push_back(ui->lblLife1PR);
-    Health.push_back(ui->lblLife2PR);
-    Health.push_back(ui->lblLife3PR);
-    Health.push_back(ui->lblLife4PR);
-    Health.push_back(ui->lblLife5PR);
-    Health.push_back(ui->lblLife6PR);
-    Health.push_back(ui->lblLife7PR);
+    Health.push_back(ui->lblLife1PL);
+    Health.push_back(ui->lblLife2PL);
+    Health.push_back(ui->lblLife3PL);
+    Health.push_back(ui->lblLife4PL);
+    Health.push_back(ui->lblLife5PL);
+    Health.push_back(ui->lblLife6PL);
+    Health.push_back(ui->lblLife7PL);
 
 
 
@@ -100,37 +100,41 @@ ui->gameCourt->setMouseTracking(true);
 
 
 
-InGame::~InGame()
-{
-delete ui;
+InGame::~InGame() {
+    delete ui;
 }
 
 //this is called by the World class for when a player is damaged this is to change the
 // graphic!
 void InGame::HealthDamage(int index, int health){
     int spot = 7 * index;
-    if(health > -1){
-    QLabel* lbl = Health.at(spot + health);
-    lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
-}else {
+    --health;
+    if(health > -1 && health < 7){
+        QLabel* lbl = Health.at(spot + health);
+        lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
+    }
+    else if (health < 0) {
         qDebug() << "No more death possible";
     }
-
 }
 
  //Pauses the game but right now running health bar tests.
-void InGame::on_btnPause_clicked()
-{
-    QString Status = GameModel::getInstance().Pause(0);
+void InGame::on_btnPause_clicked() {
+    World::getInstance()->setRoundFinished(false);
+    if (ui->btnPause->text() == "Pause") {
+        Timer::getInstance()->getTimer()->stop();
+        ui->btnPause->setText("Play");
+    }
 
-   ui->btnPause->setText(Status);
-
+    else if (ui->btnPause->text() == "Play") {
+        Timer::getInstance()->getTimer()->start();
+        ui->btnPause->setText("Pause");
+    }
 }
 
 
 
-void InGame::on_btnCheat_clicked()
-{
+void InGame::on_btnCheat_clicked() {
     HealthDamage(0,i);
     HealthDamage(1,i);
     HealthDamage(2,i);
@@ -139,7 +143,7 @@ void InGame::on_btnCheat_clicked()
 }
 
 
-QPoint InGame::getGameCourt(QPoint in){
+QPoint InGame::getGameCourt(QPoint in) {
     QPoint out;
     out = ui->gameCourt->mapFromParent(in);
 
@@ -147,22 +151,32 @@ QPoint InGame::getGameCourt(QPoint in){
 }
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
-    QPoint here = getGameCourt((ev->pos()));
-
-    //gives the mouse position to gameModel.
-    GameModel::getInstance().giveMouse(here);
-
+    World::getInstance()->setworldMouse(this->getGameCourt(ev->pos()));
 }
+
 //for testing purposes
-void InGame::mousePressEvent(QMouseEvent *ev){
+void InGame::mousePressEvent(QMouseEvent *ev) {
    // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 }
 
 
 
 void InGame::timerHit() {
+    World::getInstance()->UpdateWorld();
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
         g->updatePosition();
+    }
+    if (World::getInstance()->getRoundFinished() == true) {
+        World::getInstance()->pointScoredReset();
+        Timer::getInstance()->getTimer()->stop();
+        ui->btnPause->setText("Play");
+        ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
+        for (int i = 0; i < 4; ++i) {
+            HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth()+1);
+        }
     }
 }
 
@@ -171,7 +185,10 @@ void InGame::timerHit() {
 // home screen.
 void InGame::on_btnHome_clicked() {
     this->deleteLater();
-    GameModel::getInstance().resetWorld();
+    World::getInstance()->ResetWorld();
+    Timer::getInstance()->getTimer()->stop();
+    ui->btnPause->setText("Play");
+    home->show();
 }
 
 

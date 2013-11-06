@@ -5,6 +5,7 @@
 #include <vector>
 #include <QPoint>
 #include "World.h"
+#include "score.h"
 
 //class Paddle;
 
@@ -14,24 +15,26 @@
 class Player
 {
 protected:
-        int Score;
+        Score* currentScore;
         int Health;
         QPoint* hand;
         int ID;
         static int nextID;
-        int speed;
+        int speed; // why do players have a speed? - JMP
     public:
         Player();
-        ~Player(){
-            delete hand;
-            nextID--;
-        }
-         virtual QPoint* getHand();
-
-
+//        ~Player(){
+//            delete currentScore;
+//            delete hand;
+//            nextID--;
+//        }
+        virtual QPoint* getHand();
 
         void point();
         void damage();
+        virtual void reset() {}
+        Score* getCurrentScore() {return currentScore;}
+        int getHealth() {return Health;}
     
         void Win();
         virtual int getSpeed();
@@ -49,6 +52,8 @@ class AI : public Player
     bool flop;
         
     public:
+
+    void reset();
 
     AI(int diff):Player(){
         hand = new QPoint(205,205);

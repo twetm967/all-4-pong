@@ -10,7 +10,6 @@
 #include <ingame.h>
 #include <QTimer>
 
-#include "gamemodel.h"
 #include "World.h"
 #include "ui_ingame.h"
 #include "start.h"
@@ -134,28 +133,23 @@ StartingMethod();
 
 void Start::StartingMethod(){
 
+    World::getInstance()->setDifficulty(ui->dif_comboBox_->currentIndex()+1);
 
-    //creates the GamModel class
+    World::getInstance()->setupPlayers(ui->players_comboBox->currentIndex()+1);
 
-    //GameModel* Model = new GameModel();
 
-    GameModel::getInstance().setNumOfPlayers(ui->players_comboBox->currentIndex()+1);
-
-    GameModel::getInstance().setDifficulty(ui->dif_comboBox_->currentIndex()+1);
   // players = ui->players_comboBox->currentIndex()+1;
 
    // difficulty = ui->dif_comboBox_->currentIndex()+1;
 
-    GameModel::getInstance().setPowerUps(ui->power_checkBox->isChecked());
+    World::getInstance()->setPowerUps(ui->power_checkBox->isChecked());
 
-    GameModel::getInstance().CreateWorld();
-    InGame* gameScreen = new InGame();
+    InGame* gameScreen = new InGame(this);
 
-    GameModel::getInstance().Pause(1);
     gameScreen->show();
     timer->start();
     this->hide();
-    GameModel::getInstance().giveStart(this);
+
 
 }
 

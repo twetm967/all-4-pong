@@ -7,7 +7,7 @@ World* World::instance=NULL;
 
 void World::setUp(int Players,int diff,bool power){
 
-    worldMouse = new QPoint();
+
     Player* in;
 
     for (int i = 0; i < Players && i<4; ++i){
@@ -35,7 +35,9 @@ void World::setUp(int Players,int diff,bool power){
 
     // update all elements in this game world
     void World::UpdateWorld() {
-
+        foreach (Object* obj, objects) {
+            obj->updatePosition();
+        }
     }
 
 
@@ -86,7 +88,24 @@ void World::setUp(int Players,int diff,bool power){
         return didRead;
     }
 
+    void World::setupPlayers(int num) {
+
+        for (int i = 0; i < num && i<4; ++i){
+            GamePlayers.push_back(new User());
+        }
+
+        if (4 - num > 0){
+            for (int i = 0; i< 4 - num; ++i) {
+                GamePlayers.push_back(new AI(difficulty));
+            }
+        }
+        assert(GamePlayers.size() == 4);
+    }
 
 
-
+    void World::pointScoredReset() {
+        foreach (Player *play, GamePlayers) {
+            play->reset();
+        }
+    }
 

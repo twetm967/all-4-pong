@@ -8,18 +8,20 @@
 #include <vector>
 #include <QDebug>
 #include <QString>
+#include <cmath>
 
 #include "Paddle.h"
 
 //sets up the paddle depending on what location it is to be in.
 void Paddle::setUp() {
+    int worldSize = World::getInstance()->getWorldSize();
     switch(playerId){
         case 0:
             point.setX((worldSize - length)/2);
             point.setY(worldSize - (width * 2));
             break;
         case 1:
-            point.setX(worldSize - (width * 2));
+            point.setX(width);
             point.setY((worldSize - length)/2);
             break;
         case 2:
@@ -27,7 +29,7 @@ void Paddle::setUp() {
             point.setY(width);
             break;
         case 3:
-            point.setX(width);
+            point.setX(worldSize - (width * 2));
             point.setY((worldSize - length)/2);
             break;
     }
@@ -45,13 +47,13 @@ void Paddle::setUpLine() {
             line.setLine(point.x(),point.y(),point.x()+length,point.y());
             break;
         case 1:
-            line.setLine(point.x(),point.y(),point.x(),point.y()+length);
+            line.setLine(point.x()+width,point.y(),point.x()+width,point.y()+length);
             break;
         case 2:
             line.setLine(point.x(),point.y()+width,point.x()+length,point.y()+width);
             break;
         case 3:
-            line.setLine(point.x()+width,point.y(),point.x()+width,point.y()+length);
+            line.setLine(point.x()/*+width*/,point.y(),point.x()/*+width*/,point.y()+length);
             break;
     }
 }
@@ -115,18 +117,17 @@ void Paddle::moveLine(int distance) {
         switch (playerId % 2) {
             case 0:
                 orig = this->point.x();
-                this->setX(Hand->getHand()->x()-length);
+                this->setX(Hand->getHand()->x()-(length/2));
                 speed = this->point.x()-orig;
                 break;
             case 1:
                 orig = this->point.y();
-                this->setY(Hand->getHand()->y()-length);
-                speed = this->point.x()-orig;
+                this->setY(Hand->getHand()->y()-(length/2));
+                speed = this->point.y()-orig;
                 break;
         }
         moveLine(speed);
     }
-
 
     void Paddle::setY(int newY) {
         if (playerId % 2 == 0)
@@ -134,8 +135,8 @@ void Paddle::moveLine(int distance) {
         point.setY(newY);
         if(point.y() < 0)
             point.setY(0);
-        if(point.y() > (worldSize - (2*length)))
-            point.setY(worldSize - (2*length));
+        if(point.y() > (World::getInstance()->getWorldSize() - (length)))
+            point.setY(World::getInstance()->getWorldSize() - (length));
     }
 
 
@@ -145,6 +146,29 @@ void Paddle::moveLine(int distance) {
         point.setX(newX);
         if(point.x() < 0)
             point.setX(0);
-        if(point.x() > (worldSize - (2*length)))
-           point.setX(worldSize - (2*length));
+        if(point.x() > (World::getInstance()->getWorldSize() - (length)))
+           point.setX(World::getInstance()->getWorldSize() - (length));
     }
+
+    double Paddle::getDistancetoPaddle(QPoint pointIn) {
+        switch(playerId % 2) {
+            case 0:
+                if (pointIn.x() >= line.x1() && pointIn.x() <= line.x2()) {
+                    return (double) abs(pointIn.y()-line.y1());
+                }
+                break;
+            case 1:
+                if (pointIn.y() >= line.y1() && pointIn.y() <= line.y2()) {
+                    return (double) abs(pointIn.x()-line.x1());
+                }
+                break;
+        }
+        return min(sqrt(pow(pointIn.x()-line.x1(),2)+pow(pointIn.y()-line.y1(),2)),sqrt(pow(pointIn.x()-line.x2(),2)+pow(pointIn.y()-line.y2(),2)));
+    }
+
+//    void Paddle::extend() {
+//        length = World::getInstance()->getWorldSize();
+//        this->setUpLine();
+//        point.setX(-World::getInstance()->getWorldSize());
+//        point.setY(-World::getInstance()->getWorldSize());
+//    }

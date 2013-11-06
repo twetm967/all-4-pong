@@ -9,7 +9,6 @@
 #include <QTimer>
 
 
-#include "gamemodel.h"
 #include "ingame.h"
 
 namespace Ui {

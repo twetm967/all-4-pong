@@ -23,6 +23,7 @@ protected:
 
     static int nextObjId;
     int objId;
+    int playerId;
 
 
 
@@ -40,8 +41,7 @@ public:
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}
-    virtual void setPlayerId(int) {}
-    virtual QString getType() {return "";}
+
 
     bool getHit();
     QPoint getQPoint(){return point;}
@@ -55,6 +55,12 @@ public:
    bool virtual Hit(){return true;}
    bool virtual getBound();
    double virtual getDistancetoPaddle(QPoint point){return -1;}
+   int virtual getPlayerId() {return playerId;}
+   virtual void setPlayerId(int) {}
+   virtual QString getType() {return "";}
+   virtual QLine getLine() {return QLine();}
+   virtual int getSpeed() {return 0;}
+   virtual void extend() {}
 
 
 
