@@ -14,6 +14,7 @@
 
 //sets up the paddle depending on what location it is to be in.
 void Paddle::setUp() {
+    int worldSize = World::getInstance()->getWorldSize();
     switch(playerId){
         case 0:
             point.setX((worldSize - length)/2);
@@ -134,8 +135,8 @@ void Paddle::moveLine(int distance) {
         point.setY(newY);
         if(point.y() < 0)
             point.setY(0);
-        if(point.y() > (worldSize - (length)))
-            point.setY(worldSize - (length));
+        if(point.y() > (World::getInstance()->getWorldSize() - (length)))
+            point.setY(World::getInstance()->getWorldSize() - (length));
     }
 
 
@@ -145,8 +146,8 @@ void Paddle::moveLine(int distance) {
         point.setX(newX);
         if(point.x() < 0)
             point.setX(0);
-        if(point.x() > (worldSize - (length)))
-           point.setX(worldSize - (length));
+        if(point.x() > (World::getInstance()->getWorldSize() - (length)))
+           point.setX(World::getInstance()->getWorldSize() - (length));
     }
 
     double Paddle::getDistancetoPaddle(QPoint pointIn) {
@@ -164,3 +165,10 @@ void Paddle::moveLine(int distance) {
         }
         return min(sqrt(pow(pointIn.x()-line.x1(),2)+pow(pointIn.y()-line.y1(),2)),sqrt(pow(pointIn.x()-line.x2(),2)+pow(pointIn.y()-line.y2(),2)));
     }
+
+//    void Paddle::extend() {
+//        length = World::getInstance()->getWorldSize();
+//        this->setUpLine();
+//        point.setX(-World::getInstance()->getWorldSize());
+//        point.setY(-World::getInstance()->getWorldSize());
+//    }

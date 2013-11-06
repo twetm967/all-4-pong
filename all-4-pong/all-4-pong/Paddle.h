@@ -25,13 +25,12 @@ class Paddle : public Object
     int length, width;
     QLine line;
     int speed;
-    int worldSize;
 
 public:
 
     //takes player index;
   Paddle():Object(){
-      worldSize = World::getInstance()->getWorldSize();
+      int worldSize = World::getInstance()->getWorldSize();
 //these may change depending on resolution
       length = (worldSize / 4.5);
       width = (worldSize / 30);
@@ -67,6 +66,7 @@ public:
     void setWidth(int newWidth) {width = newWidth;}
     void moveLine(int distance);
     double getDistancetoPaddle(QPoint point);
+//    void extend();
 
     void updatePosition();
 

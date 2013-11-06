@@ -117,6 +117,22 @@ void Ball::invertSpeedY() {
 }
 
 void Ball::collisionHandler() {
+    if (World::getInstance()->getGamePlayer(0)->getHealth() <= 0 && this->getY() + this->getRadius() > World::getInstance()->getWorldSize()*14/15) {
+        this->setY(World::getInstance()->getWorldSize()*14/15 - this->getRadius());
+        this->invertSpeedY();
+    }
+    if (World::getInstance()->getGamePlayer(1)->getHealth() <= 0 && this->getX() + this->getRadius() > World::getInstance()->getWorldSize()*14/15) {
+        this->setX(World::getInstance()->getWorldSize()*14/15 - this->getRadius());
+        this->invertSpeedX();
+    }
+    if (World::getInstance()->getGamePlayer(2)->getHealth() <= 0 && this->getY() - this->getRadius() < World::getInstance()->getWorldSize()/15) {
+        this->setY(World::getInstance()->getWorldSize()/15 + this->getRadius());
+        this->invertSpeedY();
+    }
+    if (World::getInstance()->getGamePlayer(3)->getHealth() <= 0 && this->getX() - this->getRadius() < World::getInstance()->getWorldSize()/15) {
+        this->setX(World::getInstance()->getWorldSize()/15 + this->getRadius());
+        this->invertSpeedX();
+    }
     foreach(Object *o, World::getInstance()->getObjects()) {
         double distance = o->getDistancetoPaddle(QPoint(this->getX(),this->getY()));
         if (distance != -1 && distance <= this->getRadius()) {
