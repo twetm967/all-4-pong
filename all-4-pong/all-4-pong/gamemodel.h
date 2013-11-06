@@ -21,8 +21,6 @@ class GameModel
 {
 private:
 
-    int difficulty;
-    bool powerUps;
     QPoint Mouse;
 
     GameModel();

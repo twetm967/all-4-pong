@@ -29,7 +29,10 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         QPoint* worldMouse;
         int worldSize;
 
-        World(){worldMouse = new QPoint();}              //takes nothing. It gets instantiated later.
+        World(){
+            worldMouse = new QPoint();
+            worldSize = 450;
+        }
         static World* instance;
         vector<Ball*> balls;    //Just a note, ball is in the objects vector. Check out the "getType" method.  I think this
                                 //is how we should keep track of all objects in the world.  Alternatively, you could modify
@@ -88,7 +91,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         void setupPlayers(int num);
 
         void setDifficulty(int newDifficulty) { difficulty = newDifficulty; }
-
+        void setPowerUps(bool pow) {powerUps = pow;}
 
 
     //methods 

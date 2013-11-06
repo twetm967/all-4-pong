@@ -97,6 +97,7 @@ void World::setUp(int Players,int diff,bool power){
                 GamePlayers.push_back(new AI(difficulty));
             }
         }
+        assert(GamePlayers.size() == 4);
     }
 
 

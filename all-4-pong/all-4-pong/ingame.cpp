@@ -124,7 +124,7 @@ void InGame::on_btnPause_clicked()
 {
     QString Status = GameModel::getInstance().Pause(0);
 
-   ui->btnPause->setText(Status);
+    ui->btnPause->setText(Status);
 
 }
 
