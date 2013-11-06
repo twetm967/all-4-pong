@@ -39,7 +39,6 @@ public:
    void giveStart(Start*);
  //  void giveGame(inGame*);
    void setNumOfPlayers(int);
-   void setDifficulty(int);
    void setPowerUps(bool);
    void giveMouse(QPoint);
    void CreateWorld();
