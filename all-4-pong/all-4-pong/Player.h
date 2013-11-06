@@ -20,7 +20,7 @@ protected:
         QPoint* hand;
         int ID;
         static int nextID;
-        int speed;
+        int speed; // why do players have a speed? - JMP
     public:
         Player();
         ~Player(){
@@ -28,9 +28,9 @@ protected:
             delete hand;
             nextID--;
         }
-         virtual QPoint* getHand();
+        virtual QPoint* getHand();
 
-
+        void isHit();
 
         void point();
         void damage();

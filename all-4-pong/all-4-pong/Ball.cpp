@@ -144,6 +144,7 @@ void Ball::collisionHandler() {
 void Ball::onCollision(Object *obj) {
     this->setPlayerId(obj->getPlayerId());
     qDebug() << "Collision with player." << endl;
+
     switch (playerId % 2) {
         case 0:
         this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());

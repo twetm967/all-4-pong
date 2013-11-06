@@ -3,6 +3,8 @@
 #include "World.h"
 #include "ingame.h"
 #include "Ball.h"
+#include <iostream>
+
 int Player::nextID = 0;
 
 
@@ -26,6 +28,13 @@ return hand;
 
 int Player::getSpeed(){
     return speed;
+}
+
+void Player::isHit() {
+    currentScore->decreaseScore();
+
+
+    cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
 }
 
 QPoint *AI::getHand(){

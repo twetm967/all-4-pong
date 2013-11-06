@@ -4,14 +4,12 @@
 
 // increase currentScore by currentLevelIncrease and
 // returns the updated currentScore
-int Score::increaseScore() {
+void Score::increaseScore() {
     currentScore = currentScore + currentLevelIncrease;
-    return currentScore;
 }
 
 // decrease currentScore by currentLevelDecrease and
 // returns the updated currentScore
-int Score::decreaseScore() {
+void Score::decreaseScore() {
     currentScore = currentScore - currentLevelDecrease;
-    return currentScore;
 }

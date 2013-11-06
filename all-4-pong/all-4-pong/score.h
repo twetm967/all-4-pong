@@ -24,11 +24,11 @@ public:
 
     // increase currentScore by currentLevelIncrease and
     // returns the updated currentScore
-    int increaseScore();
+    void increaseScore();
 
     // decrease currentScore by currentLevelDecrease and
     // returns the updated currentScore
-    int decreaseScore();
+    void decreaseScore();
 
     /* ------- getter methods ------- */
     int getCurrentScore() { return currentScore; }
