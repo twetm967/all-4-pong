@@ -14,8 +14,8 @@ Startup::Startup(QWidget *parent) :
     ui(new Ui::Startup)
 {
     ui->setupUi(this);
-    x = 0;
-    y = 0;
+    clientgame = new clientingame();
+
     timer = new QTimer(this);
     timer->setInterval(100);
     connect(timer, &QTimer::timeout, this, &Startup::timerHit);
@@ -43,7 +43,7 @@ void Startup::on_connect_Btn_clicked()
         return;
     }
 
-    clientingame *clientgame = new clientingame();
+
     clientgame->show();
     this->hide();
     timer->start();
@@ -54,11 +54,6 @@ void Startup::on_connect_Btn_clicked()
 }
 
 
-void Startup::mouseMoveEvent(QMouseEvent *ev) {
-    x = ev->x();
-    y = ev->y();
-    //timer->start();
-}
 
 
 vector<QString> *Startup::split(QString str, char delim){
@@ -80,6 +75,16 @@ vector<QString> *Startup::split(QString str, char delim){
     return splitV;
 }
 
+void Startup::MoveLabels(vector<QString> *vsplit){
+    if (vsplit->at(0) == "0"){
+        //update ball
+    }else if(vsplit->at(0) == "1"){
+        //update the player
+    }else if(vsplit->at(0) == "2"){
+        //update the object
+    }
+}
+
 
 void Startup::dataReceived() {
 
@@ -88,6 +93,11 @@ void Startup::dataReceived() {
         //this will recieve a string of the a list of objects with their x and y coordinates
         //For example, ball,
         vector<QString> *spaceSplit = split(str, ' ');
+        while(spaceSplit->size() > 0){
+            vector<QString> *slashSplit = split(spaceSplit->at(0), '/');
+            spaceSplit->erase(spaceSplit->begin()+0);
+            MoveLabels(slashSplit);
+        }
     }
 }
 
@@ -100,7 +110,7 @@ void Startup::serverDisconnected()
 //this is called every clock tick and sends the paddle x, y, and ID
 void Startup::timerHit()
 {
-    QString str =  ui->username_line->text() + "/" + QString::number(x) + '/' + QString::number(y) + '/'+ "\n";
+    QString str =  ui->username_line->text() + "/" + QString::number(clientgame->getX()) + '/' + QString::number(clientgame->getY()) + '/'+ "\n";
     socket->write(str.toLocal8Bit());
 
     //This is the Schaub code for the chat client.

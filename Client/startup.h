@@ -7,6 +7,7 @@
 #include <QString>
 #include <QTimer>
 #include <QMouseEvent>
+#include <clientingame.h>
 
 using namespace std;
 namespace Ui {
@@ -21,7 +22,7 @@ public:
     explicit Startup(QWidget *parent = 0);
     ~Startup();
 
-    void mouseMoveEvent(QMouseEvent *ev);
+    //void mouseMoveEvent(QMouseEvent *ev);
 
     vector<QString>* split(QString, char);
 private slots:
@@ -29,7 +30,7 @@ private slots:
     void dataReceived();
     void serverDisconnected();
     void timerHit();
-
+    void MoveLabels(vector<QString> *);
     
     void on_connect_Btn_clicked();
 
@@ -37,9 +38,9 @@ private:
     Ui::Startup *ui;
     QTcpSocket* socket;
     QTimer *timer;
-    int x;
-    int y;
+
     QString username;
+    clientingame *clientgame;
 
 };
 

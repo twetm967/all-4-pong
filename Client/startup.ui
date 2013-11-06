@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Host's IP Address...</string>
+     <string>localhost</string>
     </property>
    </widget>
    <widget class="QPushButton" name="connect_Btn">
