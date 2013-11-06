@@ -14,6 +14,7 @@ Startup::Startup(QWidget *parent) :
     ui(new Ui::Startup)
 {
     ui->setupUi(this);
+    clientingame *clientgame = new clientingame();
     x = 0;
     y = 0;
     timer = new QTimer(this);
@@ -43,7 +44,7 @@ void Startup::on_connect_Btn_clicked()
         return;
     }
 
-    clientingame *clientgame = new clientingame();
+
     clientgame->show();
     this->hide();
     timer->start();
@@ -80,6 +81,16 @@ vector<QString> *Startup::split(QString str, char delim){
     return splitV;
 }
 
+void Startup::MoveLabels(vector<QString> *vsplit){
+    if (vsplit->at(0) == "0"){
+        //update ball
+    }else if(vsplit->at(0) == "1"){
+        //update the player
+    }else if(vsplit->at(0) == "2"){
+        //update the object
+    }
+}
+
 
 void Startup::dataReceived() {
 
@@ -88,6 +99,11 @@ void Startup::dataReceived() {
         //this will recieve a string of the a list of objects with their x and y coordinates
         //For example, ball,
         vector<QString> *spaceSplit = split(str, ' ');
+        while(spaceSplit->size() > 0){
+            vector<QString> *slashSplit = split(spaceSplit->at(0), '/');
+            spaceSplit->erase(spaceSplit->begin()+0);
+            MoveLabels(slashSplit);
+        }
     }
 }
 
