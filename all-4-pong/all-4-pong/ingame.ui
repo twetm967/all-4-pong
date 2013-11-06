@@ -358,7 +358,7 @@ text-align: center;</string>
     <enum>QFrame::Plain</enum>
    </property>
    <property name="text">
-    <string>2050</string>
+    <string>0</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnPause">
@@ -525,7 +525,7 @@ text-align: center;</string>
     <enum>QFrame::Plain</enum>
    </property>
    <property name="text">
-    <string>1550</string>
+    <string>0</string>
    </property>
   </widget>
   <widget class="QLabel" name="lblLife7PR">
@@ -1123,7 +1123,7 @@ text-align: center;</string>
     <enum>QFrame::Plain</enum>
    </property>
    <property name="text">
-    <string>900</string>
+    <string>0</string>
    </property>
   </widget>
   <widget class="QLabel" name="lblLife5PR">
@@ -1194,7 +1194,7 @@ text-align: center;</string>
     <enum>QFrame::Plain</enum>
    </property>
    <property name="text">
-    <string>3750</string>
+    <string>0</string>
    </property>
   </widget>
   <widget class="QLabel" name="lblUsernamePB">
