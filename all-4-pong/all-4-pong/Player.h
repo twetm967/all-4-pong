@@ -23,17 +23,17 @@ protected:
         int speed; // why do players have a speed? - JMP
     public:
         Player();
-        ~Player(){
-            delete currentScore;
-            delete hand;
-            nextID--;
-        }
+//        ~Player(){
+//            delete currentScore;
+//            delete hand;
+//            nextID--;
+//        }
         virtual QPoint* getHand();
-
-        void isHit();
 
         void point();
         void damage();
+        Score* getCurrentScore() {return currentScore;}
+        int getHealth() {return Health;}
     
         void Win();
         virtual int getSpeed();

@@ -9,18 +9,19 @@
 #include <cmath>
 #include <QString>
 #include <string>
+#include <iostream>
 
 ///Constructors
 
 
 Ball::Ball(int initSpeed):Object() {            //takes (speed)
     speed = initSpeed;
-    x = 0;
-    y = 0;
-    radius = 15; //need to determine default radius
+    x = World::getInstance()->getWorldSize()/2;
+    y = World::getInstance()->getWorldSize()/2;
+    radius = World::getInstance()->getWorldSize()/30; //need to determine default radius
     playerId = -1; //need to determine a playerId to use for NULL
-    speedX = (pow(-1,rand()%2)) * (rand() % (speed));
-    speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
+    speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
+    this->updateSpeedY();
     this->setPoint(); //point used to track the QLabel in the game
     World::getInstance()->add(this);
 }
@@ -30,11 +31,10 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     x = initX;
     y = initY;
     playerId = initPlayerId;
-    radius = 15; //need to determine default radius; maybe include initRadius in Constructor
-    speedX = (pow(-1,rand()%2)) * (rand() % (speed));
-    speedY = (pow(-1,rand()%2)) * ((int)sqrt(pow(speed,2)-pow(speedX,2)));
+    radius = World::getInstance()->getWorldSize()/30; //need to determine default radius; maybe include initRadius in Constructor
+    speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
+    this->updateSpeedY();
     this->setPoint();
-//    World::getInstance()->add(this);
     World::getInstance()->addBall(this);
 }
 
@@ -92,22 +92,6 @@ void Ball::updatePosition(){
     this->setX(this->getX() + this->getSpeedX());
     this->setY(this->getY() + this->getSpeedY());
     this->collisionHandler();
-    if (this->getX() - this->getRadius() < 0) {
-        this->setX(0 + this->getRadius());
-        this->invertSpeedX();
-    }
-    if (this->getX() + this->getRadius() > World::getInstance()->getWorldSize()) {
-        this->setX(World::getInstance()->getWorldSize() - this->getRadius());
-        this->invertSpeedX();
-    }
-    if (this->getY() - this->getRadius() < 0) {
-        this->setY(0 + this->getRadius());
-        this->invertSpeedY();
-    }
-    if (this->getY() + this->getRadius() > World::getInstance()->getWorldSize()) {
-        this->setY(World::getInstance()->getWorldSize() - this->getRadius());
-        this->invertSpeedY();
-    }
     /*End hard coding*/
     this->setPoint();
 }
@@ -139,12 +123,39 @@ void Ball::collisionHandler() {
             onCollision(o);
         }
     }
+    if (this->getX() - this->getRadius() < World::getInstance()->getWorldSize()/15) {
+        World::getInstance()->getGamePlayer(3)->damage();
+        if (playerId != 3 && playerId != -1)
+            World::getInstance()->getGamePlayer(playerId)->point();
+        World::getInstance()->setRoundFinished(true);
+        this->reset();
+    }
+    if (this->getX() + this->getRadius() > World::getInstance()->getWorldSize()*14/15) {
+        World::getInstance()->getGamePlayer(1)->damage();
+        if (playerId != 1 && playerId != -1)
+            World::getInstance()->getGamePlayer(playerId)->point();
+        World::getInstance()->setRoundFinished(true);
+        this->reset();
+    }
+    if (this->getY() - this->getRadius() < World::getInstance()->getWorldSize()/15) {
+        World::getInstance()->getGamePlayer(2)->damage();
+        if (playerId != 2 && playerId != -1)
+            World::getInstance()->getGamePlayer(playerId)->point();
+        World::getInstance()->setRoundFinished(true);
+        this->reset();
+    }
+    if (this->getY() + this->getRadius() > World::getInstance()->getWorldSize()*14/15) {
+        World::getInstance()->getGamePlayer(0)->damage();
+        if (playerId != 0 && playerId != -1)
+            World::getInstance()->getGamePlayer(playerId)->point();
+        World::getInstance()->setRoundFinished(true);
+        this->reset();
+    }
 }
 
 void Ball::onCollision(Object *obj) {
     this->setPlayerId(obj->getPlayerId());
-    qDebug() << "Collision with player." << endl;
-
+    cout << "Collision with player" << playerId << endl;
     switch (playerId % 2) {
         case 0:
             this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
@@ -170,3 +181,13 @@ void Ball::incrementSpeedY(int vector) {
         return;
     this->setSpeedY(this->getSpeedY()+abs(vector)/vector);
 }
+
+void Ball::reset() {
+    x = World::getInstance()->getWorldSize()/2;
+    y = World::getInstance()->getWorldSize()/2;
+    playerId = -1; //need to determine a playerId to use for NULL
+    speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);
+    this->updateSpeedY();
+    this->setPoint(); //point used to track the QLabel in the game
+}
+

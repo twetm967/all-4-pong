@@ -147,7 +147,6 @@ void Start::StartingMethod(){
 
     InGame* gameScreen = new InGame(this);
 
-    GameModel::getInstance().Pause(1);
     gameScreen->show();
     timer->start();
     this->hide();

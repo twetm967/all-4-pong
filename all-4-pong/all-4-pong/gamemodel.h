@@ -1,4 +1,4 @@
-#ifndef GAMEMODEL_H
+/*#ifndef GAMEMODEL_H
 #define GAMEMODEL_H
 
 
@@ -27,19 +27,10 @@ private:
 public:
 
     static GameModel& getInstance(); // returns the only instance of the singleton GameModel class
-   void giveStart(Start*);
-   void setPowerUps(bool);
-   void giveMouse(QPoint);
-   QString Pause(int h);
-
-   // instructs the current game world to update itself
-   void UpdateWorld();
-
-   // instructs the current game world to reset itself
-   void resetWorld();
 
    ~GameModel();
 };
 
 #endif // GAMEMODEL_H
 
+*/

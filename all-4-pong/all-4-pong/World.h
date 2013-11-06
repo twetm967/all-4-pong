@@ -28,10 +28,12 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         int difficulty;
         QPoint* worldMouse;
         int worldSize;
+        bool roundFinished;
 
         World(){
             worldMouse = new QPoint();
             worldSize = 450;
+            roundFinished = false;
         }
         static World* instance;
         vector<Ball*> balls;    //Just a note, ball is in the objects vector. Check out the "getType" method.  I think this
@@ -87,8 +89,11 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         int getDifficulty() {return difficulty;}
 
         vector<Player*> getGamePlayers() {return GamePlayers;}
+        Player* getGamePlayer(int id) {return GamePlayers.at(id);}
         vector<Object*> getObject() {return objects;}
         void setupPlayers(int num);
+        void setRoundFinished(bool finished) {roundFinished = finished;}
+        bool getRoundFinished() {return roundFinished;}
 
         void setDifficulty(int newDifficulty) { difficulty = newDifficulty; }
         void setPowerUps(bool pow) {powerUps = pow;}

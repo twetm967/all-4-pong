@@ -30,10 +30,17 @@ int Player::getSpeed(){
     return speed;
 }
 
-void Player::isHit() {
+void Player::damage() {
+    Health--;
     currentScore->decreaseScore();
 
 
+    cout << "New health of player " << ID << " is " << Health << endl;
+    cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
+}
+
+void Player::point(){
+    currentScore->increaseScore();
     cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
 }
 
@@ -105,12 +112,6 @@ void AI::change(){
         }
     }
 
-void Player::damage(){
-
-Health--;
-
-}
-
 void User::calculateSpeed(){
     switch(ID){
     case 0:
@@ -135,7 +136,7 @@ QPoint* User::getHand(){
 
     Player::getHand();
     calculateSpeed();
-qDebug() << speed;
+//qDebug() << speed;
     oldX = hand->x();
     oldY = hand->y();
 

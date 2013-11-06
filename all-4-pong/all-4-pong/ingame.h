@@ -15,7 +15,7 @@ class Start;
 
 using namespace std;
 namespace Ui {
-class InGame;
+    class InGame;
 }
 
 class InGame : public QWidget

@@ -67,6 +67,7 @@ class Ball : public Object
         void updateSpeedY();
         void invertSpeedX();
         void invertSpeedY();
+        void reset();
 
         // prints the current ball state out to offshore text file,
         // returning a boolean value indicating print success
