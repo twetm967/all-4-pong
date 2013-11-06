@@ -564,9 +564,12 @@ border-radius: 10px;</string>
     <bool>true</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 200, 0);
+    <string notr="true">.QWidget#gameCourt {
+background-image: url(:/images/gameCourtBackground.png);
+background-position: center;
 border: 3px solid rgb(137, 255, 200);
-box-shadow: 10px 10px 30px rgb(0, 0, 0);</string>
+box-shadow: 10px 10px 30px rgb(0, 0, 0);
+}</string>
    </property>
    <widget class="GameLabel" name="lblBall">
     <property name="geometry">
@@ -684,8 +687,8 @@ border-radius: 4px;</string>
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 4px;</string>
+     <string notr="true">border-radius: 4px;
+background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
@@ -1339,23 +1342,6 @@ border-radius: 30px;</string>
     <string>Home</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblBourdary">
-   <property name="geometry">
-    <rect>
-     <x>287</x>
-     <y>137</y>
-     <width>396</width>
-     <height>396</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: none;
-border: 2px dotted rgb(137, 255, 200);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="lblGameDeclaration">
    <property name="geometry">
     <rect>
@@ -1460,7 +1446,6 @@ color: rgb(255, 255, 255);</string>
   <zorder>lblLife4PR</zorder>
   <zorder>lblLife2PT</zorder>
   <zorder>btnHome</zorder>
-  <zorder>lblBourdary</zorder>
   <zorder>lblGameDeclaration</zorder>
   <zorder>lblPlayDeclaration</zorder>
  </widget>
