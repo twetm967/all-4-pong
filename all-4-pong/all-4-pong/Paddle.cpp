@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QString>
 #include <cmath>
+#include <iostream>
 
 #include "Paddle.h"
 
@@ -21,7 +22,7 @@ void Paddle::setUp() {
             point.setY(worldSize - (width * 2));
             break;
         case 1:
-            point.setX(width);
+            point.setX(worldSize - (width * 2));
             point.setY((worldSize - length)/2);
             break;
         case 2:
@@ -29,7 +30,7 @@ void Paddle::setUp() {
             point.setY(width);
             break;
         case 3:
-            point.setX(worldSize - (width * 2));
+            point.setX(width);
             point.setY((worldSize - length)/2);
             break;
     }
@@ -47,13 +48,13 @@ void Paddle::setUpLine() {
             line.setLine(point.x(),point.y(),point.x()+length,point.y());
             break;
         case 1:
-            line.setLine(point.x()+width,point.y(),point.x()+width,point.y()+length);
+            line.setLine(point.x(),point.y(),point.x(),point.y()+length);
             break;
         case 2:
             line.setLine(point.x(),point.y()+width,point.x()+length,point.y()+width);
             break;
         case 3:
-            line.setLine(point.x()/*+width*/,point.y(),point.x()/*+width*/,point.y()+length);
+            line.setLine(point.x()+width,point.y(),point.x()+width,point.y()+length);
             break;
     }
 }
@@ -167,6 +168,7 @@ void Paddle::moveLine(int distance) {
     }
 
     void Paddle::eliminate() {
+        cout << "Moving player " << playerId << " off screen" << endl;
         point.setX(-World::getInstance()->getWorldSize());
         point.setY(-World::getInstance()->getWorldSize());
         this->setUpLine();
