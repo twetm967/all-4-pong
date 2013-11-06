@@ -76,9 +76,24 @@ void AI::command(){
 //the hard setting literally they are perfect!
 void AI::follow(){
     Ball* ball = World::getInstance()->getBalls().at(0);
-    speed = ball->getSpeed();
-    hand->setX(ball->getX());
-    hand->setY(ball->getY());
+    int x = ball->getX();
+    int y = ball->getY();
+
+    speed = rand() % 12;
+    if(speed < 9 )speed = 9;
+
+    if(x < hand->x()){
+        hand->setX(hand->x() - speed);
+    }
+    if(x > hand->x()){
+        hand->setX(hand->x() + speed);
+    }
+    if(y < hand->y()){
+        hand->setY(hand->y() - speed);
+    }
+    if(y > hand->y()){
+        hand->setY(hand->y() + speed);
+    }
    }
 
 //the medium setting
@@ -88,8 +103,8 @@ void AI::followRandom(){
     int x = ball->getX();
     int y = ball->getY();
 
-    speed = rand() % 12;
-    if(speed < 6 )speed = 6;
+    speed = rand() % 10;
+    if(speed < 4 )speed = 4;
 
     if(x < hand->x()){
         hand->setX(hand->x() - speed);
