@@ -35,7 +35,9 @@ void World::setUp(int Players,int diff,bool power){
 
     // update all elements in this game world
     void World::UpdateWorld() {
-
+        foreach (Object* obj, objects) {
+            obj->updatePosition();
+        }
     }
 
 

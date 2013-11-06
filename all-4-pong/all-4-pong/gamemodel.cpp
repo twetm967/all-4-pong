@@ -10,9 +10,6 @@ GameModel& GameModel::getInstance() { // returns the only instance of the single
 GameModel::GameModel() {}
 GameModel::~GameModel() {}
 
-void GameModel::setPowerUps(bool in){
-    powerUps = in;
-}
 
 void GameModel::giveMouse(QPoint here){
     World::getInstance()->setworldMouse(here);

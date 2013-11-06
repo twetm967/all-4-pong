@@ -159,6 +159,7 @@ void InGame::mousePressEvent(QMouseEvent *ev) {
 
 
 void InGame::timerHit() {
+    World::getInstance()->UpdateWorld();
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
         g->updatePosition();
     }

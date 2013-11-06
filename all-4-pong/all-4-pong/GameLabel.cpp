@@ -16,7 +16,6 @@ void GameLabel::initializeObj(QString objType) {
 }
 
 void GameLabel::updatePosition() {
-    obj->updatePosition();
     this->move(obj->getQPoint().x(),obj->getQPoint().y());
 
 }
