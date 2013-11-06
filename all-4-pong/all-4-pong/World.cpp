@@ -103,5 +103,9 @@ void World::setUp(int Players,int diff,bool power){
     }
 
 
-
+    void World::pointScoredReset() {
+        foreach (Player *play, GamePlayers) {
+            play->reset();
+        }
+    }
 

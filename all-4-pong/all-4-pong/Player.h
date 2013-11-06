@@ -32,6 +32,7 @@ protected:
 
         void point();
         void damage();
+        virtual void reset() {}
         Score* getCurrentScore() {return currentScore;}
         int getHealth() {return Health;}
     
@@ -51,6 +52,8 @@ class AI : public Player
     bool flop;
         
     public:
+
+    void reset();
 
     AI(int diff):Player(){
         hand = new QPoint(205,205);

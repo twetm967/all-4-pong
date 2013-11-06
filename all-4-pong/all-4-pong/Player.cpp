@@ -31,7 +31,7 @@ int Player::getSpeed(){
 }
 
 void Player::damage() {
-    Health--;
+    --Health;
     currentScore->decreaseScore();
 
 
@@ -42,6 +42,11 @@ void Player::damage() {
 void Player::point(){
     currentScore->increaseScore();
     cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
+}
+
+void AI::reset() {
+    hand->setX(World::getInstance()->getWorldSize()/2);
+    hand->setY(World::getInstance()->getWorldSize()/2);
 }
 
 QPoint *AI::getHand(){

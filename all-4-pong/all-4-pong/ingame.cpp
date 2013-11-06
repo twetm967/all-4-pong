@@ -167,6 +167,7 @@ void InGame::timerHit() {
         g->updatePosition();
     }
     if (World::getInstance()->getRoundFinished() == true) {
+        World::getInstance()->pointScoredReset();
         Timer::getInstance()->getTimer()->stop();
         ui->btnPause->setText("Play");
         ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));

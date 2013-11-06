@@ -104,6 +104,8 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         // update all elements in this game world
         void UpdateWorld();
 
+        void pointScoredReset();
+
         // reset all elements in this game world
         void ResetWorld();
 
