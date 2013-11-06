@@ -147,14 +147,26 @@ void Ball::onCollision(Object *obj) {
 
     switch (playerId % 2) {
         case 0:
-        this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
-            this->setSpeedX(this->getSpeedX()+obj->getSpeed()/max(obj->getSpeed(),1));
+            this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
+            this->incrementSpeedX(obj->getSpeed());
             this->invertSpeedY();
             break;
         case 1:
-        this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
-            this->setSpeedY(this->getSpeedY()+obj->getSpeed()/max(obj->getSpeed(),1));
+            this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
+            this->incrementSpeedY(obj->getSpeed());
             this->invertSpeedX();
             break;
     }
+}
+
+void Ball::incrementSpeedX(int vector) {
+    if (vector == 0)
+        return;
+    this->setSpeedX(this->getSpeedX()+abs(vector)/vector);
+}
+
+void Ball::incrementSpeedY(int vector) {
+    if (vector == 0)
+        return;
+    this->setSpeedY(this->getSpeedY()+abs(vector)/vector);
 }

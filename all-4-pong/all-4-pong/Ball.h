@@ -56,6 +56,8 @@ class Ball : public Object
         void setSpeed(int newSpeed){speed = newSpeed;}
         void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
         void setSpeedY(int newSpeedY) {speedY = newSpeedY;}
+        void incrementSpeedX(int vector);
+        void incrementSpeedY(int vector);
         void setPlayerId(int newId) {playerId = newId;}
         void setPoint();
 //--------------------------------------------------------------------------------------------//
