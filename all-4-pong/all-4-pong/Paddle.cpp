@@ -166,9 +166,8 @@ void Paddle::moveLine(int distance) {
         return min(sqrt(pow(pointIn.x()-line.x1(),2)+pow(pointIn.y()-line.y1(),2)),sqrt(pow(pointIn.x()-line.x2(),2)+pow(pointIn.y()-line.y2(),2)));
     }
 
-//    void Paddle::extend() {
-//        length = World::getInstance()->getWorldSize();
-//        this->setUpLine();
-//        point.setX(-World::getInstance()->getWorldSize());
-//        point.setY(-World::getInstance()->getWorldSize());
-//    }
+    void Paddle::eliminate() {
+        point.setX(-World::getInstance()->getWorldSize());
+        point.setY(-World::getInstance()->getWorldSize());
+        this->setUpLine();
+    }

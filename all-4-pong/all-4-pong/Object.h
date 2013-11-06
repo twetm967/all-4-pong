@@ -60,7 +60,7 @@ public:
    virtual QString getType() {return "";}
    virtual QLine getLine() {return QLine();}
    virtual int getSpeed() {return 0;}
-   virtual void extend() {}
+   virtual void eliminate() {}
 
 
 

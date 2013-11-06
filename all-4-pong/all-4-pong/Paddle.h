@@ -66,7 +66,7 @@ public:
     void setWidth(int newWidth) {width = newWidth;}
     void moveLine(int distance);
     double getDistancetoPaddle(QPoint point);
-//    void extend();
+    void eliminate();
 
     void updatePosition();
 

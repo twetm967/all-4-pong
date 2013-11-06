@@ -135,11 +135,10 @@ void InGame::on_btnPause_clicked() {
 
 
 void InGame::on_btnCheat_clicked() {
-    HealthDamage(0,i);
-    HealthDamage(1,i);
-    HealthDamage(2,i);
-    HealthDamage(3,i);
-    i--;
+    for (int i = 0; i < 4; ++i) {
+        World::getInstance()->getGamePlayer(i)->damage();
+        HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth()+1);
+    }
 }
 
 
