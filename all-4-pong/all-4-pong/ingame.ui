@@ -1360,6 +1360,9 @@ border-radius: 30px;</string>
      <bold>true</bold>
     </font>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: none;
 color: rgb(255, 255, 255);</string>
@@ -1385,6 +1388,9 @@ color: rgb(255, 255, 255);</string>
      <italic>true</italic>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: none;

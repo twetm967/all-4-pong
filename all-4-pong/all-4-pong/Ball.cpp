@@ -189,13 +189,15 @@ void Ball::onCollision(Object *obj) {
 void Ball::incrementSpeedX(int vector) {
     if (vector == 0)
         return;
-    this->setSpeedX(this->getSpeedX()+abs(vector)/vector);
+    this->setSpeedX(this->getSpeedX()+abs(1.25 * vector)/vector);
+    qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
 }
 
 void Ball::incrementSpeedY(int vector) {
     if (vector == 0)
         return;
-    this->setSpeedY(this->getSpeedY()+abs(vector)/vector);
+    this->setSpeedY(this->getSpeedY()+abs( 1.25 * vector)/vector);
+    qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
 }
 
 void Ball::reset() {
