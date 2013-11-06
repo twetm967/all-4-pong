@@ -53,8 +53,8 @@ void Start::clientConnected()
     ++connectCount;
     QString str;
     enoughPlayers();
-
-    ui->lblConnected->setText(QString::number(connectCount));
+    str = "Users: " + QString::number(connectCount);
+    ui->lblConnected->setText(str);
 }
 //checks teh combo box to the number of people connected.
 // only allows the game to play if the correct number of players are present.
