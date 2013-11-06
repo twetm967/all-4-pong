@@ -23,11 +23,11 @@ protected:
         int speed; // why do players have a speed? - JMP
     public:
         Player();
-//        ~Player(){
+        ~Player(){
 //            delete currentScore;
 //            delete hand;
-//            nextID--;
-//        }
+            --nextID;
+        }
         virtual QPoint* getHand();
 
         void point();

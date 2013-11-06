@@ -39,7 +39,10 @@ void Player::damage() {
     cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
     if (Health == 0) {
         foreach (Object * pad, World::getInstance()->getObjects())
-            if (pad->getType() == "paddle" && pad->getPlayerId() == ID) pad->eliminate();
+            if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
+                pad->eliminate();
+                cout << "Moved player " << ID << " off screen." << endl;
+            }
     }
 }
 
