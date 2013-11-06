@@ -29,8 +29,6 @@ private:
     int numberOfPlayers;
     bool powerUps;
     QPoint Mouse;
-    Start* startScreen;
-    //InGame* inGameScreen;
 
     GameModel();
     static GameModel instance; // the only instance of the singleton GameModel class
@@ -57,3 +55,4 @@ public:
 };
 
 #endif // GAMEMODEL_H
+

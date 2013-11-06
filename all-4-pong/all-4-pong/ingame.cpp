@@ -19,20 +19,21 @@
 #include "start.h"
 
 
-InGame::InGame(QWidget *parent) :
+InGame::InGame(Start* window, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::InGame)
-{
-    ui->setupUi(this);
+    ui(new Ui::InGame),
+    home(window)
+    {
+        ui->setupUi(this);
 
-    //Timer============================
-   /* timer = new QTimer(this);
-    timer->setInterval(75);
-    connect(timer, &QTimer::timeout,this, & InGame::Animate);
-*/
-    setMouseTracking(true);
-ui->gameCourt->setMouseTracking(true);
-   // Players = World::getInstance()->getGamePlayers();
+        //Timer============================
+       /* timer = new QTimer(this);
+        timer->setInterval(75);
+        connect(timer, &QTimer::timeout,this, & InGame::Animate);
+    */
+        setMouseTracking(true);
+        ui->gameCourt->setMouseTracking(true);
+       // Players = World::getInstance()->getGamePlayers();
 
 
 
@@ -147,14 +148,11 @@ QPoint InGame::getGameCourt(QPoint in){
 }
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
-    QPoint here = getGameCourt((ev->pos()));
-
-    //gives the mouse position to gameModel.
-    GameModel::getInstance().giveMouse(here);
-
+    World::getInstance()->setworldMouse(this->getGameCourt(ev->pos()));
 }
+
 //for testing purposes
-void InGame::mousePressEvent(QMouseEvent *ev){
+void InGame::mousePressEvent(QMouseEvent *ev) {
    // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 }
 
@@ -171,7 +169,9 @@ void InGame::timerHit() {
 // home screen.
 void InGame::on_btnHome_clicked() {
     this->deleteLater();
-    GameModel::getInstance().resetWorld();
+    World::getInstance()->ResetWorld();
+    home->show();
+
 }
 
 

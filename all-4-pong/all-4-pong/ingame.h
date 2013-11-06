@@ -9,6 +9,7 @@
 #include <QTimer>
 
 #include "Player.h"
+class Start;
 
 
 
@@ -30,10 +31,12 @@ private:
   //vector<Player*> Players;
   vector<QLabel*> Health;
   QTimer* timer;
+  Start* home;
+
 int i;
 
 public:
-    explicit InGame(QWidget *parent = 0);
+    explicit InGame(Start *window, QWidget *parent = 0);
 
 
 
