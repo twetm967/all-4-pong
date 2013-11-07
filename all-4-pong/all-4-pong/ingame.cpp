@@ -90,7 +90,7 @@ InGame::InGame(Start* window, QWidget *parent) :
     ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
 
     //Start the Timer
-    Timer::getInstance()->getTimer()->setInterval(50);//was100
+    Timer::getInstance()->getTimer()->setInterval(20);//was100
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
    // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
 

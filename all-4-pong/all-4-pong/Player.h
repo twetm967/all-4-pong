@@ -32,6 +32,10 @@ protected:
 
         void point();
         void damage();
+        QPoint* getPoint(){
+            return hand;
+        }
+
         virtual void reset() {}
         Score* getCurrentScore() {return currentScore;}
         int getHealth() {return Health;}
@@ -65,7 +69,7 @@ class AI : public Player
     }                            //takes (difficulty);
             AI(QPoint);
           QPoint* getHand();
-
+          int getDiff(){return difficulty;}
             void command();
             void change();
             void follow();

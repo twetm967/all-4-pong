@@ -82,8 +82,8 @@ void AI::follow(){
     int x = ball->getX();
     int y = ball->getY();
 
-    speed = rand() % 12;
-    if(speed < 9 )speed = 9;
+    speed = rand() % 30;
+    if(speed < 12 )speed = 12;
 
     if(x < hand->x()){
         hand->setX(hand->x() - speed);
@@ -106,8 +106,8 @@ void AI::followRandom(){
     int x = ball->getX();
     int y = ball->getY();
 
-    speed = rand() % 10;
-    if(speed < 4 )speed = 4;
+    speed = rand() % 20;
+    if(speed < 10 )speed = 12;
 
     if(x < hand->x()){
         hand->setX(hand->x() - speed);
