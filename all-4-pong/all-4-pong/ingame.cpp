@@ -90,7 +90,7 @@ InGame::InGame(Start* window, QWidget *parent) :
     ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
 
     //Start the Timer
-    Timer::getInstance()->getTimer()->setInterval(20);//was100
+    Timer::getInstance()->getTimer()->setInterval(25);//was100
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
    // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
 
@@ -175,9 +175,25 @@ void InGame::mousePressEvent(QMouseEvent *ev) {
 
 void InGame::timerHit() {
     World::getInstance()->UpdateWorld();
+
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
         g->updatePosition();
     }
+    QString s = World::getInstance()->getBlock();
+    if(s != NULL){
+        GameLabel* block = new GameLabel(ui->gameCourt,"Shapes");
+
+
+        block->show();
+
+
+    }
+   /*
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
+    World::getInstance()->getBlock();
+    */
+
     if (World::getInstance()->getRoundFinished() == true) {
         World::getInstance()->pointScoredReset();
         Timer::getInstance()->getTimer()->stop();

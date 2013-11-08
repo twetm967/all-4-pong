@@ -2,7 +2,7 @@
 #define SHAPES_H
 
 #include <vector>
-
+#include "World.h"
 #include "Object.h"
 
 class PowerUp;

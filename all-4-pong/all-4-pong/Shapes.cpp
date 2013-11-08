@@ -36,4 +36,16 @@
     }
 
 
-    Shapes::Shapes():Object() { }
+    Shapes::Shapes():Object() {
+          QPoint p;
+          int initx = rand() % World::getInstance()->getWorldSize();
+          int inity = rand() % World::getInstance()->getWorldSize();
+          //bounds checking
+          if(initx < 100) initx += 100;
+          if(initx  > World::getInstance()->getWorldSize() - 100) initx  -= 100;
+          if(inity < 100) inity  += 100;
+          if(inity  > World::getInstance()->getWorldSize() - 100) inity  -= 100;
+           x = initx;
+           y = inity;
+
+    }

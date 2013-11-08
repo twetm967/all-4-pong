@@ -43,13 +43,11 @@ private slots:
 
 private:
     Ui::Start *ui;
-   // GameModel* Model;
     QTcpServer* server;
     int connectCount;
     int players;
     int difficulty;
     bool powerUps;
-   // InGame *gameScreen;
     QTimer *timer;
 
 

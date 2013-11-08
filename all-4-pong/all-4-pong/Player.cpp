@@ -38,6 +38,7 @@ void Player::damage() {
     cout << "New health of player " << ID << " is " << Health << endl;
     cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
     if (Health == 0) {
+        World::getInstance()->died();
         foreach (Object * pad, World::getInstance()->getObjects())
             if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
                 pad->eliminate();

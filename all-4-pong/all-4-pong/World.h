@@ -11,11 +11,11 @@
 #include <QString>
 #include <QWidget>
 
-#include "start.h"
-#include "Player.h"
 
+#include "Player.h"
 #include "Ball.h"
-#include "ingame.h"
+#include "Shapes.h"
+
 using namespace std;
 
 class World //Can we get a worldSize integer that returns the number of pixels wide the world is? - PJ
@@ -29,7 +29,8 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         QPoint* worldMouse;
         int worldSize;
         bool roundFinished;
-
+        int numberDead;
+        int counter;
         World(){
             worldMouse = new QPoint();
             worldSize = 450;
@@ -46,6 +47,9 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         int getWorldSize(){
             return worldSize;
 
+        }
+        void died(){
+            numberDead++;
         }
 
         void addBall(Ball* ballin){
@@ -76,12 +80,12 @@ class World //Can we get a worldSize integer that returns the number of pixels w
             worldMouse->setY(in.y());
        }
 
-       void setUp(int, int, bool);
+     //  void setUp(int, int, bool);
 
        // adds <obj> to Object in world
        void add(Object *obj) {objects.push_back(obj);}
 
-
+       QString getBlock();
     
         //----------------------------------------
         //Getters and setters
@@ -96,7 +100,8 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         bool getRoundFinished() {return roundFinished;}
 
         void setDifficulty(int newDifficulty) { difficulty = newDifficulty; }
-        void setPowerUps(bool pow) {powerUps = pow;}
+        void setPowerUps(bool pow) {powerUps = pow;
+                                   counter = 0;}
 
 
     //methods 
