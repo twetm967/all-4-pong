@@ -31,6 +31,9 @@ void World::setUp(int Players,int diff,bool power){
 
 }
 */
+
+
+
 QString World::getBlock(){
     if(powerUps)
      counter++;

@@ -5,6 +5,7 @@
 #include <vector>
 #include <QLine>
 #include <QString>
+#include <QRect>
 
 
 
@@ -52,6 +53,7 @@ public:
 
     //virtual methods
    void virtual updatePosition();
+   QRect virtual getRect(){};
    bool virtual Hit(){return true;}
    bool virtual getBound();
    double virtual getDistancetoPaddle(QPoint point){return -1;}

@@ -90,7 +90,7 @@ InGame::InGame(Start* window, QWidget *parent) :
     ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
 
     //Start the Timer
-    Timer::getInstance()->getTimer()->setInterval(25);//was100
+    Timer::getInstance()->getTimer()->setInterval(40);//was100
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
    // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
 
@@ -171,23 +171,43 @@ void InGame::mousePressEvent(QMouseEvent *ev) {
     }
 }
 
+bool InGame::makeBlock(bool powerUps){
+    if(powerUps)
+        counter++;
+    if(counter == 500){
+       qDebug() << "Make a random Object" << endl;
+       counter = 0;
+       return true;
+    }
+    return false;
 
+}
+
+void InGame::setUpBlocklbl(GameLabel* block){
+    block->setObjectName("lblPopUp");
+    block->setStyleSheet("background-color: rgb(0, 0, 0);");
+
+    block->setGeometry(block->getObj()->getRect());
+
+}
 
 void InGame::timerHit() {
-    World::getInstance()->UpdateWorld();
 
+    if(makeBlock(World::getInstance()->getPower())){
+        GameLabel* block = new GameLabel(ui->gameCourt, "Shapes");
+
+
+     //   ui->gameCourt->findChild<GameLabel*>("lblPopUp")->initializeObj("Shapes");
+        setUpBlocklbl(block);
+
+    }
+
+    World::getInstance()->UpdateWorld();
+   // makeBlock(World::getInstance()->getPower());
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
         g->updatePosition();
     }
-    QString s = World::getInstance()->getBlock();
-    if(s != NULL){
-        GameLabel* block = new GameLabel(ui->gameCourt,"Shapes");
 
-
-        block->show();
-
-
-    }
    /*
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);

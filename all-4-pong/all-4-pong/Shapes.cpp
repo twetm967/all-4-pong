@@ -35,6 +35,10 @@
         return didRead;
     }
 
+   void Shapes::updatePosition(){
+
+
+    }
 
     Shapes::Shapes():Object() {
           QPoint p;
@@ -45,7 +49,17 @@
           if(initx  > World::getInstance()->getWorldSize() - 100) initx  -= 100;
           if(inity < 100) inity  += 100;
           if(inity  > World::getInstance()->getWorldSize() - 100) inity  -= 100;
-           x = initx;
-           y = inity;
+     rect.setX(initx);
+     rect.setY(inity);
+     rect.setHeight((rand() % 30 + 15));
+     rect.setWidth((rand() % 30 + 15));
+          point.setX(initx);
+          point.setY(inity);
+
+           World::getInstance()->add(this);
+
+    }
+
+    Shapes::~Shapes(){
 
     }

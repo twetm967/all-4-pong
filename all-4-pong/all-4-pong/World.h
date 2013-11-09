@@ -51,6 +51,9 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         void died(){
             numberDead++;
         }
+        bool getPower(){
+            return powerUps;
+        }
 
         void addBall(Ball* ballin){
             balls.push_back(ballin);
