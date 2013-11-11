@@ -21,6 +21,9 @@ protected:
         int ID;
         static int nextID;
         int speed; // why do players have a speed? - JMP
+                    // because the player's hand is the thing that's actually
+                    // moving and the paddle just follows along. So the source is
+                    // the hand and the speed is then relayed to the paddle for JP. - Recker
     public:
         Player();
         ~Player(){
@@ -73,9 +76,8 @@ class AI : public Player
           QPoint* getHand();
           int getDiff(){return difficulty;}
             void command();
-            void change();
-            void follow();
-            void followRandom();
+
+            void followRandom(int,int);
             ~AI(){}
 
 };

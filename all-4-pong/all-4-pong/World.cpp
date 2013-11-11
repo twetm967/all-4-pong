@@ -4,12 +4,13 @@
 
 World* World::instance=NULL;
 
-
+/*
 void World::setUp(int Players,int diff,bool power){
 
+    counter = 0;
 
     Player* in;
-
+    numberDead = 0;
     for (int i = 0; i < Players && i<4; ++i){
         in = new User();
         GamePlayers.push_back(in);
@@ -29,8 +30,21 @@ void World::setUp(int Players,int diff,bool power){
     worldSize = 450; //hardCoded right now! Just becuase we don't have different resolutions yet.
 
 }
+*/
 
 
+
+QString World::getBlock(){
+    if(powerUps)
+     counter++;
+    if(counter == 1000){
+        counter = 0;
+        qDebug()<<"make a random object"<< endl;
+
+        return "Shapes";
+    }
+    return NULL;
+}
 
 
     // update all elements in this game world
@@ -38,6 +52,8 @@ void World::setUp(int Players,int diff,bool power){
         foreach (Object* obj, objects) {
             obj->updatePosition();
         }
+
+
     }
 
 
@@ -46,10 +62,11 @@ void World::setUp(int Players,int diff,bool power){
         for( int i = 0; i < GamePlayers.size();++i){
             delete GamePlayers.at(i);
         }
-        GamePlayers.clear();
+
         for( int i = 0; i < objects.size();++i){
             delete objects.at(i);
         }
+        GamePlayers.clear();
         objects.clear();
         balls.clear();
 
@@ -89,14 +106,18 @@ void World::setUp(int Players,int diff,bool power){
     }
 
     void World::setupPlayers(int num) {
+        numberDead = 4;
 
         for (int i = 0; i < num && i<4; ++i){
             GamePlayers.push_back(new User());
+            numberDead--;
+
         }
 
         if (4 - num > 0){
             for (int i = 0; i< 4 - num; ++i) {
                 GamePlayers.push_back(new AI(difficulty));
+                numberDead--;
             }
         }
     }
@@ -105,6 +126,9 @@ void World::setUp(int Players,int diff,bool power){
     void World::pointScoredReset() {
         foreach (Player *play, GamePlayers) {
             play->reset();
+        }
+        if(numberDead == 3){
+            qDebug() << "All the players are defeated" << endl << "Run end game logic" << endl;
         }
     }
 

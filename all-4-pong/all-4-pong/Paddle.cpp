@@ -72,10 +72,12 @@ void Paddle::moveLine(int distance) {
 
 //Planning on getting rid of this unless you need it for the AI.
 //If you do, give me a method to call in the balls logic.
-        bool Paddle::getHit() {
+
+//I don't think i need it.
+   /*     bool Paddle::getHit() {
             return false;
         }
-
+*/
     // prints the current paddle state out to offshore text file,
     // returning a boolean value indicating print success
     bool Paddle::printPaddleInfo() {

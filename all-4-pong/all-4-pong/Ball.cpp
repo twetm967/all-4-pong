@@ -139,6 +139,7 @@ void Ball::collisionHandler() {
             onCollision(o);
         }
     }
+
     if (this->getX() - this->getRadius() < World::getInstance()->getWorldSize()/15) {
         World::getInstance()->getGamePlayer(3)->damage();
         if (playerId != 3 && playerId != -1)
@@ -183,6 +184,16 @@ void Ball::onCollision(Object *obj) {
             this->incrementSpeedY(obj->getSpeed());
             this->invertSpeedX();
             break;
+        case -1:
+        //bounce off of object
+        Shapes* s = dynamic_cast<Shapes*>(obj);
+        if(s != NULL)
+         s->hitShape(this);
+        qDebug() << "Hit the object" << endl;
+
+            break;
+
+
     }
 }
 
