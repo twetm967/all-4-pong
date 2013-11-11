@@ -67,48 +67,27 @@ QPoint *AI::getHand(){
 void AI::command(){
     switch(difficulty){
     case 1:
-        change();
+        followRandom(12,2);
         break;
     case 2:
-        followRandom();
+        followRandom(20,3);
         break;
     case 3:
-        follow();
+        followRandom(30,5);
         break;
     }
 }
-//the hard setting literally they are perfect!
-void AI::follow(){
-    Ball* ball = World::getInstance()->getBalls().at(0);
-    int x = ball->getX();
-    int y = ball->getY();
 
-    speed = rand() % 30;
-    if(speed < 12 )speed = 12;
-
-    if(x < hand->x()){
-        hand->setX(hand->x() - speed);
-    }
-    if(x > hand->x()){
-        hand->setX(hand->x() + speed);
-    }
-    if(y < hand->y()){
-        hand->setY(hand->y() - speed);
-    }
-    if(y > hand->y()){
-        hand->setY(hand->y() + speed);
-    }
-   }
 
 //the medium setting
 //under construction!!
-void AI::followRandom(){
+void AI::followRandom(int big, int min){
     Ball* ball = World::getInstance()->getBalls().at(0);
     int x = ball->getX();
     int y = ball->getY();
 
-    speed = rand() % 20;
-    if(speed < 10 )speed = 12;
+    speed = rand() % big;
+    if(speed < min )speed = min;
 
     if(x < hand->x()){
         hand->setX(hand->x() - speed);
@@ -123,22 +102,6 @@ void AI::followRandom(){
         hand->setY(hand->y() + speed);
     }
 }
-//the easy setting
-void AI::change(){
-    speed = rand() % 12;
-    if(speed< 5)speed = 6;
-    if(flop){
-        hand->setX(hand->x() - speed);
-        hand->setY(hand->y()+ speed);
-        if(hand->x() < 60 || hand->y() > 350)flop = false;
-          }else {
-             if(!flop){
-                hand->setX(hand->x()+ speed);
-                hand->setY(hand->y()- speed) ;
-                if(hand->y() < 60 || hand->x() > 350) flop = true;
-            }
-        }
-    }
 
 void User::calculateSpeed(){
     switch(ID){

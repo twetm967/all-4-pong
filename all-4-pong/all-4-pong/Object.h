@@ -63,6 +63,7 @@ public:
    virtual QLine getLine() {return QLine();}
    virtual int getSpeed() {return 0;}
    virtual void eliminate() {}
+  // virtual void hitShape(){}
 
 
 

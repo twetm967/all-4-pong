@@ -238,8 +238,8 @@ void InGame::timerHit() {
 // home screen.
 void InGame::on_btnHome_clicked() {
     this->deleteLater();
-    World::getInstance()->ResetWorld();
     Timer::getInstance()->getTimer()->stop();
+    World::getInstance()->ResetWorld();
     ui->btnPause->setText("Play");
     home->show();
 }

@@ -62,10 +62,11 @@ QString World::getBlock(){
         for( int i = 0; i < GamePlayers.size();++i){
             delete GamePlayers.at(i);
         }
-        GamePlayers.clear();
+
         for( int i = 0; i < objects.size();++i){
             delete objects.at(i);
         }
+        GamePlayers.clear();
         objects.clear();
         balls.clear();
 
