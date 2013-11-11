@@ -21,7 +21,7 @@
     // reads the current shape state from offshore text file,
     // returning a boolean value indicaing read success;
     // if read succeeds, stores shape state in instance variables
-    bool readShapeInfo() {
+    bool Shapes::readShapeInfo() {
         bool didRead = false;
 
         // establish connection with text file
@@ -41,7 +41,7 @@
     }
 
     Shapes::Shapes():Object() {
-          QPoint p;
+          //PlayerId = -1;
           int initx = rand() % World::getInstance()->getWorldSize();
           int inity = rand() % World::getInstance()->getWorldSize();
           //bounds checking
@@ -61,5 +61,30 @@
     }
 
     Shapes::~Shapes(){
+
+    }
+
+    double Shapes::getDistancetoPaddle(QPoint pointIn){
+        if (pointIn.x() >= rect.topLeft().x() && pointIn.x() <= rect.topRight().x()){
+        //hit the top of the box
+             return (double) abs(pointIn.y() - rect.topLeft().y());
+               }else{
+         //hit the bottom
+        if(pointIn.x() >= rect.bottomLeft().x() && pointIn.x() <= rect.bottomRight().x()){
+               return (double) abs(pointIn.y() - rect.bottomLeft().y());
+               }else{
+        //hit the left side
+        if (pointIn.y() >= rect.topLeft().y() && pointIn.y() <= rect.bottomLeft().y()){
+             return (double) abs(pointIn.x() - rect.topLeft().x());
+               }else{
+        //hit the right side
+        if(pointIn.y() >= rect.topRight().y() && pointIn.y() <= rect.bottomRight().y()){
+             return (double) abs(pointIn.x() - rect.topRight().x());
+                   }
+                }
+            }
+        }
+        return -1;
+        //return min(sqrt(pow(pointIn.x()-line.x1(),2)+pow(pointIn.y()-line.y1(),2)),sqrt(pow(pointIn.x()-line.x2(),2)+pow(pointIn.y()-line.y2(),2)));
 
     }

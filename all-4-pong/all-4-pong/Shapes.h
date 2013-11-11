@@ -19,6 +19,7 @@ class Shapes: public Object
         ~Shapes();
 
         //*********Getters and setters****************
+        int getPlayerId(){return -1;}
         int getX(){return x;}
         int getY(){return y;}
         PowerUp* getPowerUp(){return boost;}
@@ -30,7 +31,7 @@ class Shapes: public Object
         void setPowerUp(PowerUp *inBoost){boost = inBoost;}
         //********************************************
         void updatePosition();
-
+        double getDistancetoPaddle(QPoint pointIn);
 
         // prints the current shape state out to offshore text file,
         // returning a boolean value indicating print success

@@ -139,6 +139,7 @@ void Ball::collisionHandler() {
             onCollision(o);
         }
     }
+
     if (this->getX() - this->getRadius() < World::getInstance()->getWorldSize()/15) {
         World::getInstance()->getGamePlayer(3)->damage();
         if (playerId != 3 && playerId != -1)
