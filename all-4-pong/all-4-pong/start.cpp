@@ -75,7 +75,7 @@ void Start::timerHit(){
     for (QObject *obj : server->children()){
         QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
         if (anotherSock != NULL){
-            anotherSock->write(netString.toLocal8Bit());
+            anotherSock->write(netString.toLocal8Bit()+"\n");
         }
     }
 

@@ -144,10 +144,10 @@ QString World::getBlock(){
     QString World::getNetwork(){
         QString netString;
 
-        /*for (int i = 0; i<GamePlayers.size(); ++i){
-            Player* thisPlayer = GamePlayers.at(i);
-            netString += thisPlayer->getNet();
-        }*/
+        //for (int i = 0; i<GamePlayers.size(); ++i){
+          //  Player* thisPlayer = GamePlayers.at(i);
+            //netString += thisPlayer->getNet();
+        //}
         for (int i = 0; i<balls.size(); ++i){
                Ball* thisball = balls.at(i);
                netString += thisball->getNet();

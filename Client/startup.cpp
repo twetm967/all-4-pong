@@ -58,7 +58,7 @@ void Startup::on_connect_Btn_clicked()
 
 vector<QString> *Startup::split(QString str, char delim){
     //vector<QString> Split(string str, char delim){
-    vector<QString> *splitV;
+    vector<QString> *splitV = new vector<QString>();
     QString buf = "";
     int i = 0;
     while (i < str.length()){
@@ -85,6 +85,7 @@ void Startup::dataReceived() {
         //this will recieve a string of the a list of objects with their x and y coordinates
         //For example, ball,
         vector<QString> *spaceSplit = split(str, ' ');
+        //vector<QString> *spaceSplit = str.split(' ');
         while(spaceSplit->size() > 0){
             vector<QString> *slashSplit = split(spaceSplit->at(0), '/');
             spaceSplit->erase(spaceSplit->begin()+0);
