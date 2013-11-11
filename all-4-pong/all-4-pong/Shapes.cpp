@@ -2,6 +2,7 @@
 #include "Shapes.h"
 #include "Object.h"
 
+
     // prints the current shape state out to offshore text file,
     // returning a boolean value indicating print success
     bool printShapeInfo() {
@@ -51,17 +52,18 @@
           if(inity  > World::getInstance()->getWorldSize() - 100) inity  -= 100;
      rect.setX(initx);
      rect.setY(inity);
-     rect.setHeight((rand() % 30 + 15));
-     rect.setWidth((rand() % 30 + 15));
+     rect.setHeight((rand() % 30 + 25));
+     rect.setWidth((rand() % 30 + 25));
           point.setX(initx);
           point.setY(inity);
 
-           World::getInstance()->add(this);
+        //   World::getInstance()->add(this);
 
     }
 
     Shapes::~Shapes(){
-delete boost;
+     //~Object();
+    delete boost;
     }
 
     double Shapes::getDistancetoPaddle(QPoint pointIn){

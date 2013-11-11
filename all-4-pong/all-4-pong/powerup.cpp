@@ -1,5 +1,5 @@
 #include "powerup.h"
 
-powerup::powerup()
+PowerUp::PowerUp()
 {
 }

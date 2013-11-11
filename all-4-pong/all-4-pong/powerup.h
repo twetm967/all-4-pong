@@ -1,10 +1,10 @@
 #ifndef POWERUP_H
 #define POWERUP_H
 
-class powerup
+class PowerUp
 {
 public:
-    powerup();
+    PowerUp();
 };
 
 #endif // POWERUP_H

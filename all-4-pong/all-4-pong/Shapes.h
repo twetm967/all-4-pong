@@ -4,8 +4,8 @@
 #include <vector>
 #include "World.h"
 #include "Object.h"
+#include "powerup.h"
 
-class PowerUp;
 
 class Shapes: public Object
 {
