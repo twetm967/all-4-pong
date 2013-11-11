@@ -46,10 +46,15 @@
           int initx = rand() % World::getInstance()->getWorldSize();
           int inity = rand() % World::getInstance()->getWorldSize();
           //bounds checking
+          //off the edges
           if(initx < 100) initx += 100;
-          if(initx  > World::getInstance()->getWorldSize() - 100) initx  -= 100;
           if(inity < 100) inity  += 100;
+          if(initx  > World::getInstance()->getWorldSize() - 100) initx  -= 100;
           if(inity  > World::getInstance()->getWorldSize() - 100) inity  -= 100;
+          //out of the middle
+          if(abs(initx - 205) < 100 && abs(inity - 205) < 100){
+              initx += 70; inity+= 70;
+          }
      rect.setX(initx);
      rect.setY(inity);
      rect.setHeight((rand() % 30 + 25));
@@ -102,7 +107,7 @@
         switch(PlayerId){
         case 0: //bottom
             pos = rect.bottomLeft().y();
-            b->setY(pos - b->getRadius());//*abs(b->getSpeedY())/b->getSpeedY());
+            b->setY(pos + b->getRadius());//*abs(b->getSpeedY())/b->getSpeedY());
             b->incrementSpeedX(.5);
             b->invertSpeedY();
             break;
