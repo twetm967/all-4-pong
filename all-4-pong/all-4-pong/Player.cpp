@@ -170,4 +170,12 @@ QPoint* User::getHand(){
     return hand;
 }
 
+QString Player::getNet(){
+
+
+
+    QString str = "1/";
+
+}
+
 

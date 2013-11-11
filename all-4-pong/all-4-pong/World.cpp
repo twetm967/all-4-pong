@@ -108,3 +108,26 @@ void World::setUp(int Players,int diff,bool power){
         }
     }
 
+
+    //I am just using this as a reference
+    /*vector<Player*> GamePlayers;
+        vector<Object*> objects;
+        bool powerUps;
+        int difficulty;
+        QPoint* worldMouse;
+        int worldSize;
+        bool roundFinished;*/
+    QString World::getNetwork(){
+        QString netString;
+
+        /*for (int i = 0; i<GamePlayers.size(); ++i){
+            Player* thisPlayer = GamePlayers.at(i);
+            netString += thisPlayer->getNet();
+        }*/
+        for (int i = 0; i<balls.size(); ++i){
+               Ball* thisball = balls.at(i);
+               netString += thisball->getNet();
+        }
+        return netString;
+    }
+

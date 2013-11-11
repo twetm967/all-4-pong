@@ -82,6 +82,7 @@ class Ball : public Object
         double Direction();  //provides direction (angle) the ball is traveling
         /*void Bounce();*/ //I don't know who created this, but I think it may be the same as the onCollision method I have already created
         void onCollision(Object *obj); //this method will determine logic upon collision
+        QString getNet();
         
 };
 

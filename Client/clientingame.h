@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QMouseEvent>
+#include <vector>
+#include <QString>
 
 namespace Ui {
 class clientingame;
@@ -18,6 +20,7 @@ public:
     int getX() {return x;}
     int getY() {return y;}
     void mouseMoveEvent(QMouseEvent *ev);
+    void MoveLabels(std::vector<QString> *v);
 private slots:
 
     

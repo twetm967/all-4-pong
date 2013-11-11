@@ -117,6 +117,8 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         // returning a boolean value indicaing read success;
         // if read succeeds, stores world state in instance variables
         bool readWorldInfo();
+
+        QString getNetwork();
     
 };//Game Class
 

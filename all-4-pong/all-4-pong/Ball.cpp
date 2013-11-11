@@ -209,3 +209,8 @@ void Ball::reset() {
     this->setPoint(); //point used to track the QLabel in the game
 }
 
+QString Ball::getNet(){
+    QString str = "0/ball/"+ QString::number(this->getX()) + "/" + QString::number(this->getY()) + "/ ";
+    return str;
+}
+

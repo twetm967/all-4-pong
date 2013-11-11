@@ -30,7 +30,7 @@ private slots:
     void dataReceived();
     void serverDisconnected();
     void timerHit();
-    void MoveLabels(vector<QString> *);
+
     
     void on_connect_Btn_clicked();
 

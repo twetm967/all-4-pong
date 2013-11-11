@@ -75,15 +75,7 @@ vector<QString> *Startup::split(QString str, char delim){
     return splitV;
 }
 
-void Startup::MoveLabels(vector<QString> *vsplit){
-    if (vsplit->at(0) == "0"){
-        //update ball
-    }else if(vsplit->at(0) == "1"){
-        //update the player
-    }else if(vsplit->at(0) == "2"){
-        //update the object
-    }
-}
+
 
 
 void Startup::dataReceived() {
@@ -96,7 +88,7 @@ void Startup::dataReceived() {
         while(spaceSplit->size() > 0){
             vector<QString> *slashSplit = split(spaceSplit->at(0), '/');
             spaceSplit->erase(spaceSplit->begin()+0);
-            MoveLabels(slashSplit);
+            clientgame->MoveLabels(slashSplit);
         }
     }
 }

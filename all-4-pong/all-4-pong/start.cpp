@@ -71,9 +71,17 @@ void Start::enoughPlayers(){
 void Start::timerHit(){
     //example ball:   0/ball1/x/y/
     //example player:  1/0/username/x/y/points/health/
+    QString netString = World::getInstance()->getNetwork();
+    for (QObject *obj : server->children()){
+        QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
+        if (anotherSock != NULL){
+            anotherSock->write(netString.toLocal8Bit());
+        }
+    }
 
-    //send out the same information to all of the clients at the same time (remember server also plays game).
-    //to see the format of this information, look at the networking Wiki page.
+
+//send out the same information to all of the clients at the same time (remember server also plays game).
+//to see the format of this information, look at the networking Wiki page.
 
 }
 
@@ -124,10 +132,10 @@ void Start::clientDisconnected()
 int Start::on_start_Btn_clicked()
 {//"/home/user/csunix/dreck410/team/build-all-4-pong-Desktop-Debug/all-4-pong"
 
-   //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
+    //Oh-No the user pressed the start button and there is no game yet!!! ahhhh fix it. Go.
 
-StartingMethod();
-   // return a.exec();
+    StartingMethod();
+    // return a.exec();
 
 }
 
@@ -138,9 +146,9 @@ void Start::StartingMethod(){
     World::getInstance()->setupPlayers(ui->players_comboBox->currentIndex()+1);
 
 
-  // players = ui->players_comboBox->currentIndex()+1;
+    // players = ui->players_comboBox->currentIndex()+1;
 
-   // difficulty = ui->dif_comboBox_->currentIndex()+1;
+    // difficulty = ui->dif_comboBox_->currentIndex()+1;
 
     World::getInstance()->setPowerUps(ui->power_checkBox->isChecked());
 

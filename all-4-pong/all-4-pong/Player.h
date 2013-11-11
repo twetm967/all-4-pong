@@ -42,6 +42,7 @@ protected:
     
         void Win();
         virtual int getSpeed();
+        virtual QString getNet();
         
 };//player class
 
@@ -58,6 +59,7 @@ class AI : public Player
     public:
 
     void reset();
+    //QString getNet();
 
     AI(int diff):Player(){
         hand = new QPoint(205,205);
@@ -93,6 +95,7 @@ class User : public Player
             int getSpeed();
            QPoint* getHand();
            void calculateSpeed();
+           //QString getNet(); //gets the string to send over the network
 
 };
 
