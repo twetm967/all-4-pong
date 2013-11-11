@@ -205,7 +205,7 @@ background-color: rgba(0, 200, 255, 0);</string>
      <string notr="true">color: rgb(0, 200, 0);</string>
     </property>
     <property name="text">
-     <string>Users: </string>
+     <string>Users: 1</string>
     </property>
    </widget>
    <widget class="QLabel" name="lblBckgrndImg">
