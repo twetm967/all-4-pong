@@ -45,22 +45,26 @@
           //PlayerId = -1;
           int initx = rand() % World::getInstance()->getWorldSize();
           int inity = rand() % World::getInstance()->getWorldSize();
+
+            rect.setX(initx);
+            rect.setY(inity);
+            rect.setHeight((rand() % 30 + 25));
+            rect.setWidth((rand() % 30 + 25));
+            point.setX(initx);
+            point.setY(inity);
           //bounds checking
           //off the edges
           if(initx < 100) initx += 100;
           if(inity < 100) inity  += 100;
-          if(initx  > World::getInstance()->getWorldSize() - 100) initx  -= 100;
-          if(inity  > World::getInstance()->getWorldSize() - 100) inity  -= 100;
-          //out of the middle
+          if(initx > World::getInstance()->getWorldSize() - rect.width() ) initx  -= rect.width()  + 10;
+          if(inity > World::getInstance()->getWorldSize() - rect.height()) inity  -= rect.height() + 10;
+          //keeps it out of the middle
           if(abs(initx - 205) < 100 && abs(inity - 205) < 100){
-              initx += 70; inity+= 70;
+              int num = rand() % 200 - 100;
+
+              initx += num; inity += num;
           }
-     rect.setX(initx);
-     rect.setY(inity);
-     rect.setHeight((rand() % 30 + 25));
-     rect.setWidth((rand() % 30 + 25));
-          point.setX(initx);
-          point.setY(inity);
+
 
         //   World::getInstance()->add(this);
 
