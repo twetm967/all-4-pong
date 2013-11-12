@@ -1103,12 +1103,12 @@ border-radius: 4px;</string>
     <string/>
    </property>
   </widget>
+  <zorder>lblPlayerBoardL</zorder>
+  <zorder>gameCourt</zorder>
+  <zorder>lblPlayerBoardB</zorder>
+  <zorder>lblPlayerBoardR</zorder>
   <zorder>lblLeaderBoard</zorder>
   <zorder>lblPlayerBoardT</zorder>
-  <zorder>lblPlayerBoardL</zorder>
-  <zorder>lblPlayerBoardR</zorder>
-  <zorder>lblPlayerBoardB</zorder>
-  <zorder>gameCourt</zorder>
   <zorder>lblUsernamePT</zorder>
   <zorder>lblLife4PT</zorder>
   <zorder>lblScorePT</zorder>

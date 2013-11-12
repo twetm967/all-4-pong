@@ -93,7 +93,7 @@ void Start::dataReceived()
         QString str = sock->readLine();
         qDebug() << str;
         //do something with the information that is coming in
-        //   "Thomas/x/y/
+        //   "3/Thomas/x/y/
     }
 
     //}

@@ -25,7 +25,7 @@ class Paddle : public Object
     Player* Hand;
     int length, width;
     QLine line;
-    QString username;
+
     int speed;
 
 public:

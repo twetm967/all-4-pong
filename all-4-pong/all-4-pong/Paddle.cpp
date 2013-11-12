@@ -10,9 +10,11 @@
 #include <QString>
 #include <cmath>
 #include <iostream>
+//#include <strstream>
+#include <sstream>
 
 #include "Paddle.h"
-
+using namespace std;
 //sets up the paddle depending on what location it is to be in.
 void Paddle::setUp() {
     int worldSize = World::getInstance()->getWorldSize();
@@ -41,9 +43,15 @@ void Paddle::setUp() {
 //+ Hand->getCurrentScore()->getCurrentScore()+ Hand->getHealth() + "/ ";
 QString Paddle::getNet(){
     QString out;
-    out +="1/" + QString(playerId) + "/" + username + "/" + point.x() +"/" + point.y() +
-             Hand->getCurrentScore()->getCurrentScore() + Hand->getHealth() + "/ ";
-
+    int xx = point.x();
+    int yy = point.y();
+    int score = Hand->getCurrentScore()->getCurrentScore();
+    int health = Hand->getHealth();
+    int thisId = playerId;
+    stringstream ss;
+    ss << "1/" << thisId << "/" << /*Hand->getUsername()*/"Username" << "/" << xx <<"/" << yy <<"/" <<
+            score <<"/" << health << "/ ";
+   out = QString::fromStdString(ss.str());
     return out;
 
 }

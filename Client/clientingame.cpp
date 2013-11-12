@@ -30,8 +30,32 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         int ballX = v->at(2).toInt();
         int ballY = v->at(3).toInt();
         ui->lblBall_2->move(ballX, ballY);
+
     }else if(v->at(0) == "1"){
         //1/0/username/x/y/points/health/
+        int xx;
+        int yy;
+        if (v->at(1) == "0"){
+            xx = v->at(3).toInt();
+            yy = v->at(4).toInt();
+            ui->paddle_0->move(xx,yy);
+
+        }else if(v->at(1) == "1"){
+            xx = v->at(3).toInt();
+            yy = v->at(4).toInt();
+            ui->paddle_1->move(xx,yy);
+
+        }else if(v->at(1) == "2"){
+            xx = v->at(3).toInt();
+            yy = v->at(4).toInt();
+            ui->paddle_2->move(xx,yy);
+
+        }else if(v->at(1) == "3"){
+            xx = v->at(3).toInt();
+            yy = v->at(4).toInt();
+            ui->paddle_3->move(xx,yy);
+
+        }
 
     }else if(v->at(0) == "2"){
         //update the object

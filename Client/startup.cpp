@@ -106,7 +106,7 @@ void Startup::serverDisconnected()
 //this is called every clock tick and sends the paddle x, y, and ID
 void Startup::timerHit()
 {
-    QString str =  ui->username_line->text() + "/" + QString::number(clientgame->getX()) + '/' + QString::number(clientgame->getY()) + '/'+ "\n";
+    QString str =  "3/" + ui->username_line->text() + "/" + QString::number(clientgame->getX()) + '/' + QString::number(clientgame->getY()) + '/'+ "\n";
     socket->write(str.toLocal8Bit());
 
     //This is the Schaub code for the chat client.

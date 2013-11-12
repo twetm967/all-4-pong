@@ -151,7 +151,15 @@ QString World::getBlock(){
         for (int i = 0; i<objects.size(); ++i){
                Object* thisball = objects.at(i);
                netString += thisball->getNet();
+               qDebug() << netString << "\n";
         }
+
+        /*for (int i = 0; i<balls.size(); ++i){
+                       Ball* thisball = balls.at(i);
+                       netString += thisball->getNet();
+                       //qDebug() << netString << "\n";
+        }*/
+
         return netString;
     }
 
