@@ -21,3 +21,6 @@ HEADERS  += startup.h \
 
 FORMS    += startup.ui \
     clientingame.ui
+
+RESOURCES += \
+    Resources.qrc

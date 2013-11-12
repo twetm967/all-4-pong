@@ -8,6 +8,7 @@
 #include <QMouseEvent>
 #include <QDebug>
 #include <QLine>
+#include <QString>
 
 //#include "Ball.h"
 #include "Object.h"
@@ -24,6 +25,7 @@ class Paddle : public Object
     Player* Hand;
     int length, width;
     QLine line;
+
     int speed;
 
 public:
@@ -57,6 +59,7 @@ public:
     void setMouse(QPoint);
     bool getHit();
 
+
     void setX(int newX);
     void setY(int newY);
     QString getType() {return "paddle";}
@@ -70,7 +73,7 @@ public:
 
     void updatePosition();
 
-    QString getNetworkInformation();
+    QString getNet();
 
     
     // prints the current paddle state out to offshore text file,

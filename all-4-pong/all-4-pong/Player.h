@@ -18,9 +18,10 @@ protected:
         Score* currentScore;
         int Health;
         QPoint* hand;
+        QString username;
         int ID;
         static int nextID;
-        int speed; // why do players have a speed? - JMP
+        int speed; //  why do players have a speed? - JMP
                     // because the player's hand is the thing that's actually
                     // moving and the paddle just follows along. So the source is
                     // the hand and the speed is then relayed to the paddle for JP. - Recker
@@ -46,6 +47,11 @@ protected:
         void Win();
         virtual int getSpeed();
         virtual QString getNet();
+        virtual int getID(){return ID;}
+        virtual void setUsername(QString name){username = name;}
+        virtual QString getUsername(){return username;}
+        virtual void setPoint(int x, int y);
+
         
 };//player class
 
@@ -76,7 +82,9 @@ class AI : public Player
           QPoint* getHand();
           int getDiff(){return difficulty;}
             void command();
-
+            void setUsername(QString name){username = name;}
+            QString getUsername(){return username;}
+            int getID(){return ID;}
             void followRandom(int,int);
             ~AI(){}
 
@@ -87,6 +95,7 @@ class User : public Player
     private:
     int oldX, oldY;
 
+
     public:
     User():Player(){
 
@@ -96,7 +105,10 @@ class User : public Player
             ~User(){}
             int getSpeed();
            QPoint* getHand();
+           int getID(){return ID;}
            void calculateSpeed();
+           void setUsername(QString name){username = name;}
+           QString getUsername(){return username;}
            //QString getNet(); //gets the string to send over the network
 
 };

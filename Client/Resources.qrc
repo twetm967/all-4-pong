@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/a-4-p-main-menu-background.png</file>
+        <file>images/gameCourtBackground.png</file>
+    </qresource>
+</RCC>

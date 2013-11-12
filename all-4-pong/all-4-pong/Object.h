@@ -53,6 +53,7 @@ public:
 
     //virtual methods
    void virtual updatePosition();
+   virtual QString getNet();
    QRect virtual getRect(){}
    bool virtual Hit(){return true;}
    bool virtual getBound();
