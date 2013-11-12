@@ -163,3 +163,33 @@ QString World::getBlock(){
         return netString;
     }
 
+    vector<QString> *World::split(QString str, char delim){
+        //vector<QString> Split(string str, char delim){
+        vector<QString> *splitV = new vector<QString>();
+        QString buf = "";
+        int i = 0;
+        while (i < str.length()){
+            if (str[i] != delim){
+                buf += str[i];
+            } else if (buf.length() > 0) {
+                splitV->push_back(buf);
+                buf = "";
+            }
+            i++;
+        }
+        if (!buf.isEmpty())
+            splitV->push_back(buf);
+        return splitV;
+    }
+
+    void World::updateUser(QString str){
+        vector<QString> *splitV = split(str, '/');
+        for (Player* thisUser : GamePlayers){
+            if (thisUser->getID() == splitV->at(0).toInt()){
+                thisUser->setUsername(splitV->at(1));
+                thisUser->setPoint(splitV->at(2).toInt(), splitV->at(3).toInt());
+
+            }
+        }
+    }
+

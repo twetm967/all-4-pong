@@ -44,6 +44,8 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 
     public:
 
+        void updateUser(QString str);
+
         int getWorldSize(){
             return worldSize;
 
@@ -77,6 +79,8 @@ class World //Can we get a worldSize integer that returns the number of pixels w
        vector<Object*> getObjects(){
            return objects;
        }
+
+       vector<QString> *split(QString str, char delim);
 
        void setworldMouse(QPoint in){
             worldMouse->setX(in.x());

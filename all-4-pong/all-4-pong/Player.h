@@ -50,6 +50,8 @@ protected:
         virtual int getID(){return ID;}
         virtual void setUsername(QString name){username = name;}
         virtual QString getUsername(){return username;}
+        virtual void setPoint(int x, int y);
+
         
 };//player class
 

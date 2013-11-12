@@ -133,18 +133,11 @@ QPoint* User::getHand(){
 
     return hand;
 }
+//leave this here!! or else it will HATE YOU!!!!
+QString Player::getNet(){}
 
-QString Player::getNet(){
-    QString str;
-    int x = this ->getPoint()->x();
-    int y = this ->getPoint()->y();
-    int id = this->getID();
-    //str = "1/" +
-
-
-
-
-
+void Player::setPoint(int x, int y){
+    hand->setX(x);
+    hand->setY(y);
 }
-
 
