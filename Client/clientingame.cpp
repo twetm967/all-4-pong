@@ -31,7 +31,8 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         int ballY = v->at(3).toInt();
         ui->lblBall_2->move(ballX, ballY);
     }else if(v->at(0) == "1"){
-        //update the player
+        //1/0/username/x/y/points/health/
+
     }else if(v->at(0) == "2"){
         //update the object
     }

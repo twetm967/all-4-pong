@@ -98,6 +98,9 @@ void Startup::serverDisconnected()
 {
     ui->statusBar->showMessage("Disconnected.");
     //  ui->btnConnect->setEnabled(true);
+    QMessageBox::critical(clientgame, "Error","The server has disconnected." );
+    clientgame->close();
+    this->show();
 }
 
 //this is called every clock tick and sends the paddle x, y, and ID

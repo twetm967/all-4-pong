@@ -33,3 +33,8 @@ bool Object::getHit(){}
 void Object::updatePosition(){}
 bool Object::getBound(){}
 
+//I put this in here to fix a compile error and Im not sure why!
+QString Object::getNet(){
+
+}
+

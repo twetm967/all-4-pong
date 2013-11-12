@@ -36,6 +36,13 @@
         return didRead;
     }
 
+    QString Shapes::getNet(){
+        QString out;
+        //out = "2/" +
+        out = "Shape ";
+        return out;
+    }
+
    void Shapes::updatePosition(){
 
 

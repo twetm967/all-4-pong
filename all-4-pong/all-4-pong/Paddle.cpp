@@ -35,10 +35,16 @@ void Paddle::setUp() {
             break;
     }
     this->setUpLine();
-}
+} //"Does this work??" + QString("kjdhfsk");
 
+//
+//+ Hand->getCurrentScore()->getCurrentScore()+ Hand->getHealth() + "/ ";
+QString Paddle::getNet(){
+    QString out;
+    out +="1/" + QString(playerId) + "/" + username + "/" + point.x() +"/" + point.y() +
+             Hand->getCurrentScore()->getCurrentScore() + Hand->getHealth() + "/ ";
 
-QString Paddle::getNetworkInformation(){
+    return out;
 
 }
 

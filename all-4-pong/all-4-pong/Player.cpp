@@ -135,10 +135,15 @@ QPoint* User::getHand(){
 }
 
 QString Player::getNet(){
+    QString str;
+    int x = this ->getPoint()->x();
+    int y = this ->getPoint()->y();
+    int id = this->getID();
+    //str = "1/" +
 
 
 
-    QString str = "1/";
+
 
 }
 

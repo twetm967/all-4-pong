@@ -31,6 +31,7 @@ class Shapes: public Object
         QString getType() {return "shape";}
         QRect getRect(){return rect;}
         void hitShape(Ball*);
+        QString getNet();
         void setX(int inX){x = inX;}
         void setY(int inY){y = inY;}
         void setPowerUp(PowerUp *inBoost){boost = inBoost;}

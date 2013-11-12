@@ -145,11 +145,11 @@ QString World::getBlock(){
         QString netString;
 
         //for (int i = 0; i<GamePlayers.size(); ++i){
-          //  Player* thisPlayer = GamePlayers.at(i);
-            //netString += thisPlayer->getNet();
-        //}
-        for (int i = 0; i<balls.size(); ++i){
-               Ball* thisball = balls.at(i);
+           // Player* thisPlayer = GamePlayers.at(i);
+           // netString += thisPlayer->getNet();
+       // }
+        for (int i = 0; i<objects.size(); ++i){
+               Object* thisball = objects.at(i);
                netString += thisball->getNet();
         }
         return netString;
