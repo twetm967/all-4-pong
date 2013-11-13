@@ -18,12 +18,14 @@ Ball::Ball(int initSpeed):Object() {            //takes (speed)
     speed = initSpeed;
     x = World::getInstance()->getWorldSize()/2;
     y = World::getInstance()->getWorldSize()/2;
-    radius = World::getInstance()->getWorldSize()/30; //need to determine default radius
+    radius = World::getInstance()->getWorldSize()/30;
+    minSpeed = max(initSpeed/5,1);
+    maxSpeed = initSpeed*10;
     playerId = -1; //need to determine a playerId to use for NULL
     speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
     this->updateSpeedY();
     this->setPoint(); //point used to track the QLabel in the game
-    World::getInstance()->add(this);
+    World::getInstance()->addBall(this);
 }
 
 Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
@@ -31,7 +33,9 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     x = initX;
     y = initY;
     playerId = initPlayerId;
-    radius = World::getInstance()->getWorldSize()/30; //need to determine default radius; maybe include initRadius in Constructor
+    radius = World::getInstance()->getWorldSize()/30;
+    minSpeed = max(initSpeed/5,1);
+    maxSpeed = initSpeed*10;
     speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
     this->updateSpeedY();
     this->setPoint();
@@ -97,6 +101,29 @@ void Ball::updatePosition(){
 }
 
 
+void Ball::setSpeedX(int newSpeedX) {
+    if (abs(newSpeedX) >= minSpeed && abs(newSpeedX) <= maxSpeed) {
+        speedX = newSpeedX;
+        return;
+    }
+    if (newSpeedX < minSpeed) {
+        speedX = abs(this->getSpeedX())/this->getSpeedX() * minSpeed;
+        return;
+    }
+    speedX = abs(this->getSpeedX())/this->getSpeedX() * maxSpeed;
+}
+
+void Ball::setSpeedY(int newSpeedY) {
+    if (abs(newSpeedY) >= minSpeed && abs(newSpeedY) <= maxSpeed) {
+        speedY = newSpeedY;
+        return;
+    }
+    if (abs(newSpeedY) < minSpeed) {
+        speedY = abs(this->getSpeedY())/this->getSpeedY() * minSpeed;
+        return;
+    }
+    speedX = abs(this->getSpeedY())/this->getSpeedY() * maxSpeed;
+}
 
 void Ball::setPoint() {point = QPoint(this->getX() - this->getRadius(),this->getY()-this->getRadius());}
 
@@ -178,11 +205,13 @@ void Ball::onCollision(Object *obj) {
             this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
             this->incrementSpeedX(obj->getSpeed());
             this->invertSpeedY();
+            this->incrementSpeedY(5 * abs(this->getSpeedY())/this->getSpeedY());
             break;
         case 1:
             this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
             this->incrementSpeedY(obj->getSpeed());
             this->invertSpeedX();
+            this->incrementSpeedX(5 * abs(this->getSpeedX())/this->getSpeedX());
             break;
         case -1:
         //bounce off of object
@@ -200,14 +229,14 @@ void Ball::onCollision(Object *obj) {
 void Ball::incrementSpeedX(int vector) {
     if (vector == 0)
         return;
-    this->setSpeedX(this->getSpeedX()+abs(1.25 * vector)/vector);
+    this->setSpeedX(this->getSpeedX() + (pow(vector,2)/vector + 5)/10);
     qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
 }
 
 void Ball::incrementSpeedY(int vector) {
     if (vector == 0)
         return;
-    this->setSpeedY(this->getSpeedY()+abs( 1.25 * vector)/vector);
+    this->setSpeedY(this->getSpeedY() + (pow(vector,2)/vector + 5)/10);
     qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
 }
 
