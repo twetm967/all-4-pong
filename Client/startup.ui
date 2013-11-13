@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1125</width>
+    <height>633</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,49 +30,144 @@
    <widget class="QLineEdit" name="IP_line">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>60</y>
+      <x>710</x>
+      <y>420</y>
       <width>171</width>
       <height>27</height>
      </rect>
     </property>
-    <property name="text">
-     <string>localhost</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="connect_Btn">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>180</y>
-      <width>98</width>
-      <height>27</height>
-     </rect>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(71, 71, 71);
+background-color: rgb(0, 200, 0);
+border: 1px solid rgb(0, 200, 0);</string>
     </property>
     <property name="text">
-     <string>Connect</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLineEdit" name="username_line">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>100</y>
-      <width>113</width>
+      <x>710</x>
+      <y>370</y>
+      <width>171</width>
       <height>27</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(71, 71, 71);
+background-color: rgb(0, 200, 0);
+border: 1px solid rgb(0, 200, 0);</string>
+    </property>
     <property name="text">
-     <string>Username...</string>
+     <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1131</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Resources.qrc">:/images/a-4-p-main-menu-background.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>370</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 200, 0);</string>
+    </property>
+    <property name="text">
+     <string>Username</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>420</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 200, 0);</string>
+    </property>
+    <property name="text">
+     <string>Host name</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="connect_Btn_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>80</y>
+      <width>131</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 200, 0);
+border-radius: 48px;</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <zorder>label_2</zorder>
+   <zorder>label</zorder>
+   <zorder>IP_line</zorder>
+   <zorder>username_line</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>connect_Btn_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>1125</width>
      <height>25</height>
     </rect>
    </property>
@@ -88,6 +183,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

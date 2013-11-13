@@ -35,6 +35,8 @@ class Ball : public Object
         int speedX, speedY; //if we know the new and old coordinates, we can determin speed, direction, and point of contact
         int speed;
         int radius; //radius of the ball
+        int minSpeed;  //Minimum ball speed in x or y directions
+        int maxSpeed;  //Maximum ball speed in x or y directions
 
     public:
         Ball(int initSpeed);
@@ -57,8 +59,8 @@ class Ball : public Object
         void setX(int newX){x = newX;}
         void setY(int newY){y = newY;}
         void setSpeed(int newSpeed){speed = newSpeed;}
-        void setSpeedX(int newSpeedX) {speedX = newSpeedX;}
-        void setSpeedY(int newSpeedY) {speedY = newSpeedY;}
+        void setSpeedX(int newSpeedX);
+        void setSpeedY(int newSpeedY);
         void incrementSpeedX(int vector);
         void incrementSpeedY(int vector);
         void setPlayerId(int newId) {playerId = newId;}

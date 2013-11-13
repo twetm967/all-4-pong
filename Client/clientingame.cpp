@@ -19,8 +19,10 @@ clientingame::~clientingame()
     delete ui;
 }
 void clientingame::mouseMoveEvent(QMouseEvent *ev) {
-    x = ev->x();
-    y = ev->y();
+
+   x = ui->gameCourt->mapFromParent(ev->pos()).x();
+
+    y = ui->gameCourt->mapFromParent(ev->pos()).y();
     //timer->start();
 }
 
@@ -35,30 +37,38 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         //1/0/username/x/y/points/health/
         int xx;
         int yy;
+        int health;
         if (v->at(1) == "0"){
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
+            health = v->at(6).toInt();
             ui->paddle_0->move(xx,yy);
             ui->lblUsernamePB->setText(v->at(2));
+            ui->lblScorePB->setText(v->at(5));
 
         }else if(v->at(1) == "1"){
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
+            health = v->at(6).toInt();
             ui->paddle_1->move(xx,yy);
-            ui->lblUsernamePL->setText(v->at(2));
+            ui->lblUsernamePR->setText(v->at(2));
+            ui->lblScorePR->setText(v->at(5));
 
         }else if(v->at(1) == "2"){
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
+            health = v->at(6).toInt();
             ui->paddle_2->move(xx,yy);
             ui->lblUsernamePT->setText(v->at(2));
+            ui->lblScorePT->setText(v->at(5));
 
         }else if(v->at(1) == "3"){
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
+            health = v->at(6).toInt();
             ui->paddle_3->move(xx,yy);
-            ui->lblUsernamePR->setText(v->at(2));
-
+            ui->lblUsernamePL->setText(v->at(2));
+            ui->lblScorePL->setText(v->at(5));
         }
 
     }else if(v->at(0) == "2"){

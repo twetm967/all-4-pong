@@ -19,8 +19,8 @@ Object::Object(QPoint initPoint){
 
 
 Object::Object(){
-objId = ++nextObjId;
-World::getInstance()->add(this);
+    objId = ++nextObjId;
+    World::getInstance()->add(this);
 }
 
 //inline
