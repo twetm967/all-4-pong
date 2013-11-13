@@ -127,6 +127,7 @@ void World::setupPlayers(int num) {
 }
 
 
+
 void World::pointScoredReset() {
     foreach (Player *play, GamePlayers) {
         play->reset();
@@ -135,6 +136,7 @@ void World::pointScoredReset() {
         qDebug() << "All the players are defeated" << endl << "Run end game logic" << endl;
     }
 }
+
 
 
 

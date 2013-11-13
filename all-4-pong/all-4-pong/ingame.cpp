@@ -156,19 +156,7 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
 //for testing purposes
 void InGame::mousePressEvent(QMouseEvent *ev) {
    // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
-    QPoint p =this->getGameCourt(ev->pos());
-    if(p.x() > 0 && p.x() < 450 && p.y() > 0 && p.y() < 450){
-    World::getInstance()->setRoundFinished(false);
-    if (ui->btnPause->text() == "Pause") {
-        Timer::getInstance()->getTimer()->stop();
-        ui->btnPause->setText("Play");
-    }
-
-    else if (ui->btnPause->text() == "Play") {
-        Timer::getInstance()->getTimer()->start();
-        ui->btnPause->setText("Pause");
-    }
-    }
+    this->on_btnPause_clicked();
 }
 
 bool InGame::makeBlock(bool powerUps){
