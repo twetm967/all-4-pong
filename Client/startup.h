@@ -34,6 +34,8 @@ private slots:
     
     void on_connect_Btn_clicked();
 
+    void on_connect_Btn_2_clicked();
+
 private:
     Ui::Startup *ui;
     QTcpSocket* socket;
