@@ -130,7 +130,7 @@ border: 1px solid rgb(0, 200, 0);</string>
      <string>Host name</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="connect_Btn_2">
+   <widget class="QPushButton" name="connect_Btn">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -160,7 +160,7 @@ border-radius: 48px;</string>
    <zorder>username_line</zorder>
    <zorder>label_3</zorder>
    <zorder>label_4</zorder>
-   <zorder>connect_Btn_2</zorder>
+   <zorder>connect_Btn</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
