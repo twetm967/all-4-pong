@@ -85,6 +85,8 @@ void Start::timerHit(){
 
 }
 
+//THis is the mouse information coming in!! Put this in a vector of mice held in the World Class -daniel To himself.
+
 //recieves x,y,and paddle id from user
 void Start::dataReceived()
 {
@@ -94,6 +96,14 @@ void Start::dataReceived()
         qDebug() << str;
         //do something with the information that is coming in
         //   "3/Thomas/x/y/
+        //      pos/username/x/y/
+        vector<QString>* info = World::getInstance()->split(str,'/');
+        int pos = info->at(0).toInt();
+        QString userName = info->at(1);
+        int x = info->at(2).toInt();
+        int y = info->at(3).toInt();
+        QPoint* mouseIn = new QPoint(x,y);
+        World::getInstance()->addMouse(mouseIn,pos);
     }
 
     //}

@@ -61,10 +61,10 @@
             point.setY(inity);
           //bounds checking
           //off the edges
-          if(initx < 100) initx += 100;
-          if(inity < 100) inity  += 100;
-          if(initx > World::getInstance()->getWorldSize() - rect.width() ) initx  -= rect.width()  + 10;
-          if(inity > World::getInstance()->getWorldSize() - rect.height()) inity  -= rect.height() + 10;
+          if(initx < 100) initx += 200;
+          if(inity < 100) inity  += 200;
+          if(initx > World::getInstance()->getWorldSize() - (rect.width() + 150)) initx  -= rect.width()  + 300;
+          if(inity > World::getInstance()->getWorldSize() - (rect.height() + 150)) inity  -= rect.height() - 300;
           //keeps it out of the middle
           if(abs(initx - 205) < 100 && abs(inity - 205) < 100){
               int num = rand() % 200 - 100;

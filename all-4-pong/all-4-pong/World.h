@@ -23,6 +23,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 {
     private:
         vector<Player*> GamePlayers;
+        vector<QPoint*> Mice;
         vector<Object*> objects;
         bool powerUps;
         int difficulty;
@@ -68,8 +69,10 @@ class World //Can we get a worldSize integer that returns the number of pixels w
            return instance;
        }
 
-       QPoint* getMouse(){
-          return worldMouse;
+       QPoint* getMouse(int pos){
+           if(Mice.size() > pos)
+           return Mice.at(pos);
+           return NULL;
        }
 
        vector<Ball*> getBalls(){      
@@ -85,6 +88,14 @@ class World //Can we get a worldSize integer that returns the number of pixels w
        void setworldMouse(QPoint in){
             worldMouse->setX(in.x());
             worldMouse->setY(in.y());
+       }
+
+       void addMouse(QPoint* mouseIn, int ID){
+            if(Mice.size() <= ID){
+               Mice.push_back(mouseIn);
+       }else{
+                Mice.at(ID) = mouseIn;
+            }
        }
 
      //  void setUp(int, int, bool);

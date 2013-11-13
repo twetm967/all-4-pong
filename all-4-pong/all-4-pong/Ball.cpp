@@ -52,7 +52,7 @@ bool Ball::printBallInfo(QString data) {
     bool didPrint = false;
 
     // establish connection with text file
-   iofstream f = iofstream("save_file.txt");
+   //iofstream f = iofstream("save_file.txt");
     data = "ball," + QString(this->getX()) + "," + QString(this->getY()) + "," + QString(this->getRadius());
 
     if (/*connection succeeds*/ true  /*could we just return this?*/) {
@@ -184,12 +184,21 @@ void Ball::onCollision(Object *obj) {
     cout << "Collision with player" << playerId << endl;
     switch (playerId % 2) {
         case 0:
+            int sy;
+            if(this->getSpeedY() != 0){
+            sy = this->getSpeedY();}else{
+            sy = 1;}
             this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
             this->incrementSpeedX(obj->getSpeed());
             this->invertSpeedY();
             break;
         case 1:
-            this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
+            int sx;
+            if(this->getSpeedX() != 0){
+            sx = this->getSpeedX();}else{
+            sx = 1;}
+            this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/sx);
+
             this->incrementSpeedY(obj->getSpeed());
             this->invertSpeedX();
             break;

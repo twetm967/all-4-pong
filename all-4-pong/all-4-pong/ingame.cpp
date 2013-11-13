@@ -150,7 +150,12 @@ QPoint InGame::getGameCourt(QPoint in) {
 }
 
 void InGame::mouseMoveEvent(QMouseEvent *ev) {
-    World::getInstance()->setworldMouse(this->getGameCourt(ev->pos()));
+
+    QPoint l;
+    l = this->getGameCourt(ev->pos());
+    QPoint* m = new QPoint(l.x(), l.y());
+    World::getInstance()->addMouse(m,0);
+
 }
 
 //for testing purposes

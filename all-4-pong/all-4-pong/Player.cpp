@@ -17,11 +17,11 @@ Player::Player(){
     Health = 7;
 
     nextID++;
-    hand = World::getInstance()->getMouse();
+    hand = World::getInstance()->getMouse(ID);
 }
 
 QPoint* Player::getHand(){
-hand = World::getInstance()->getMouse();
+hand = World::getInstance()->getMouse(ID);
 return hand;
 }
 
