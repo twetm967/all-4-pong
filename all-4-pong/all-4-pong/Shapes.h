@@ -21,9 +21,7 @@ class Shapes: public Object
 
         //*********Getters and setters****************
         int getPlayerId(){return -1;}
-        int getSide(){
-            return PlayerId;
-        }
+        int getSide(){return PlayerId;}
 
         int getX(){return x;}
         int getY(){return y;}
