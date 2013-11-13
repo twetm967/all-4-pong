@@ -92,6 +92,7 @@ void Start::dataReceived()
     while (sock->canReadLine()) {
         QString str = sock->readLine();
         qDebug() << str;
+        //World::getInstance()->updateUser(str);
         //do something with the information that is coming in
         //   "3/Thomas/x/y/
     }

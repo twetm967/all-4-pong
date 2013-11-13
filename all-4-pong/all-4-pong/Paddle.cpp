@@ -48,8 +48,9 @@ QString Paddle::getNet(){
     int score = Hand->getCurrentScore()->getCurrentScore();
     int health = Hand->getHealth();
     int thisId = playerId;
+    QString UserName = Hand->getUsername();
     stringstream ss;
-    ss << "1/" << thisId << "/" << /*Hand->getUsername()*/"Username" << "/" << xx <<"/" << yy <<"/" <<
+    ss << "1/" << thisId << "/" << UserName.toStdString() << "/" << xx <<"/" << yy <<"/" <<
             score <<"/" << health << "/ ";
    out = QString::fromStdString(ss.str());
     return out;
