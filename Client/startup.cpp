@@ -17,7 +17,7 @@ Startup::Startup(QWidget *parent) :
     clientgame = new clientingame();
 
     timer = new QTimer(this);
-    timer->setInterval(450);
+    timer->setInterval(50);
     connect(timer, &QTimer::timeout, this, &Startup::timerHit);
 
     socket = new QTcpSocket(this);
