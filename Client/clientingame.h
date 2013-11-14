@@ -5,7 +5,8 @@
 #include <QMouseEvent>
 #include <vector>
 #include <QString>
-
+#include <QLabel>
+using namespace std;
 namespace Ui {
 class clientingame;
 }
@@ -21,11 +22,13 @@ public:
     int getY() {return y;}
     void mouseMoveEvent(QMouseEvent *ev);
     void MoveLabels(std::vector<QString> *v);
+    void HealthDamage(int index, int health);
 private slots:
 
     
 private:
     Ui::clientingame *ui;
+    vector<QLabel*> Health;
     int x;
     int y;
 };

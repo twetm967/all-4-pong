@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QWindow>
 #include <QtWidgets>
+#include <sstream>
 
 #include <ingame.h>
 #include <QTimer>
@@ -55,6 +56,11 @@ void Start::clientConnected()
     enoughPlayers();
     str = "Users: " + QString::number(connectCount);
     ui->lblConnected->setText(str);
+    stringstream ss;
+    QString side;
+    ss << "side/" << connectCount -1 << "/";
+    side = QString::fromStdString(ss.str());
+    sock->write(side.toLocal8Bit() + "\n");
 }
 //checks teh combo box to the number of people connected.
 // only allows the game to play if the correct number of players are present.
@@ -164,6 +170,13 @@ void Start::StartingMethod(){
     World::getInstance()->setPowerUps(ui->power_checkBox->isChecked());
 
     InGame* gameScreen = new InGame(this);
+    for (QObject *obj : server->children()){
+        QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
+        if (anotherSock != NULL){
+            QString str = "start";
+            anotherSock->write(str.toLocal8Bit()+"\n");
+        }
+    }
 
     gameScreen->show();
     timer->start();

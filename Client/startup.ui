@@ -151,7 +151,7 @@ color: rgb(0, 200, 0);
 border-radius: 48px;</string>
     </property>
     <property name="text">
-     <string>Start</string>
+     <string>Connect</string>
     </property>
    </widget>
    <zorder>label_2</zorder>

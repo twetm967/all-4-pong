@@ -40,7 +40,7 @@ private:
     Ui::Startup *ui;
     QTcpSocket* socket;
     QTimer *timer;
-
+    QString side;
     QString username;
     clientingame *clientgame;
 
