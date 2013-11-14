@@ -1,14 +1,17 @@
 #ifndef OBJECTS_H
 #define OBJECTS_H
 
+
 #include <QPoint>
 #include <vector>
 #include <QLine>
 #include <QString>
 #include <QRect>
 
+#include <iostream>
+#include <fstream>
 
-
+using namespace std;
 
 //This class will be the parent of all classes dealing with objects that can be hit
 class Object {
@@ -48,6 +51,7 @@ public:
     QPoint getQPoint(){return point;}
 
 
+    void virtual printInfo(ofstream*){}
 
     //------------------------------------------------------
 

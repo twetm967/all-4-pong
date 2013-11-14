@@ -126,6 +126,14 @@ void Paddle::moveLine(int distance) {
         return didRead;
     }
 
+// /paddle/id/x/y/health/score/username
+    void Paddle::printInfo(ofstream *stream){
+        *stream << "/paddle/" << playerId<< "/" << point.x() << "/"
+                << point.y() << "/" << Hand->getHealth() << "/"
+                << Hand->getCurrentScore()->getCurrentScore() << "/"
+                << Hand->getUsername().toStdString() << endl;
+    }
+
 
     //runs the  update position code overridden from Object.
 

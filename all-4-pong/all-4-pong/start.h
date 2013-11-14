@@ -7,6 +7,9 @@
 #include <QTcpServer>
 #include <QDebug>
 #include <QTimer>
+#include <iostream>
+#include <fstream>
+
 
 
 #include "ingame.h"
@@ -32,6 +35,7 @@ public:
     
 private slots:
     int on_start_Btn_clicked();
+    void on_btnLoad_clicked();
     void clientConnected();
     void dataReceived();
     void clientDisconnected();

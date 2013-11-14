@@ -5,6 +5,8 @@
 #include "World.h"
 #include "Object.h"
 #include "powerup.h"
+#include <iostream>
+#include <fstream>
 
 
 class Shapes: public Object
@@ -23,6 +25,7 @@ class Shapes: public Object
         int getPlayerId(){return -1;}
         int getSide(){return PlayerId;}
 
+        void printInfo(ofstream*);
         int getX(){return x;}
         int getY(){return y;}
         PowerUp* getPowerUp(){return boost;}

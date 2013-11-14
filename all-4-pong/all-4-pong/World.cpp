@@ -4,36 +4,6 @@
 
 World* World::instance=NULL;
 
-/*
-void World::setUp(int Players,int diff,bool power){
-
-    counter = 0;
-
-    Player* in;
-    numberDead = 0;
-    for (int i = 0; i < Players && i<4; ++i){
-        in = new User();
-        GamePlayers.push_back(in);
-    }
-
-    int q = 4 - Players;
-
-    if (q > 0){
-        for (int i = 0; i<q; ++i) {
-            in = new AI(diff);
-            GamePlayers.push_back(in);
-        }
-    }
-
-    difficulty = diff;
-    powerUps = power;
-    worldSize = 450; //hardCoded right now! Just becuase we don't have different resolutions yet.
-
-}
-*/
-
-
-
 QString World::getBlock(){
     if(powerUps)
         counter++;
@@ -57,6 +27,8 @@ void World::UpdateWorld() {
 }
 
 
+
+
 // reset all elements in this game world
 void World::ResetWorld() {
     for( int i = 0; i < GamePlayers.size();++i){
@@ -75,17 +47,22 @@ void World::ResetWorld() {
 // prints the current world state out to offshore text file,
 // returning a boolean value indicating print success
 bool World::printWorldInfo() {
-    bool didPrint = false;
 
-    // establish connection with text file
 
-    if (/*connection succeeds*/ true) {
-        // gather object state and concatenate into string
-        // print string of state to text file
-        didPrint = true;
+    ofstream* stream = new ofstream;
+
+    stream->open("save_file.txt");
+
+    if(stream->is_open()){
+        for(int i = 0; i < objects.size(); i++){
+            objects.at(i)->printInfo(stream);
+        }
     }
 
-    return didPrint;
+    *stream << "/" << powerUps << "/" << difficulty << "/" << endl;
+    // establish connection with text file
+stream->close();
+
 }
 
 // reads the current world state from offshore text file,
@@ -93,6 +70,9 @@ bool World::printWorldInfo() {
 // if read succeeds, stores world state in instance variables
 bool World::readWorldInfo() {
     bool didRead = false;
+
+
+
 
     // establish connection with text file
 
@@ -127,16 +107,22 @@ void World::setupPlayers(int num) {
 }
 
 
-
 void World::pointScoredReset() {
     foreach (Player *play, GamePlayers) {
         play->reset();
     }
     if(numberDead == 3){
         qDebug() << "All the players are defeated" << endl << "Run end game logic" << endl;
+        gameOver();
     }
 }
 
+void World::gameOver(){
+    //game over logic.
+    //ends the game
+    //saves high scores
+    //displays gameover text.
+}
 
 
 

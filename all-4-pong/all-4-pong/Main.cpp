@@ -3,8 +3,13 @@
 #include <iostream>
 #include <QApplication>
 #include <cassert>
-#include <score.h>
+#include <iostream>
+#include <fstream>
+
+#include "score.h"
 #include "start.h"
+
+
 #include "World.h"
 
 #include "ingame.h"

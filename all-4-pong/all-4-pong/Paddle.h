@@ -14,6 +14,8 @@
 #include "Object.h"
 //#include "Player.h"
 #include "World.h"
+#include <iostream>
+#include <fstream>
 
 //class Object;
 class Ball;
@@ -60,6 +62,7 @@ public:
     bool getHit();
 
 
+    void printInfo(ofstream*);
     void setX(int newX);
     void setY(int newY);
     QString getType() {return "paddle";}
