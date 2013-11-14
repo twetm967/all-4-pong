@@ -7,6 +7,9 @@
 #include <vector>
 #include <QMouseEvent>
 #include <QTimer>
+#include <iostream>
+#include <fstream>
+
 
 #include "Player.h"
 #include "GameLabel.h"
@@ -61,6 +64,7 @@ private slots:
 
     void on_btnCheat_clicked();
     void on_btnHome_clicked();
+    void on_btnLoad_clicked();
 };
 
 #endif // INGAME_H

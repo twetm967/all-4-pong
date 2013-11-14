@@ -10,6 +10,9 @@
 #include <QMouseEvent>
 #include <QtWidgets>
 
+
+#include <QtMultimedia/QMediaPlayer>
+#include <QFile>
 #include "World.h"
 #include "Paddle.h"
 #include "Object.h"
@@ -112,7 +115,13 @@ void InGame::HealthDamage(int index, int health){
     if(health > -1 && health < 7){
         QLabel* lbl = Health.at(spot + health);
         lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
-    }
+ /*       QMediaPlayer* player;
+        player = new QMediaPlayer;
+
+        player->setMedia(QUrl::fromLocalFile("all-4-pong/images/beep.wav"));
+        player->setVolume(100);
+        player->play();
+    */}
     else if (health < 0) {
         qDebug() << "No more death possible";
     }
@@ -130,6 +139,8 @@ void InGame::on_btnPause_clicked() {
         Timer::getInstance()->getTimer()->start();
         ui->btnPause->setText("Pause");
     }
+    //purley testing this breaks object view blah blah blah
+    World::getInstance()->printWorldInfo();
 }
 
 
@@ -178,7 +189,7 @@ bool InGame::makeBlock(bool powerUps){
 
 void InGame::setUpBlocklbl(GameLabel* block){
     block->setObjectName("lblPopUp");
-    block->setStyleSheet("background-color: rgb(0, 0, 0);");
+    block->setStyleSheet("background-color: rgb(255,255,255); border-radius: 6px;");
 
     block->setGeometry(block->getObj()->getRect());
 
@@ -236,19 +247,3 @@ void InGame::on_btnHome_clicked() {
     ui->btnPause->setText("Play");
     home->show();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

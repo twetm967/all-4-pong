@@ -24,7 +24,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>90</y>
+      <y>80</y>
       <width>131</width>
       <height>121</height>
      </rect>
@@ -44,8 +44,8 @@ border-radius: 48px;</string>
    <widget class="QComboBox" name="players_comboBox">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>460</y>
+      <x>270</x>
+      <y>430</y>
       <width>61</width>
       <height>27</height>
      </rect>
@@ -84,8 +84,8 @@ border: 1px solid rgb(0, 200, 0);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>460</y>
+      <x>60</x>
+      <y>430</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -187,8 +187,8 @@ background-color: rgba(0, 200, 255, 0);</string>
    <widget class="QLabel" name="lblConnected">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>220</y>
+      <x>150</x>
+      <y>480</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -212,7 +212,7 @@ background-color: rgba(0, 200, 255, 0);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-10</y>
       <width>1125</width>
       <height>633</height>
      </rect>
@@ -227,8 +227,8 @@ background-color: rgba(0, 200, 255, 0);</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>310</y>
+      <x>470</x>
+      <y>370</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -251,8 +251,8 @@ background-color: rgba(0, 200, 255, 0);</string>
    <widget class="QLineEdit" name="username_le">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>310</y>
+      <x>590</x>
+      <y>370</y>
       <width>161</width>
       <height>27</height>
      </rect>
@@ -261,6 +261,31 @@ background-color: rgba(0, 200, 255, 0);</string>
      <string notr="true">color: rgb(71, 71, 71);
 background-color: rgb(0, 200, 0);
 border: 1px solid rgb(0, 200, 0);</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLoad">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>110</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 71, 71);
+color: rgb(0, 200, 0);
+border-radius: 30px;
+border: 2px solid rgb(0,200,0);</string>
+    </property>
+    <property name="text">
+     <string>Load Last Game</string>
     </property>
    </widget>
    <zorder>lblBckgrndImg</zorder>
@@ -273,6 +298,7 @@ border: 1px solid rgb(0, 200, 0);</string>
    <zorder>lblConnected</zorder>
    <zorder>label_3</zorder>
    <zorder>username_le</zorder>
+   <zorder>btnLoad</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -1,16 +1,15 @@
-#include "Object.h"
+﻿#include "Object.h"
 #include "Ball.h"
 #include "World.h"
 #include "Paddle.h"
 //#include "ui_game.h"
+
 #include <QRect>
 #include <QPoint>
 #include <vector>
 #include <cmath>
 #include <QString>
 #include <string>
-#include <iostream>
-
 ///Constructors
 
 
@@ -48,26 +47,35 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
 ///Methods
 
 
-
+/*
 // prints the current ball state out to offshore text file,
 // returning a boolean value indicating print success
     //should this be a virtual method for Object?
-bool Ball::printBallInfo(QString data) {
+bool Ball::printBallInfo() {
     bool didPrint = false;
 
-    // establish connection with text file
-   //iofstream f = iofstream("save_file.txt");
-    data = "ball," + QString(this->getX()) + "," + QString(this->getY()) + "," + QString(this->getRadius());
+    ofstream officialGameState;
+    officialGameState.open(("official-all-4-pong-state.txt")); // establish connection with text file
+    QString data = this->getNet();
 
-    if (/*connection succeeds*/ true  /*could we just return this?*/) {
+
+    //data += //everything else i need right now it has 0/ball/x/y/;
+    //data = "ball," + QString(this->getX()) + "," + QString(this->getY()) + "," + QString(this->getRadius());
+
+    if (officialGameState.is_open()) {
         // gather object state and concatenate into string
-        // print string of state to text file
+        data = "/" + QString::number(playerId) + "/" + QString::number(x) + "/"+ QString::number(y)+ "/" + QString::number(this->getSpeedX()) + "/" + QString::number(this->getSpeedY())+ "/" + QString::number(this->getSpeed()) +  "/" + QString::number(this->getRadius()) + "/" + QString::number(this->getMinSpeed()) << "/" + QString::number(this->getMaxSpeed()); // print string of state to text file
+
+        string blah = data.toStdString();
+        officialGameState << blah << "\n";
+        officialGameState.close();
+
         didPrint = true;
     }
 
     return didPrint;
 }
-
+*/
 // reads the current ball state from offshore text file,
 // returning a boolean value indicaing read success;
 // if read succeeds, stores ball state in instance variables
@@ -136,20 +144,11 @@ void Ball::updateSpeedY() {
 }
 
 void Ball::invertSpeedX() {
-    if(this->getSpeedX() != 0){
-        this->setSpeedX(this->getSpeedX()*-1);
-    }else{
-        this->setSpeedX(1);
-    }
+    this->setSpeedX(this->getSpeedX()*-1);
 }
 
-
 void Ball::invertSpeedY() {
-    if(this->getSpeedY() != 0){
-        this->setSpeedY(this->getSpeedY()*-1);
-    }else{
-        this->setSpeedY(1);
-    }
+    this->setSpeedY(this->getSpeedY()*-1);
 }
 
 void Ball::collisionHandler() {
@@ -211,22 +210,13 @@ void Ball::onCollision(Object *obj) {
     cout << "Collision with player" << playerId << endl;
     switch (playerId % 2) {
         case 0:
-            int sy;
-            if(this->getSpeedY() != 0){
-            sy = this->getSpeedY();}else{
-            sy = 1;}
             this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
             this->incrementSpeedX(obj->getSpeed());
             this->invertSpeedY();
             this->incrementSpeedY(5 * abs(this->getSpeedY())/this->getSpeedY());
             break;
         case 1:
-            int sx;
-            if(this->getSpeedX() != 0){
-            sx = this->getSpeedX();}else{
-            sx = 1;}
-            this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/sx);
-
+            this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
             this->incrementSpeedY(obj->getSpeed());
             this->invertSpeedX();
             this->incrementSpeedX(5 * abs(this->getSpeedX())/this->getSpeedX());
@@ -271,4 +261,17 @@ QString Ball::getNet(){
     QString str = "0/ball/"+ QString::number(this->getX()) + "/" + QString::number(this->getY()) + "/ ";
     return str;
 }
+
+// /ball/idoflasthit/x/y/speedx/speedy/raius/
+void Ball::printInfo(ofstream* stream){
+
+    //   "playerId/x/y/xspeed/yspeed/"
+  //  if(stream.is_open()){
+    *stream << "/ball/" << playerId << "/" << x << "/" << y <<"/" << speedX <<"/" << speedY << "/"
+            <<radius << "/" << endl;
+    //    }else{return false;}
+    }
+
+
+
 

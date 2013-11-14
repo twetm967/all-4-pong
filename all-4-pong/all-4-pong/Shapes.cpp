@@ -42,6 +42,10 @@
         out = "Shape ";
         return out;
     }
+// /shape/x/y/x2/y2/
+    void Shapes::printInfo(ofstream *stream){
+        *stream  << "/shape/" << x << "/" << y << "/" << x2 << "/" << y2 << "/" << endl;
+    }
 
    void Shapes::updatePosition(){
 

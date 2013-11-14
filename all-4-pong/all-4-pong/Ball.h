@@ -6,16 +6,17 @@
 #include <vector>
 #include <QRect>
 #include <QString>
-
-
 /*
 #include "paddle.h"
 #include "Player.h"
 //#include "Shapes.h" //when I add this, things break.
 #include "World.h"
 */
+
 #include "Object.h"
 
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -47,14 +48,17 @@ class Ball : public Object
         int getX(){return x;} //returns x from center of ball
         int getY(){return y;} //returns y from center of ball
         int getRadius(){return radius;}
+        int getMinSpeed(){return minSpeed;}
+        int getMaxSpeed(){return maxSpeed;}
         int getSpeedX(){return speedX;}
         int getSpeedY(){return speedY;}
         int getSpeed(){return speed;}
+        void printInfo(ofstream* stream);
 //        double getDirection(){return 0;} //need to create logic to provide direction based on speedX and speedY
         int getPlayerId(){return playerId;}
         QString getType() {return "ball";}
 
-    
+
         //setters -- need additional logic to fully implement
         void setX(int newX){x = newX;}
         void setY(int newY){y = newY;}
@@ -76,7 +80,7 @@ class Ball : public Object
 
         // prints the current ball state out to offshore text file,
         // returning a boolean value indicating print success
-        bool printBallInfo(QString data);
+        bool printBallInfo();
 
         // reads the current ball state from offshore text file,
         // returning a boolean value indicaing read success;
@@ -88,7 +92,7 @@ class Ball : public Object
         /*void Bounce();*/ //I don't know who created this, but I think it may be the same as the onCollision method I have already created
         void onCollision(Object *obj); //this method will determine logic upon collision
         QString getNet();
-        
+
 };
 
 #endif

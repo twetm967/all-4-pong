@@ -4,6 +4,9 @@
 
 #include <vector>
 #include <QPoint>
+#include <iostream>
+#include <fstream>
+
 #include "World.h"
 #include "score.h"
 

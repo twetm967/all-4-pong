@@ -10,6 +10,9 @@
 #include <vector>
 #include <QString>
 #include <QWidget>
+#include <iostream>
+#include <fstream>
+
 
 
 #include "Player.h"
@@ -38,18 +41,20 @@ class World //Can we get a worldSize integer that returns the number of pixels w
             roundFinished = false;
         }
         static World* instance;
-        vector<Ball*> balls;    //Just a note, ball is in the objects vector. Check out the "getType" method.  I think this
-                                //is how we should keep track of all objects in the world.  Alternatively, you could modify
-                                //the add method here to detect the type of object and assign it to a vector of the object's
-                                //type.  Either one will work.  Just let me know which you pick. - PJ
+        vector<Ball*> balls;
+        //Just a note, ball is in the objects vector. Check out the "getType" method.  I think this
+        //is how we should keep track of all objects in the world.  Alternatively, you could modify
+        //the add method here to detect the type of object and assign it to a vector of the object's
+        //type.  Either one will work.  Just let me know which you pick. - PJ
 
     public:
+
+        void gameOver();
 
         void updateUser(QString str);
 
         int getWorldSize(){
             return worldSize;
-
         }
         void died(){
             numberDead++;

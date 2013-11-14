@@ -45,6 +45,10 @@ Start::Start(QWidget *parent) :
 }
 
 
+void Start::on_btnLoad_clicked(){
+    World::getInstance()->readWorldInfo();
+}
+
 //this method detects when a new client is connected and increments the connected count
 void Start::clientConnected()
 {
