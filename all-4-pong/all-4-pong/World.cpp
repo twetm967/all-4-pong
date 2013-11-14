@@ -69,20 +69,13 @@ stream->close();
 // returning a boolean value indicaing read success;
 // if read succeeds, stores world state in instance variables
 bool World::readWorldInfo() {
-    bool didRead = false;
+
 
 
 
 
     // establish connection with text file
 
-    if (/*connection succeeds*/ true) {
-        // read string of state from text file
-        // parse string and store object state in instance variables
-        didRead = true;
-    }
-
-    return didRead;
 }
 
 void World::setupPlayers(int num) {
