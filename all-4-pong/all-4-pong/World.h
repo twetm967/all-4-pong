@@ -121,7 +121,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         void setupPlayers(int num);
         void setRoundFinished(bool finished) {roundFinished = finished;}
         bool getRoundFinished() {return roundFinished;}
-
+        void setPlayerName(QString name, int side);
         void setDifficulty(int newDifficulty) { difficulty = newDifficulty; }
         void setPowerUps(bool pow) {powerUps = pow;
                                    counter = 0;}

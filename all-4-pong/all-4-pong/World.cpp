@@ -157,4 +157,9 @@ void World::updateUser(QString str){
 
 }
 
+void World::setPlayerName(QString name, int side){
+    Player *inPlayer = getGamePlayer(side);
+    inPlayer->setUsername(name);
+}
+
 

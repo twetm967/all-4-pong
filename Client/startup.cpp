@@ -17,7 +17,7 @@ Startup::Startup(QWidget *parent) :
     clientgame = new clientingame();
 
     timer = new QTimer(this);
-    timer->setInterval(50);
+    timer->setInterval(40);
     connect(timer, &QTimer::timeout, this, &Startup::timerHit);
 
     socket = new QTcpSocket(this);
@@ -46,7 +46,7 @@ void Startup::on_connect_Btn_clicked()
     ui->connect_Btn->setEnabled(false);
 
 
-    timer->start();
+    //timer->start();
     //username = ui->username_line->text();
     //socket->write(str.toLocal8Bit());
     //ui->statusBar->showMessage("Connected.");
@@ -91,6 +91,7 @@ void Startup::dataReceived() {
             if(slashSplit->at(0) == "start\n"){
                 clientgame->show();
                 this->hide();
+                timer->start();
             }
             if(slashSplit->at(0) == "side"){
                 side = slashSplit->at(1);

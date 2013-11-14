@@ -42,6 +42,7 @@ Start::Start(QWidget *parent) :
         exit(1);
 
     }
+
 }
 
 
@@ -115,6 +116,7 @@ void Start::dataReceived()
         int y = info->at(3).toInt();
         QPoint* mouseIn = new QPoint(x,y);
         World::getInstance()->addMouse(mouseIn,pos);
+        World::getInstance()->setPlayerName(info->at(1), pos);
     }
 
     //}
@@ -165,6 +167,8 @@ void Start::StartingMethod(){
     World::getInstance()->setDifficulty(ui->dif_comboBox_->currentIndex()+1);
 
     World::getInstance()->setupPlayers(ui->players_comboBox->currentIndex()+1);
+
+    World::getInstance()->setPlayerName(ui->username_le->text(), 0);
 
 
     // players = ui->players_comboBox->currentIndex()+1;
