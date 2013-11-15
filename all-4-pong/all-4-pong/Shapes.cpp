@@ -6,7 +6,13 @@
     // prints the current shape state out to offshore text file,
     // returning a boolean value indicating print success
 void Shapes::getInfo(vector<string> *strings){
+    this->setX(stoi(strings->at(1)));
+    this->setY(stoi(strings->at(2)));
 
+    rect.setX(stoi(strings->at(1)));
+    rect.setY(stoi(strings->at(2)));
+    rect.setWidth(stoi(strings->at(3)));
+    rect.setHeight(stoi(strings->at(4)));
 
 }
 //Shapes/x/y/width/height/

@@ -181,7 +181,7 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
 
 //for testing purposes
 void InGame::mousePressEvent(QMouseEvent *ev) {
-   // qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
+   // //////qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
     this->on_btnPause_clicked();
 }
 
@@ -189,7 +189,7 @@ bool InGame::makeBlock(bool powerUps){
     if(powerUps)
         counter++;
     if(counter == 500){
-       //qDebug() << "Make a random Object" << endl;
+       //////////qDebug() << "Make a random Object" << endl;
        counter = 0;
        return true;
     }

@@ -49,6 +49,20 @@ Start::Start(QWidget *parent) :
 void Start::on_btnLoad_clicked(){
     World::getInstance()->readWorldInfo();
 
+    InGame* gameScreen = new InGame(this);
+
+    for (QObject *obj : server->children()){
+        QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
+        if (anotherSock != NULL){
+            QString str = "start";
+            anotherSock->write(str.toLocal8Bit()+"\n");
+        }
+    }
+
+    gameScreen->show();
+    timer->start();
+    this->hide();
+
 }
 
 //this method detects when a new client is connected and increments the connected count

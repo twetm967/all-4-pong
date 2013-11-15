@@ -1,7 +1,11 @@
 
-#include "World.h"
 #include <cassert>
 
+#include "World.h"
+#include "Object.h"
+#include "Paddle.h"
+#include "Shapes.h"
+#include "Ball.h"
 World* World::instance=NULL;
 
 QString World::getBlock(){
@@ -9,7 +13,7 @@ QString World::getBlock(){
         counter++;
     if(counter == 1000){
         counter = 0;
-        qDebug()<<"make a random object"<< endl;
+       // qDebug()<<"make a random object"<< endl;
 
         return "Shapes";
     }
@@ -89,23 +93,32 @@ void World::readWorldInfo() {
         inFile->close();
     }else{//failed
 }
+    vector<string>* item;
+   int numPlayers = 3;
+    for(int i= 0; i < 4;i++){
+    item = splitString(information.at(i), '/');
+        if(item->at(6) == "AI")numPlayers--;
+    }
+
+    setupPlayers(numPlayers);
+
         //Ball/225/225/-3/9/-1/
         for(int i = 0; i < information.size() - 1;i++){
-            vector<string>* item = splitString(information.at(i),'/');
-            Object* obj = new Object();
-            if(item->at(0)== "Ball"){
-                int initspeed = stoi(item->at(4));
+            item = splitString(information.at(i),'/');
 
-
-                int x = stoi(item->at(1));
-                int y = stoi(item->at(2));
-                int ID = stoi(item->at(5));
-                obj = new Ball(initspeed, x,y,ID);
-                objects.push_back(obj);
-}
-
+            Object* obj;//
+            string type = item->at(0);
+            if (type == "Paddle")
+                obj = new Paddle();
+            else if(type  =="Ball")
+                obj = new Ball(10);
+            else if(type  =="Shapes")
+                obj = new Shapes();
+            else if(type == "0"){setPowerUps(stoi(type));break;}
+            obj->getInfo(item);
 
         }
+        setDifficulty(stoi(item->at(1)));
     }
 
 

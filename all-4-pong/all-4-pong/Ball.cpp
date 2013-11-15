@@ -21,7 +21,8 @@ Ball::Ball(int initSpeed):Object() {            //takes (speed)
     minSpeed = max(initSpeed/5,1);
     maxSpeed = initSpeed*10;
     playerId = -1; //need to determine a playerId to use for NULL
-    speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
+    speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);
+    setSpeedY(2);
     this->updateSpeedY();
     this->setPoint(); //point used to track the QLabel in the game
     World::getInstance()->addBall(this);
@@ -36,6 +37,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     minSpeed = max(initSpeed/5,1);
     maxSpeed = initSpeed*10;
     speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
+    setSpeedY(1);
     this->updateSpeedY();
     this->setPoint();
     World::getInstance()->addBall(this);
@@ -51,10 +53,14 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
 // returning a boolean value indicaing read success;
 // if read succeeds, stores ball state in instance variables
 
-    void Ball::getInfo(vector<string>* strings){
+void Ball::getInfo(vector<string>* strings){
         //parses info from a string
-
-    }
+    x = stoi(strings->at(1));
+    y = stoi(strings->at(2));
+    speedX = stoi(strings->at(3));
+    speedY = stoi(strings->at(4));
+    playerId = stoi(strings->at(5));
+}
 // Ball/x/y/speedx/speedy/playerid/
     void Ball::setInfo(ofstream * f){
         *f << "Ball/" << x << "/"<< y << "/"<< speedX << "/"<< speedY<< "/"<< playerId<< "/"<< endl;
