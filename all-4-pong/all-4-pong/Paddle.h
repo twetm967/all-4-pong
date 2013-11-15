@@ -9,18 +9,16 @@
 #include <QDebug>
 #include <QLine>
 #include <QString>
-
-//#include "Ball.h"
-#include "Object.h"
-//#include "Player.h"
-#include "World.h"
 #include <iostream>
 #include <fstream>
 
-//class Object;
+#include "World.h"
+
+#include "Object.h"
+
+
 class Ball;
 class Player;
-
 
 class Paddle : public Object
 {
@@ -35,10 +33,8 @@ public:
     //takes player index;
   Paddle():Object(){
       int worldSize = World::getInstance()->getWorldSize();
-//these may change depending on resolution
       length = (worldSize / 4.5);
       width = (worldSize / 30);
-//      World::getInstance()->add(this);
   }
   void setUp();
 
@@ -61,7 +57,10 @@ public:
     void setMouse(QPoint);
     bool getHit();
 
-
+    //save load
+    void getInfo(vector<string> *);
+    void setInfo(ofstream *);
+    QString getUserName();
     void printInfo(ofstream*);
     void setX(int newX);
     void setY(int newY);

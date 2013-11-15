@@ -20,7 +20,8 @@ class Shapes: public Object
     public:
         Shapes();
         ~Shapes();
-
+        void setInfo(ofstream *);
+        void getInfo(vector<string>*);
         //*********Getters and setters****************
         int getPlayerId(){return -1;}
         int getSide(){return PlayerId;}

@@ -46,7 +46,7 @@ void World::ResetWorld() {
 
 // prints the current world state out to offshore text file,
 // returning a boolean value indicating print success
-bool World::printWorldInfo() {
+void World::printWorldInfo() {
 
 
     ofstream* stream = new ofstream;
@@ -55,28 +55,67 @@ bool World::printWorldInfo() {
 
     if(stream->is_open()){
         for(int i = 0; i < objects.size(); i++){
-            objects.at(i)->printInfo(stream);
+            objects.at(i)->setInfo(stream);
         }
+        *stream << "/" << powerUps << "/" << difficulty << "/" << endl;
+        // establish connection with text file
+    stream->close();
+
     }
 
-    *stream << "/" << powerUps << "/" << difficulty << "/" << endl;
-    // establish connection with text file
-stream->close();
+
 
 }
 
 // reads the current world state from offshore text file,
 // returning a boolean value indicaing read success;
 // if read succeeds, stores world state in instance variables
-bool World::readWorldInfo() {
+void World::readWorldInfo() {
 
 
+    qDebug() << "We are here";
 
 
+    fstream* inFile = new fstream;
+    inFile->open("save_file.txt");
 
-    // establish connection with text file
+    if(inFile->eofbit){
+    information.push_back("");
+    for(int j = 0; ;information.push_back(""),j++){
 
+            getline(*inFile, information.at(j));
+            if(information.at(j) == "")break;
+        }
+        inFile->close();
+    }else{//failed
+
+    }
 }
+
+/*
+    for(int j = 0; j < information.size(); j++){
+        vector<string>* item = splitString(information.at(j),'/');
+        Object* obj = new Object(item->at(0));
+        objects.push_back(obj);
+        qDebug() << item;
+    }
+*/
+
+void World::Factory(string objType){
+}/*    Object* obj;
+  if (objType == "Paddle")
+      //make a paddle it is being silly right now
+       obj = new paddle();
+else if(objType =="Ball")
+      obj = new Ball(10);
+else if(objType =="Shapes")
+      obj = new Shapes();
+
+
+  objects.push_back(obj);
+//  void setUp(int, int, bool);
+
+ }*/
 
 void World::setupPlayers(int num) {
     numberDead = 4;
@@ -121,12 +160,34 @@ void World::gameOver(){
 
 QString World::getNetwork(){
     QString netString;
-    for (int i = 0; i<objects.size(); ++i){
-        Object* thisball = objects.at(i);
-        netString += thisball->getNet();
+    for (int i = 0; i < objects.size(); ++i){
+        Object* obj = objects.at(i);
+        //testing
+        obj->getType();
+
+        netString += obj->getNet();
+
         qDebug() << netString << "\n";
     }
     return netString;
+}
+
+vector<string>* World::splitString(string str, char delim){
+    vector<string> *splitV = new vector<string>();
+    string buf = "";
+    int i = 0;
+    while (i < str.size()){
+        if (str.at(i) != delim){
+            buf += str.at(i);
+        } else if (buf.length() > 0) {
+            splitV->push_back(buf);
+            buf = "";
+        }
+        i++;
+    }
+    if (buf != "")
+        splitV->push_back(buf);
+    return splitV;
 }
 
 vector<QString> *World::split(QString str, char delim){

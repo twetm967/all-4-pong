@@ -17,8 +17,10 @@
 
 #include "Player.h"
 #include "Ball.h"
+//#include "Paddle.h"
 #include "Shapes.h"
 
+class paddle;
 using namespace std;
 
 class World //Can we get a worldSize integer that returns the number of pixels wide the world is? - PJ
@@ -28,6 +30,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         vector<Player*> GamePlayers;
         vector<QPoint*> Mice;
         vector<Object*> objects;
+        vector<string> information;
         bool powerUps;
         int difficulty;
         QPoint* worldMouse;
@@ -89,7 +92,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
        }
 
        vector<QString> *split(QString str, char delim);
-
+       vector<string> *splitString(string str, char delim);
        void setworldMouse(QPoint in){
             worldMouse->setX(in.x());
             worldMouse->setY(in.y());
@@ -103,7 +106,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
             }
        }
 
-     //  void setUp(int, int, bool);
+      void Factory(string objType);
 
        // adds <obj> to Object in world
        void add(Object *obj) {objects.push_back(obj);}
@@ -139,12 +142,12 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 
         // prints the current world state out to offshore text file,
         // returning a boolean value indicating print success
-        bool printWorldInfo();
+        void printWorldInfo();
 
         // reads the current world state from offshore text file,
         // returning a boolean value indicaing read success;
         // if read succeeds, stores world state in instance variables
-        bool readWorldInfo();
+        void readWorldInfo();
 
         QString getNetwork();
     

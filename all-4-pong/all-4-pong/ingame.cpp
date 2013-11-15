@@ -40,6 +40,7 @@ InGame::InGame(Start* window, QWidget *parent) :
 
 
 
+
     //Player 0
     Health.push_back(ui->lblLife1PB);
     Health.push_back(ui->lblLife2PB);
@@ -84,6 +85,7 @@ InGame::InGame(Start* window, QWidget *parent) :
 
     ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->initializeObj("Paddle");
     ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
+    ui->lblUsernamePB->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->getUserName());
     ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->initializeObj("Paddle");
     ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
     ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->initializeObj("Paddle");
@@ -91,6 +93,14 @@ InGame::InGame(Start* window, QWidget *parent) :
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
     ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
+
+/*
+    ui->lblUsernamePB->setText(World::getInstance()->getObjects().at(0);
+
+    ui->lblUsernamePR->setText(World::getInstance()->getObjects().at(1));
+    ui->lblUsernamePT->setText(World::getInstance()->getObjects().at(2));
+    ui->lblUsernamePL->setText(World::getInstance()->getObjects().at(3));
+*/
 
     //Start the Timer
     Timer::getInstance()->getTimer()->setInterval(40);//was100

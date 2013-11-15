@@ -2,7 +2,7 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "Object.h"
-#include "World.h"
+//#include "World.h"
 
 #include <QRect>
 #include <vector>
@@ -16,6 +16,7 @@
 #include "Paddle.h"
 using namespace std;
 //sets up the paddle depending on what location it is to be in.
+
 void Paddle::setUp() {
     int worldSize = World::getInstance()->getWorldSize();
     switch(playerId){
@@ -55,6 +56,11 @@ QString Paddle::getNet(){
    out = QString::fromStdString(ss.str());
     return out;
 
+}
+
+
+QString Paddle::getUserName(){
+    return Hand->getUsername();
 }
 
 void Paddle::setUpLine() {
@@ -126,13 +132,6 @@ void Paddle::moveLine(int distance) {
         return didRead;
     }
 
-// /paddle/id/x/y/health/score/username
-    void Paddle::printInfo(ofstream *stream){
-        *stream << "/paddle/" << playerId<< "/" << point.x() << "/"
-                << point.y() << "/" << Hand->getHealth() << "/"
-                << Hand->getCurrentScore()->getCurrentScore() << "/"
-                << Hand->getUsername().toStdString() << endl;
-    }
 
 
     //runs the  update position code overridden from Object.
@@ -197,4 +196,20 @@ void Paddle::moveLine(int distance) {
         point.setX(-World::getInstance()->getWorldSize());
         point.setY(-World::getInstance()->getWorldSize());
         this->setUpLine();
+    }
+
+
+
+    void Paddle::getInfo(vector<string>* strings){
+
+
+    }
+
+    // Paddel/plalyerid/x/y/health/score/username/
+    void Paddle::setInfo(ofstream *f){
+        *f  << "Paddle/" << playerId<< "/" << point.x() << "/"
+            << point.y() << "/" << Hand->getHealth() << "/"
+            << Hand->getCurrentScore()->getCurrentScore() << "/"
+            << Hand->getUsername().toStdString()<< "/" << endl;
+
     }
