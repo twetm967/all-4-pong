@@ -133,7 +133,7 @@ void InGame::HealthDamage(int index, int health){
         player->play();
     */}
     else if (health < 0) {
-        qDebug() << "No more death possible";
+        //qDebug() << "No more death possible";
     }
 }
 
@@ -189,7 +189,7 @@ bool InGame::makeBlock(bool powerUps){
     if(powerUps)
         counter++;
     if(counter == 500){
-       qDebug() << "Make a random Object" << endl;
+       //qDebug() << "Make a random Object" << endl;
        counter = 0;
        return true;
     }

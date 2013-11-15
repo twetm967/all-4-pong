@@ -73,7 +73,7 @@ void World::printWorldInfo() {
 void World::readWorldInfo() {
     information.clear();
 
-    qDebug() << "We are here";
+    //qDebug() << "We are here";
 
 
     fstream* inFile = new fstream;
@@ -114,7 +114,7 @@ void World::readWorldInfo() {
         vector<string>* item = splitString(information.at(j),'/');
         Object* obj = new Object(item->at(0));
         objects.push_back(obj);
-        qDebug() << item;
+        //qDebug() << item;
     }
 */
 
@@ -161,7 +161,7 @@ void World::pointScoredReset() {
         play->reset();
     }
     if(numberDead == 3){
-        qDebug() << "All the players are defeated" << endl << "Run end game logic" << endl;
+        //qDebug() << "All the players are defeated" << endl << "Run end game logic" << endl;
         gameOver();
     }
 }
@@ -184,7 +184,7 @@ QString World::getNetwork(){
 
         netString += obj->getNet();
 
-        qDebug() << netString << "\n";
+        //qDebug() << netString << "\n";
     }
     return netString;
 }

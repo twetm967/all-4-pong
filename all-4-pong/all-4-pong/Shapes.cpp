@@ -7,6 +7,7 @@
     // returning a boolean value indicating print success
 void Shapes::getInfo(vector<string> *strings){
 
+
 }
 //Shapes/x/y/width/height/
 void Shapes::setInfo(ofstream *f){

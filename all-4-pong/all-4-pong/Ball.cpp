@@ -187,7 +187,7 @@ void Ball::onCollision(Object *obj) {
         Shapes* s = dynamic_cast<Shapes*>(obj);
         if(s != NULL)
          s->hitShape(this);
-        qDebug() << "Hit the object" << endl;
+        //qDebug() << "Hit the object" << endl;
 
             break;
 
@@ -199,14 +199,14 @@ void Ball::incrementSpeedX(int vector) {
     if (vector == 0)
         return;
     this->setSpeedX(this->getSpeedX() + (pow(vector,2)/vector + 5)/10);
-    qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
+
 }
 
 void Ball::incrementSpeedY(int vector) {
     if (vector == 0)
         return;
     this->setSpeedY(this->getSpeedY() + (pow(vector,2)/vector + 5)/10);
-    qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
+
 }
 
 void Ball::reset() {

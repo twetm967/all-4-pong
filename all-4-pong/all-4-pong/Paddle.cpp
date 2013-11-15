@@ -201,11 +201,20 @@ void Paddle::moveLine(int distance) {
 
 
     void Paddle::getInfo(vector<string>* strings){
-
+      //  setPlayerId(strings->at(1));
+        //setX(strings->at(2));
+      /*  setY(strings->at(3));
+        int health = stoi(strings->at(4));
+        for(int i = 0; i < health; i ++){
+        Hand->damage();
+        }
+        Hand->getCurrentScore()->setCurrentScore(stoi(strings->at(5)));
+        Hand->setUsername(QString::fromStdString(strings->at(6)));
+*/
 
     }
 
-    // Paddel/plalyerid/x/y/health/score/username/
+    // Paddel/playerid/x/y/health/score/username/
     void Paddle::setInfo(ofstream *f){
         *f  << "Paddle/" << playerId<< "/" << point.x() << "/"
             << point.y() << "/" << Hand->getHealth() << "/"
@@ -213,3 +222,5 @@ void Paddle::moveLine(int distance) {
             << Hand->getUsername().toStdString()<< "/" << endl;
 
     }
+
+
