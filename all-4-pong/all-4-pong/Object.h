@@ -38,7 +38,7 @@ public:
     //Object(int,int,int,int);
 
     // Object(int);
-    Object(string type);
+    Object(vector<string>* type){}
     Object();
 
     ~Object();

@@ -71,7 +71,7 @@ void World::printWorldInfo() {
 // returning a boolean value indicaing read success;
 // if read succeeds, stores world state in instance variables
 void World::readWorldInfo() {
-
+    information.clear();
 
     qDebug() << "We are here";
 
@@ -88,9 +88,26 @@ void World::readWorldInfo() {
         }
         inFile->close();
     }else{//failed
-
-    }
 }
+        //Ball/225/225/-3/9/-1/
+        for(int i = 0; i < information.size() - 1;i++){
+            vector<string>* item = splitString(information.at(i),'/');
+            Object* obj = new Object();
+            if(item->at(0)== "Ball"){
+                int initspeed = stoi(item->at(4));
+
+
+                int x = stoi(item->at(1));
+                int y = stoi(item->at(2));
+                int ID = stoi(item->at(5));
+                obj = new Ball(initspeed, x,y,ID);
+                objects.push_back(obj);
+}
+
+
+        }
+    }
+
 
 /*
     for(int j = 0; j < information.size(); j++){
