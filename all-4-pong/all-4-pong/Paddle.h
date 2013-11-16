@@ -59,8 +59,11 @@ public:
 
 
     //save load
-    void getInfo(vector<string> *); //this had a merge conflict
+
+    //This is the ones we need!!vvv
+    void getInfo(vector<string> *);
     void setInfo(ofstream *);
+    //These!! ^^^
     QString getUserName();
     void printInfo(ofstream*);
 
