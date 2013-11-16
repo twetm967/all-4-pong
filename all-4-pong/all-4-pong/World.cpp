@@ -58,10 +58,12 @@ void World::printWorldInfo() {
     stream->open("save_file.txt");
 
     if(stream->is_open()){
+
+        *stream << "/" << powerUps << "/" << difficulty << "/" << endl;
         for(int i = 0; i < objects.size(); i++){
             objects.at(i)->setInfo(stream);
         }
-        *stream << "/" << powerUps << "/" << difficulty << "/" << endl;
+
         // establish connection with text file
     stream->close();
 
@@ -93,32 +95,35 @@ void World::readWorldInfo() {
         inFile->close();
     }else{//failed
 }
+
+
+
     vector<string>* item;
-   int numPlayers = 3;
-    for(int i= 0; i < 4;i++){
+
+
+    item = splitString(information.at(0),'/');
+    setPowerUps(stoi(item->at(0)));
+    setDifficulty(stoi(item->at(1)));
+
+    int numPlayers = 0;
+    for(int i= 1; i < 5;i++){
     item = splitString(information.at(i), '/');
-        if(item->at(6) == "AI")numPlayers--;
+        if(item->at(6) != "AI")numPlayers++;
     }
 
     setupPlayers(numPlayers);
 
         //Ball/225/225/-3/9/-1/
-        for(int i = 0; i < information.size() - 1;i++){
+        for(int i = 1; i < information.size() - 1;i++){
             item = splitString(information.at(i),'/');
 
             Object* obj;//
-            string type = item->at(0);
-            if (type == "Paddle")
-                obj = new Paddle();
-            else if(type  =="Ball")
-                obj = new Ball(10);
-            else if(type  =="Shapes")
-                obj = new Shapes();
-            else if(type == "0"){setPowerUps(stoi(type));break;}
-            obj->getInfo(item);
+            if(objects.at(i-1)->getType() == QString::fromStdString(item->at(0))){
+                objects.at(i - 1)->getInfo(item);
+            }
 
         }
-        setDifficulty(stoi(item->at(1)));
+
     }
 
 

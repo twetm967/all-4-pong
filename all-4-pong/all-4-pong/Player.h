@@ -75,9 +75,6 @@ class AI : public Player
 
     AI(int diff):Player(){
         hand = new QPoint(205,205);
-        flop = false;
-        if(1 == rand() % 2)flop = true;
-        iterator = 150;
         difficulty = diff;
 
     }                            //takes (difficulty);

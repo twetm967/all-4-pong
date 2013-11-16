@@ -42,6 +42,7 @@ void Player::damage() {
         foreach (Object * pad, World::getInstance()->getObjects())
             if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
                 pad->eliminate();
+
                 cout << "Moved player " << ID << " off screen." << endl;
             }
     }

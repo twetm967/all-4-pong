@@ -38,6 +38,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         bool roundFinished;
         int numberDead;
         int counter;
+        bool File;
         World(){
             worldMouse = new QPoint();
             worldSize = 450;
@@ -85,6 +86,13 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 
        vector<Ball*> getBalls(){      
            return balls;
+       }
+       void setFile(bool in){
+           File = in;
+       }
+
+    bool getFile(){
+           return File;
        }
 
        vector<Object*> getObjects(){

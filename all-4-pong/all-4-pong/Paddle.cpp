@@ -192,9 +192,10 @@ void Paddle::moveLine(int distance) {
     }
 
     void Paddle::eliminate() {
-        cout << "Moving player " << playerId << " off screen" << endl;
+        qDebug() << "Moving player " << playerId << " off screen" << endl;
         point.setX(-World::getInstance()->getWorldSize());
         point.setY(-World::getInstance()->getWorldSize());
+
         this->setUpLine();
     }
 
@@ -215,7 +216,7 @@ void Paddle::moveLine(int distance) {
     // Paddle/playerid/x/y/health/score/username/
     void Paddle::setInfo(ofstream *f){
         if(Hand->getUsername().toStdString() == "")Hand->setUsername("User");
-        *f  << "Paddle/" << playerId<< "/" << point.x() << "/"
+        *f  << "paddle/" << playerId<< "/" << point.x() << "/"
             << point.y() << "/" << Hand->getHealth() << "/"
             << Hand->getCurrentScore()->getCurrentScore() << "/"
             << Hand->getUsername().toStdString()<< "/" << endl;

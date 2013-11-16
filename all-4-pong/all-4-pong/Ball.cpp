@@ -63,7 +63,7 @@ void Ball::getInfo(vector<string>* strings){
 }
 // Ball/x/y/speedx/speedy/playerid/
     void Ball::setInfo(ofstream * f){
-        *f << "Ball/" << x << "/"<< y << "/"<< speedX << "/"<< speedY<< "/"<< playerId<< "/"<< endl;
+        *f << "ball/" << x << "/"<< y << "/"<< speedX << "/"<< speedY<< "/"<< playerId<< "/"<< endl;
     }
 
 

@@ -78,35 +78,45 @@ InGame::InGame(Start* window, QWidget *parent) :
 
     //Link Game Model to GUI
 
-    //for testing
-    i = 6;
-
-    //Link Game Model to GUI
-
     ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->initializeObj("Paddle");
-    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
-    ui->lblUsernamePB->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->getUserName());
     ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->initializeObj("Paddle");
-    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
     ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->initializeObj("Paddle");
-    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
-    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
     ui->gameCourt->findChild<GameLabel*>("lblBall")->initializeObj("Ball");
 
-/*
-    ui->lblUsernamePB->setText(World::getInstance()->getObjects().at(0);
+    //Loads a file if the user clicked the load file button
+    if(World::getInstance()->getFile()){
+        //load file
+        World::getInstance()->readWorldInfo();
 
-    ui->lblUsernamePR->setText(World::getInstance()->getObjects().at(1));
-    ui->lblUsernamePT->setText(World::getInstance()->getObjects().at(2));
-    ui->lblUsernamePL->setText(World::getInstance()->getObjects().at(3));
+        ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
+        ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
+        for(int i = 0;i < 4;i++){
+            for(int j = 7; j > World::getInstance()->getGamePlayer(i)->getHealth();j--){
+        HealthDamage(i,j);
+            }
+        }
+    }
+  /*  ui->lblUsernamePB->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->getUserName());
+    ui->lblUsernamePR->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->getUserName());
+    ui->lblUsernamePT->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->getUserName());
+    ui->lblUsernamePL->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->getUserName());
 */
+ ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
+ ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
+ ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
+ ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
+
+
+
+
 
     //Start the Timer
     Timer::getInstance()->getTimer()->setInterval(40);//was100
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
    // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
-
 
 
 }
@@ -121,7 +131,7 @@ InGame::~InGame() {
 // graphic!
 void InGame::HealthDamage(int index, int health){
     int spot = 7 * index;
-    --health;
+
     if(health > -1 && health < 7){
         QLabel* lbl = Health.at(spot + health);
         lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
@@ -158,7 +168,7 @@ void InGame::on_btnPause_clicked() {
 void InGame::on_btnCheat_clicked() {
     for (int i = 0; i < 4; ++i) {
         World::getInstance()->getGamePlayer(i)->damage();
-        HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth()+1);
+        HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth());
     }
 }
 
@@ -181,7 +191,7 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
 
 //for testing purposes
 void InGame::mousePressEvent(QMouseEvent *ev) {
-   // //////qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
+   //qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
     this->on_btnPause_clicked();
 }
 
@@ -189,7 +199,7 @@ bool InGame::makeBlock(bool powerUps){
     if(powerUps)
         counter++;
     if(counter == 500){
-       //////////qDebug() << "Make a random Object" << endl;
+       //qDebug() << "Make a random Object" << endl;
        counter = 0;
        return true;
     }
@@ -239,7 +249,7 @@ void InGame::timerHit() {
         ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
         for (int i = 0; i < 4; ++i) {
-            HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth()+1);
+            HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth());
         }
     } else if (World::getInstance()->getRoundFinished() == false) {
         ui->lblGameDeclaration->setText(""); // do not display 'Round Over' declaration

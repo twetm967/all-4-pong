@@ -47,8 +47,7 @@ Start::Start(QWidget *parent) :
 
 
 void Start::on_btnLoad_clicked(){
-    World::getInstance()->readWorldInfo();
-
+    World::getInstance()->setFile(true);
     InGame* gameScreen = new InGame(this);
 
     for (QObject *obj : server->children()){
@@ -184,7 +183,7 @@ void Start::StartingMethod(){
     World::getInstance()->setupPlayers(ui->players_comboBox->currentIndex()+1);
 
     World::getInstance()->setPlayerName(ui->username_le->text(), 0);
-
+    World::getInstance()->setFile(false);
 
     // players = ui->players_comboBox->currentIndex()+1;
 

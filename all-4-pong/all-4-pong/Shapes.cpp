@@ -17,7 +17,7 @@ void Shapes::getInfo(vector<string> *strings){
 }
 //Shapes/x/y/width/height/
 void Shapes::setInfo(ofstream *f){
-    *f <<   "Shapes/" << point.x() << "/" << point.y() << "/" << rect.width() << "/" << rect.height() << "/" << endl;
+    *f <<   "shape/" << point.x() << "/" << point.y() << "/" << rect.width() << "/" << rect.height() << "/" << endl;
 }
 
     // reads the current shape state from offshore text file,
