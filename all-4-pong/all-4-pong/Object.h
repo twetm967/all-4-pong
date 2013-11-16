@@ -57,7 +57,7 @@ public:
     //------------------------------------------------------
 
     //virtual methods
-//<<<<<<< HEAD
+
     void virtual getInfo(ofstream*){}
     void virtual setInfo(){}
    void virtual updatePosition();
@@ -74,25 +74,6 @@ public:
    virtual void eliminate() {}
   // virtual void hitShape(){}
 
-/*=======
-    void virtual updatePosition();
-    QString virtual getNet();
-    bool virtual Hit(){return true;}
-    bool virtual getBound();
-    double virtual getDistancetoPaddle(QPoint point){return -1;}
-    int virtual getPlayerId() {return playerId;}
-    virtual void setPlayerId(int) {}
-    virtual QString getType() {return "";}
-    virtual QLine getLine() {return QLine();}
-    virtual int getSpeed() {return 0;}
-    virtual void eliminate() {}
-    // virtual void hitShape(){}
-
-    virtual QRect getRect(){
-        QRect r;
-        r.setRect(point.x(),point.y(),15,15);
-    }
->>>>>>> 35672ae33fb56f4f5c6cad1d4c85bfdcfc85bf6b*/
 
 
 };
