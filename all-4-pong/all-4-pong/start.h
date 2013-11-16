@@ -11,7 +11,8 @@
 #include <fstream>
 
 
-
+#include "World.h"
+#include "Paddle.h"
 #include "ingame.h"
 
 namespace Ui {

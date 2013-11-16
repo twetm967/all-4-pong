@@ -111,9 +111,9 @@ void clientingame::MoveLabels(std::vector<QString> *v){
     }else if(v->at(0) == "2"){
         //2/x/y/hight/width/
         //update the object
-        QLabel *lbl = new QLabel();
-        lbl->height(v->at(3).toInt());
-        lbl->width(v->at(4).toInt());
+        //QLabel *lbl = new QLabel();
+        //lbl->height(v->at(3).toInt());
+        //lbl->width(v->at(4).toInt());
     }
 }
 

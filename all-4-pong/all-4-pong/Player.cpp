@@ -42,6 +42,7 @@ void Player::damage() {
         foreach (Object * pad, World::getInstance()->getObjects())
             if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
                 pad->eliminate();
+
                 cout << "Moved player " << ID << " off screen." << endl;
             }
     }
@@ -82,7 +83,9 @@ void AI::command(){
 //the medium setting
 //under construction!!
 void AI::followRandom(int big, int min){
-    Ball* ball = World::getInstance()->getBalls().at(0);
+    Ball* ball = dynamic_cast<Ball*>(World::getInstance()->getObjects().at(4));
+    if(ball != NULL){
+
     int x = ball->getX();
     int y = ball->getY();
 
@@ -101,6 +104,7 @@ void AI::followRandom(int big, int min){
     if(y > hand->y()){
         hand->setY(hand->y() + speed);
     }
+   }
 }
 
 void User::calculateSpeed(){

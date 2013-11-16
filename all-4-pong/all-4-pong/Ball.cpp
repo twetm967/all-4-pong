@@ -21,7 +21,8 @@ Ball::Ball(int initSpeed):Object() {            //takes (speed)
     minSpeed = max(initSpeed/5,1);
     maxSpeed = initSpeed*10;
     playerId = -1; //need to determine a playerId to use for NULL
-    speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
+    speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);
+    setSpeedY(2);
     this->updateSpeedY();
     this->setPoint(); //point used to track the QLabel in the game
     World::getInstance()->addBall(this);
@@ -36,6 +37,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     minSpeed = max(initSpeed/5,1);
     maxSpeed = initSpeed*10;
     speedX = (pow(-1,rand()%2)) * ((rand() % (speed-2))+1);;
+    setSpeedY(1);
     this->updateSpeedY();
     this->setPoint();
     World::getInstance()->addBall(this);
@@ -46,60 +48,25 @@ void Ball::getInfo(ofstream *stream){
 }
 
 
-///Methods
+//Methods
 
 
-/*
-// prints the current ball state out to offshore text file,
-// returning a boolean value indicating print success
-    //should this be a virtual method for Object?
-bool Ball::printBallInfo() {
-    bool didPrint = false;
-
-    ofstream officialGameState;
-    officialGameState.open(("official-all-4-pong-state.txt")); // establish connection with text file
-    QString data = this->getNet();
-
-
-    //data += //everything else i need right now it has 0/ball/x/y/;
-    //data = "ball," + QString(this->getX()) + "," + QString(this->getY()) + "," + QString(this->getRadius());
-
-    if (officialGameState.is_open()) {
-        // gather object state and concatenate into string
-        data = "/" + QString::number(playerId) + "/" + QString::number(x) + "/"+ QString::number(y)+ "/" + QString::number(this->getSpeedX()) + "/" + QString::number(this->getSpeedY())+ "/" + QString::number(this->getSpeed()) +  "/" + QString::number(this->getRadius()) + "/" + QString::number(this->getMinSpeed()) << "/" + QString::number(this->getMaxSpeed()); // print string of state to text file
-
-        string blah = data.toStdString();
-        officialGameState << blah << "\n";
-        officialGameState.close();
-
-        didPrint = true;
-    }
-
-    return didPrint;
-}
-*/
 // reads the current ball state from offshore text file,
 // returning a boolean value indicaing read success;
 // if read succeeds, stores ball state in instance variables
 
-
-bool Ball::readBallInfo() {
-
-    bool didRead = false;
-
-    // establish connection with text file
-
-    if (/*connection succeeds*/true) {
-        // read string of state from text file
-        // parse string and store object state in instance variables
-        didRead = true;
-    }
-
-    return didRead;
+void Ball::getInfo(vector<string>* strings){
+        //parses info from a string
+    x = stoi(strings->at(1));
+    y = stoi(strings->at(2));
+    speedX = stoi(strings->at(3));
+    speedY = stoi(strings->at(4));
+    playerId = stoi(strings->at(5));
 }
-
-
-//void Ball::Bounce(){}
+// Ball/x/y/speedx/speedy/playerid/
+    void Ball::setInfo(ofstream * f){
+        *f << "ball/" << x << "/"<< y << "/"<< speedX << "/"<< speedY<< "/"<< playerId<< "/"<< endl;
+    }
 
 
 void Ball::updatePosition(){
@@ -228,7 +195,7 @@ void Ball::onCollision(Object *obj) {
         Shapes* s = dynamic_cast<Shapes*>(obj);
         if(s != NULL)
          s->hitShape(this);
-        qDebug() << "Hit the object" << endl;
+        //qDebug() << "Hit the object" << endl;
 
             break;
 
@@ -240,14 +207,14 @@ void Ball::incrementSpeedX(int vector) {
     if (vector == 0)
         return;
     this->setSpeedX(this->getSpeedX() + (pow(vector,2)/vector + 5)/10);
-    qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
+
 }
 
 void Ball::incrementSpeedY(int vector) {
     if (vector == 0)
         return;
     this->setSpeedY(this->getSpeedY() + (pow(vector,2)/vector + 5)/10);
-    qDebug() << "New Speed: " << speedX << ", " << speedY << "\n";
+
 }
 
 void Ball::reset() {
@@ -260,19 +227,13 @@ void Ball::reset() {
 }
 
 QString Ball::getNet(){
-    QString str = "0/ball/"+ QString::number(this->getX()) + "/" + QString::number(this->getY()) + "/ ";
-    return str;
+
+            QString str = "0/ball/"+ QString::number(this->getX()) +
+                                "/" + QString::number(this->getY()) + "/ ";
+            return str;
+
 }
 
-// /ball/idoflasthit/x/y/speedx/speedy/raius/
-void Ball::printInfo(ofstream* stream){
-
-    //   "playerId/x/y/xspeed/yspeed/"
-  //  if(stream.is_open()){
-    *stream << "/ball/" << playerId << "/" << x << "/" << y <<"/" << speedX <<"/" << speedY << "/"
-            <<radius << "/" << endl;
-    //    }else{return false;}
-    }
 
 
 

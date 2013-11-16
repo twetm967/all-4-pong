@@ -47,7 +47,21 @@ Start::Start(QWidget *parent) :
 
 
 void Start::on_btnLoad_clicked(){
-    World::getInstance()->readWorldInfo();
+    World::getInstance()->setFile(true);
+    InGame* gameScreen = new InGame(this);
+
+    for (QObject *obj : server->children()){
+        QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
+        if (anotherSock != NULL){
+            QString str = "start";
+            anotherSock->write(str.toLocal8Bit()+"\n");
+        }
+    }
+
+    gameScreen->show();
+    timer->start();
+    this->hide();
+
 }
 
 //this method detects when a new client is connected and increments the connected count
@@ -104,7 +118,7 @@ void Start::dataReceived()
     QTcpSocket *sock = dynamic_cast<QTcpSocket*>(sender());
     while (sock->canReadLine()) {
         QString str = sock->readLine();
-        qDebug() << str;
+      //  qDebug() << str;
         //World::getInstance()->updateUser(str);
         //do something with the information that is coming in
         //   "3/Thomas/x/y/
@@ -169,7 +183,7 @@ void Start::StartingMethod(){
     World::getInstance()->setupPlayers(ui->players_comboBox->currentIndex()+1);
 
     World::getInstance()->setPlayerName(ui->username_le->text(), 0);
-
+    World::getInstance()->setFile(false);
 
     // players = ui->players_comboBox->currentIndex()+1;
 
@@ -178,6 +192,7 @@ void Start::StartingMethod(){
     World::getInstance()->setPowerUps(ui->power_checkBox->isChecked());
 
     InGame* gameScreen = new InGame(this);
+
     for (QObject *obj : server->children()){
         QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
         if (anotherSock != NULL){

@@ -5,36 +5,25 @@
 
     // prints the current shape state out to offshore text file,
     // returning a boolean value indicating print success
-    bool printShapeInfo() {
-        bool didPrint = false;
+void Shapes::getInfo(vector<string> *strings){
+    this->setX(stoi(strings->at(1)));
+    this->setY(stoi(strings->at(2)));
 
-        // establish connection with text file
+    rect.setX(stoi(strings->at(1)));
+    rect.setY(stoi(strings->at(2)));
+    rect.setWidth(stoi(strings->at(3)));
+    rect.setHeight(stoi(strings->at(4)));
 
-        if (/*connection succeeds*/true) {
-            // gather object state and concatenate into string
-            // print string of state to text file
-            didPrint = true;
-        }
-
-        return didPrint;
-    }
+}
+//Shapes/x/y/width/height/
+void Shapes::setInfo(ofstream *f){
+    *f <<   "shape/" << point.x() << "/" << point.y() << "/" << rect.width() << "/" << rect.height() << "/" << endl;
+}
 
     // reads the current shape state from offshore text file,
     // returning a boolean value indicaing read success;
     // if read succeeds, stores shape state in instance variables
-    bool Shapes::readShapeInfo() {
-        bool didRead = false;
 
-        // establish connection with text file
-
-        if (/*connection succeeds*/true) {
-            // read string of state from text file
-            // parse string and store object state in instance variables
-            didRead = true;
-        }
-
-        return didRead;
-    }
 
     QString Shapes::getNet(){
         QString out;
@@ -43,10 +32,12 @@
         return out;
     }
 // /shape/x/y/x2/y2/
+
 void Shapes::setInfo(vector<string> strings){}
 void Shapes::getInfo(ofstream *stream){
 
 }
+
 
    void Shapes::updatePosition(){
 

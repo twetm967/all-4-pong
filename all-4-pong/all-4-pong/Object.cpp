@@ -16,25 +16,28 @@ Object::Object(QPoint initPoint){
     objId = ++nextObjId;
     World::getInstance()->add(this);
 }
-
-
+/*
+Object::Object(string type){
+    if (Type == "Paddle")
+        obj = new Paddle();
+    else if(Type =="Ball")
+        obj = new Ball(10);
+    else if(Type =="Shapes")
+        obj = new Shapes();
+}
+*/
 Object::Object(){
     objId = ++nextObjId;
     World::getInstance()->add(this);
 }
 
 //inline
-    Object::~Object() {
+Object::~Object() {
 
-    }
+}
 
 bool Object::getHit(){}
 
 void Object::updatePosition(){}
 bool Object::getBound(){}
-
-//I put this in here to fix a compile error and Im not sure why!
-QString Object::getNet(){
-
-}
-
+QString Object::getNet(){}
