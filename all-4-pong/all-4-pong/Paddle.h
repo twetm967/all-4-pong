@@ -58,9 +58,6 @@ public:
     bool getHit();
 
 
-    void getInfo(ofstream *);
-    void printInfo(vector<string>);
-
     //save load
     void getInfo(vector<string> *); //this had a merge conflict
     void setInfo(ofstream *);
