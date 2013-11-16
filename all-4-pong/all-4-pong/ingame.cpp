@@ -94,16 +94,13 @@ InGame::InGame(Start* window, QWidget *parent) :
         ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
         for(int i = 0;i < 4;i++){
-            for(int j = 7; j > World::getInstance()->getGamePlayer(i)->getHealth();j--){
-        HealthDamage(i,j);
+            for(int j = 7; j > World::getInstance()->getGamePlayer(i)->getHealth();){
+        j--;
+                HealthDamage(i,j);
             }
         }
     }
-  /*  ui->lblUsernamePB->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->getUserName());
-    ui->lblUsernamePR->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->getUserName());
-    ui->lblUsernamePT->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->getUserName());
-    ui->lblUsernamePL->setText(ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->getUserName());
-*/
+
  ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
  ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
  ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
@@ -135,13 +132,16 @@ void InGame::HealthDamage(int index, int health){
     if(health > -1 && health < 7){
         QLabel* lbl = Health.at(spot + health);
         lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
- /*       QMediaPlayer* player;
+
+
+        /*       QMediaPlayer* player;
         player = new QMediaPlayer;
 
         player->setMedia(QUrl::fromLocalFile("all-4-pong/images/beep.wav"));
         player->setVolume(100);
         player->play();
-    */}
+    */
+    }
     else if (health < 0) {
         //qDebug() << "No more death possible";
     }
