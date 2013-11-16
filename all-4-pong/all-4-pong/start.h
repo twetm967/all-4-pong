@@ -54,6 +54,9 @@ private:
     int difficulty;
     bool powerUps;
     QTimer *timer;
+    bool ok;
+    InGame* gameScreen;
+    int clock;
 
 
 };

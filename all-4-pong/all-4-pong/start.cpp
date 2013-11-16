@@ -35,7 +35,7 @@ Start::Start(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, &Start::timerHit);
     connectCount = 1;
     server = new QTcpServer(this);
-
+    ok = true;
     connect(server, &QTcpServer::newConnection, this, &Start::clientConnected);
     if (!server->listen(QHostAddress::Any, 5000)) {
         QMessageBox::critical(this, "Uh oh", "Cannot start socket.");
@@ -102,7 +102,11 @@ void Start::timerHit(){
         if (anotherSock != NULL){
             anotherSock->write(netString.toLocal8Bit()+"\n");
         }
+        if (ok){
+            ++clock;
+        }
     }
+
 
 
 //send out the same information to all of the clients at the same time (remember server also plays game).
@@ -126,6 +130,12 @@ void Start::dataReceived()
         vector<QString>* info = World::getInstance()->split(str,'/');
         int pos = info->at(0).toInt();
         QString userName = info->at(1);
+        if (ok && clock < 50){
+            Player *inPlayer = World::getInstance()->getGamePlayer(pos);
+            inPlayer->setUsername(userName);
+            gameScreen->setUsernames();
+            ok = false;
+        }
         int x = info->at(2).toInt();
         int y = info->at(3).toInt();
         QPoint* mouseIn = new QPoint(x,y);
@@ -191,7 +201,7 @@ void Start::StartingMethod(){
 
     World::getInstance()->setPowerUps(ui->power_checkBox->isChecked());
 
-    InGame* gameScreen = new InGame(this);
+    gameScreen = new InGame(this);
 
     for (QObject *obj : server->children()){
         QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
@@ -200,8 +210,9 @@ void Start::StartingMethod(){
             anotherSock->write(str.toLocal8Bit()+"\n");
         }
     }
-    gameScreen->show();
+
     timer->start();
+    gameScreen->show();
     this->hide();
 
 
