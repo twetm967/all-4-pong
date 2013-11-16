@@ -200,7 +200,6 @@ void Start::StartingMethod(){
             anotherSock->write(str.toLocal8Bit()+"\n");
         }
     }
-    gameScreen->setUsernames();
     gameScreen->show();
     timer->start();
     this->hide();

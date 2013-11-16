@@ -108,6 +108,7 @@ InGame::InGame(Start* window, QWidget *parent) :
 
 
 
+ setUsernames();
 
 
     //Start the Timer
