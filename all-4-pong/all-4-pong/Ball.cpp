@@ -41,7 +41,9 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
     World::getInstance()->addBall(this);
 }
 
+void Ball::getInfo(ofstream *stream){
 
+}
 
 
 ///Methods

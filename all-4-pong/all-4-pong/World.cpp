@@ -70,7 +70,11 @@ stream->close();
 // if read succeeds, stores world state in instance variables
 bool World::readWorldInfo() {
 
+    ofstream* stream = new ofstream();
+    for(int i = 0; i < objects.size();i++){
+        objects.at(i)->getInfo(stream);
 
+    }
 
 
 

@@ -24,8 +24,8 @@ class Shapes: public Object
         //*********Getters and setters****************
         int getPlayerId(){return -1;}
         int getSide(){return PlayerId;}
-
-        void printInfo(ofstream*);
+        void setInfo(vector<string>);
+        void getInfo(ofstream*);
         int getX(){return x;}
         int getY(){return y;}
         PowerUp* getPowerUp(){return boost;}

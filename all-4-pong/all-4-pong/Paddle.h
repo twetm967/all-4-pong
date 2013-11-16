@@ -61,8 +61,8 @@ public:
     void setMouse(QPoint);
     bool getHit();
 
-
-    void printInfo(ofstream*);
+    void getInfo(ofstream *);
+    void printInfo(vector<string>);
     void setX(int newX);
     void setY(int newY);
     QString getType() {return "paddle";}

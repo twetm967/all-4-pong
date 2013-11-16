@@ -127,12 +127,6 @@ void Paddle::moveLine(int distance) {
     }
 
 // /paddle/id/x/y/health/score/username
-    void Paddle::printInfo(ofstream *stream){
-        *stream << "/paddle/" << playerId<< "/" << point.x() << "/"
-                << point.y() << "/" << Hand->getHealth() << "/"
-                << Hand->getCurrentScore()->getCurrentScore() << "/"
-                << Hand->getUsername().toStdString() << endl;
-    }
 
 
     //runs the  update position code overridden from Object.
@@ -165,6 +159,10 @@ void Paddle::moveLine(int distance) {
             point.setY(World::getInstance()->getWorldSize() - (length));
     }
 
+void Paddle::getInfo(ofstream *stream){
+ //daniel has the implementation fo this but his version won't compile
+    *stream << "Paddle/" << point.x() << "/" << point.y() << "/" << Hand->getCurrentScore()->getCurrentScore()<< "/" << Hand->getHealth() << "/" << endl;
+}
 
     void Paddle::setX(int newX) {
         if (playerId % 2 == 1)

@@ -56,6 +56,8 @@ public:
     //------------------------------------------------------
 
     //virtual methods
+    void virtual getInfo(ofstream*){}
+    void virtual setInfo(){}
    void virtual updatePosition();
    virtual QString getNet();
    QRect virtual getRect(){}

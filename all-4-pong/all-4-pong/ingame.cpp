@@ -247,3 +247,8 @@ void InGame::on_btnHome_clicked() {
     ui->btnPause->setText("Play");
     home->show();
 }
+
+void InGame::on_btnLoad_clicked()
+{
+
+}

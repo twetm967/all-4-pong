@@ -60,6 +60,7 @@ class Ball : public Object
 
 
         //setters -- need additional logic to fully implement
+        void getInfo(ofstream *);
         void setX(int newX){x = newX;}
         void setY(int newY){y = newY;}
         void setSpeed(int newSpeed){speed = newSpeed;}
