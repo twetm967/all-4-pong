@@ -200,13 +200,15 @@ void Start::StartingMethod(){
             anotherSock->write(str.toLocal8Bit()+"\n");
         }
     }
-
+    gameScreen->setUsernames();
     gameScreen->show();
     timer->start();
     this->hide();
 
 
 }
+
+
 
 //When the number of players box is changed checks to see how many
 // people are actaully connected so it locks it up or unlocks it

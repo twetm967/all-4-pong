@@ -147,6 +147,23 @@ void InGame::HealthDamage(int index, int health){
     }
 }
 
+void InGame::setUsernames(){
+    vector<Player*> players = World::getInstance()->getGamePlayers();
+    for(Player *inPlayer : players){
+        int ID = inPlayer->getID();
+        QString name = inPlayer->getUsername();
+        if(ID == 0){
+            ui->lblUsernamePB->setText(name);
+        }else if(ID == 1){
+            ui->lblUsernamePR->setText(name);
+        }else if(ID == 2){
+            ui->lblUsernamePT->setText(name);
+        }else if(ID == 3){
+            ui->lblUsernamePL->setText(name);
+        }
+    }
+}
+
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked() {
     World::getInstance()->setRoundFinished(false);

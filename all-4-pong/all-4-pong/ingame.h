@@ -51,6 +51,7 @@ bool makeBlock(bool);
     void HealthDamage(int index, int health);
 
     QPoint getGameCourt(QPoint in);
+    void setUsernames();
 
     ~InGame();
     

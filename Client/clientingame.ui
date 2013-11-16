@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>All-4-Pong</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(61, 61, 61);</string>
@@ -1018,12 +1018,6 @@ border-radius: 4px;</string>
      <string/>
     </property>
    </widget>
-   <zorder>lblBall_2</zorder>
-   <zorder>paddle_0</zorder>
-   <zorder>paddle_1</zorder>
-   <zorder>paddle_3</zorder>
-   <zorder>paddle_2</zorder>
-   <zorder>lblPlayerBoardL</zorder>
   </widget>
   <widget class="QLabel" name="lblLeaderBoardTitle">
    <property name="geometry">

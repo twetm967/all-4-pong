@@ -30,6 +30,7 @@ private slots:
     void dataReceived();
     void serverDisconnected();
     void timerHit();
+    void wait();
 
     
     void on_connect_Btn_clicked();
@@ -40,9 +41,12 @@ private:
     Ui::Startup *ui;
     QTcpSocket* socket;
     QTimer *timer;
+    QTimer *random;
     QString side;
     QString username;
     clientingame *clientgame;
+    bool ok;
+    int clock;
 
 };
 

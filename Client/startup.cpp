@@ -15,10 +15,14 @@ Startup::Startup(QWidget *parent) :
 {
     ui->setupUi(this);
     clientgame = new clientingame();
-
+    ok = false;
+    clock = 0;
     timer = new QTimer(this);
+    random = new QTimer(this);
     timer->setInterval(40);
+    random->setInterval(40);
     connect(timer, &QTimer::timeout, this, &Startup::timerHit);
+    connect (random,  &QTimer::timeout, this, &Startup::wait);
 
     socket = new QTcpSocket(this);
     connect(socket, &QTcpSocket::readyRead, this, &Startup::dataReceived);
@@ -44,6 +48,9 @@ void Startup::on_connect_Btn_clicked()
     }
     ui->connect_Btn->setText("Connected");
     ui->connect_Btn->setEnabled(false);
+    ok = true;
+    random->start();
+    ui->wait_lbl->setText("Waiting for server to start game");
 
 
     //timer->start();
@@ -91,7 +98,9 @@ void Startup::dataReceived() {
             if(slashSplit->at(0) == "start\n"){
                 clientgame->show();
                 this->hide();
+                random->stop();
                 timer->start();
+                ok = false;
             }
             if(slashSplit->at(0) == "side"){
                 side = slashSplit->at(1);
@@ -110,6 +119,21 @@ void Startup::serverDisconnected()
     clientgame->close();
     this->show();
 }
+void Startup::wait(){
+    if (ok){
+        ++clock;
+    }
+    if (clock == 10 && ok){
+        ui->wait_lbl->setText("Waiting for server to start game.");
+    }else if (clock == 20 && ok){
+        ui->wait_lbl->setText("Waiting for server to start game..");
+    }else if (clock == 30 && ok){
+        ui->wait_lbl->setText("Waiting for server to start game...");
+    }else if (clock == 40 && ok){
+        ui->wait_lbl->setText("Waiting for server to start game");
+        clock = 0;
+    }
+}
 
 //this is called every clock tick and sends the paddle x, y, and ID
 void Startup::timerHit()
@@ -117,21 +141,8 @@ void Startup::timerHit()
     QString str =  side + "/" + ui->username_line->text() + "/" + QString::number(clientgame->getX()) + '/' + QString::number(clientgame->getY()) + '/'+ "\n";
     socket->write(str.toLocal8Bit());
 
-    //This is the Schaub code for the chat client.
-    /*QString username = ui->lineUsername->text();
-    QString msg;
-    if (username.size() > 0) {
-        msg = username + ":" + ui->txtMessage->toPlainText() + "\n";
-    } else {
-        msg = ui->txtMessage->toPlainText() + "\n";
-    }
-
-    ui->txtMessage->document()->setPlainText("");
-
-    socket->write(msg.toLocal8Bit());
 
 
-    ui->txtMessage->setFocus();*/
 }
 
 
