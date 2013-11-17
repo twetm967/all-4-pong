@@ -87,8 +87,17 @@ InGame::InGame(Start* window, QWidget *parent) :
     //Loads a file if the user clicked the load file button
     if(World::getInstance()->getFile()){
         //load file
+
         World::getInstance()->readWorldInfo();
 
+     /*
+        vector<Shapes*> blocks = World::getInstance()->getBlocks();
+        for(int i = 0; i < blocks.size(); i++){
+
+            GameLabel* block = new GameLabel(ui->gameCourt, "Shapes");
+
+            setUpBlocklbl(blocks.at(i));
+   } */
         ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
@@ -236,6 +245,7 @@ void InGame::setUpBlocklbl(GameLabel* block){
 void InGame::timerHit() {
 
     if(makeBlock(World::getInstance()->getPower())){
+
         GameLabel* block = new GameLabel(ui->gameCourt, "Shapes");
 
 

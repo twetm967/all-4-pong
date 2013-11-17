@@ -15,7 +15,7 @@ Player::Player(){
     currentScore = new Score();
 
     Health = 7;
-
+    alive = true;
     nextID++;
     hand = World::getInstance()->getMouse(ID);
 }
@@ -41,6 +41,7 @@ void Player::damage() {
         World::getInstance()->died();
         foreach (Object * pad, World::getInstance()->getObjects())
             if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
+              //  this->setDead();
                 pad->eliminate();
 
                 cout << "Moved player " << ID << " off screen." << endl;
