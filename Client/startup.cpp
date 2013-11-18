@@ -101,6 +101,9 @@ void Startup::dataReceived() {
                 random->stop();
                 timer->start();
                 ok = false;
+                ui->wait_lbl->setText("");
+                ui->connect_Btn->setEnabled(true);
+                ui->connect_Btn->setText("Connect");
             }
             if(slashSplit->at(0) == "side"){
                 side = slashSplit->at(1);
@@ -115,7 +118,7 @@ void Startup::serverDisconnected()
 {
     ui->statusBar->showMessage("Disconnected.");
     //  ui->btnConnect->setEnabled(true);
-    QMessageBox::critical(clientgame, "Error","The server has disconnected." );
+    QMessageBox::critical(this, "Error","The server has disconnected." );
     clientgame->close();
     this->show();
 }

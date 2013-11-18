@@ -2,6 +2,7 @@
 #include "ui_clientingame.h"
 #include <vector>
 #include <QString>
+#include <QPoint>
 
 #include <QMouseEvent>
 
@@ -62,10 +63,14 @@ void clientingame::mouseMoveEvent(QMouseEvent *ev) {
 void clientingame::MoveLabels(std::vector<QString> *v){
     if (v->at(0) == "0"){
         // 0/ball1/x/y/
-        int ballX = v->at(2).toInt()-5;
-        int ballY = v->at(3).toInt()-5;
-        ui->lblBall_2->move(ballX, ballY);
 
+        QPoint point;
+        point.setX(v->at(2).toInt());
+        point.setY(v->at(3).toInt());
+        //int ballX = ui->gameCourt->mapFromParent(point).x();
+        //int ballY = ui->gameCourt->mapFromParent(point).y();
+        //ui->lblBall_2->move(ballX, ballY);
+        ui->lblBall_2->move(point.x() - 12, point.y() - 12);
     }else if(v->at(0) == "1"){
         //1/0/username/x/y/points/health/
         int xx;
