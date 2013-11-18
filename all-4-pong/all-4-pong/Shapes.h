@@ -12,8 +12,8 @@
 class Shapes: public Object
 {
     private:
-        int x, x2;
-        int y, y2;
+        int x;
+        int y;
         int PlayerId;
         QRect rect;
         PowerUp* boost;                                     //would need a powerup class and associated inheritors
@@ -25,8 +25,6 @@ class Shapes: public Object
         //*********Getters and setters****************
         int getPlayerId(){return -1;}
         int getSide(){return PlayerId;}
-        void setInfo(vector<string>);
-        void getInfo(ofstream*);
         int getX(){return x;}
         int getY(){return y;}
         PowerUp* getPowerUp(){return boost;}

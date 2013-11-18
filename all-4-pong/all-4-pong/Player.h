@@ -24,6 +24,7 @@ protected:
         QString username;
         int ID;
         static int nextID;
+        bool alive;
         int speed; //  why do players have a speed? - JMP
                     // because the player's hand is the thing that's actually
                     // moving and the paddle just follows along. So the source is
@@ -42,7 +43,8 @@ protected:
         QPoint* getPoint(){
             return hand;
         }
-
+        void setDead(){alive = false;}
+        bool getAlive(){return alive;}
         virtual void reset() {}
         Score* getCurrentScore() {return currentScore;}
         int getHealth() {return Health;}

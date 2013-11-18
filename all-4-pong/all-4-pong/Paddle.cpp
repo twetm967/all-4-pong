@@ -141,6 +141,7 @@ void Paddle::moveLine(int distance) {
 
     // then moves them accordingly.
     void Paddle::updatePosition() {
+        if(Hand->getAlive()){
         int orig;
         switch (playerId % 2) {
             case 0:
@@ -156,6 +157,7 @@ void Paddle::moveLine(int distance) {
         }
         moveLine(speed);
     }
+  }
 
     void Paddle::setY(int newY) {
         if (playerId % 2 == 0)
@@ -212,6 +214,9 @@ void Paddle::moveLine(int distance) {
         int health = stoi(strings->at(4));
         for(int i = 7; i > health; i--){
           Hand->damage();
+          if(Hand->getHealth() <= 0){
+
+          }
         }
         Hand->getCurrentScore()->setCurrentScore(stoi(strings->at(5)));
         Hand->setUsername(QString::fromStdString(strings->at(6)));

@@ -87,7 +87,18 @@ InGame::InGame(Start* window, QWidget *parent) :
     //Loads a file if the user clicked the load file button
     if(World::getInstance()->getFile()){
         //load file
+
         World::getInstance()->readWorldInfo();
+
+
+            for(int i = 5; i < World::getInstance()->getObjects().size(); i++){
+
+                GameLabel* block = new GameLabel(ui->gameCourt);
+               // objects.at(i);
+                block->setObj(World::getInstance()->getObjects().at(i));
+                setUpBlocklbl(block);
+         }
+     }
 
         ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
@@ -99,7 +110,7 @@ InGame::InGame(Start* window, QWidget *parent) :
                 HealthDamage(i,j);
             }
         }
-    }
+
 
  ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
  ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
@@ -236,6 +247,7 @@ void InGame::setUpBlocklbl(GameLabel* block){
 void InGame::timerHit() {
 
     if(makeBlock(World::getInstance()->getPower())){
+
         GameLabel* block = new GameLabel(ui->gameCourt, "Shapes");
 
 

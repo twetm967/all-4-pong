@@ -11,7 +11,7 @@ World* World::instance=NULL;
 QString World::getBlock(){
     if(powerUps)
         counter++;
-    if(counter == 1000){
+    if(counter == 500){
         counter = 0;
        // qDebug()<<"make a random object"<< endl;
 
@@ -73,6 +73,17 @@ void World::printWorldInfo() {
 
 }
 
+vector<Shapes*> World::getBlocks(){
+    vector<Shapes*> blocks;
+    for(int i = 0; i < objects.size(); i++){
+        Shapes* shape = dynamic_cast<Shapes*>(objects.at(i));
+        if(shape != NULL){
+            blocks.push_back(shape);
+        }
+    }
+    return blocks;
+}
+
 // reads the current world state from offshore text file,
 // returning a boolean value indicaing read success;
 // if read succeeds, stores world state in instance variables
@@ -123,6 +134,14 @@ void World::readWorldInfo() {
             item = splitString(information.at(i),'/');
 
             Object* obj;//
+            string identifier =item->at(0);
+            if(identifier == "shape"){
+
+                obj = new Shapes();
+
+              //  objects.push_back(obj);
+
+            }
             if(objects.at(i-1)->getType() == QString::fromStdString(item->at(0))){
                 objects.at(i - 1)->getInfo(item);
             }

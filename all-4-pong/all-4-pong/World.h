@@ -120,15 +120,13 @@ class World //Can we get a worldSize integer that returns the number of pixels w
        void add(Object *obj) {objects.push_back(obj);}
 
        QString getBlock();
-    
+       vector<Shapes*> getBlocks();
         //----------------------------------------
         //Getters and setters
         //----------------------------------------
         int getDifficulty() {return difficulty;}
-
         vector<Player*> getGamePlayers() {return GamePlayers;}
         Player* getGamePlayer(int id) {return GamePlayers.at(id);}
-        vector<Object*> getObject() {return objects;}
         void setupPlayers(int num);
         void setRoundFinished(bool finished) {roundFinished = finished;}
         bool getRoundFinished() {return roundFinished;}
