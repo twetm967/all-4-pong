@@ -139,7 +139,7 @@ void World::readWorldInfo() {
 
                 obj = new Shapes();
 
-                objects.push_back(obj);
+              //  objects.push_back(obj);
 
             }
             if(objects.at(i-1)->getType() == QString::fromStdString(item->at(0))){

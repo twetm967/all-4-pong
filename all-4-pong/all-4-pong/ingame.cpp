@@ -90,14 +90,16 @@ InGame::InGame(Start* window, QWidget *parent) :
 
         World::getInstance()->readWorldInfo();
 
-     /*
-        vector<Shapes*> blocks = World::getInstance()->getBlocks();
-        for(int i = 0; i < blocks.size(); i++){
 
-            GameLabel* block = new GameLabel(ui->gameCourt, "Shapes");
+            for(int i = 5; i < World::getInstance()->getObjects().size(); i++){
 
-            setUpBlocklbl(blocks.at(i));
-   } */
+                GameLabel* block = new GameLabel(ui->gameCourt);
+               // objects.at(i);
+                block->setObj(World::getInstance()->getObjects().at(i));
+                setUpBlocklbl(block);
+         }
+     }
+
         ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
@@ -108,7 +110,7 @@ InGame::InGame(Start* window, QWidget *parent) :
                 HealthDamage(i,j);
             }
         }
-    }
+
 
  ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
  ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);

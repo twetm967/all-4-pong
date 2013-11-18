@@ -24,7 +24,7 @@ public:
     void setWin(QWidget *parent) {win = parent;}
     void initializeObj(QString objType);
     Object* getObj() {return obj;}
-
+    void setObj(Object* inObj){obj = inObj;}
     void updatePosition();
 
 };

@@ -6,9 +6,9 @@
     // prints the current shape state out to offshore text file,
     // returning a boolean value indicating print success
 void Shapes::getInfo(vector<string> *strings){
-    this->setX(stoi(strings->at(1)));
-    this->setY(stoi(strings->at(2)));
 
+    point.setX(stoi(strings->at(1)));
+    point.setY(stoi(strings->at(2)));
     rect.setX(stoi(strings->at(1)));
     rect.setY(stoi(strings->at(2)));
     rect.setWidth(stoi(strings->at(3)));
@@ -33,12 +33,6 @@ void Shapes::setInfo(ofstream *f){
     }
 // /shape/x/y/x2/y2/
 
-void Shapes::setInfo(vector<string> strings){}
-void Shapes::getInfo(ofstream *stream){
-
-}
-
-
    void Shapes::updatePosition(){
 
 
@@ -48,16 +42,22 @@ void Shapes::getInfo(ofstream *stream){
         //PlayerId = -1;
         int initx = rand() % World::getInstance()->getWorldSize();
         int inity = rand() % World::getInstance()->getWorldSize();
+        rect.setX(initx);
+        rect.setY(inity);
+        int h = rand() % 30 + 25;
+        int w = rand() % 30 + 25;
+        rect.setHeight(h);
+        rect.setWidth(w);
         //bounds checking
         //off the edges
         if(initx < 100)
             initx += 200;
         if(inity < 100)
             inity  += 200;
-        if(initx > World::getInstance()->getWorldSize() - (rect.width() + 150))
-            initx  -= rect.width()  + 300;
-        if(inity > World::getInstance()->getWorldSize() - (rect.height() + 150))
-            inity  -= rect.height() - 300;
+        if(initx > World::getInstance()->getWorldSize() - (rect.width() + 75))
+            initx  -= rect.width()  + 150;
+        if(inity > World::getInstance()->getWorldSize() - (rect.height() + 75))
+            inity  -= rect.height() + 150;
         //keeps it out of the middle
         if(abs(initx - 205) < 100 && abs(inity - 205) < 100){
             int num = rand() % 200 - 100;
@@ -66,8 +66,8 @@ void Shapes::getInfo(ofstream *stream){
         }
         rect.setX(initx);
         rect.setY(inity);
-        rect.setHeight((rand() % 30 + 25));
-        rect.setWidth((rand() % 30 + 25));
+        rect.setHeight(h);
+        rect.setWidth(w);
         point.setX(initx);
         point.setY(inity);
         //   World::getInstance()->add(this);
