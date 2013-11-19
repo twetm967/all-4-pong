@@ -38,19 +38,19 @@ void Startup::on_connect_Btn_clicked()
 {
     QString hostname = ui->IP_line->text();
     if (hostname.size() == 0) {
-        QMessageBox::critical(this, "Uh oh", "Please specify name of chat server.");
+        QMessageBox::critical(this, "Uh oh", "Please specify name of the host.");
         return;
     }
     socket->connectToHost(hostname, 5000);
     if (!socket->waitForConnected())  {
-        QMessageBox::critical(this, "Uh oh", "Unable to connect to server.");
+        QMessageBox::critical(this, "Uh oh", "Unable to connect to host.");
         return;
     }
     ui->connect_Btn->setText("Connected");
     ui->connect_Btn->setEnabled(false);
     ok = true;
     random->start();
-    ui->wait_lbl->setText("Waiting for server to start game");
+    ui->wait_lbl->setText("Waiting for host to start game");
 }
 
 
@@ -111,7 +111,7 @@ void Startup::serverDisconnected()
 {
     ui->statusBar->showMessage("Disconnected.");
     //  ui->btnConnect->setEnabled(true);
-    QMessageBox::critical(this, "Error","The server has disconnected." );
+    QMessageBox::critical(this, "Error","The host has disconnected." );
     clientgame->close();
     this->close();
 }
@@ -120,31 +120,24 @@ void Startup::wait(){
         ++clock;
     }
     if (clock == 10 && ok){
-        ui->wait_lbl->setText("Waiting for server to start game.");
+        ui->wait_lbl->setText("Waiting for host to start game.");
     }else if (clock == 20 && ok){
-        ui->wait_lbl->setText("Waiting for server to start game..");
+        ui->wait_lbl->setText("Waiting for host to start game..");
     }else if (clock == 30 && ok){
-        ui->wait_lbl->setText("Waiting for server to start game...");
+        ui->wait_lbl->setText("Waiting for host to start game...");
     }else if (clock == 40 && ok){
-        ui->wait_lbl->setText("Waiting for server to start game");
+        ui->wait_lbl->setText("Waiting for host to start game");
         clock = 0;
     }
 }
 
-//this is called every clock tick and sends the paddle x, y, and ID
+//this is called every clock tick and sends the paddle x, y, and Username
 void Startup::timerHit()
 {
     QString str =  side + "/" + ui->username_line->text() + "/" + QString::number(clientgame->getX()) + '/' + QString::number(clientgame->getY()) + '/'+ "\n";
     socket->write(str.toLocal8Bit());
-
-
-
 }
 
 
 
 
-void Startup::on_connect_Btn_2_clicked()
-{
-
-}
