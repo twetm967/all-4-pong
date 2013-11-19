@@ -24,7 +24,7 @@ public:
     void MoveLabels(std::vector<QString> *v);
     void HealthDamage(int index, int health);
 private slots:
-
+//hello
     
 private:
     Ui::clientingame *ui;
