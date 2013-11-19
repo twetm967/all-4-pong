@@ -51,13 +51,6 @@ void Startup::on_connect_Btn_clicked()
     ok = true;
     random->start();
     ui->wait_lbl->setText("Waiting for server to start game");
-
-
-    //timer->start();
-    //username = ui->username_line->text();
-    //socket->write(str.toLocal8Bit());
-    //ui->statusBar->showMessage("Connected.");
-    //ui->connect_Btn->setEnabled(false);
 }
 
 

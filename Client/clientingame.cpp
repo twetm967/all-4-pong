@@ -54,7 +54,7 @@ clientingame::~clientingame()
 }
 void clientingame::mouseMoveEvent(QMouseEvent *ev) {
 
-   x = ui->gameCourt->mapFromParent(ev->pos()).x();
+    x = ui->gameCourt->mapFromParent(ev->pos()).x();
 
     y = ui->gameCourt->mapFromParent(ev->pos()).y();
     //timer->start();
