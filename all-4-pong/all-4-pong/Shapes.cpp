@@ -1,6 +1,7 @@
 //Shapes.cpp
 #include "Shapes.h"
 #include "Object.h"
+#include <sstream>
 
 
     // prints the current shape state out to offshore text file,
@@ -27,18 +28,23 @@ void Shapes::setInfo(ofstream *f){
 
     QString Shapes::getNet(){
         QString out;
-        //out = "2/" +
-        out = "Shape ";
+        if(net == true){
+            stringstream ss;
+            ss << "2/" << this->getRect().x() << "/" << this->getRect().y() << "/" << this->getRect().width() << "/" << this->getRect().height() << "/";
+            out = QString::fromStdString(ss.str());
+            net = false;
+        }else{ out = "";}
         return out;
     }
-// /shape/x/y/x2/y2/
+// 2/x/y/width/height/
 
    void Shapes::updatePosition(){
 
 
     }
 
-    Shapes::Shapes():Object() {
+    Shapes::Shapes(bool flip):Object() {
+        net = flip;
         //PlayerId = -1;
         int initx = rand() % World::getInstance()->getWorldSize();
         int inity = rand() % World::getInstance()->getWorldSize();

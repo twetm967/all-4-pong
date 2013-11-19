@@ -15,16 +15,19 @@ class Shapes: public Object
         int x;
         int y;
         int PlayerId;
+        bool net;
         QRect rect;
         PowerUp* boost;                                     //would need a powerup class and associated inheritors
     public:
-        Shapes();
+        Shapes(bool flip);
         ~Shapes();
         void setInfo(ofstream *);
         void getInfo(vector<string>*);
         //*********Getters and setters****************
         int getPlayerId(){return -1;}
         int getSide(){return PlayerId;}
+        bool getBool() {return net;}
+        void setBool(bool flip) {net = flip;}
         int getX(){return x;}
         int getY(){return y;}
         PowerUp* getPowerUp(){return boost;}

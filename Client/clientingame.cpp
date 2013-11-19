@@ -114,11 +114,13 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         }
 
     }else if(v->at(0) == "2"){
-        //2/x/y/hight/width/
+        //2/x/y/width/height/
         //update the object
-        //QLabel *lbl = new QLabel();
-        //lbl->height(v->at(3).toInt());
-        //lbl->width(v->at(4).toInt());
+        QLabel *lbl = new QLabel(ui->gameCourt);
+
+        lbl->setGeometry(v->at(1).toInt(), v->at(2).toInt(), v->at(3).toInt(), v->at(4).toInt());
+        lbl->setStyleSheet("background-color: rgb(255,255,255); border-radius: 6px;");
+        lbl->show();
     }
 }
 

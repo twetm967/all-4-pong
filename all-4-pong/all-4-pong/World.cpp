@@ -137,7 +137,7 @@ void World::readWorldInfo() {
             string identifier =item->at(0);
             if(identifier == "shape"){
 
-                obj = new Shapes();
+                obj = new Shapes(true);
 
               //  objects.push_back(obj);
 

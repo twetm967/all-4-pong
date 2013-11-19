@@ -11,7 +11,7 @@ void GameLabel::initializeObj(QString objType) {
     else if(objType =="Ball")
         obj = new Ball(10);
     else if(objType =="Shapes")
-        obj = new Shapes();
+        obj = new Shapes(true);
   /*  else
         obj = new Object();
 
