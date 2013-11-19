@@ -141,6 +141,7 @@ void Paddle::moveLine(int distance) {
 
     // then moves them accordingly.
     void Paddle::updatePosition() {
+
         if(Hand->getAlive()){
         int orig;
         switch (playerId % 2) {
@@ -156,7 +157,10 @@ void Paddle::moveLine(int distance) {
                 break;
         }
         moveLine(speed);
-    }
+        }else{
+            eliminate();
+        }
+
   }
 
     void Paddle::setY(int newY) {
@@ -201,6 +205,7 @@ void Paddle::moveLine(int distance) {
         qDebug() << "Moving player " << playerId << " off screen" << endl;
         point.setX(-World::getInstance()->getWorldSize());
         point.setY(-World::getInstance()->getWorldSize());
+
 
         this->setUpLine();
     }

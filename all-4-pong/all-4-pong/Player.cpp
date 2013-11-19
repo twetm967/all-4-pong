@@ -29,12 +29,12 @@ return hand;
 int Player::getSpeed(){
     return speed;
 }
-
 void Player::damage() {
+    if(Health > 0){
     --Health;
+
+
     currentScore->decreaseScore();
-
-
     cout << "New health of player " << ID << " is " << Health << endl;
     cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
     if (Health == 0) {
@@ -42,10 +42,11 @@ void Player::damage() {
         foreach (Object * pad, World::getInstance()->getObjects())
             if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
               //  this->setDead();
-                pad->eliminate();
-
+                //pad->eliminate();
+                this->setDead();
                 cout << "Moved player " << ID << " off screen." << endl;
             }
+        }
     }
 }
 
