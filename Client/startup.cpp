@@ -120,7 +120,7 @@ void Startup::serverDisconnected()
     //  ui->btnConnect->setEnabled(true);
     QMessageBox::critical(this, "Error","The server has disconnected." );
     clientgame->close();
-    this->show();
+    this->close();
 }
 void Startup::wait(){
     if (ok){
