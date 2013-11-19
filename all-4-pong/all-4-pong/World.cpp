@@ -134,7 +134,7 @@ void World::readWorldInfo() {
             item = splitString(information.at(i),'/');
 
             Object* obj;//
-            string identifier =item->at(0);
+            string identifier = item->at(0);
             if(identifier == "shape"){
 
                 obj = new Shapes(true);
@@ -151,30 +151,7 @@ void World::readWorldInfo() {
     }
 
 
-/*
-    for(int j = 0; j < information.size(); j++){
-        vector<string>* item = splitString(information.at(j),'/');
-        Object* obj = new Object(item->at(0));
-        objects.push_back(obj);
-        //qDebug() << item;
-    }
-*/
 
-void World::Factory(string objType){
-}/*    Object* obj;
-  if (objType == "Paddle")
-      //make a paddle it is being silly right now
-       obj = new paddle();
-else if(objType =="Ball")
-      obj = new Ball(10);
-else if(objType =="Shapes")
-      obj = new Shapes();
-
-
-  objects.push_back(obj);
-//  void setUp(int, int, bool);
-
- }*/
 
 void World::setupPlayers(int num) {
     numberDead = 4;
@@ -203,7 +180,6 @@ void World::pointScoredReset() {
         play->reset();
     }
     if(numberDead == 3){
-        //qDebug() << "All the players are defeated" << endl << "Run end game logic" << endl;
         gameOver();
     }
 }

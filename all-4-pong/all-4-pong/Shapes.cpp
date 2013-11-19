@@ -65,7 +65,7 @@ void Shapes::setInfo(ofstream *f){
         if(inity > World::getInstance()->getWorldSize() - (rect.height() + 75))
             inity  -= rect.height() + 150;
         //keeps it out of the middle
-        if(abs(initx - 205) < 100 && abs(inity - 205) < 100){
+        while(abs(initx - 205) < 100 && abs(inity - 205) < 100){
             int num = rand() % 200 - 100;
 
             initx += num; inity += num;

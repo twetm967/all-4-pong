@@ -62,6 +62,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         }
         void died(){
             numberDead++;
+
         }
         bool getPower(){
             return powerUps;
@@ -113,8 +114,6 @@ class World //Can we get a worldSize integer that returns the number of pixels w
                 Mice.at(ID) = mouseIn;
             }
        }
-
-      void Factory(string objType);
 
        // adds <obj> to Object in world
        void add(Object *obj) {objects.push_back(obj);}
