@@ -179,6 +179,8 @@ void World::pointScoredReset() {
     foreach (Player *play, GamePlayers) {
         play->reset();
     }
+    roundEnd = "Round Over";
+    Instructions = "Click to Continue";
     if(numberDead == 3){
         gameOver();
     }
@@ -188,7 +190,11 @@ void World::gameOver(){
     //game over logic.
     //ends the game
     //saves high scores
+
     //displays gameover text.
+    roundEnd = "Game Over";
+    Instructions = "Back to Home Screen";
+    gameIsOver = true;
 }
 
 

@@ -271,8 +271,8 @@ void InGame::timerHit() {
     if (World::getInstance()->getRoundFinished() == true) {
         World::getInstance()->pointScoredReset();
         Timer::getInstance()->getTimer()->stop();
-        ui->lblGameDeclaration->setText("Round Over"); // display 'Round Over' declaration
-        ui->lblPlayDeclaration->setText("Press Play to Continue"); // display pressPlay instructions
+        ui->lblGameDeclaration->setText(World::getInstance()->getRound()); // display 'Round Over' declaration
+        ui->lblPlayDeclaration->setText(World::getInstance()->getInstruct()); // display pressPlay instructions
         ui->btnPause->setText("Play");
         ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
         ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));

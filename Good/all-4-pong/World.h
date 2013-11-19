@@ -39,10 +39,17 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         int numberDead;
         int counter;
         bool File;
+        QString roundEnd;
+        QString Instructions;
+        bool gameIsOver;
+
+
         World(){
             worldMouse = new QPoint();
             worldSize = 450;
             roundFinished = false;
+            roundEnd = "Round Over";
+            Instructions = "Click to Continue";
         }
         static World* instance;
         vector<Ball*> balls;
@@ -55,7 +62,17 @@ class World //Can we get a worldSize integer that returns the number of pixels w
 
         void gameOver();
 
+
+
         void updateUser(QString str);
+
+        QString getRound(){
+            return roundEnd;
+        }
+
+        QString getInstruct(){
+            return Instructions;
+        }
 
         int getWorldSize(){
             return worldSize;
