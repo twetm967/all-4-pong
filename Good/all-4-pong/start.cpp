@@ -134,7 +134,9 @@ void Start::dataReceived()
             Player *inPlayer = World::getInstance()->getGamePlayer(pos);
             inPlayer->setUsername(userName);
             gameScreen->setUsernames();
-            ok = false;
+            if (clock > 50){
+                ok = false;
+            }
         }
         int x = info->at(2).toInt();
         int y = info->at(3).toInt();

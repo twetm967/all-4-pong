@@ -52,6 +52,8 @@ bool makeBlock(bool);
 
     QPoint getGameCourt(QPoint in);
     void setUsernames();
+    void Pause();
+    void GoHome();
 
     ~InGame();
     

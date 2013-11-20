@@ -178,18 +178,7 @@ void InGame::setUsernames(){
 
  //Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked() {
-    World::getInstance()->setRoundFinished(false);
-    if (ui->btnPause->text() == "Pause") {
-        Timer::getInstance()->getTimer()->stop();
-        ui->btnPause->setText("Play");
-    }
-
-    else if (ui->btnPause->text() == "Play") {
-        Timer::getInstance()->getTimer()->start();
-        ui->btnPause->setText("Pause");
-    }
-    //purley testing this breaks object view blah blah blah
-    World::getInstance()->printWorldInfo();
+    Pause();
 }
 
 
@@ -221,7 +210,12 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
 //for testing purposes
 void InGame::mousePressEvent(QMouseEvent *ev) {
    //qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
-    this->on_btnPause_clicked();
+
+    if(World::getInstance()->getEnd()){
+        GoHome();
+    }else{
+        Pause();
+    }
 }
 
 bool InGame::makeBlock(bool powerUps){
@@ -291,10 +285,34 @@ void InGame::timerHit() {
 //Resets all of the world items... and by that i mean, calls the gamemodel class to reset all of the world items! and redisplay the
 // home screen.
 void InGame::on_btnHome_clicked() {
+    GoHome();
+}
+
+void InGame::GoHome(){
     this->deleteLater();
     Timer::getInstance()->getTimer()->stop();
     World::getInstance()->ResetWorld();
     ui->btnPause->setText("Play");
     home->show();
+
+
 }
+
+void InGame::Pause(){
+    World::getInstance()->setRoundFinished(false);
+    if (ui->btnPause->text() == "Pause") {
+        Timer::getInstance()->getTimer()->stop();
+        ui->btnPause->setText("Play");
+    }
+
+    else if (ui->btnPause->text() == "Play") {
+        Timer::getInstance()->getTimer()->start();
+        ui->btnPause->setText("Pause");
+    }
+    //purley testing this breaks object view blah blah blah
+    World::getInstance()->printWorldInfo();
+
+}
+
+
 

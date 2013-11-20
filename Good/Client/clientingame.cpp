@@ -11,6 +11,7 @@ clientingame::clientingame(QWidget *parent) :
     ui(new Ui::clientingame)
 {
     ui->setupUi(this);
+    setMouseTracking(true);
     x = 255;
     y = 255;
     //Player 0
@@ -54,7 +55,7 @@ clientingame::~clientingame()
 }
 void clientingame::mouseMoveEvent(QMouseEvent *ev) {
 
-   x = ui->gameCourt->mapFromParent(ev->pos()).x();
+    x = ui->gameCourt->mapFromParent(ev->pos()).x();
 
     y = ui->gameCourt->mapFromParent(ev->pos()).y();
     //timer->start();
@@ -121,8 +122,19 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         lbl->setGeometry(v->at(1).toInt(), v->at(2).toInt(), v->at(3).toInt(), v->at(4).toInt());
         lbl->setStyleSheet("background-color: rgb(255,255,255); border-radius: 6px;");
         lbl->show();
+    }else if(v->at(0) == "3"){
+        // 3/username/score/username/score/username/score/username/score/
+        ui->lblTop1Usrnm->setText(v->at(1));
+        ui->lblTop1Score ->setText(v->at(2));
+        ui->lblTop2Usrnm->setText(v->at(3));
+        ui->lblTop2Score ->setText(v->at(4));
+        ui->lblTop3Usrnm->setText(v->at(5));
+        ui->lblTop3Score ->setText(v->at(6));
     }
+
 }
+
+
 
 void clientingame::HealthDamage(int index, int health){
     int spot = 7 * index;
