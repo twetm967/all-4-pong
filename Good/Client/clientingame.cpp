@@ -14,6 +14,8 @@ clientingame::clientingame(QWidget *parent) :
     setMouseTracking(true);
     x = 255;
     y = 255;
+
+    //adds all of the health labels to a vector
     //Player 0
     Health.push_back(ui->lblLife1PB);
     Health.push_back(ui->lblLife2PB);
@@ -49,10 +51,12 @@ clientingame::clientingame(QWidget *parent) :
 
 }
 
+//client game destructor
 clientingame::~clientingame()
 {
     delete ui;
 }
+//captures mouse position and maps it to the gameCourt widget
 void clientingame::mouseMoveEvent(QMouseEvent *ev) {
 
     x = ui->gameCourt->mapFromParent(ev->pos()).x();
@@ -61,6 +65,7 @@ void clientingame::mouseMoveEvent(QMouseEvent *ev) {
     //timer->start();
 }
 
+//recieves a vector of label commands and moves the proper label
 void clientingame::MoveLabels(std::vector<QString> *v){
     if (v->at(0) == "0"){
         // 0/ball1/x/y/
@@ -77,7 +82,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         int xx;
         int yy;
         int health;
-        if (v->at(1) == "0"){
+        if (v->at(1) == "0"){ //bottom player
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
             health = v->at(6).toInt();
@@ -86,7 +91,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
             ui->lblScorePB->setText(v->at(5));
             HealthDamage(0,health);
 
-        }else if(v->at(1) == "1"){
+        }else if(v->at(1) == "1"){ // right players
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
             health = v->at(6).toInt();
@@ -95,7 +100,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
             ui->lblScorePR->setText(v->at(5));
             HealthDamage(1,health);
 
-        }else if(v->at(1) == "2"){
+        }else if(v->at(1) == "2"){ // top player
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
             health = v->at(6).toInt();
@@ -104,7 +109,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
             ui->lblScorePT->setText(v->at(5));
             HealthDamage(2,health);
 
-        }else if(v->at(1) == "3"){
+        }else if(v->at(1) == "3"){ // left player
             xx = v->at(3).toInt();
             yy = v->at(4).toInt();
             health = v->at(6).toInt();
