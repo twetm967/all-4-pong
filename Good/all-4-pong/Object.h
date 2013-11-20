@@ -45,7 +45,7 @@ public:
     //Getters and setters------------------------------
 
     void setQPoint(QPoint inPoint){point = inPoint;}
-
+    int getObjId() {return objId;}
 
     bool getHit();
     QPoint getQPoint(){return point;}

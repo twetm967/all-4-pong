@@ -86,60 +86,130 @@ void Shapes::setInfo(ofstream *f){
     }
 
     double Shapes::getDistancetoPaddle(QPoint pointIn){
-        if (pointIn.x() >= rect.topLeft().x() && pointIn.x() <= rect.topRight().x() && pointIn.y() <= rect.topLeft().y()){
-        //hit the top of the box
-             PlayerId = 2;
-             return (double)1+ min(abs(pointIn.y() - rect.topLeft().y()), abs(pointIn.y() - rect.topRight().y()));
+        if (pointIn.x() >= rect.left() && pointIn.x() <= rect.right() && pointIn.y() >= rect.top() && pointIn.y() <= rect.bottom()) {
+            return 0;
         }
-         //hit the bottom
-        else if(pointIn.x() >= rect.bottomLeft().x() && pointIn.x() <= rect.bottomRight().x() && pointIn.y() >= rect.bottomLeft().y()){
-            PlayerId = 0;
-            return (double)1 + min(abs(pointIn.y() - rect.bottomLeft().y()),abs(pointIn.y() - rect.bottomRight().y()));
+        else if (pointIn.x() >= rect.left() && pointIn.x() <= rect.right()) {
+            return (double) min(abs(pointIn.y()-rect.top()),abs(pointIn.y()-rect.bottom()));
         }
-        //hit the left side
-        else if (pointIn.y() >= rect.topLeft().y() && pointIn.y() <= rect.bottomLeft().y() && pointIn.x() <= rect.topLeft().x()){
-            PlayerId = 3;
-            return (double)1 + min(abs(pointIn.x() - rect.topLeft().x()), abs(pointIn.x() - rect.topRight().x()));
+        else if (pointIn.y() >= rect.top() && pointIn.y() <= rect.bottom()) {
+            return (double) min(abs(pointIn.x()-rect.left()),abs(pointIn.x()-rect.right()));
         }
-        //hit the right side
-        else if(pointIn.y() >= rect.topRight().y() && pointIn.y() <= rect.bottomRight().y() && pointIn.x() >= rect.bottomRight().x()){
-            PlayerId = 1;
-            return (double) 1 + min(abs(pointIn.x() - rect.topRight().x()), abs(pointIn.x() - rect.bottomLeft().x()));
-        }
-        else{
-            PlayerId = -1;
-            return -1;
-            //return min(sqrt(pow(pointIn.x()-line.x1(),2)+pow(pointIn.y()-line.y1(),2)),sqrt(pow(pointIn.x()-line.x2(),2)+pow(pointIn.y()-line.y2(),2)));
+        else {
+            return min(min(sqrt(pow(pointIn.x()-rect.topLeft().x(),2)+pow(pointIn.y()-rect.topLeft().y(),2)),sqrt(pow(pointIn.x()-rect.topRight().x(),2)+pow(pointIn.y()-rect.topRight().y(),2))),min(sqrt(pow(pointIn.x()-rect.bottomLeft().x(),2)+pow(pointIn.y()-rect.bottomLeft().y(),2)),sqrt(pow(pointIn.x()-rect.bottomRight().x(),2)+pow(pointIn.y()-rect.bottomRight().y(),2))));
         }
     }
 
-    void Shapes::hitShape(Ball* b){
-        int pos;
-        switch(PlayerId){
-        case 0: //bottom
-            pos = rect.bottomLeft().y();
-            b->setY(pos + b->getRadius());//*abs(b->getSpeedY())/b->getSpeedY());
-            b->incrementSpeedX(5);
-            b->invertSpeedY();
-            break;
-        case 1: //right
-            pos = rect.bottomRight().x();
-            b->setX(pos + b->getRadius());//*abs(b->getSpeedX())/b->getSpeedX());
-            b->incrementSpeedY(5);
-            b->invertSpeedX();
-            break;
-        case 2:// top
-            pos = rect.topLeft().y();
-            b->setY(pos - b->getRadius());//*abs(b->getSpeedY())/b->getSpeedY());
-            b->incrementSpeedX(5);
-            b->invertSpeedY();
-            break;
-        case 3:// left
-            pos = rect.topLeft().x();
-            b->setX(pos - b->getRadius());//*abs(b->getSpeedX())/b->getSpeedX());
-            b->incrementSpeedY(5);
-            b->invertSpeedX();
-            break;
-}
+    int Shapes::hitShape(Ball* b){
+        //hit from top left
+        if (b->getSpeedX() >= 0 && b->getSpeedY() >=0) {
+            if (this->hitLeftSide(b)) {
+                return 3;
+            }
+            else if (this->hitTopSide(b)) {
+                return 2;
+            }
+            else if (b->getX() >= rect.left()) {
+                return 2;
+            }
+            else if (b->getY() >= rect.top()) {
+                return 3;
+            }
+            else {
+                return 6;
+            }
+        }
+        //hit from top right
+        else if (b->getSpeedX() <= 0 && b->getSpeedY() >=0) {
+            if (this->hitTopSide(b)) {
+                return 2;
+            }
+            else if (this->hitRightSide(b)) {
+                return 1;
+            }
+            else if (b->getX() <= rect.right()) {
+                return 2;
+            }
+            else if (b->getY() >= rect.top()) {
+                return 1;
+            }
+            else {
+                return 5;
+            }
+        }
+        //hit from bottom right
+        else if (b->getSpeedX() <= 0 && b->getSpeedY() <=0) {
+            if (this->hitRightSide(b)) {
+                return 1;
+            }
+            else if (this->hitBottomSide(b)) {
+                return 0;
+            }
+            else if (b->getX() <= rect.right()) {
+                return 0;
+            }
+            else if (b->getY() <= rect.bottom()) {
+                return 1;
+            }
+            else {
+                return 4;
+            }
+        }
+        //hit from bottom left
+        else if (b->getSpeedX() >= 0 && b->getSpeedY() <=0) {
+            if (this->hitBottomSide(b)) {
+                return 0;
+            }
+            else if (this->hitLeftSide(b)) {
+                return 3;
+            }
+            else if (b->getX() >= rect.left()) {
+                return 0;
+            }
+            else if (b->getY() <= rect.bottom()) {
+                return 3;
+            }
+            else {
+                return 7;
+            }
+        }
+        else {
+            return -1;
+        }
+    }
 
+    bool Shapes::hitBottomSide(Ball* b) {
+        double pcntDistY = abs(((double)b->getY() - b->getRadius() - (double)rect.bottom())/(double)b->getSpeedY());
+        double intersectX = (double)b->getX() - b->getRadius() - pcntDistY * (double)b->getSpeedX();
+        if (intersectX <= (double)rect.right() && intersectX >= (double)rect.left()) {
+            return true;
+        }
+            return false;
+    }
+
+    bool Shapes::hitLeftSide(Ball* b) {
+        double pcntDistX = abs(((double)b->getX() + b->getRadius() - (double)rect.left())/(double)b->getSpeedX());
+        double intersectY = (double)b->getY() + b->getRadius() - pcntDistX * (double)b->getSpeedY();
+        if (intersectY <= (double)rect.bottom() && intersectY >= (double)rect.top()) {
+            return true;
+        }
+        return false;
+    }
+
+    bool Shapes::hitRightSide(Ball* b) {
+        double pcntDistX = abs(((double)b->getX() - b->getRadius() - (double)rect.right())/(double)b->getSpeedX());
+        double intersectY = (double)b->getY() - b->getRadius() - pcntDistX * (double)b->getSpeedY();
+        if (intersectY <= (double)rect.bottom() && intersectY >= (double)rect.top()) {
+            return true;
+        }
+        return false;
+    }
+
+    bool Shapes::hitTopSide(Ball* b) {
+        double pcntDistY = abs(((double)b->getY() + b->getRadius() - (double)rect.bottom())/(double)b->getSpeedY());
+        double intersectX = (double)b->getX() + b->getRadius() - pcntDistY * (double)b->getSpeedX();
+        if (intersectX <= (double)rect.right() && intersectX >= (double)rect.left()) {
+            return true;
+        }
+            return false;
     }

@@ -16,7 +16,7 @@ private:
 
 public:
 
-    Score(): currentScore(0), currentLevelIncrease(100), currentLevelDecrease(50) { }
+    Score(): currentScore(0), currentLevelIncrease(100), currentLevelDecrease(25) { }
 
     Score(int score, int increaseAmount, int decreaseAmount):
         currentScore(score), currentLevelIncrease(increaseAmount), currentLevelDecrease(decreaseAmount) { }
