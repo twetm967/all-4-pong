@@ -261,6 +261,7 @@ void World::updateUser(QString str){
 
 void World::setPlayerName(QString name, int side){
     Player *inPlayer = getGamePlayer(side);
+    if(name == "")name = "User";
     inPlayer->setUsername(name);
 }
 

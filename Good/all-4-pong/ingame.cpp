@@ -184,10 +184,10 @@ void InGame::on_btnPause_clicked() {
 
 
 void InGame::on_btnCheat_clicked() {
-    for (int i = 0; i < 4; ++i) {
-        World::getInstance()->getGamePlayer(i)->damage();
-        HealthDamage(i,World::getInstance()->getGamePlayer(i)->getHealth());
-    }
+   int num = rand() % 4;
+        World::getInstance()->getGamePlayer(num)->damage();
+        HealthDamage(num,World::getInstance()->getGamePlayer(num)->getHealth());
+
 }
 
 
