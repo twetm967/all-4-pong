@@ -122,9 +122,10 @@ InGame::InGame(Start* window, QWidget *parent) :
 
 
  setUsernames();
+ setHighScores();
 
 
-    //Start the Timer
+    //Setup the Timer
     Timer::getInstance()->getTimer()->setInterval(40);//was100
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
    // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
@@ -261,10 +262,10 @@ void InGame::timerHit() {
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
     World::getInstance()->getBlock();
     */
-
+        World::getInstance()->gameOver();
     if (World::getInstance()->getRoundFinished() == true) {
         World::getInstance()->pointScoredReset();
-        World::getInstance()->gameOver();
+
         Timer::getInstance()->getTimer()->stop();
         ui->lblGameDeclaration->setText(World::getInstance()->getRound()); // display 'Round Over' declaration
         ui->lblPlayDeclaration->setText(World::getInstance()->getInstruct()); // display pressPlay instructions
@@ -280,6 +281,7 @@ void InGame::timerHit() {
         ui->lblGameDeclaration->setText(""); // do not display 'Round Over' declaration
         ui->lblPlayDeclaration->setText(""); // do not display pressPlay instructions
     }
+
 }
 
 
@@ -320,5 +322,14 @@ void InGame::Pause(){
     }
 }
 
+void InGame::setHighScores() {
+    HighScore::getInstance()->importData();
+    ui->lblTop1Score->setText(QString::number(HighScore::getInstance()->getFirstHighestScore()));
+    ui->lblTop1Usrnm->setText(HighScore::getInstance()->getFirstHSPlayerName());
+    ui->lblTop2Score->setText(QString::number(HighScore::getInstance()->getSecondHighestScore()));
+    ui->lblTop2Usrnm->setText(HighScore::getInstance()->getSecondHSPlayerName());
+    ui->lblTop3Score->setText(QString::number(HighScore::getInstance()->getThirdHighestScore()));
+    ui->lblTop3Usrnm->setText(HighScore::getInstance()->getThirdHSPlayerName());
+}
 
 

@@ -52,6 +52,7 @@ bool makeBlock(bool);
 
     QPoint getGameCourt(QPoint in);
     void setUsernames();
+    void setHighScores();
     void Pause();
     void GoHome();
 

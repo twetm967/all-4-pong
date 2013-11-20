@@ -18,73 +18,42 @@ private:
     int secondHighestScore;
     int thirdHighestScore;
 
-    string firstHSPlayerName;
-    string secondHSPlayerName;
-    string thirdHSPlayerName;
+    QString firstHSPlayerName;
+    QString secondHSPlayerName;
+    QString thirdHSPlayerName;
 
-    ofstream highScoreFile; // File;
+    HighScore(){
+        importData();
+    }
 
-    HighScore(){}
-
-    static HighScore instance;
+    static HighScore* instance;
 
 public:
 
-    static HighScore& getInstance(){
-             return instance;
+    static HighScore* getInstance(){
+        if (instance == NULL){
+            instance = new HighScore;
+        }
+        return instance;
      }
+
+    QString getFirstHSPlayerName() {return firstHSPlayerName;}
+    QString getSecondHSPlayerName() {return secondHSPlayerName;}
+    QString getThirdHSPlayerName() {return thirdHSPlayerName;}
+    int getFirstHighestScore() {return firstHighestScore;}
+    int getSecondHighestScore() {return secondHighestScore;}
+    int getThirdHighestScore() {return thirdHighestScore;}
 
     ~HighScore(){}
 
-    // returns a copy of the username belonging to the player with <playerId>
-    string getPlayerName(int playerId);
+    // if <score> qualifies, adds <score> and
+    void addScore(QString username, int score);
 
-    // returns a copy of the score belonging to the player with <playerId>
-    int getPlayerScore(int playerId);
+    void importData();
 
+    string printData();
 
-    /*------------- Needs reorganization below------------- */
-
-    //returns the scores from a game in decrimenting order
-    //largest -> smallest
-    vector<int> getGameScores();
-
-    //places the scores from the game into the high scores list
-    //to be displayed.
-    void positionGameScores();
-
-    //creates the image of the leaderboard keeping code clean and fresh
-    //like spearmint gum!
-    void makeLeaderBoard();
-
-    //shows the leader board as a QWidget object
-    ofstream getLeaderBoard();
-
-    //increments the score of the player takes the index
-    //of the paddle number and associates it with the index inside of
-    // <gameScores>
-    void incScore(int);
-
-    /*//displays the score of the player takes the index of the
-    //paddle number and associates it with the index inside of
-    // <gameScores>
-    QString getScore(int);*/
-
-    /*-------------------------*/
-
-
-
-    // prints the current high scores and related game state
-    // out to the highscore offshore text file,
-    // returning a boolean value indicating print success
-    bool printHSInfo(QString data);
-
-
-    // reads the current high scores and related game state
-    // from the highscore offshore text file,
-    // returning a boolean value indicating read success;
-    // if read succeeds, stores high scores and related game state in instance variables
-    bool readHSInfo();
+    void exportData();
 
 };
 

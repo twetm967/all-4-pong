@@ -1,6 +1,6 @@
 
 #include <cassert>
-
+#include "highscores.h"
 #include "World.h"
 #include "Object.h"
 #include "Paddle.h"
@@ -31,8 +31,6 @@ void World::UpdateWorld() {
 }
 
 
-
-
 // reset all elements in this game world
 void World::ResetWorld() {
     for( int i = 0; i < GamePlayers.size();++i){
@@ -45,7 +43,8 @@ void World::ResetWorld() {
     GamePlayers.clear();
     objects.clear();
     balls.clear();
-
+    gameIsOver = false;
+    roundFinished = false;
 }
 
 // prints the current world state out to offshore text file,
@@ -131,15 +130,15 @@ void World::readWorldInfo() {
 
         //Ball/225/225/-3/9/-1/
         for(int i = 1; i < information.size() - 1;i++){
-            item = splitString(information.at(i),'/');
+                item = splitString(information.at(i),'/');
 
-            Object* obj;//
-            string identifier = item->at(0);
-            if(identifier == "shape"){
+                Object* obj;//
+                string identifier = item->at(0);
+                if(identifier == "shape"){
 
                 obj = new Shapes(true);
 
-              //  objects.push_back(obj);
+                //  objects.push_back(obj);
 
             }
             if(objects.at(i-1)->getType() == QString::fromStdString(item->at(0))){
@@ -179,9 +178,10 @@ void World::pointScoredReset() {
     foreach (Player *play, GamePlayers) {
         play->reset();
     }
-    roundEnd = "Round Over";
-    Instructions = "Click to Continue";
-
+    if(numberDead < 3){
+        roundEnd = "Round Over";
+        Instructions = "Click to Continue";
+    }
 }
 
 void World::gameOver(){
@@ -189,10 +189,15 @@ void World::gameOver(){
     //ends the game
     //saves high scores
     if(numberDead == 3){
-    //displays gameover text.
-    roundEnd = "Game Over";
-    Instructions = "Back to Home Screen";
-    gameIsOver = true;
+        roundFinished = true;
+        //displays gameover text.
+        roundEnd = "Game Over";
+        Instructions = "Click to go Home";
+        gameIsOver = true;
+        foreach(Player *play, GamePlayers) {
+            HighScore::getInstance()->addScore(play->getUsername(),play->getCurrentScore()->getCurrentScore());
+        }
+        HighScore::getInstance()->exportData();
     }
 }
 

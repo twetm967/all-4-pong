@@ -202,7 +202,7 @@ void Paddle::moveLine(int distance) {
     }
 
     void Paddle::eliminate() {
-        qDebug() << "Moving player " << playerId << " off screen" << endl;
+       // qDebug() << "Moving player " << playerId << " off screen" << endl;
         point.setX(-World::getInstance()->getWorldSize());
         point.setY(-World::getInstance()->getWorldSize());
 
