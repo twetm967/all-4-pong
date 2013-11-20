@@ -181,20 +181,19 @@ void World::pointScoredReset() {
     }
     roundEnd = "Round Over";
     Instructions = "Click to Continue";
-    if(numberDead == 3){
-        gameOver();
-    }
+
 }
 
 void World::gameOver(){
     //game over logic.
     //ends the game
     //saves high scores
-
+    if(numberDead == 3){
     //displays gameover text.
     roundEnd = "Game Over";
     Instructions = "Back to Home Screen";
     gameIsOver = true;
+    }
 }
 
 

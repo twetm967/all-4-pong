@@ -184,12 +184,15 @@ void InGame::on_btnPause_clicked() {
 
 
 void InGame::on_btnCheat_clicked() {
-   int num = rand() % 4;
-        World::getInstance()->getGamePlayer(num)->damage();
-        HealthDamage(num,World::getInstance()->getGamePlayer(num)->getHealth());
-
+    for(int i = 0; i < 10; i++){
+    int num = rand() % 4;
+        if(World::getInstance()->getGamePlayer(num)->getHealth() > 0){
+            World::getInstance()->getGamePlayer(num)->damage();
+            HealthDamage(num,World::getInstance()->getGamePlayer(num)->getHealth());
+            break;
+        }
+    }
 }
-
 
 QPoint InGame::getGameCourt(QPoint in) {
     QPoint out;
@@ -211,11 +214,8 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
 void InGame::mousePressEvent(QMouseEvent *ev) {
    //qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 
-    if(World::getInstance()->getEnd()){
-        GoHome();
-    }else{
         Pause();
-    }
+
 }
 
 bool InGame::makeBlock(bool powerUps){
@@ -264,6 +264,7 @@ void InGame::timerHit() {
 
     if (World::getInstance()->getRoundFinished() == true) {
         World::getInstance()->pointScoredReset();
+        World::getInstance()->gameOver();
         Timer::getInstance()->getTimer()->stop();
         ui->lblGameDeclaration->setText(World::getInstance()->getRound()); // display 'Round Over' declaration
         ui->lblPlayDeclaration->setText(World::getInstance()->getInstruct()); // display pressPlay instructions
@@ -299,6 +300,11 @@ void InGame::GoHome(){
 }
 
 void InGame::Pause(){
+
+
+    if(World::getInstance()->getEnd()){
+        GoHome();
+    }else{
     World::getInstance()->setRoundFinished(false);
     if (ui->btnPause->text() == "Pause") {
         Timer::getInstance()->getTimer()->stop();
@@ -311,7 +317,7 @@ void InGame::Pause(){
     }
     //purley testing this breaks object view blah blah blah
     World::getInstance()->printWorldInfo();
-
+    }
 }
 
 
