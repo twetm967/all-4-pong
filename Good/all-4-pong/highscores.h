@@ -22,6 +22,8 @@ private:
     QString secondHSPlayerName;
     QString thirdHSPlayerName;
 
+    bool print;
+
     HighScore(){
         importData();
     }
@@ -43,6 +45,7 @@ public:
     int getFirstHighestScore() {return firstHighestScore;}
     int getSecondHighestScore() {return secondHighestScore;}
     int getThirdHighestScore() {return thirdHighestScore;}
+    bool getBool(){return print;}
 
     ~HighScore(){}
 

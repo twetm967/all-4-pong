@@ -214,6 +214,9 @@ QString World::getNetwork(){
 
         //qDebug() << netString << "\n";
     }
+    if (HighScore::getInstance()->getBool() == true){
+        netString += QString::fromStdString(HighScore::getInstance()->printData());
+    }
     return netString;
 }
 

@@ -25,6 +25,7 @@ void HighScore::addScore(QString username, int score) {
         thirdHighestScore = score;
         thirdHSPlayerName = username;
     }
+    print = true;
 }
 
 void HighScore::importData() {
@@ -47,10 +48,12 @@ void HighScore::importData() {
         thirdHSPlayerName = QString::fromStdString(scores->at(5));
         thirdHighestScore = stoi(scores->at(6));
     }
+    print = true;
 }
 
 string HighScore::printData() {
     string data = string("3/") + firstHSPlayerName.toUtf8().constData() + string("/") + to_string(firstHighestScore) + string("/") + secondHSPlayerName.toUtf8().constData() + string("/") + to_string(secondHighestScore) + string("/") + thirdHSPlayerName.toUtf8().constData() + string("/") + to_string(thirdHighestScore);
+    print = false;
     return data;
 }
 
