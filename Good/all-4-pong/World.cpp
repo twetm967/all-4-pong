@@ -181,20 +181,19 @@ void World::pointScoredReset() {
     }
     roundEnd = "Round Over";
     Instructions = "Click to Continue";
-    if(numberDead == 3){
-        gameOver();
-    }
+
 }
 
 void World::gameOver(){
     //game over logic.
     //ends the game
     //saves high scores
-
+    if(numberDead == 3){
     //displays gameover text.
     roundEnd = "Game Over";
     Instructions = "Back to Home Screen";
     gameIsOver = true;
+    }
 }
 
 
@@ -261,6 +260,7 @@ void World::updateUser(QString str){
 
 void World::setPlayerName(QString name, int side){
     Player *inPlayer = getGamePlayer(side);
+    if(name == "")name = "User";
     inPlayer->setUsername(name);
 }
 
