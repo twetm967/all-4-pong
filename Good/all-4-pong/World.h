@@ -19,6 +19,7 @@
 #include "Ball.h"
 //#include "Paddle.h"
 #include "Shapes.h"
+#include "highscores.h"
 
 class paddle;
 using namespace std;
@@ -171,7 +172,7 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         void printWorldInfo();
 
         // reads the current world state from offshore text file,
-        // returning a boolean value indicaing read success;
+        // returning a boolean value indicating read success;
         // if read succeeds, stores world state in instance variables
         void readWorldInfo();
 
