@@ -48,11 +48,11 @@ public:
     QLabel *lblScorePT;
     QLabel *lblLife7PR;
     QWidget *gameCourt;
-    GameLabel *lblBall;
     GameLabel *lblPaddleBottom;
     GameLabel *lblPaddleLeft;
     GameLabel *lblPaddleRight;
     GameLabel *lblPaddleTop;
+    GameLabel *lblBall;
     QLabel *lblTop2Score;
     QLabel *lblLife6PR;
     QLabel *lblLife4PB;
@@ -273,16 +273,9 @@ public:
 "border: 3px solid rgb(137, 255, 200);\n"
 "box-shadow: 10px 10px 30px rgb(0, 0, 0);\n"
 "}"));
-        lblBall = new GameLabel(gameCourt);
-        lblBall->setObjectName(QStringLiteral("lblBall"));
-        lblBall->setGeometry(QRect(210, 210, 30, 30));
-        lblBall->setMouseTracking(true);
-        lblBall->setStyleSheet(QLatin1String("border: 0px solid rgb(255, 255, 255);\n"
-"background-color: rgb(255, 255, 255);\n"
-"border-radius: 15px;"));
         lblPaddleBottom = new GameLabel(gameCourt);
         lblPaddleBottom->setObjectName(QStringLiteral("lblPaddleBottom"));
-        lblPaddleBottom->setGeometry(QRect(170, 420, 100, 15));
+        lblPaddleBottom->setGeometry(QRect(175, 420, 100, 15));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -295,7 +288,7 @@ public:
         lblPaddleBottom->setFrameShadow(QFrame::Raised);
         lblPaddleLeft = new GameLabel(gameCourt);
         lblPaddleLeft->setObjectName(QStringLiteral("lblPaddleLeft"));
-        lblPaddleLeft->setGeometry(QRect(15, 170, 15, 100));
+        lblPaddleLeft->setGeometry(QRect(15, 175, 15, 100));
         sizePolicy.setHeightForWidth(lblPaddleLeft->sizePolicy().hasHeightForWidth());
         lblPaddleLeft->setSizePolicy(sizePolicy);
         lblPaddleLeft->setBaseSize(QSize(0, 0));
@@ -305,7 +298,7 @@ public:
         lblPaddleLeft->setFrameShadow(QFrame::Raised);
         lblPaddleRight = new GameLabel(gameCourt);
         lblPaddleRight->setObjectName(QStringLiteral("lblPaddleRight"));
-        lblPaddleRight->setGeometry(QRect(420, 170, 15, 100));
+        lblPaddleRight->setGeometry(QRect(420, 175, 15, 100));
         sizePolicy.setHeightForWidth(lblPaddleRight->sizePolicy().hasHeightForWidth());
         lblPaddleRight->setSizePolicy(sizePolicy);
         lblPaddleRight->setBaseSize(QSize(0, 0));
@@ -315,7 +308,7 @@ public:
         lblPaddleRight->setFrameShadow(QFrame::Raised);
         lblPaddleTop = new GameLabel(gameCourt);
         lblPaddleTop->setObjectName(QStringLiteral("lblPaddleTop"));
-        lblPaddleTop->setGeometry(QRect(170, 15, 100, 15));
+        lblPaddleTop->setGeometry(QRect(175, 15, 100, 15));
         sizePolicy.setHeightForWidth(lblPaddleTop->sizePolicy().hasHeightForWidth());
         lblPaddleTop->setSizePolicy(sizePolicy);
         lblPaddleTop->setBaseSize(QSize(0, 0));
@@ -323,11 +316,13 @@ public:
         lblPaddleTop->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
 "border-radius: 4px;"));
         lblPaddleTop->setFrameShadow(QFrame::Raised);
-        lblBall->raise();
-        lblPaddleBottom->raise();
-        lblPaddleLeft->raise();
-        lblPaddleTop->raise();
-        lblPaddleRight->raise();
+        lblBall = new GameLabel(gameCourt);
+        lblBall->setObjectName(QStringLiteral("lblBall"));
+        lblBall->setGeometry(QRect(210, 210, 30, 30));
+        lblBall->setMouseTracking(true);
+        lblBall->setStyleSheet(QLatin1String("border: 0px solid rgb(255, 255, 255);\n"
+"background-color: rgb(255, 255, 255);\n"
+"border-radius: 15px;"));
         lblTop2Score = new QLabel(InGame);
         lblTop2Score->setObjectName(QStringLiteral("lblTop2Score"));
         lblTop2Score->setGeometry(QRect(565, 15, 61, 17));
@@ -529,7 +524,7 @@ public:
 "color: rgb(255, 255, 255);"));
         lblPlayDeclaration = new QLabel(InGame);
         lblPlayDeclaration->setObjectName(QStringLiteral("lblPlayDeclaration"));
-        lblPlayDeclaration->setGeometry(QRect(340, 360, 291, 31));
+        lblPlayDeclaration->setGeometry(QRect(365, 400, 231, 40));
         QFont font2;
         font2.setFamily(QStringLiteral("URW Gothic L"));
         font2.setPointSize(20);
@@ -626,11 +621,11 @@ public:
         lblLife3PR->setText(QString());
         lblScorePT->setText(QApplication::translate("InGame", "0", 0));
         lblLife7PR->setText(QString());
-        lblBall->setText(QString());
         lblPaddleBottom->setText(QString());
         lblPaddleLeft->setText(QString());
         lblPaddleRight->setText(QString());
         lblPaddleTop->setText(QString());
+        lblBall->setText(QString());
         lblTop2Score->setText(QApplication::translate("InGame", "3550", 0));
         lblLife6PR->setText(QString());
         lblLife4PB->setText(QString());

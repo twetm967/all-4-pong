@@ -31,8 +31,6 @@ void World::UpdateWorld() {
 }
 
 
-
-
 // reset all elements in this game world
 void World::ResetWorld() {
     for( int i = 0; i < GamePlayers.size();++i){
@@ -45,7 +43,8 @@ void World::ResetWorld() {
     GamePlayers.clear();
     objects.clear();
     balls.clear();
-
+    gameIsOver = false;
+    roundFinished = false;
 }
 
 // prints the current world state out to offshore text file,
@@ -179,9 +178,10 @@ void World::pointScoredReset() {
     foreach (Player *play, GamePlayers) {
         play->reset();
     }
+    if(numberDead < 3){
     roundEnd = "Round Over";
     Instructions = "Click to Continue";
-
+    }
 }
 
 void World::gameOver(){
@@ -189,9 +189,10 @@ void World::gameOver(){
     //ends the game
     //saves high scores
     if(numberDead == 3){
+    roundFinished = true;
     //displays gameover text.
     roundEnd = "Game Over";
-    Instructions = "Back to Home Screen";
+    Instructions = "Click to go Home";
     gameIsOver = true;
     }
 }

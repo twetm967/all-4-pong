@@ -261,10 +261,10 @@ void InGame::timerHit() {
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
     World::getInstance()->getBlock();
     */
-
+        World::getInstance()->gameOver();
     if (World::getInstance()->getRoundFinished() == true) {
         World::getInstance()->pointScoredReset();
-        World::getInstance()->gameOver();
+
         Timer::getInstance()->getTimer()->stop();
         ui->lblGameDeclaration->setText(World::getInstance()->getRound()); // display 'Round Over' declaration
         ui->lblPlayDeclaration->setText(World::getInstance()->getInstruct()); // display pressPlay instructions
@@ -280,6 +280,7 @@ void InGame::timerHit() {
         ui->lblGameDeclaration->setText(""); // do not display 'Round Over' declaration
         ui->lblPlayDeclaration->setText(""); // do not display pressPlay instructions
     }
+
 }
 
 
