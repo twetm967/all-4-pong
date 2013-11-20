@@ -245,33 +245,84 @@ bool Ball::collisionHandler() {
 }
 
 void Ball::onCollision(Object *obj) {
-    this->setPlayerId(obj->getPlayerId());
-    cout << "Collision with player" << playerId << endl;
-    switch (playerId % 2) {
-        case 0:
-            this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
-            this->incrementSpeedX(obj->getSpeed());
-            this->invertSpeedY();
-            this->incrementSpeedY(5 * abs(this->getSpeedY())/this->getSpeedY());
-            break;
-        case 1:
-            this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
-            this->incrementSpeedY(obj->getSpeed());
-            this->invertSpeedX();
-            this->incrementSpeedX(5 * abs(this->getSpeedX())/this->getSpeedX());
-            break;
-        case -1:
-        //bounce off of object
+    if (obj->getType() == "paddle") {
+        this->setPlayerId(obj->getPlayerId());
+        cout << "Collision with player" << playerId << endl;
+        switch (playerId % 2) {
+            case 0:
+                this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
+                this->incrementSpeedX(obj->getSpeed());
+                this->invertSpeedY();
+                this->incrementSpeedY(5 * abs(this->getSpeedY())/this->getSpeedY());
+                break;
+            case 1:
+                this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
+                this->incrementSpeedY(obj->getSpeed());
+                this->invertSpeedX();
+                this->incrementSpeedX(5 * abs(this->getSpeedX())/this->getSpeedX());
+                break;
+        }
+    }
+    else if (obj->getType() == "shape") {
         Shapes* s = dynamic_cast<Shapes*>(obj);
-        if(s != NULL)
-         s->hitShape(this);
-        //qDebug() << "Hit the object" << endl;
-
-            break;
-
-
+        int side = s->hitShape(this);
+        switch (side) {
+            case 0:
+                this->setY(s->getRect().bottom()+this->getRadius());
+                this->invertSpeedY();
+                this->incrementSpeedY(5);
+                break;
+            case 1:
+                this->setX(s->getRect().right()+this->getRadius());
+                this->invertSpeedX();
+                this->incrementSpeedX(5);
+                break;
+            case 2:
+                this->setY(s->getRect().top()-this->getRadius());
+                this->invertSpeedY();
+                this->incrementSpeedY(5);
+                break;
+            case 3:
+                this->setX(s->getRect().left()-this->getRadius());
+                this->invertSpeedX();
+                this->incrementSpeedX(5);
+                break;
+            case 4:
+                this->setX(s->getRect().right()+this->getRadius());
+                this->setY(s->getRect().bottom()+this->getRadius());
+                this->invertSpeedX();
+                this->invertSpeedY();
+                this->incrementSpeedX(5);
+                this->incrementSpeedY(5);
+                break;
+            case 5:
+                this->setX(s->getRect().right()+this->getRadius());
+                this->setY(s->getRect().top()-this->getRadius());
+                this->invertSpeedX();
+                this->invertSpeedY();
+                this->incrementSpeedX(5);
+                this->incrementSpeedY(5);
+                break;
+            case 6:
+                this->setX(s->getRect().left()-this->getRadius());
+                this->setY(s->getRect().top()-this->getRadius());
+                this->invertSpeedX();
+                this->invertSpeedY();
+                this->incrementSpeedX(5);
+                this->incrementSpeedY(5);
+                break;
+            case 7:
+                this->setX(s->getRect().left()-this->getRadius());
+                this->setY(s->getRect().bottom()+this->getRadius());
+                this->invertSpeedX();
+                this->invertSpeedY();
+                this->incrementSpeedX(5);
+                this->incrementSpeedY(5);
+                break;
+        }
     }
 }
+
 
 void Ball::incrementSpeedX(int vector) {
     if (vector == 0)

@@ -33,7 +33,6 @@ class Shapes: public Object
         PowerUp* getPowerUp(){return boost;}
         QString getType() {return "shape";}
         QRect getRect(){return rect;}
-        void hitShape(Ball*);
         QString getNet();
         void setX(int inX){x = inX;}
         void setY(int inY){y = inY;}
@@ -41,6 +40,11 @@ class Shapes: public Object
         //********************************************
         void updatePosition();
         double getDistancetoPaddle(QPoint pointIn);
+        bool hitLeftSide(Ball*);
+        bool hitRightSide(Ball*);
+        bool hitTopSide(Ball*);
+        bool hitBottomSide(Ball*);
+        int hitShape(Ball*);
 
         // prints the current shape state out to offshore text file,
         // returning a boolean value indicating print success
