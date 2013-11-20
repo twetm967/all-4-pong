@@ -61,7 +61,6 @@ class Ball : public Object
 
 
         //setters -- need additional logic to fully implement
-        void getInfo(ofstream *);
         void setX(int newX){x = newX;}
         void setY(int newY){y = newY;}
         void setSpeed(int newSpeed){speed = newSpeed;}
@@ -88,7 +87,7 @@ class Ball : public Object
         // returning a boolean value indicaing read success;
         // if read succeeds, stores ball state in instance variables
         bool readBallInfo();
-        void collisionHandler();
+        bool collisionHandler();
 
         double Direction();  //provides direction (angle) the ball is traveling
         /*void Bounce();*/ //I don't know who created this, but I think it may be the same as the onCollision method I have already created
