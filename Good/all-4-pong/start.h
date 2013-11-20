@@ -33,6 +33,7 @@ public:
     bool getPowerUps() {return powerUps;}
   //  InGame* getInGame() { return gameScreen;}
     void StartingMethod();
+    void setSound(bool inSound){sound = inSound;}
     
 private slots:
     int on_start_Btn_clicked();
@@ -57,6 +58,7 @@ private:
     bool ok;
     InGame* gameScreen;
     int clock;
+    bool sound;
 
 
 };

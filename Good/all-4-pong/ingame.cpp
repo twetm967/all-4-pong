@@ -1,5 +1,6 @@
 #include "ingame.h"
 #include "ui_ingame.h"
+#include "start.h"
 
 
 #include <vector>
@@ -11,7 +12,8 @@
 #include <QtWidgets>
 
 
-#include <QtMultimedia/QMediaPlayer>
+
+#include <QtMultimedia/QSoundEffect>
 #include <QFile>
 #include "World.h"
 #include "Paddle.h"
@@ -146,13 +148,11 @@ void InGame::HealthDamage(int index, int health){
         lbl->setStyleSheet("background-color: rgb(0, 0, 0); border-radius: 10px;");
 
 
-        /*       QMediaPlayer* player;
-        player = new QMediaPlayer;
+        //QSoundEffect *sound;
+        //sound->setSource(QUrl::fromLocalFile(":/images/beep.wav"));
+        //sound->play();
 
-        player->setMedia(QUrl::fromLocalFile("all-4-pong/images/beep.wav"));
-        player->setVolume(100);
-        player->play();
-    */
+
     }
     else if (health < 0) {
         //qDebug() << "No more death possible";

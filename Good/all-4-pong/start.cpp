@@ -29,7 +29,7 @@ Start::Start(QWidget *parent) :
     connectCount(0)
 {
     ui->setupUi(this);
-
+    sound = false;
     timer = new QTimer(this);
     timer->setInterval(100);
     connect(timer, &QTimer::timeout, this, &Start::timerHit);
@@ -97,6 +97,9 @@ void Start::timerHit(){
     //example ball:   0/ball1/x/y/
     //example player:  1/0/username/x/y/points/health/
     QString netString = World::getInstance()->getNetwork();
+    if (sound == true){
+        netString += "sound ";
+    }
     for (QObject *obj : server->children()){
         QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
         if (anotherSock != NULL){
