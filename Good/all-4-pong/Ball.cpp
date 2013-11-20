@@ -68,7 +68,7 @@ void Ball::getInfo(vector<string>* strings){
 
 
 void Ball::updatePosition(){
-  /*  if(this->getSpeedX() > 0 && this->getSpeedY() > 0){
+ /*   if(this->getSpeedX() > 0 && this->getSpeedY() > 0){
     for(int i = 0; i <= this->getSpeedX() || i <= this->getSpeedY(); i++){
 
         if(i <= this->getSpeedX()){
@@ -110,7 +110,8 @@ void Ball::updatePosition(){
                         this->setY(this->getY() + abs(i));
                     }
 
-                    if(this->collisionHandler())break;
+                    if(this->collisionHandler()){
+                        this->setPoint();break;}
                     this->setPoint();
                     }
             }else
