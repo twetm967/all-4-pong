@@ -1,6 +1,6 @@
 
 #include <cassert>
-
+#include "highscores.h"
 #include "World.h"
 #include "Object.h"
 #include "Paddle.h"
@@ -130,15 +130,15 @@ void World::readWorldInfo() {
 
         //Ball/225/225/-3/9/-1/
         for(int i = 1; i < information.size() - 1;i++){
-            item = splitString(information.at(i),'/');
+                item = splitString(information.at(i),'/');
 
-            Object* obj;//
-            string identifier = item->at(0);
-            if(identifier == "shape"){
+                Object* obj;//
+                string identifier = item->at(0);
+                if(identifier == "shape"){
 
                 obj = new Shapes(true);
 
-              //  objects.push_back(obj);
+                //  objects.push_back(obj);
 
             }
             if(objects.at(i-1)->getType() == QString::fromStdString(item->at(0))){
@@ -179,8 +179,8 @@ void World::pointScoredReset() {
         play->reset();
     }
     if(numberDead < 3){
-    roundEnd = "Round Over";
-    Instructions = "Click to Continue";
+        roundEnd = "Round Over";
+        Instructions = "Click to Continue";
     }
 }
 
@@ -189,11 +189,15 @@ void World::gameOver(){
     //ends the game
     //saves high scores
     if(numberDead == 3){
-    roundFinished = true;
-    //displays gameover text.
-    roundEnd = "Game Over";
-    Instructions = "Click to go Home";
-    gameIsOver = true;
+        roundFinished = true;
+        //displays gameover text.
+        roundEnd = "Game Over";
+        Instructions = "Click to go Home";
+        gameIsOver = true;
+        foreach(Player *play, GamePlayers) {
+            HighScore::getInstance()->addScore(play->getUsername(),play->getCurrentScore()->getCurrentScore());
+        }
+        HighScore::getInstance()->exportData();
     }
 }
 

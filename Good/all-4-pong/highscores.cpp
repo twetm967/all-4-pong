@@ -1,99 +1,68 @@
 
 #include "highscores.h"
+#include <QString>
+#include "World.h"
 
 
-
-//initiates the HighScore thingy.
+//initiates the HighScore singleton.
 //Creates a new file on each computer
 //that plays
-HighScore HighScore::instance;
+HighScore* HighScore::instance=NULL;
 
 
-// returns a copy of the username belonging to the player with <playerId>
-string HighScore::getPlayerName(int playerId) {
-    string playerName;
-
-    return playerName;
+void HighScore::addScore(QString username, int score) {
+    if (score > firstHighestScore) {
+        addScore(firstHSPlayerName,firstHighestScore);
+        firstHighestScore = score;
+        firstHSPlayerName = username;
+    }
+    else if (score > secondHighestScore) {
+        addScore(secondHSPlayerName,secondHighestScore);
+        secondHighestScore = score;
+        secondHSPlayerName = username;
+    }
+    else if(score > thirdHighestScore) {
+        thirdHighestScore = score;
+        thirdHSPlayerName = username;
+    }
 }
 
-// returns a copy of the score belonging to the player with <playerId>
-int HighScore::getPlayerScore(int playerId) {
-    int playerScore;
-
-    return playerScore;
+void HighScore::importData() {
+    string info = "";
+    fstream* stream = new fstream;
+    stream->open("high_score.txt");
+    if (stream->is_open()) {
+        getline(*stream, info);
+    }
+    if (info == "") {
+        firstHighestScore = secondHighestScore = thirdHighestScore = 0;
+        firstHSPlayerName = secondHSPlayerName = thirdHSPlayerName = "AI";
+    }
+    else {
+        vector<string>* scores = World::getInstance()->splitString(info,'/');
+        firstHSPlayerName = QString::fromStdString(scores->at(1));
+        firstHighestScore = stoi(scores->at(2));
+        secondHSPlayerName = QString::fromStdString(scores->at(3));
+        secondHighestScore = stoi(scores->at(4));
+        thirdHSPlayerName = QString::fromStdString(scores->at(5));
+        thirdHighestScore = stoi(scores->at(6));
+    }
 }
 
-
-
-
-
-//returns the scores in decrementing order
-// largest -> smallest
-// to be used inside of positionGameScores
-vector<int> HighScore::getGameScores(){
-
+string HighScore::printData() {
+    string data = string("3/") + firstHSPlayerName.toUtf8().constData() + string("/") + to_string(firstHighestScore) + string("/") + secondHSPlayerName.toUtf8().constData() + string("/") + to_string(secondHighestScore) + string("/") + thirdHSPlayerName.toUtf8().constData() + string("/") + to_string(thirdHighestScore);
+    return data;
 }
 
-//Positions the game scores inside of the highScores vector
-void HighScore::positionGameScores(){
+void HighScore::exportData() {
+    string info = printData();
+    ofstream* stream = new ofstream();
 
-}
+    stream->open("high_score.txt");
 
-//Creates the QWidget to be displayed later.
-void HighScore::makeLeaderBoard(){
-
-}
-
-//And by later i mean here!!!
-// displays the QWidget of the Leaderboards.
-ofstream HighScore::getLeaderBoard(){
-
-}
-
-//increases the score of the indexed paddle.
-// so the highscores class calls incScore(where it went out);
-void HighScore::incScore(int index){
-
-}
-
-/*//displays the players score on his side of the board.
-QString HighScore::getScore(int index){
-
-}*/
-
-// prints the current high scores and related game state
-// out to the highscore offshore text file,
-// returning a boolean value indicating print success
-bool HighScore::printHSInfo(QString data) {
-    bool didPrint = false;
-
-    // establish connection with text file
-
-    if (/*connection succeeds*/ true  /*could we just return this?*/) {
-        // gather object state and concatenate into string
-        // print string of state to text file
-        didPrint = true;
+    if (stream->is_open()){
+        *stream << info;
     }
 
-    return didPrint;
-}
-
-
-// reads the current high scores and related game state
-// from the highscore offshore text file,
-// returning a boolean value indicating read success;
-// if read succeeds, stores high scores and related game state in instance variables
-bool HighScore::readHSInfo() {
-
-    bool didRead = false;
-
-    // establish connection with text file
-
-    if (/*connection succeeds*/true) {
-        // read string of state from text file
-        // parse string and store object state in instance variables
-        didRead = true;
-    }
-
-    return didRead;
+    stream->close();
 }
