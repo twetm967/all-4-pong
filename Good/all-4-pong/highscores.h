@@ -37,7 +37,7 @@ public:
             instance = new HighScore;
         }
         return instance;
-     }
+    }
 
     QString getFirstHSPlayerName() {return firstHSPlayerName;}
     QString getSecondHSPlayerName() {return secondHSPlayerName;}

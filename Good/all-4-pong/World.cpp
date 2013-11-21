@@ -13,7 +13,7 @@ QString World::getBlock(){
         counter++;
     if(counter == 500){
         counter = 0;
-       // qDebug()<<"make a random object"<< endl;
+        // qDebug()<<"make a random object"<< endl;
 
         return "Shapes";
     }
@@ -65,7 +65,7 @@ void World::printWorldInfo() {
         }
 
         // establish connection with text file
-    stream->close();
+        stream->close();
 
     }
 
@@ -102,15 +102,15 @@ void World::readWorldInfo() {
     inFile->open("save_file.txt");
 
     if(inFile->eofbit){
-    information.push_back("");
-    for(int j = 0; ;information.push_back(""),j++){
+        information.push_back("");
+        for(int j = 0; ;information.push_back(""),j++){
 
             getline(*inFile, information.at(j));
             if(information.at(j) == "")break;
         }
         inFile->close();
     }else{//failed
-}
+    }
 
 
 
@@ -123,32 +123,32 @@ void World::readWorldInfo() {
 
     int numPlayers = 0;
     for(int i= 1; i < 5;i++){
-    item = splitString(information.at(i), '/');
+        item = splitString(information.at(i), '/');
         if(item->at(6) != "AI")numPlayers++;
     }
 
     setupPlayers(numPlayers);
 
-        //Ball/225/225/-3/9/-1/
-        for(int i = 1; i < information.size() - 1;i++){
-                item = splitString(information.at(i),'/');
+    //Ball/225/225/-3/9/-1/
+    for(int i = 1; i < information.size() - 1;i++){
+        item = splitString(information.at(i),'/');
 
-                Object* obj;//
-                string identifier = item->at(0);
-                if(identifier == "shape"){
+        Object* obj;//
+        string identifier = item->at(0);
+        if(identifier == "shape"){
 
-                obj = new Shapes(true);
+            obj = new Shapes(true);
 
-                //  objects.push_back(obj);
+            //  objects.push_back(obj);
 
-            }
-            if(objects.at(i-1)->getType() == QString::fromStdString(item->at(0))){
-                objects.at(i - 1)->getInfo(item);
-            }
-
+        }
+        if(objects.at(i-1)->getType() == QString::fromStdString(item->at(0))){
+            objects.at(i - 1)->getInfo(item);
         }
 
     }
+
+}
 
 
 
@@ -271,7 +271,7 @@ void World::setPlayerName(QString name, int side){
     Player *inPlayer = getGamePlayer(side);
     if(name == "")name = "User";
     if(inPlayer != NULL)
-    inPlayer->setUsername(name);
+        inPlayer->setUsername(name);
 }
 
 

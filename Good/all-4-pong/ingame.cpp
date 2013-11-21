@@ -25,17 +25,17 @@ InGame::InGame(Start* window, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::InGame),
     home(window)
-    {
-        ui->setupUi(this);
+{
+    ui->setupUi(this);
 
-        //Timer============================
-       /* timer = new QTimer(this);
+    //Timer============================
+    /* timer = new QTimer(this);
         timer->setInterval(75);
         connect(timer, &QTimer::timeout,this, & InGame::Animate);
     */
-        setMouseTracking(true);
-        ui->gameCourt->setMouseTracking(true);
-       // Players = World::getInstance()->getGamePlayers();
+    setMouseTracking(true);
+    ui->gameCourt->setMouseTracking(true);
+    // Players = World::getInstance()->getGamePlayers();
 
 
 
@@ -91,42 +91,42 @@ InGame::InGame(Start* window, QWidget *parent) :
         World::getInstance()->readWorldInfo();
 
 
-            for(int i = 5; i < World::getInstance()->getObjects().size(); i++){
+        for(int i = 5; i < World::getInstance()->getObjects().size(); i++){
 
-                GameLabel* block = new GameLabel(ui->gameCourt);
-               // objects.at(i);
-                block->setObj(World::getInstance()->getObjects().at(i));
-                setUpBlocklbl(block);
-         }
-     }
-
-        ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
-        ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
-        ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
-        ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
-        for(int i = 0;i < 4;i++){
-            for(int j = 7; j > World::getInstance()->getGamePlayer(i)->getHealth();){
-        j--;
-                HealthDamage(i,j);
-            }
+            GameLabel* block = new GameLabel(ui->gameCourt);
+            // objects.at(i);
+            block->setObj(World::getInstance()->getObjects().at(i));
+            setUpBlocklbl(block);
         }
+    }
+
+    ui->lblScorePB->setText(QString::number(World::getInstance()->getGamePlayer(0)->getCurrentScore()->getCurrentScore()));
+    ui->lblScorePR->setText(QString::number(World::getInstance()->getGamePlayer(1)->getCurrentScore()->getCurrentScore()));
+    ui->lblScorePT->setText(QString::number(World::getInstance()->getGamePlayer(2)->getCurrentScore()->getCurrentScore()));
+    ui->lblScorePL->setText(QString::number(World::getInstance()->getGamePlayer(3)->getCurrentScore()->getCurrentScore()));
+    for(int i = 0;i < 4;i++){
+        for(int j = 7; j > World::getInstance()->getGamePlayer(i)->getHealth();){
+            j--;
+            HealthDamage(i,j);
+        }
+    }
 
 
- ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
- ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
- ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
- ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleBottom")->getObj()->setPlayerId(0);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleRight")->getObj()->setPlayerId(1);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleTop")->getObj()->setPlayerId(2);
+    ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
 
 
 
- setUsernames();
- setHighScores();
+    setUsernames();
+    setHighScores();
 
 
     //Setup the Timer
     Timer::getInstance()->getTimer()->setInterval(40);//was100
     connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::timerHit);
-   // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
+    // connect(Timer::getInstance()->getTimer(), &QTimer::timeout,this,&InGame::Animate);
 
 
 }
@@ -175,7 +175,7 @@ void InGame::setUsernames(){
     }
 }
 
- //Pauses the game but right now running health bar tests.
+//Pauses the game but right now running health bar tests.
 void InGame::on_btnPause_clicked() {
     Pause();
 }
@@ -184,7 +184,7 @@ void InGame::on_btnPause_clicked() {
 
 void InGame::on_btnCheat_clicked() {
     for(int i = 0; i < 10; i++){
-    int num = rand() % 4;
+        int num = rand() % 4;
         if(World::getInstance()->getGamePlayer(num)->getHealth() > 0){
             World::getInstance()->getGamePlayer(num)->damage();
             HealthDamage(num,World::getInstance()->getGamePlayer(num)->getHealth());
@@ -211,9 +211,9 @@ void InGame::mouseMoveEvent(QMouseEvent *ev) {
 
 //for testing purposes
 void InGame::mousePressEvent(QMouseEvent *ev) {
-   //qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
+    //qDebug() << getGameCourt(ev->pos()).x() << ", "<< getGameCourt(ev->pos()).y() << "  ------------------------------";
 
-        Pause();
+    Pause();
 
 }
 
@@ -221,9 +221,9 @@ bool InGame::makeBlock(bool powerUps){
     if(powerUps)
         counter++;
     if(counter == 500){
-       //qDebug() << "Make a random Object" << endl;
-       counter = 0;
-       return true;
+        //qDebug() << "Make a random Object" << endl;
+        counter = 0;
+        return true;
     }
     return false;
 
@@ -244,23 +244,23 @@ void InGame::timerHit() {
         GameLabel* block = new GameLabel(ui->gameCourt, "Shapes");
 
 
-     //   ui->gameCourt->findChild<GameLabel*>("lblPopUp")->initializeObj("Shapes");
+        //   ui->gameCourt->findChild<GameLabel*>("lblPopUp")->initializeObj("Shapes");
         setUpBlocklbl(block);
 
     }
 
     World::getInstance()->UpdateWorld();
-   // makeBlock(World::getInstance()->getPower());
+    // makeBlock(World::getInstance()->getPower());
     foreach (GameLabel *g, ui->gameCourt->findChildren<GameLabel*>()) {
         g->updatePosition();
     }
 
-   /*
+    /*
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->initializeObj("Paddle");
     ui->gameCourt->findChild<GameLabel*>("lblPaddleLeft")->getObj()->setPlayerId(3);
     World::getInstance()->getBlock();
     */
-        World::getInstance()->gameOver();
+    World::getInstance()->gameOver();
     if (World::getInstance()->getRoundFinished() == true) {
         World::getInstance()->pointScoredReset();
 
@@ -309,18 +309,18 @@ void InGame::Pause(){
     if(World::getInstance()->getEnd()){
         GoHome();
     }else{
-    World::getInstance()->setRoundFinished(false);
-    if (ui->btnPause->text() == "Pause") {
-        Timer::getInstance()->getTimer()->stop();
-        ui->btnPause->setText("Play");
-    }
+        World::getInstance()->setRoundFinished(false);
+        if (ui->btnPause->text() == "Pause") {
+            Timer::getInstance()->getTimer()->stop();
+            ui->btnPause->setText("Play");
+        }
 
-    else if (ui->btnPause->text() == "Play") {
-        Timer::getInstance()->getTimer()->start();
-        ui->btnPause->setText("Pause");
-    }
-    //purley testing this breaks object view blah blah blah
-    World::getInstance()->printWorldInfo();
+        else if (ui->btnPause->text() == "Play") {
+            Timer::getInstance()->getTimer()->start();
+            ui->btnPause->setText("Pause");
+        }
+        //purley testing this breaks object view blah blah blah
+        World::getInstance()->printWorldInfo();
     }
 }
 

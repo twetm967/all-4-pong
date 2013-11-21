@@ -119,7 +119,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
             HealthDamage(3,health);
         }
 
-    }else if(v->at(0) == "2"){
+    }else if(v->at(0) == "2"){ //creates one of the popping up objects
         //2/x/y/width/height/
         //update the object
         QLabel *lbl = new QLabel(ui->gameCourt);
@@ -127,7 +127,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         lbl->setGeometry(v->at(1).toInt(), v->at(2).toInt(), v->at(3).toInt(), v->at(4).toInt());
         lbl->setStyleSheet("background-color: rgb(255,255,255); border-radius: 6px;");
         lbl->show();
-    }else if(v->at(0) == "3"){
+    }else if(v->at(0) == "3"){//sets the high scores banner
         // 3/username/score/username/score/username/score/username/score/
         ui->lblTop1Usrnm->setText(v->at(1));
         ui->lblTop1Score ->setText(v->at(2));
@@ -139,8 +139,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
 
 }
 
-
-
+//sets the health labels to reflect the host info
 void clientingame::HealthDamage(int index, int health){
     int spot = 7 * index;
     //--health;
@@ -153,6 +152,7 @@ void clientingame::HealthDamage(int index, int health){
     }
 }
 
+//resets all health back to full
 void clientingame::resethealth(){
     for(QLabel *lbl: Health){
         lbl->setStyleSheet("background-color: rgb(0, 200, 0);\nborder-radius: 10px;");

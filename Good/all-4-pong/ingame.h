@@ -19,7 +19,7 @@ class Start;
 
 using namespace std;
 namespace Ui {
-    class InGame;
+class InGame;
 }
 
 class InGame : public QWidget
@@ -31,20 +31,20 @@ class InGame : public QWidget
 
 private:
 
-  Ui::InGame *ui;
-  //vector<Player*> Players;
-  vector<QLabel*> Health;
-  QTimer* timer;
-  Start* home;
-  int counter;
+    Ui::InGame *ui;
+    //vector<Player*> Players;
+    vector<QLabel*> Health;
+    QTimer* timer;
+    Start* home;
+    int counter;
 
-int i;
+    int i;
 
 public:
     explicit InGame(Start *window, QWidget *parent = 0);
 
-void setUpBlocklbl(GameLabel*);
-bool makeBlock(bool);
+    void setUpBlocklbl(GameLabel*);
+    bool makeBlock(bool);
     void Animate();
 
     //takes the player, and the amount of health he has left.

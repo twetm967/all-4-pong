@@ -34,6 +34,7 @@ Startup::~Startup()
     delete ui;
 }
 
+//connects to the host and sets a couple labels
 void Startup::on_connect_Btn_clicked()
 {
     QString hostname = ui->IP_line->text();
@@ -55,7 +56,7 @@ void Startup::on_connect_Btn_clicked()
 
 
 
-
+//my own personal split method... nuff said
 vector<QString> *Startup::split(QString str, char delim){
     //vector<QString> Split(string str, char delim){
     vector<QString> *splitV = new vector<QString>();
@@ -77,7 +78,7 @@ vector<QString> *Startup::split(QString str, char delim){
 
 
 
-
+//splits incoming string and calls method to move labels
 void Startup::dataReceived() {
 
     while (socket->canReadLine()) {
@@ -121,6 +122,8 @@ void Startup::serverDisconnected()
     clientgame->close();
     this->close();
 }
+
+//changes a label constantly while waiting for the host
 void Startup::wait(){
     if (ok){
         ++clock;

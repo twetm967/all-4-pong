@@ -10,7 +10,7 @@ class Command
 public:
     Command();
 
-   QPoint getPoint();
+    QPoint getPoint();
 
 };
 

@@ -31,7 +31,7 @@ public:
     int getPlayers(){return players;}
     int getDifficulty(){return difficulty;}
     bool getPowerUps() {return powerUps;}
-  //  InGame* getInGame() { return gameScreen;}
+    //  InGame* getInGame() { return gameScreen;}
     void StartingMethod();
     void setSound(bool inSound){sound = inSound;}
     void clientStop();

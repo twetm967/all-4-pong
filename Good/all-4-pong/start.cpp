@@ -109,8 +109,8 @@ void Start::timerHit(){
             ++clock;
         }
     }
-//send out the same information to all of the clients at the same time (remember server also plays game).
-//to see the format of this information, look at the networking Wiki page.
+    //send out the same information to all of the clients at the same time (remember server also plays game).
+    //to see the format of this information, look at the networking Wiki page.
 
 }
 
@@ -135,7 +135,7 @@ void Start::dataReceived()
     QTcpSocket *sock = dynamic_cast<QTcpSocket*>(sender());
     while (sock->canReadLine()) {
         QString str = sock->readLine();
-      //  qDebug() << str;
+        //  qDebug() << str;
         //World::getInstance()->updateUser(str); akjdhfa
         //do something with the information that is coming in
         //   "3/Thomas/x/y/

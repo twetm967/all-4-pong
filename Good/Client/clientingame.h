@@ -25,7 +25,7 @@ public:
     void HealthDamage(int index, int health);
     void resethealth();
 private slots:
-//hello
+    //hello
     
 private:
     Ui::clientingame *ui;

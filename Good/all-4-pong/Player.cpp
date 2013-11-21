@@ -21,8 +21,8 @@ Player::Player(){
 }
 
 QPoint* Player::getHand(){
-hand = World::getInstance()->getMouse(ID);
-return hand;
+    hand = World::getInstance()->getMouse(ID);
+    return hand;
 }
 
 
@@ -31,21 +31,21 @@ int Player::getSpeed(){
 }
 void Player::damage() {
     if(Health > 0){
-    --Health;
+        --Health;
 
 
-    currentScore->decreaseScore();
-    cout << "New health of player " << ID << " is " << Health << endl;
-    cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
-    if (Health == 0) {
-        World::getInstance()->died();
-        foreach (Object * pad, World::getInstance()->getObjects())
-            if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
-              //  this->setDead();
-                //pad->eliminate();
-                this->setDead();
-                cout << "Moved player " << ID << " off screen." << endl;
-            }
+        currentScore->decreaseScore();
+        cout << "New health of player " << ID << " is " << Health << endl;
+        cout << "New score of player " << ID << " is " << currentScore->getCurrentScore() << endl;
+        if (Health == 0) {
+            World::getInstance()->died();
+            foreach (Object * pad, World::getInstance()->getObjects())
+                if (pad->getType() == "paddle" && pad->getPlayerId() == ID) {
+                    //  this->setDead();
+                    //pad->eliminate();
+                    this->setDead();
+                    cout << "Moved player " << ID << " off screen." << endl;
+                }
         }
     }
 }
@@ -88,25 +88,25 @@ void AI::followRandom(int big, int min){
     Ball* ball = dynamic_cast<Ball*>(World::getInstance()->getObjects().at(4));
     if(ball != NULL){
 
-    int x = ball->getX();
-    int y = ball->getY();
+        int x = ball->getX();
+        int y = ball->getY();
 
-    speed = rand() % big;
-    if(speed < min )speed = min;
+        speed = rand() % big;
+        if(speed < min )speed = min;
 
-    if(x < hand->x()){
-        hand->setX(hand->x() - speed);
+        if(x < hand->x()){
+            hand->setX(hand->x() - speed);
+        }
+        if(x > hand->x()){
+            hand->setX(hand->x() + speed);
+        }
+        if(y < hand->y()){
+            hand->setY(hand->y() - speed);
+        }
+        if(y > hand->y()){
+            hand->setY(hand->y() + speed);
+        }
     }
-    if(x > hand->x()){
-        hand->setX(hand->x() + speed);
-    }
-    if(y < hand->y()){
-        hand->setY(hand->y() - speed);
-    }
-    if(y > hand->y()){
-        hand->setY(hand->y() + speed);
-    }
-   }
 }
 
 void User::calculateSpeed(){
@@ -114,12 +114,12 @@ void User::calculateSpeed(){
     case 0:
     case 2:
         if((oldX > 50 && oldX < 400) && (hand->x() > 50 && hand->x() < 400 )){
-        speed = abs(oldX - hand->x()); }else { speed = 0;}
+            speed = abs(oldX - hand->x()); }else { speed = 0;}
         break;
     case 1:
     case 3:
         if((oldY > 50 && oldY < 400) && (hand->y() > 50 && hand->y() < 400 )){
-        speed = abs(oldY - hand->y()); }else { speed = 0;}
+            speed = abs(oldY - hand->y()); }else { speed = 0;}
         break;
     }
 
@@ -133,7 +133,7 @@ QPoint* User::getHand(){
 
     Player::getHand();
     calculateSpeed();
-//qDebug() << speed;
+    //qDebug() << speed;
     oldX = hand->x();
     oldY = hand->y();
 

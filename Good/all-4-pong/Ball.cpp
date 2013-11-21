@@ -54,7 +54,7 @@ Ball::Ball(int initSpeed, int initX, int initY, int initPlayerId):Object() {
 // if read succeeds, stores ball state in instance variables
 
 void Ball::getInfo(vector<string>* strings){
-        //parses info from a string
+    //parses info from a string
     x = stoi(strings->at(1));
     y = stoi(strings->at(2));
     speedX = stoi(strings->at(3));
@@ -62,13 +62,13 @@ void Ball::getInfo(vector<string>* strings){
     playerId = stoi(strings->at(5));
 }
 // Ball/x/y/speedx/speedy/playerid/
-    void Ball::setInfo(ofstream * f){
-        *f << "ball/" << x << "/"<< y << "/"<< speedX << "/"<< speedY<< "/"<< playerId<< "/"<< endl;
-    }
+void Ball::setInfo(ofstream * f){
+    *f << "ball/" << x << "/"<< y << "/"<< speedX << "/"<< speedY<< "/"<< playerId<< "/"<< endl;
+}
 
 
 void Ball::updatePosition(){
- /*   if(this->getSpeedX() > 0 && this->getSpeedY() > 0){
+    /*   if(this->getSpeedX() > 0 && this->getSpeedY() > 0){
     for(int i = 0; i <= this->getSpeedX() || i <= this->getSpeedY(); i++){
 
         if(i <= this->getSpeedX()){
@@ -214,7 +214,7 @@ bool Ball::collisionHandler() {
             return true;
         }
     }
-// if it scores
+    // if it scores
     if (this->getX() - this->getRadius() < World::getInstance()->getWorldSize()/15) {
         World::getInstance()->getGamePlayer(3)->damage();
         if (playerId != 3 && playerId != -1)
@@ -250,76 +250,76 @@ void Ball::onCollision(Object *obj) {
         this->setPlayerId(obj->getPlayerId());
         cout << "Collision with player" << playerId << endl;
         switch (playerId % 2) {
-            case 0:
-                this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
-                this->incrementSpeedX(obj->getSpeed());
-                this->invertSpeedY();
-                this->incrementSpeedY(5 * abs(this->getSpeedY())/this->getSpeedY());
-                break;
-            case 1:
-                this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
-                this->incrementSpeedY(obj->getSpeed());
-                this->invertSpeedX();
-                this->incrementSpeedX(5 * abs(this->getSpeedX())/this->getSpeedX());
-                break;
+        case 0:
+            this->setY(obj->getLine().y1()-this->radius*abs(this->getSpeedY())/this->getSpeedY());
+            this->incrementSpeedX(obj->getSpeed());
+            this->invertSpeedY();
+            this->incrementSpeedY(5 * abs(this->getSpeedY())/this->getSpeedY());
+            break;
+        case 1:
+            this->setX(obj->getLine().x1()-this->radius*abs(this->getSpeedX())/this->getSpeedX());
+            this->incrementSpeedY(obj->getSpeed());
+            this->invertSpeedX();
+            this->incrementSpeedX(5 * abs(this->getSpeedX())/this->getSpeedX());
+            break;
         }
     }
     else if (obj->getType() == "shape") {
         Shapes* s = dynamic_cast<Shapes*>(obj);
         int side = s->hitShape(this);
         switch (side) {
-            case 0:
-                this->setY(s->getRect().bottom()+this->getRadius());
-                this->invertSpeedY();
-                this->incrementSpeedY(5);
-                break;
-            case 1:
-                this->setX(s->getRect().right()+this->getRadius());
-                this->invertSpeedX();
-                this->incrementSpeedX(5);
-                break;
-            case 2:
-                this->setY(s->getRect().top()-this->getRadius());
-                this->invertSpeedY();
-                this->incrementSpeedY(5);
-                break;
-            case 3:
-                this->setX(s->getRect().left()-this->getRadius());
-                this->invertSpeedX();
-                this->incrementSpeedX(5);
-                break;
-            case 4:
-                this->setX(s->getRect().right()+this->getRadius());
-                this->setY(s->getRect().bottom()+this->getRadius());
-                this->invertSpeedX();
-                this->invertSpeedY();
-                this->incrementSpeedX(5);
-                this->incrementSpeedY(5);
-                break;
-            case 5:
-                this->setX(s->getRect().right()+this->getRadius());
-                this->setY(s->getRect().top()-this->getRadius());
-                this->invertSpeedX();
-                this->invertSpeedY();
-                this->incrementSpeedX(5);
-                this->incrementSpeedY(5);
-                break;
-            case 6:
-                this->setX(s->getRect().left()-this->getRadius());
-                this->setY(s->getRect().top()-this->getRadius());
-                this->invertSpeedX();
-                this->invertSpeedY();
-                this->incrementSpeedX(5);
-                this->incrementSpeedY(5);
-                break;
-            case 7:
-                this->setX(s->getRect().left()-this->getRadius());
-                this->setY(s->getRect().bottom()+this->getRadius());
-                this->invertSpeedX();
-                this->invertSpeedY();
-                this->incrementSpeedX(5);
-                this->incrementSpeedY(5);
-                break;
+        case 0:
+            this->setY(s->getRect().bottom()+this->getRadius());
+            this->invertSpeedY();
+            this->incrementSpeedY(5);
+            break;
+        case 1:
+            this->setX(s->getRect().right()+this->getRadius());
+            this->invertSpeedX();
+            this->incrementSpeedX(5);
+            break;
+        case 2:
+            this->setY(s->getRect().top()-this->getRadius());
+            this->invertSpeedY();
+            this->incrementSpeedY(5);
+            break;
+        case 3:
+            this->setX(s->getRect().left()-this->getRadius());
+            this->invertSpeedX();
+            this->incrementSpeedX(5);
+            break;
+        case 4:
+            this->setX(s->getRect().right()+this->getRadius());
+            this->setY(s->getRect().bottom()+this->getRadius());
+            this->invertSpeedX();
+            this->invertSpeedY();
+            this->incrementSpeedX(5);
+            this->incrementSpeedY(5);
+            break;
+        case 5:
+            this->setX(s->getRect().right()+this->getRadius());
+            this->setY(s->getRect().top()-this->getRadius());
+            this->invertSpeedX();
+            this->invertSpeedY();
+            this->incrementSpeedX(5);
+            this->incrementSpeedY(5);
+            break;
+        case 6:
+            this->setX(s->getRect().left()-this->getRadius());
+            this->setY(s->getRect().top()-this->getRadius());
+            this->invertSpeedX();
+            this->invertSpeedY();
+            this->incrementSpeedX(5);
+            this->incrementSpeedY(5);
+            break;
+        case 7:
+            this->setX(s->getRect().left()-this->getRadius());
+            this->setY(s->getRect().bottom()+this->getRadius());
+            this->invertSpeedX();
+            this->invertSpeedY();
+            this->incrementSpeedX(5);
+            this->incrementSpeedY(5);
+            break;
         }
     }
 }
@@ -350,9 +350,9 @@ void Ball::reset() {
 
 QString Ball::getNet(){
 
-            QString str = "0/ball/"+ QString::number(this->getX()) +
-                                "/" + QString::number(this->getY()) + "/ ";
-            return str;
+    QString str = "0/ball/"+ QString::number(this->getX()) +
+            "/" + QString::number(this->getY()) + "/ ";
+    return str;
 
 }
 

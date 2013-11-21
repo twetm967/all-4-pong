@@ -60,19 +60,19 @@ public:
 
     void virtual getInfo(ofstream*){}
     void virtual setInfo(){}
-   void virtual updatePosition();
-   virtual QString getNet();
-   QRect virtual getRect(){QRect Q; return Q;}
-   bool virtual Hit(){return true;}
-   bool virtual getBound();
-   double virtual getDistancetoPaddle(QPoint point){return -1;}
-   int virtual getPlayerId() {return playerId;}
-   virtual void setPlayerId(int) {}
-   virtual QString getType() {return "";}
-   virtual QLine getLine() {return QLine();}
-   virtual int getSpeed() {return 0;}
-   virtual void eliminate() {}
-  // virtual void hitShape(){}
+    void virtual updatePosition();
+    virtual QString getNet();
+    QRect virtual getRect(){QRect Q; return Q;}
+    bool virtual Hit(){return true;}
+    bool virtual getBound();
+    double virtual getDistancetoPaddle(QPoint point){return -1;}
+    int virtual getPlayerId() {return playerId;}
+    virtual void setPlayerId(int) {}
+    virtual QString getType() {return "";}
+    virtual QLine getLine() {return QLine();}
+    virtual int getSpeed() {return 0;}
+    virtual void eliminate() {}
+    // virtual void hitShape(){}
 
 
 

@@ -31,16 +31,16 @@ class Paddle : public Object
 public:
 
     //takes player index;
-  Paddle():Object(){
-      int worldSize = World::getInstance()->getWorldSize();
-      length = (worldSize / 4.5);
-      width = (worldSize / 30);
-  }
-  void setUp();
+    Paddle():Object(){
+        int worldSize = World::getInstance()->getWorldSize();
+        length = (worldSize / 4.5);
+        width = (worldSize / 30);
+    }
+    void setUp();
 
-  int getSpeed(){
-      return speed;
-  }
+    int getSpeed(){
+        return speed;
+    }
 
     void setPlayerId(int inID) {
         playerId = inID;
@@ -51,8 +51,8 @@ public:
 
 
 
-//    QRect getRectangle() {return rectangle;}
-   // QPoint getSpot(){return spot;}
+    //    QRect getRectangle() {return rectangle;}
+    // QPoint getSpot(){return spot;}
 
     void setMouse(QPoint);
     bool getHit();
