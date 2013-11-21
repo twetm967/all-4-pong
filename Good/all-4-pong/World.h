@@ -147,7 +147,10 @@ class World //Can we get a worldSize integer that returns the number of pixels w
         //----------------------------------------
         int getDifficulty() {return difficulty;}
         vector<Player*> getGamePlayers() {return GamePlayers;}
-        Player* getGamePlayer(int id) {return GamePlayers.at(id);}
+        Player* getGamePlayer(int id) {
+            if(id < GamePlayers.size())
+            return GamePlayers.at(id);
+            return NULL;}
         void setupPlayers(int num);
         void setRoundFinished(bool finished) {roundFinished = finished;}
         bool getRoundFinished() {return roundFinished;}

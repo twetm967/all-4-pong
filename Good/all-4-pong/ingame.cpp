@@ -12,8 +12,6 @@
 #include <QtWidgets>
 
 
-
-#include <QtMultimedia/QSoundEffect>
 #include <QFile>
 #include "World.h"
 #include "Paddle.h"
@@ -295,7 +293,10 @@ void InGame::GoHome(){
     this->deleteLater();
     Timer::getInstance()->getTimer()->stop();
     World::getInstance()->ResetWorld();
+
     ui->btnPause->setText("Play");
+
+    home->clientStop();
     home->show();
 
 

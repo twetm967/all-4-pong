@@ -34,6 +34,7 @@ public:
   //  InGame* getInGame() { return gameScreen;}
     void StartingMethod();
     void setSound(bool inSound){sound = inSound;}
+    void clientStop();
     
 private slots:
     int on_start_Btn_clicked();

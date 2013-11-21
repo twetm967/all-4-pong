@@ -101,6 +101,9 @@ void Startup::dataReceived() {
             if(slashSplit->at(0) == "side"){
                 side = slashSplit->at(1);
             }
+            if(slashSplit->at(0) == "stop\n"){
+                timer->stop();
+            }
             spaceSplit->erase(spaceSplit->begin()+0);
             clientgame->MoveLabels(slashSplit);
         }

@@ -8,9 +8,9 @@
 #include <QtWidgets>
 #include <sstream>
 
-#include <ingame.h>
-#include <QTimer>
 
+#include <QTimer>
+#include "ingame.h"
 #include "World.h"
 #include "ui_ingame.h"
 #include "start.h"
@@ -109,12 +109,22 @@ void Start::timerHit(){
             ++clock;
         }
     }
-
-
-
 //send out the same information to all of the clients at the same time (remember server also plays game).
 //to see the format of this information, look at the networking Wiki page.
 
+}
+
+void Start::clientStop(){
+    for (QObject *obj : server->children()){
+        QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
+        if (anotherSock != NULL){
+            QString netString = "stop";
+            anotherSock->write(netString.toLocal8Bit()+"\n");
+        }
+        if (ok){
+            ++clock;
+        }
+    }
 }
 
 //THis is the mouse information coming in!! Put this in a vector of mice held in the World Class -daniel To himself.
