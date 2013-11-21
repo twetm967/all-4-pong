@@ -32,6 +32,7 @@ private:
     vector<QLabel*> Health;
     int x;
     int y;
+    vector<QLabel*> objs;
 };
 
 #endif // CLIENTINGAME_H

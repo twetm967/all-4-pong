@@ -127,6 +127,7 @@ void clientingame::MoveLabels(std::vector<QString> *v){
         lbl->setGeometry(v->at(1).toInt(), v->at(2).toInt(), v->at(3).toInt(), v->at(4).toInt());
         lbl->setStyleSheet("background-color: rgb(255,255,255); border-radius: 6px;");
         lbl->show();
+        objs.push_back(lbl);
     }else if(v->at(0) == "3"){//sets the high scores banner
         // 3/username/score/username/score/username/score/username/score/
         ui->lblTop1Usrnm->setText(v->at(1));
@@ -152,9 +153,13 @@ void clientingame::HealthDamage(int index, int health){
     }
 }
 
-//resets all health back to full
+//resets all health back to full and deletes objects
 void clientingame::resethealth(){
     for(QLabel *lbl: Health){
         lbl->setStyleSheet("background-color: rgb(0, 200, 0);\nborder-radius: 10px;");
+
+    }
+    for(QLabel *obj: objs){
+        obj->deleteLater();
     }
 }
