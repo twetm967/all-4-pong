@@ -297,6 +297,7 @@ void InGame::GoHome(){
     ui->btnPause->setText("Play");
 
     home->clientStop();
+    home->clientReset();
     home->show();
 
 

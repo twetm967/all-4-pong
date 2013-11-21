@@ -23,6 +23,7 @@ public:
     void mouseMoveEvent(QMouseEvent *ev);
     void MoveLabels(std::vector<QString> *v);
     void HealthDamage(int index, int health);
+    void resethealth();
 private slots:
 //hello
     

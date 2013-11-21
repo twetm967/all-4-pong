@@ -152,3 +152,9 @@ void clientingame::HealthDamage(int index, int health){
         //qDebug() << "No more death possible";
     }
 }
+
+void clientingame::resethealth(){
+    for(QLabel *lbl: Health){
+        lbl->setStyleSheet("background-color: rgb(0, 200, 0);\nborder-radius: 10px;");
+    }
+}

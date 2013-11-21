@@ -45,6 +45,7 @@ void World::ResetWorld() {
     balls.clear();
     gameIsOver = false;
     roundFinished = false;
+
 }
 
 // prints the current world state out to offshore text file,

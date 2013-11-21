@@ -233,6 +233,16 @@ void Start::StartingMethod(){
 
 }
 
+void Start::clientReset(){
+    for (QObject *obj : server->children()){
+        QTcpSocket *anotherSock = dynamic_cast<QTcpSocket*>(obj);
+        if (anotherSock != NULL){
+            QString str = "reset";
+            anotherSock->write(str.toLocal8Bit()+"\n");
+        }
+    }
+}
+
 
 
 //When the number of players box is changed checks to see how many

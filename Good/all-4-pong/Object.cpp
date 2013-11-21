@@ -36,8 +36,8 @@ Object::~Object() {
 
 }
 
-bool Object::getHit(){}
+bool Object::getHit(){return false;}
 
 void Object::updatePosition(){}
-bool Object::getBound(){}
-QString Object::getNet(){}
+bool Object::getBound(){return false;}
+QString Object::getNet(){QString Q; return Q;}

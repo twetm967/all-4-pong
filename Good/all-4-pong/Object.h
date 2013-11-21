@@ -50,7 +50,7 @@ public:
     bool getHit();
     QPoint getQPoint(){return point;}
 
-    QString virtual getUserName(){}
+    QString virtual getUserName(){QString Q; return Q;}
     void virtual setInfo(ofstream* f){}
     void virtual getInfo(vector<string>* strings){}
 
@@ -62,7 +62,7 @@ public:
     void virtual setInfo(){}
    void virtual updatePosition();
    virtual QString getNet();
-   QRect virtual getRect(){}
+   QRect virtual getRect(){QRect Q; return Q;}
    bool virtual Hit(){return true;}
    bool virtual getBound();
    double virtual getDistancetoPaddle(QPoint point){return -1;}

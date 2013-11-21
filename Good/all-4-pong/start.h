@@ -35,6 +35,7 @@ public:
     void StartingMethod();
     void setSound(bool inSound){sound = inSound;}
     void clientStop();
+    void clientReset();
     
 private slots:
     int on_start_Btn_clicked();

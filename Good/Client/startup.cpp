@@ -104,6 +104,9 @@ void Startup::dataReceived() {
             if(slashSplit->at(0) == "stop\n"){
                 timer->stop();
             }
+            if(slashSplit->at(0) == "reset\n"){
+                clientgame->resethealth();
+            }
             spaceSplit->erase(spaceSplit->begin()+0);
             clientgame->MoveLabels(slashSplit);
         }
